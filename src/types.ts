@@ -34,3 +34,30 @@ export interface PipelineDeal {
     }>;
   };
 }
+
+export interface FormData {
+  propertyAddress: string;
+  propertyValue: number;
+  loanAmount: number;
+}
+
+export interface LoanDecision {
+  approved: boolean;
+  score: number;
+  maxLoanAmount: number;
+  recommendedTerms: {
+    rate: number;
+    term: number;
+  };
+  riskFactors: string[];
+  analyticsData: {
+    propertyGrowth: number;
+    marketCondition: string;
+    comparableSales: number[];
+  };
+}
+
+export interface AnalyticsEvent {
+  type: string;
+  data: any;
+}

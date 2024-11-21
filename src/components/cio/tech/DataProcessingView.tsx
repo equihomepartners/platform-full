@@ -5,7 +5,7 @@ import { Mermaid } from '../../Mermaid';
 
 const DataProcessingView: React.FC = () => {
   const dataProcessingFlow = `
-    flowchart TB
+    flowchart LR
       subgraph Input
         direction TB
         Market[Market Data]

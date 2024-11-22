@@ -43,14 +43,30 @@ export interface FormData {
 
 export interface LoanDecision {
   approved: boolean;
-  score: number;
-  maxLoanAmount: number;
-  recommendedTerms: {
+  loanAmount: number;
+  interestRate: number;
+  ltv: number;
+  suburb: string;
+  trafficLight: string;
+  riskLevel: string;
+  explanation: string;
+  returns?: {
+    optimalExit?: {
+      year: number;
+    };
+    yearlyBreakdown?: Array<{
+      irr: number;
+      year: number;
+    }>;
+  };
+  score?: number;
+  maxLoanAmount?: number;
+  recommendedTerms?: {
     rate: number;
     term: number;
   };
-  riskFactors: string[];
-  analyticsData: {
+  riskFactors?: string[];
+  analyticsData?: {
     propertyGrowth: number;
     marketCondition: string;
     comparableSales: number[];

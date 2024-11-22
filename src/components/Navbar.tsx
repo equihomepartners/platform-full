@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutGrid, PieChart, Settings, Brain, Info, ListFilter, Calculator } from 'lucide-react';
+import { LayoutGrid, PieChart, Settings, Brain, ListFilter, Calculator } from 'lucide-react';
 import Logo from './Logo';
 
 const Navbar: React.FC = () => {
@@ -12,74 +12,46 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-4">
+        <div className="flex justify-between h-14 items-center">
           <Link to="/" className="flex items-center">
             <Logo />
           </Link>
           
-          <div className="bg-gray-100 rounded-lg p-1 flex space-x-1">
+          <div className="bg-gray-50 rounded-xl p-1 flex space-x-0.5 shadow-sm border border-gray-100">
             <Link 
-              to="/deals" 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-md font-medium group transition-colors ${
-                isActive('/deals') 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-white'
+              to="/cio" 
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-medium group transition-all duration-200 ${
+                isActive('/cio') 
+                  ? 'bg-white text-gray-900 shadow-sm border border-gray-100' 
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
               }`}
             >
-              <LayoutGrid className={`h-5 w-5 transition-colors ${
-                isActive('/deals') ? 'text-indigo-600' : 'group-hover:text-indigo-600'
-              }`} />
-              <span>Loans</span>
-            </Link>
-            
-            <Link 
-              to="/fund-dashboard" 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-md font-medium group transition-colors ${
-                isActive('/fund-dashboard') 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-white'
-              }`}
-            >
-              <PieChart className={`h-5 w-5 transition-colors ${
-                isActive('/fund-dashboard') ? 'text-indigo-600' : 'group-hover:text-indigo-600'
-              }`} />
-              <span>Report</span>
-            </Link>
-            
-            <Link 
-              to="/underwrite" 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-md font-medium group transition-colors ${
-                isActive('/underwrite') 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-white'
-              }`}
-            >
-              <Brain className={`h-5 w-5 transition-colors ${
-                isActive('/underwrite') ? 'text-indigo-600' : 'group-hover:text-indigo-600'
+              <Settings className={`h-4 w-4 transition-colors ${
+                isActive('/cio') ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600'
               }`} />
               <div className="flex items-center">
-                <span>Underwrite</span>
-                <span className="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-mono">
+                <span>CIO</span>
+                <span className="ml-1.5 text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full font-mono">
                   alpha
                 </span>
               </div>
             </Link>
             
             <Link 
-              to="/cio-dashboard" 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-md font-medium group transition-colors ${
-                isActive('/cio-dashboard') 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-white'
+              to="/underwrite" 
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-medium group transition-all duration-200 ${
+                isActive('/underwrite') 
+                  ? 'bg-white text-gray-900 shadow-sm border border-gray-100' 
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
               }`}
             >
-              <Settings className={`h-5 w-5 transition-colors ${
-                isActive('/cio-dashboard') ? 'text-indigo-600' : 'group-hover:text-indigo-600'
+              <Brain className={`h-4 w-4 transition-colors ${
+                isActive('/underwrite') ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600'
               }`} />
               <div className="flex items-center">
-                <span>CIO</span>
-                <span className="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-mono">
+                <span>Underwrite</span>
+                <span className="ml-1.5 text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full font-mono">
                   alpha
                 </span>
               </div>
@@ -87,14 +59,14 @@ const Navbar: React.FC = () => {
 
             <Link 
               to="/pipeline" 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-md font-medium group transition-colors ${
+              className={`flex items-center space-x-2 px-5 py-2.5 rounded-lg font-medium group transition-all duration-200 ${
                 isActive('/pipeline') 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-white'
+                  ? 'bg-white text-gray-900 shadow-sm border border-gray-100' 
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
               }`}
             >
               <ListFilter className={`h-5 w-5 transition-colors ${
-                isActive('/pipeline') ? 'text-indigo-600' : 'group-hover:text-indigo-600'
+                isActive('/pipeline') ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600'
               }`} />
               <div className="flex items-center">
                 <span>Pipeline</span>
@@ -105,20 +77,58 @@ const Navbar: React.FC = () => {
             </Link>
 
             <Link 
-              to="/financial-modeling" 
-              className={`flex items-center space-x-2 px-4 py-2 rounded-md font-medium group transition-colors ${
-                isActive('/financial-modeling') 
-                  ? 'bg-white text-gray-900 shadow-sm' 
-                  : 'text-gray-700 hover:text-gray-900 hover:bg-white'
+              to="/model" 
+              className={`flex items-center space-x-2 px-5 py-2.5 rounded-lg font-medium group transition-all duration-200 ${
+                isActive('/model') 
+                  ? 'bg-white text-gray-900 shadow-sm border border-gray-100' 
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
               }`}
             >
               <Calculator className={`h-5 w-5 transition-colors ${
-                isActive('/financial-modeling') ? 'text-indigo-600' : 'group-hover:text-indigo-600'
+                isActive('/model') ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600'
               }`} />
               <div className="flex items-center">
                 <span>Model</span>
                 <span className="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-mono">
                   alpha
+                </span>
+              </div>
+            </Link>
+            
+            <Link 
+              to="/report" 
+              className={`flex items-center space-x-2 px-5 py-2.5 rounded-lg font-medium group transition-all duration-200 ${
+                isActive('/report') 
+                  ? 'bg-white text-gray-900 shadow-sm border border-gray-100' 
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+              }`}
+            >
+              <PieChart className={`h-5 w-5 transition-colors ${
+                isActive('/report') ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600'
+              }`} />
+              <div className="flex items-center">
+                <span>Report</span>
+                <span className="ml-2 text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-mono">
+                  example
+                </span>
+              </div>
+            </Link>
+            
+            <Link 
+              to="/loans" 
+              className={`flex items-center space-x-2 px-5 py-2.5 rounded-lg font-medium group transition-all duration-200 ${
+                isActive('/loans') 
+                  ? 'bg-white text-gray-900 shadow-sm border border-gray-100' 
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+              }`}
+            >
+              <LayoutGrid className={`h-5 w-5 transition-colors ${
+                isActive('/loans') ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600'
+              }`} />
+              <div className="flex items-center">
+                <span>Loans</span>
+                <span className="ml-2 text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full font-mono">
+                  example
                 </span>
               </div>
             </Link>

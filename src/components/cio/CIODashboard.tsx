@@ -1,69 +1,43 @@
 import React from 'react';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/tabs';
-import PerformanceMetrics from './PerformanceMetrics';
-import FundParameters from './FundParameters';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TrafficLightZones from './TrafficLightZones';
-import FundStrategy from './FundStrategy';
-import GeoPortfolio from './GeoPortfolio';
-import UnderwriteDemo from './UnderwriteDemo';
-import TechnicalInfrastructure from './TechnicalInfrastructure';
+import FrontrunSuburbs from './FrontrunSuburbs';
+import FundParameters from './FundParameters';
 
 const CIODashboard: React.FC = () => {
   return (
-    <div className="space-y-12">
-      <div className="text-center mb-12">
-        <div className="flex items-center justify-center space-x-3 mb-4">
-          <h1 className="text-4xl font-bold text-gray-900">
-            CIO Dashboard
-          </h1>
-          <span className="text-sm bg-green-100 text-green-700 px-2 py-1 rounded-full font-mono">
-            alpha
-          </span>
+    <div className="p-6">
+      <div className="text-center mb-6">
+        <div className="flex items-center justify-center gap-2">
+          <h1 className="text-4xl font-bold">CIO Dashboard</h1>
+          <span className="text-green-600 text-sm">alpha</span>
         </div>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Control center for our AI/ML underwriting system
-        </p>
+        <p className="text-gray-600 text-xl mt-2">Control center for our AI/ML underwriting system</p>
       </div>
 
-      <Tabs defaultValue="overview" className="w-full">
-        <div className="flex justify-center mb-8">
-          <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="parameters">Fund Parameters</TabsTrigger>
-            <TabsTrigger value="zones">Traffic Light Zones</TabsTrigger>
-            <TabsTrigger value="strategy">Fund Strategy</TabsTrigger>
-            <TabsTrigger value="geography">Geographic Analysis</TabsTrigger>
-            <TabsTrigger value="tech">Technical Infrastructure</TabsTrigger>
-            <TabsTrigger value="underwrite">Underwrite Demo</TabsTrigger>
-          </TabsList>
-        </div>
+      <Tabs defaultValue="fund-parameters">
+        <TabsList>
+          <TabsTrigger value="fund-parameters">
+            Fund Parameters
+          </TabsTrigger>
+          <TabsTrigger value="traffic-light">
+            Traffic Light Zones
+          </TabsTrigger>
+          <TabsTrigger value="frontrun">
+            Frontrun Suburbs
+          </TabsTrigger>
+        </TabsList>
 
-        <TabsContent value="overview">
-          <PerformanceMetrics />
-        </TabsContent>
-
-        <TabsContent value="parameters">
+        <TabsContent value="fund-parameters">
           <FundParameters />
         </TabsContent>
 
-        <TabsContent value="zones">
+        <TabsContent value="traffic-light">
           <TrafficLightZones />
         </TabsContent>
 
-        <TabsContent value="strategy">
-          <FundStrategy />
-        </TabsContent>
-
-        <TabsContent value="geography">
-          <GeoPortfolio />
-        </TabsContent>
-
-        <TabsContent value="tech">
-          <TechnicalInfrastructure />
-        </TabsContent>
-
-        <TabsContent value="underwrite">
-          <UnderwriteDemo />
+        <TabsContent value="frontrun">
+          <FrontrunSuburbs />
         </TabsContent>
       </Tabs>
     </div>

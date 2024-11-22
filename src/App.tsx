@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import InvestmentGrid from './components/InvestmentGrid';
 import DealAnalysis from './components/DealAnalysis';
 import FundDashboard from './components/FundDashboard';
-import CIODashboard from './components/cio/CIODashboard';
+import { CIODashboard } from './components/cio';
 import UnderwriteDemo from './components/UnderwriteDemo';
 import WelcomeScreen from './components/WelcomeScreen';
 import ConfidentialityScreen from './components/ConfidentialityScreen';
@@ -33,14 +33,14 @@ const App: React.FC = () => {
               <TabInfo />
               <main className="py-12">
                 <Routes>
-                  <Route path="/deals" element={<InvestmentGrid />} />
-                  <Route path="/deal/:id" element={<DealAnalysis />} />
-                  <Route path="/fund-dashboard" element={<FundDashboard />} />
-                  <Route path="/cio-dashboard" element={<CIODashboard />} />
+                  <Route path="/cio" element={<CIODashboard />} />
                   <Route path="/underwrite" element={<UnderwriteDemo />} />
                   <Route path="/pipeline" element={<Pipeline />} />
-                  <Route path="/financial-modeling" element={<FinancialModeling />} />
-                  <Route path="*" element={<Navigate to="/deals" replace />} />
+                  <Route path="/model" element={<FinancialModeling />} />
+                  <Route path="/report" element={<FundDashboard />} />
+                  <Route path="/loans" element={<InvestmentGrid />} />
+                  <Route path="/deal/:id" element={<DealAnalysis />} />
+                  <Route path="*" element={<Navigate to="/cio" replace />} />
                 </Routes>
               </main>
               <Footer />

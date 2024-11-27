@@ -12,9 +12,9 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-4">
+      <div className="max-w-[1400px] mx-auto px-4">
         <div className="flex justify-between h-14 items-center">
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center -ml-2">
             <Logo />
           </Link>
           

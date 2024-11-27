@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Home, List, Brain, Database, Shield, Building2, BarChart3, Clock, DollarSign, FileText, LineChart, Search, BarChart2, FileSpreadsheet, UserCheck, AlertTriangle, FileSearch } from 'lucide-react';
+import { ArrowRight, Home, List, Brain, Database, Shield, Building2, BarChart3, Clock, DollarSign, FileText, LineChart, Search, BarChart2, FileSpreadsheet, UserCheck, AlertTriangle, FileSearch, Presentation } from 'lucide-react';
 import Logo from './Logo';
 
 const WelcomeScreen: React.FC = () => {
@@ -44,34 +44,50 @@ const WelcomeScreen: React.FC = () => {
 
           <div className="w-full max-w-5xl space-y-8 mb-16">
             {/* Data Partner Integration */}
-            <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-blue-100">
               <div className="flex items-center text-blue-700 mb-6">
                 <Database className="h-8 w-8 mr-3" />
                 <div>
                   <h3 className="text-2xl font-semibold">Data Partner Integration</h3>
                   <div className="mt-1">
-                    <span className="text-sm text-green-600 bg-green-50 px-3 py-1 rounded-full">At Production</span>
+                    <span className="text-sm font-semibold text-green-600 bg-green-50 px-4 py-1.5 rounded-full border-2 border-green-200 shadow-sm">
+                      At Production
+                    </span>
                   </div>
                 </div>
               </div>
               <div className="space-y-4">
                 <p className="text-gray-700 leading-relaxed">
-                  Through our data partners, we leverage over 1 trillion data points for precise property analysis:
+                  Through our data partners, we leverage over 4 trillion data points for precise property analysis:
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <div className="flex items-center mb-2">
-                      <Search className="h-5 w-5 text-blue-700 mr-2" />
-                      <span className="font-semibold text-gray-900">95-100% Valuation Accuracy</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-blue-50 p-6 rounded-lg border-2 border-blue-100">
+                    <div className="flex items-center mb-3">
+                      <Search className="h-6 w-6 text-blue-700 mr-2" />
+                      <span className="font-bold text-lg text-blue-900">95-100% Accuracy</span>
                     </div>
-                    <p className="text-sm text-gray-600">Hyper-accurate property valuations through multiple data sources</p>
+                    <p className="text-sm text-blue-700">Hyper-accurate valuations powered by comprehensive data analysis and machine learning</p>
                   </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <div className="flex items-center mb-2">
-                      <LineChart className="h-5 w-5 text-blue-700 mr-2" />
-                      <span className="font-semibold text-gray-900">Market Performance Data</span>
+
+                  <div className="bg-gray-50 p-6 rounded-lg">
+                    <div className="flex items-center mb-3">
+                      <LineChart className="h-6 w-6 text-blue-700 mr-2" />
+                      <span className="font-semibold text-lg text-gray-900">Market Intelligence</span>
                     </div>
-                    <p className="text-sm text-gray-600">Historical sales, growth rates, and market trends</p>
+                    <div className="space-y-3">
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-900">Macro Factors:</span>
+                        <p className="text-gray-600">Interest rates, inflation, employment</p>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-900">Market Metrics:</span>
+                        <p className="text-gray-600">Median prices, rental yields, supply/demand</p>
+                      </div>
+                      <div className="text-sm">
+                        <span className="font-medium text-gray-900">Local Insights:</span>
+                        <p className="text-gray-600">Demographics, infrastructure, suburb data</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -114,7 +130,7 @@ const WelcomeScreen: React.FC = () => {
                     </div>
                     <div>
                       <div className="text-sm text-gray-600">Deal Analysis Speed</div>
-                      <div className="text-2xl font-bold text-blue-700">10000% faster</div>
+                      <div className="text-2xl font-bold text-blue-700">10,000% faster</div>
                     </div>
                   </div>
                 </div>
@@ -263,13 +279,23 @@ const WelcomeScreen: React.FC = () => {
             </div>
           </div>
 
-          <Link
-            to="/deals"
-            className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-lg text-white bg-green-500 hover:bg-green-600 shadow-sm hover:shadow-md transition-all"
-          >
-            Explore Platform
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              to="/cio"
+              className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-lg text-white bg-green-500 hover:bg-green-600 shadow-sm hover:shadow-md transition-all"
+            >
+              Explore Platform
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+
+            <Link
+              to="/guided-demo"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-200 text-lg font-medium rounded-lg text-blue-700 bg-blue-50 hover:bg-blue-100 shadow-sm hover:shadow-md transition-all"
+            >
+              Take Guided Demo
+              <Presentation className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

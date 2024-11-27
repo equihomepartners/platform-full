@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import InvestmentGrid from './components/InvestmentGrid';
@@ -13,11 +13,14 @@ import HelpButton from './components/HelpButton';
 import AssetReportButton from './components/AssetReportButton';
 import AssetReport from './components/AssetReport';
 import Pipeline from './components/Pipeline';
-import TabInfo from './components/TabInfo';
 import FinancialModeling from './components/FinancialModeling';
 import PropTrackDemo from './components/PropTrackDemo';
+import GuidedDemo from './components/GuidedDemo';
 
 const App: React.FC = () => {
+  const location = useLocation();
+  const isGuidedTour = location.pathname === '/guided-demo';
+
   return (
     <>
       <Routes>
@@ -25,12 +28,12 @@ const App: React.FC = () => {
         <Route path="/welcome" element={<WelcomeScreen />} />
         <Route path="/asset-report" element={<AssetReport />} />
         <Route path="/proptrack" element={<PropTrackDemo />} />
+        <Route path="/guided-demo" element={<GuidedDemo />} />
         <Route
           path="/*"
           element={
             <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
               <Navbar />
-              <TabInfo />
               <main className="py-12">
                 <Routes>
                   <Route path="/cio" element={<CIODashboard />} />
@@ -49,7 +52,7 @@ const App: React.FC = () => {
         />
       </Routes>
       <HelpButton />
-      <AssetReportButton />
+      {!isGuidedTour && <AssetReportButton />}
     </>
   );
 };

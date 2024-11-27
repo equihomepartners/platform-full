@@ -1,6 +1,16 @@
 import React from 'react';
 import { Bar, Line } from 'react-chartjs-2';
 import { chartColors } from './ChartConfig';
+import type { 
+  Chart as ChartJS,
+  ChartData, 
+  ChartOptions,
+  Scale,
+  CoreScaleOptions,
+  ScriptableContext,
+  TooltipItem,
+  CartesianScaleTypeRegistry
+} from 'chart.js';
 
 const DriversOfPerformance: React.FC = () => {
   // Risk-Adjusted Performance
@@ -43,7 +53,7 @@ const DriversOfPerformance: React.FC = () => {
       ]
     };
 
-    const options = {
+    const options: ChartOptions<'line'> = {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
@@ -53,7 +63,7 @@ const DriversOfPerformance: React.FC = () => {
         },
         tooltip: {
           callbacks: {
-            label: (context: any) => {
+            label: (context: TooltipItem<'line'>) => {
               return `${context.dataset.label}: ${context.raw}% IRR`;
             }
           }
@@ -61,10 +71,11 @@ const DriversOfPerformance: React.FC = () => {
       },
       scales: {
         y: {
+          type: 'linear' as const,
           beginAtZero: true,
           max: 20,
           ticks: {
-            callback: (value: number) => `${value}%`
+            callback: (value: number | string) => `${value}%`
           },
           title: {
             display: true,
@@ -128,14 +139,15 @@ const DriversOfPerformance: React.FC = () => {
       ]
     };
 
-    const options = {
+    const options: ChartOptions<'line'> = {
       responsive: true,
       maintainAspectRatio: false,
       scales: {
         y: {
+          type: 'linear' as const,
           beginAtZero: true,
           ticks: {
-            callback: (value: number) => `${value}%`
+            callback: (value: number | string) => `${value}%`
           }
         }
       }
@@ -163,15 +175,16 @@ const DriversOfPerformance: React.FC = () => {
       }]
     };
 
-    const options = {
+    const options: ChartOptions<'bar'> = {
       responsive: true,
       maintainAspectRatio: false,
       scales: {
         y: {
+          type: 'linear' as const,
           beginAtZero: true,
           max: 100,
           ticks: {
-            callback: (value: number) => `${value}%`
+            callback: (value: number | string) => `${value}%`
           }
         }
       }
@@ -211,14 +224,15 @@ const DriversOfPerformance: React.FC = () => {
       ]
     };
 
-    const options = {
+    const options: ChartOptions<'line'> = {
       responsive: true,
       maintainAspectRatio: false,
       scales: {
         y: {
+          type: 'linear' as const,
           beginAtZero: true,
           ticks: {
-            callback: (value: number) => `${value}%`
+            callback: (value: number | string) => `${value}%`
           }
         }
       }
@@ -250,7 +264,7 @@ const DriversOfPerformance: React.FC = () => {
       }]
     };
 
-    const options = {
+    const options: ChartOptions<'bar'> = {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
@@ -260,10 +274,11 @@ const DriversOfPerformance: React.FC = () => {
       },
       scales: {
         y: {
+          type: 'linear' as const,
           beginAtZero: true,
           max: 100,
           ticks: {
-            callback: (value: number) => `${value}%`
+            callback: (value: number | string) => `${value}%`
           }
         }
       }

@@ -15,6 +15,7 @@ import {
   CoreScaleOptions
 } from 'chart.js';
 
+// Register ChartJS components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,7 +29,8 @@ ChartJS.register(
   Filler
 );
 
-export const chartColors = {
+// Export chart configuration
+const chartColors = {
   pieColors: [
     '#1E40AF', // Deep Blue
     '#047857', // Forest Green
@@ -55,9 +57,9 @@ export const chartColors = {
   gridLines: '#E2E8F0',
   text: '#1E293B',
   textSecondary: '#64748B'
-};
+} as const;
 
-export const defaultScaleOptions = {
+const defaultScaleOptions = {
   y: {
     type: 'linear' as const,
     beginAtZero: true,
@@ -94,7 +96,7 @@ export const defaultScaleOptions = {
   }
 } as const;
 
-export const commonOptions: ChartOptions<'bar' | 'line' | 'scatter'> = {
+const commonOptions: ChartOptions<'bar' | 'line' | 'scatter'> = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -132,4 +134,11 @@ export const commonOptions: ChartOptions<'bar' | 'line' | 'scatter'> = {
     }
   },
   scales: defaultScaleOptions
+} as const;
+
+// Export all configurations
+export {
+  chartColors,
+  defaultScaleOptions,
+  commonOptions
 };

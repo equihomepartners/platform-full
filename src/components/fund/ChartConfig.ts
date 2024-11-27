@@ -10,11 +10,11 @@ import {
   Tooltip,
   Legend,
   Filler,
-  ScaleOptions,
-  ChartOptions
+  ChartOptions,
+  Scale,
+  CoreScaleOptions
 } from 'chart.js';
 
-// Register Chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,9 +28,7 @@ ChartJS.register(
   Filler
 );
 
-// Professional, distinct color palette
 export const chartColors = {
-  // Primary colors for pie charts - more distinct professional colors
   pieColors: [
     '#1E40AF', // Deep Blue
     '#047857', // Forest Green
@@ -39,54 +37,52 @@ export const chartColors = {
     '#C2410C', // Burnt Orange
     '#0369A1', // Ocean Blue
   ],
-  
-  // Colors for bar charts
   barColors: {
-    positive: '#047857',  // Professional Green
-    negative: '#B91C1C',  // Professional Red
+    positive: '#047857',
+    negative: '#B91C1C',
   },
-  
-  // Colors for line charts
   lineColors: {
-    primary: '#1E40AF',    // Deep Blue
-    secondary: '#047857',  // Forest Green
-    tertiary: '#7C3AED',   // Royal Purple
+    primary: '#1E40AF',
+    secondary: '#047857',
+    tertiary: '#7C3AED',
   },
-  
-  // Map colors - more sophisticated
   mapColors: {
-    marker: 'rgba(30, 64, 175, 0.7)',     // Semi-transparent Deep Blue
-    markerBorder: '#1E40AF',              // Deep Blue border
-    highlight: 'rgba(30, 64, 175, 0.9)'   // Highlighted state
+    marker: 'rgba(30, 64, 175, 0.7)',
+    markerBorder: '#1E40AF',
+    highlight: 'rgba(30, 64, 175, 0.9)'
   },
-  
-  // Background and accent colors
-  background: '#F8FAFC',   // Off-white
-  gridLines: '#E2E8F0',    // Light gray
-  text: '#1E293B',         // Dark gray
-  textSecondary: '#64748B' // Medium gray
+  background: '#F8FAFC',
+  gridLines: '#E2E8F0',
+  text: '#1E293B',
+  textSecondary: '#64748B'
 };
 
-// Define proper types for scale options
 export const defaultScaleOptions = {
   y: {
     type: 'linear' as const,
     beginAtZero: true,
     grid: {
       color: '#E2E8F0',
-      drawBorder: false,
+    },
+    border: {
+      display: false
     },
     ticks: {
       font: {
         size: 12
       },
       color: '#64748B',
-      callback: (value: number) => `${value}%`
+      callback: function(this: Scale<CoreScaleOptions>, value: number | string) {
+        return `${value}%`;
+      }
     }
   },
   x: {
     type: 'category' as const,
     grid: {
+      display: false
+    },
+    border: {
       display: false
     },
     ticks: {
@@ -96,10 +92,9 @@ export const defaultScaleOptions = {
       color: '#64748B'
     }
   }
-};
+} as const;
 
-// Common chart options with proper typing
-export const commonOptions: ChartOptions<'bar' | 'line'> = {
+export const commonOptions: ChartOptions<'bar' | 'line' | 'scatter'> = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -112,7 +107,7 @@ export const commonOptions: ChartOptions<'bar' | 'line'> = {
         font: {
           family: 'Inter, system-ui, sans-serif',
           size: 12,
-          weight: '500'
+          weight: 500
         },
         color: '#1E293B'
       }
@@ -132,7 +127,7 @@ export const commonOptions: ChartOptions<'bar' | 'line'> = {
       titleFont: {
         family: 'Inter, system-ui, sans-serif',
         size: 13,
-        weight: '600'
+        weight: 500
       }
     }
   },

@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
+import { LatLngTuple } from 'leaflet';
+import { chartColors } from './ChartConfig';
 import { sampleDeals } from '../../data/sampleDeals';
 import 'leaflet/dist/leaflet.css';
 
 const GeographicDistribution: React.FC = () => {
-  const center = [-33.8688, 151.2093]; // Sydney CBD coordinates
+  const [isMounted, setIsMounted] = useState(false);
+  const center: LatLngTuple = [-33.8688, 151.2093]; // Sydney CBD coordinates
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return <div className="h-[400px] bg-gray-100 rounded-lg animate-pulse" />;
+  }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Geographic Distribution</h3>
+    <div className="bg-white rounded-lg p-6">
+      <h3 className="text-sm font-medium text-gray-900 mb-4">Geographic Distribution</h3>
       <div className="h-[400px]">
         <MapContainer
           center={center}
@@ -24,8 +35,8 @@ const GeographicDistribution: React.FC = () => {
               key={deal.id}
               center={[deal.location.latitude, deal.location.longitude]}
               radius={deal.propertyValue / 100000}
-              fillColor="#3B82F6"
-              color="#2563EB"
+              fillColor={chartColors.mapColors.marker}
+              color={chartColors.mapColors.markerBorder}
               weight={1}
               opacity={0.8}
               fillOpacity={0.4}
@@ -41,8 +52,8 @@ const GeographicDistribution: React.FC = () => {
           ))}
         </MapContainer>
       </div>
-      <div className="mt-4 text-sm text-gray-500">
-        Circle size represents relative property value
+      <div className="mt-4 text-xs text-gray-500 text-center">
+        Portfolio distribution across Sydney metropolitan area
       </div>
     </div>
   );

@@ -4,13 +4,12 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import InvestmentGrid from './components/InvestmentGrid';
 import DealAnalysis from './components/DealAnalysis';
-import FundDashboard from './components/FundDashboard';
+import FundDashboard from './components/fund/FundDashboard';
 import { CIODashboard } from './components/cio';
 import UnderwriteDemo from './components/UnderwriteDemo';
 import WelcomeScreen from './components/WelcomeScreen';
 import ConfidentialityScreen from './components/ConfidentialityScreen';
 import HelpButton from './components/HelpButton';
-import AssetReportButton from './components/AssetReportButton';
 import AssetReport from './components/AssetReport';
 import Pipeline from './components/Pipeline';
 import FinancialModeling from './components/FinancialModeling';
@@ -52,7 +51,6 @@ const App: React.FC = () => {
         />
       </Routes>
       <HelpButton />
-      {!isGuidedTour && <AssetReportButton />}
     </>
   );
 };

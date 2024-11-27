@@ -15,6 +15,8 @@ import {
   CoreScaleOptions
 } from 'chart.js';
 
+import { chartColors } from './chartConstants';
+
 // Register ChartJS components
 ChartJS.register(
   CategoryScale,
@@ -29,42 +31,12 @@ ChartJS.register(
   Filler
 );
 
-// Export chart configuration
-const chartColors = {
-  pieColors: [
-    '#1E40AF', // Deep Blue
-    '#047857', // Forest Green
-    '#7C3AED', // Royal Purple
-    '#B91C1C', // Deep Red
-    '#C2410C', // Burnt Orange
-    '#0369A1', // Ocean Blue
-  ],
-  barColors: {
-    positive: '#047857',
-    negative: '#B91C1C',
-  },
-  lineColors: {
-    primary: '#1E40AF',
-    secondary: '#047857',
-    tertiary: '#7C3AED',
-  },
-  mapColors: {
-    marker: 'rgba(30, 64, 175, 0.7)',
-    markerBorder: '#1E40AF',
-    highlight: 'rgba(30, 64, 175, 0.9)'
-  },
-  background: '#F8FAFC',
-  gridLines: '#E2E8F0',
-  text: '#1E293B',
-  textSecondary: '#64748B'
-} as const;
-
-const defaultScaleOptions = {
+export const defaultScaleOptions = {
   y: {
     type: 'linear' as const,
     beginAtZero: true,
     grid: {
-      color: '#E2E8F0',
+      color: chartColors.gridLines,
     },
     border: {
       display: false
@@ -73,7 +45,7 @@ const defaultScaleOptions = {
       font: {
         size: 12
       },
-      color: '#64748B',
+      color: chartColors.textSecondary,
       callback: function(this: Scale<CoreScaleOptions>, value: number | string) {
         return `${value}%`;
       }
@@ -91,12 +63,12 @@ const defaultScaleOptions = {
       font: {
         size: 12
       },
-      color: '#64748B'
+      color: chartColors.textSecondary
     }
   }
 } as const;
 
-const commonOptions: ChartOptions<'bar' | 'line' | 'scatter'> = {
+export const commonOptions: ChartOptions<'bar' | 'line' | 'scatter'> = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -111,14 +83,14 @@ const commonOptions: ChartOptions<'bar' | 'line' | 'scatter'> = {
           size: 12,
           weight: 500
         },
-        color: '#1E293B'
+        color: chartColors.text
       }
     },
     tooltip: {
       backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      titleColor: '#1E293B',
-      bodyColor: '#475569',
-      borderColor: '#E2E8F0',
+      titleColor: chartColors.text,
+      bodyColor: chartColors.textSecondary,
+      borderColor: chartColors.gridLines,
       borderWidth: 1,
       padding: 12,
       cornerRadius: 4,
@@ -135,10 +107,3 @@ const commonOptions: ChartOptions<'bar' | 'line' | 'scatter'> = {
   },
   scales: defaultScaleOptions
 } as const;
-
-// Export all configurations
-export {
-  chartColors,
-  defaultScaleOptions,
-  commonOptions
-};

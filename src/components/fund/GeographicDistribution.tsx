@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
 import { LatLngTuple } from 'leaflet';
-import { chartColors } from './ChartConfig';
+import { chartColors } from './chartConstants';
 import { sampleDeals } from '../../data/sampleDeals';
 import 'leaflet/dist/leaflet.css';
 

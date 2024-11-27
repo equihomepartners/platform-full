@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bar, Line } from 'react-chartjs-2';
-import { chartColors } from './ChartConfig';
+import { chartColors } from './chartConstants';
 import type { 
   Chart as ChartJS,
   ChartData, 

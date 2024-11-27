@@ -6,7 +6,7 @@ import { pymbleDeal } from './icMemos/pymble';
 import { beecroftDeal } from './icMemos/beecroft';
 import { mosmanDeal } from './icMemos/mosman';
 import { randwickDeal } from './icMemos/randwick';
-import type { Deal } from '../types';
+import { Deal } from '../types/deals';
 
 export const sampleDeals: Deal[] = [
   {

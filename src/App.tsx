@@ -15,6 +15,8 @@ import Pipeline from './components/Pipeline';
 import FinancialModeling from './components/FinancialModeling';
 import PropTrackDemo from './components/PropTrackDemo';
 import GuidedDemo from './components/GuidedDemo';
+import DataFeeds from './components/data-feeds/DataFeeds';
+import PlatformGuide from './components/platform-guide/PlatformGuide';
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -35,6 +37,7 @@ const App: React.FC = () => {
               <Navbar />
               <main className="py-12">
                 <Routes>
+                  <Route path="/platform-guide" element={<PlatformGuide />} />
                   <Route path="/cio" element={<CIODashboard />} />
                   <Route path="/underwrite" element={<UnderwriteDemo />} />
                   <Route path="/pipeline" element={<Pipeline />} />
@@ -42,7 +45,8 @@ const App: React.FC = () => {
                   <Route path="/report" element={<FundDashboard />} />
                   <Route path="/loans" element={<InvestmentGrid />} />
                   <Route path="/deal/:id" element={<DealAnalysis />} />
-                  <Route path="*" element={<Navigate to="/cio" replace />} />
+                  <Route path="/data-feeds" element={<DataFeeds />} />
+                  <Route path="*" element={<Navigate to="/platform-guide" replace />} />
                 </Routes>
               </main>
               <Footer />

@@ -1,95 +1,56 @@
-import React, { useState } from 'react';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/tabs';
-import ModelInputs from './ModelInputs';
-import ReturnAnalysis from './ReturnAnalysis';
-import ReturnWaterfall from './ReturnWaterfall';
-import ScenarioComparison from './ScenarioComparison';
-import ProductComparison from './ProductComparison';
-import FundModelTabs from './fund/FundModelTabs';
+import React from 'react';
 import { Calculator } from 'lucide-react';
+import FundModelTabs from './fund/FundModelTabs';
 
 const FinancialModeling: React.FC = () => {
-  const [modelInputs, setModelInputs] = useState({
-    propertyValue: 2300000,
-    loanAmount: 650000,
-    loanTerm: 10, // Fixed at 10 years
-    interestRate: 5,
-    upfrontFee: 3,
-    growthRate: 4.65,
-    existingMortgage: 0,
-    desiredExitYear: 4.5
-  });
-
-  const handleInputChange = (updates: Partial<typeof modelInputs>) => {
-    setModelInputs(prev => ({
-      ...prev,
-      ...updates
-    }));
-  };
-
   return (
-    <div className="space-y-8">
-      <div className="text-center mb-12">
-        <div className="flex items-center justify-center space-x-3 mb-4">
-          <h1 className="text-4xl font-bold text-gray-900">
-            Financial Modeling
-          </h1>
-          <Calculator className="h-8 w-8 text-indigo-600" />
+    <div className="relative">
+      {/* Under Development Overlay - Changed from fixed to absolute positioning */}
+      <div className="absolute inset-0 bg-gray-900/80 z-40 flex items-center justify-center pointer-events-none">
+        <div className="text-center bg-gray-800/90 p-8 rounded-lg">
+          <h2 className="text-3xl font-bold text-white mb-4">Under Development</h2>
+          <p className="text-xl text-gray-200 mb-2">This section is being redeveloped in v2.0</p>
+          <p className="text-gray-400 mb-4">Current Version: v1.32</p>
+          <p className="text-sm text-gray-300">You can navigate to other sections while we work on the improvements</p>
         </div>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Model potential returns and analyze exit scenarios
-        </p>
       </div>
 
-      <Tabs defaultValue="individual" className="w-full">
-        <div className="flex justify-center mb-8">
-          <TabsList>
-            <TabsTrigger value="individual">Individual Model</TabsTrigger>
-            <TabsTrigger value="fund">Fund Model</TabsTrigger>
-          </TabsList>
+      {/* Existing Content (will be behind overlay but clickable) */}
+      <div className="space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center space-x-3 mb-4">
+            <h1 className="text-4xl font-bold text-gray-900">
+              Financial Modeling
+            </h1>
+            <Calculator className="h-8 w-8 text-indigo-600" />
+          </div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Model potential returns and analyze exit scenarios
+          </p>
         </div>
 
-        <TabsContent value="individual">
-          <Tabs defaultValue="inputs" className="w-full">
-            <div className="flex justify-center mb-8">
-              <TabsList>
-                <TabsTrigger value="inputs">Model Inputs</TabsTrigger>
-                <TabsTrigger value="returns">Return Analysis</TabsTrigger>
-                <TabsTrigger value="waterfall">Return Waterfall</TabsTrigger>
-                <TabsTrigger value="scenarios">Scenario Comparison</TabsTrigger>
-                <TabsTrigger value="product">Product Comparison</TabsTrigger>
-              </TabsList>
+        <div className="flex justify-center space-x-4 mb-8">
+          <button className="px-4 py-2 text-gray-600 hover:text-gray-900">
+            Individual Model
+          </button>
+          <button className="px-4 py-2 bg-indigo-600 text-white rounded-md">
+            Fund Model
+          </button>
+        </div>
+
+        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg mb-8">
+          <div className="flex">
+            <div className="ml-3">
+              <h3 className="text-lg font-medium text-yellow-800">Fund Model Parameters</h3>
+              <p className="mt-2 text-yellow-700">
+                Configure the fund's target size, composition, and return expectations.
+              </p>
             </div>
+          </div>
+        </div>
 
-            <TabsContent value="inputs">
-              <ModelInputs 
-                inputs={modelInputs}
-                onInputChange={handleInputChange}
-              />
-            </TabsContent>
-
-            <TabsContent value="returns">
-              <ReturnAnalysis modelInputs={modelInputs} />
-            </TabsContent>
-
-            <TabsContent value="waterfall">
-              <ReturnWaterfall modelInputs={modelInputs} />
-            </TabsContent>
-
-            <TabsContent value="scenarios">
-              <ScenarioComparison modelInputs={modelInputs} />
-            </TabsContent>
-
-            <TabsContent value="product">
-              <ProductComparison modelInputs={modelInputs} />
-            </TabsContent>
-          </Tabs>
-        </TabsContent>
-
-        <TabsContent value="fund">
-          <FundModelTabs />
-        </TabsContent>
-      </Tabs>
+        <FundModelTabs />
+      </div>
     </div>
   );
 };

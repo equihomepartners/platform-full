@@ -4,6 +4,7 @@ import { Info, X } from 'lucide-react';
 import TrafficLightZones from './TrafficLightZones';
 import FrontrunSuburbs from './FrontrunSuburbs';
 import FundParameters from './FundParameters';
+import DataFeeds from '../data-feeds/DataFeeds';
 
 const CIODashboard: React.FC = () => {
   const [showInfo, setShowInfo] = useState(false);
@@ -243,6 +244,9 @@ const CIODashboard: React.FC = () => {
           <TabsTrigger value="frontrun">
             Suburb Transition Forecasting
           </TabsTrigger>
+          <TabsTrigger value="data-feeds">
+            Data Feed Management
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="fund-parameters">
@@ -255,6 +259,10 @@ const CIODashboard: React.FC = () => {
 
         <TabsContent value="frontrun">
           <FrontrunSuburbs />
+        </TabsContent>
+
+        <TabsContent value="data-feeds">
+          <DataFeeds />
         </TabsContent>
       </Tabs>
     </div>

@@ -1,171 +1,159 @@
 import React from 'react';
-import { Line } from 'react-chartjs-2';
 import { useFundStore } from './fundStore';
-import { calculateFundMetrics } from './utils';
+import { Card } from '../../ui/card';
+import { Line } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const ScenarioAnalysis: React.FC = () => {
   const { inputs } = useFundStore();
 
-  // Define scenarios
-  const scenarios = [
-    { name: 'Bear Market', growthAdjustment: -4, ltvAdjustment: 5 },
-    { name: 'Conservative', growthAdjustment: -2, ltvAdjustment: 2 },
-    { name: 'Base Case', growthAdjustment: 0, ltvAdjustment: 0 },
-    { name: 'Optimistic', growthAdjustment: 2, ltvAdjustment: -2 },
-    { name: 'Bull Market', growthAdjustment: 4, ltvAdjustment: -5 }
-  ];
-
-  // Calculate metrics for each scenario
-  const scenarioMetrics = scenarios.map(scenario => {
-    const adjustedInputs = {
-      ...inputs,
-      growthDistribution: {
-        ...inputs.growthDistribution,
-        mean: inputs.growthDistribution.mean + scenario.growthAdjustment
-      },
-      ltvDistribution: {
-        ...inputs.ltvDistribution,
-        mean: inputs.ltvDistribution.mean + scenario.ltvAdjustment
-      }
-    };
-    return {
-      name: scenario.name,
-      metrics: calculateFundMetrics(adjustedInputs)
-    };
-  });
-
-  const irrData = {
-    labels: Array.from({ length: 10 }, (_, i) => `Year ${i + 1}`),
-    datasets: scenarioMetrics.map((scenario, index) => ({
-      label: scenario.name,
-      data: scenario.metrics.yearlyReturns.map(r => r.irr),
-      borderColor: [
-        '#EF4444', // Bear Market (Red)
-        '#F59E0B', // Conservative (Orange)
-        '#3B82F6', // Base Case (Blue)
-        '#10B981', // Optimistic (Green)
-        '#8B5CF6'  // Bull Market (Purple)
-      ][index],
-      tension: 0.4
-    }))
+  const scenarios = {
+    base: {
+      name: 'Base Case',
+      description: 'Expected market conditions and deployment',
+      irr: 0.15,
+      multiple: 1.8,
+      exitYear: 5
+    },
+    upside: {
+      name: 'Upside Case',
+      description: 'Strong market growth and optimal execution',
+      irr: 0.22,
+      multiple: 2.2,
+      exitYear: 4
+    },
+    downside: {
+      name: 'Downside Case',
+      description: 'Market downturn and delayed deployment',
+      irr: 0.08,
+      multiple: 1.4,
+      exitYear: 7
+    }
   };
 
-  const returnData = {
-    labels: Array.from({ length: 10 }, (_, i) => `Year ${i + 1}`),
-    datasets: scenarioMetrics.map((scenario, index) => ({
-      label: scenario.name,
-      data: scenario.metrics.yearlyReturns.map(r => r.totalReturn / 1000000), // Convert to millions
-      borderColor: [
-        '#EF4444',
-        '#F59E0B',
-        '#3B82F6',
-        '#10B981',
-        '#8B5CF6'
-      ][index],
-      tension: 0.4
-    }))
+  const years = Array.from({ length: 7 }, (_, i) => `Year ${i + 1}`);
+  
+  const generateEquityCurve = (scenario: typeof scenarios.base) => {
+    const curve = [100];
+    const growthRate = scenario.irr;
+    
+    for (let i = 1; i <= 7; i++) {
+      if (i <= scenario.exitYear) {
+        curve.push(curve[i - 1] * (1 + growthRate));
+      } else {
+        curve.push(curve[i - 1]);
+      }
+    }
+    
+    return curve;
+  };
+
+  const scenarioData = {
+    labels: years,
+    datasets: [
+      {
+        label: 'Base Case',
+        data: generateEquityCurve(scenarios.base),
+        borderColor: 'rgb(53, 162, 235)',
+        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      },
+      {
+        label: 'Upside Case',
+        data: generateEquityCurve(scenarios.upside),
+        borderColor: 'rgb(75, 192, 192)',
+        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+      },
+      {
+        label: 'Downside Case',
+        data: generateEquityCurve(scenarios.downside),
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top' as const,
+      },
+      title: {
+        display: true,
+        text: 'Equity Value Progression',
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: 'Equity Value (Base = 100)',
+        },
+      },
+    },
   };
 
   return (
-    <div className="space-y-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">IRR by Scenario</h3>
-          <div className="h-[400px]">
-            <Line
-              data={irrData}
-              options={{
-                responsive: true,
-                plugins: {
-                  legend: {
-                    position: 'top' as const,
-                  }
-                },
-                scales: {
-                  y: {
-                    beginAtZero: true,
-                    title: {
-                      display: true,
-                      text: 'IRR (%)'
-                    },
-                    ticks: {
-                      callback: (value: number) => `${value.toFixed(1)}%`
-                    }
-                  }
-                }
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Total Returns by Scenario</h3>
-          <div className="h-[400px]">
-            <Line
-              data={returnData}
-              options={{
-                responsive: true,
-                plugins: {
-                  legend: {
-                    position: 'top' as const,
-                  }
-                },
-                scales: {
-                  y: {
-                    beginAtZero: true,
-                    title: {
-                      display: true,
-                      text: 'Returns ($M)'
-                    }
-                  }
-                }
-              }}
-            />
-          </div>
-        </div>
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {Object.entries(scenarios).map(([key, scenario]) => (
+          <Card key={key} className="p-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              {scenario.name}
+            </h3>
+            <p className="text-sm text-gray-600 mb-4">
+              {scenario.description}
+            </p>
+            <div className="space-y-3">
+              <div className="flex justify-between">
+                <span className="text-sm text-gray-600">Target IRR</span>
+                <span className="text-sm font-medium text-gray-900">
+                  {(scenario.irr * 100).toFixed(1)}%
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm text-gray-600">Equity Multiple</span>
+                <span className="text-sm font-medium text-gray-900">
+                  {scenario.multiple.toFixed(1)}x
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm text-gray-600">Exit Year</span>
+                <span className="text-sm font-medium text-gray-900">
+                  Year {scenario.exitYear}
+                </span>
+              </div>
+            </div>
+          </Card>
+        ))}
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Scenario Comparison</h3>
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead>
-              <tr>
-                <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Scenario
-                </th>
-                <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  10-Year IRR
-                </th>
-                <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Total Returns
-                </th>
-                <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Weighted LTV
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {scenarioMetrics.map((scenario) => (
-                <tr key={scenario.name}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {scenario.name}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {scenario.metrics.yearlyReturns[9].irr.toFixed(1)}%
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    ${(scenario.metrics.yearlyReturns[9].totalReturn / 1000000).toFixed(1)}M
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {scenario.metrics.weightedLTV.toFixed(1)}%
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <Card className="p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-6">Scenario Comparison</h3>
+        <div className="h-96">
+          <Line options={options} data={scenarioData} />
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

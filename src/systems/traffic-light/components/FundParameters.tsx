@@ -1487,9 +1487,9 @@ const FundParameters: React.FC = () => {
               </div>
             </div>
           </div>
-        </TabsContent>
+        </div>
 
-        <TabsContent value="ml-controls">
+        <div className="hidden">
           <div className="grid grid-cols-2 gap-6">
             {/* ML Model Parameters */}
             <div className="space-y-6">
@@ -1592,9 +1592,9 @@ const FundParameters: React.FC = () => {
               </div>
             </div>
           </div>
-        </TabsContent>
+        </div>
 
-        <TabsContent value="data-config">
+        <div className="hidden">
           <div className="grid grid-cols-2 gap-6">
             {/* Data Sources */}
             <div className="space-y-6">
@@ -1723,9 +1723,9 @@ const FundParameters: React.FC = () => {
               </div>
             </div>
           </div>
-        </TabsContent>
+        </div>
 
-        <TabsContent value="system-settings">
+        <div className="hidden">
           <div className="grid grid-cols-2 gap-6">
             {/* System Configuration */}
             <div className="space-y-6">
@@ -1839,8 +1839,8 @@ const FundParameters: React.FC = () => {
               </div>
             </div>
           </div>
-        </TabsContent>
-      </Tabs>
+        </div>
+      </div>
 
       {/* Action Panel */}
       <div className="bg-white rounded-lg shadow-sm p-6">

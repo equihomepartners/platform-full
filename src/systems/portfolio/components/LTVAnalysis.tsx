@@ -1,6 +1,6 @@
 import React from 'react';
 import { Scatter } from 'react-chartjs-2';
-import { sampleDeals } from '../../data/sampleDeals';
+import { sampleDeals } from '../../../data/sampleDeals';
 import './ChartConfig';
 
 const LTVAnalysis: React.FC = () => {

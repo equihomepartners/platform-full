@@ -1,8 +1,8 @@
 import React from 'react';
 import { Line, Bar } from 'react-chartjs-2';
-import { getSuburbAnalysis, getSydneyAverages, getZoneAverages } from '../../services/mlAnalytics';
+import { getSuburbAnalysis, getSydneyAverages, getZoneAverages } from '../services/mlAnalytics';
 import { Clock, TrendingUp, RefreshCcw } from 'lucide-react';
-import { formatNumber } from '../../utils/formatters';
+import { formatNumber } from '../../../shared/utils/formatters';
 
 interface Props {
   suburbs: string[];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TrendingUp, Clock, AlertTriangle } from 'lucide-react';
-import { formatNumber } from '../../utils/formatters';
+import { formatNumber } from '../../../shared/utils/formatters';
 
 interface Props {
   suburb: string;

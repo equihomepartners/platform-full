@@ -1,6 +1,6 @@
 import React from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
-import { pipelineDeals } from '../../data/pipelineData';
+import { pipelineDeals } from '../../../data/pipelineData';
 import 'leaflet/dist/leaflet.css';
 
 const PipelineMap: React.FC = () => {

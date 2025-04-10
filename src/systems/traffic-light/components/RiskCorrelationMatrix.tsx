@@ -1,6 +1,6 @@
 import React from 'react';
 import { Brain, AlertTriangle } from 'lucide-react';
-import { formatNumber } from '../../utils/formatters';
+import { formatNumber } from '../../../shared/utils/formatters';
 
 interface RiskCorrelation {
   factor1: string;

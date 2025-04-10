@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { TrendingUp, DollarSign, Percent, Clock, Coins } from 'lucide-react';
-import { sampleDeals } from '../../data/sampleDeals';
+import { sampleDeals } from '../../../data/sampleDeals';
 const FundMetrics = () => {
     // Calculate total starting portfolio value
     const totalStartingValue = sampleDeals.reduce((sum, deal) => sum + deal.propertyValue, 0);

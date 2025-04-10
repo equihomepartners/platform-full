@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { MapContainer, TileLayer, CircleMarker, Popup, Polygon } from 'react-leaflet';
-import { sampleDeals } from '../../data/sampleDeals';
-import { sydneyZones } from '../../data/sydneyZones';
+import { sampleDeals } from '../../../data/sampleDeals';
+import { sydneyZones } from '../../../data/sydneyZones';
 import 'leaflet/dist/leaflet.css';
 const GeoPortfolio = () => {
     const center = [-33.8688, 151.2093]; // Sydney CBD coordinates

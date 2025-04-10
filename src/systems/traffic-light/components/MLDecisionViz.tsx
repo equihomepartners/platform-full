@@ -11,7 +11,7 @@ import {
   Legend,
   PointElement
 } from 'chart.js';
-import { formatNumber } from '../../utils/formatters';
+import { formatNumber } from '../../../shared/utils/formatters';
 
 // Register ChartJS components
 ChartJS.register(

@@ -11,7 +11,7 @@ import {
   TrendingUp
 } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
-import { pipelineDeals } from '../../data/pipelineData';
+import { pipelineDeals } from '../../../data/pipelineData';
 import { useFundParameters } from '../../store/fundParameters';
 import { 
   Table,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { trafficLightZones } from '../../data/trafficLightZones';
+import { trafficLightZones } from '../../../data/trafficLightZones';
 
 interface SuburbData {
   name: string;

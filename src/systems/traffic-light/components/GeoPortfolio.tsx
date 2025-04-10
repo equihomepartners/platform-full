@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup, Polygon } from 'react-leaflet';
-import { sampleDeals } from '../../data/sampleDeals';
-import { sydneyZones } from '../../data/sydneyZones';
+import { sampleDeals } from '../../../data/sampleDeals';
+import { sydneyZones } from '../../../data/sydneyZones';
 import 'leaflet/dist/leaflet.css';
 
 const GeoPortfolio: React.FC = () => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { getUnderwritingIntegration } from '../../services/mlAnalytics';
+import { getUnderwritingIntegration } from '../services/mlAnalytics';
 import { Shield, TrendingUp, AlertTriangle, CheckCircle, Clock, Brain, RefreshCw } from 'lucide-react';
-import { formatNumber } from '../../utils/formatters';
+import { formatNumber } from '../../../shared/utils/formatters';
 
 const UnderwritingIntegration: React.FC = () => {
   const [underwritingStatus, setUnderwritingStatus] = useState(getUnderwritingIntegration());

@@ -3,7 +3,7 @@ import { Brain, Calculator, LineChart, FileCheck } from 'lucide-react';
 import UnderwriteForm from './underwrite/UnderwriteForm';
 import UnderwriteResults from './underwrite/UnderwriteResults';
 import type { FormData, LoanDecision } from '../../types';
-import { analyzeLoanApplication } from '../../services/openai';
+import { analyzeLoanApplication } from '../../../shared/services/openai';
 
 const UnderwriteDemo: React.FC = () => {
   const [decision, setDecision] = useState<LoanDecision | null>(null);

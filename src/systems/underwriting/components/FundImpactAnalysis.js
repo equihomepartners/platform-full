@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { TrendingUp, DollarSign, Percent, Building2 } from 'lucide-react';
-import { sampleDeals } from '../../data/sampleDeals';
+import { sampleDeals } from '../../../data/sampleDeals';
 const FundImpactAnalysis = ({ decision, selectedYear }) => {
     const yearData = decision.returns.yearlyBreakdown[selectedYear - 1];
     // Calculate current AUM from existing deals

@@ -7,7 +7,7 @@ import MLSystemHeader from './MLSystemHeader';
 import UnderwritingIntegration from './UnderwritingIntegration';
 import RiskCorrelationMatrix from './RiskCorrelationMatrix';
 import MarketCyclePosition from './MarketCyclePosition';
-import { getSuburbAnalysis } from '../../services/mlAnalytics';
+import { getSuburbAnalysis } from '../services/mlAnalytics';
 import { Brain, TrendingUp, Shield, ArrowLeftRight, Map } from 'lucide-react';
 import MLModelEvolution from './MLModelEvolution';
 

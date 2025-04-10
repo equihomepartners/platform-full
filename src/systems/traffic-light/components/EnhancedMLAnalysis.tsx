@@ -1,6 +1,6 @@
 import React from 'react';
 import { Line, Bar, Radar } from 'react-chartjs-2';
-import { getSuburbAnalysis } from '../../services/mlAnalytics';
+import { getSuburbAnalysis } from '../services/mlAnalytics';
 import { Brain, TrendingUp, Clock, RefreshCw, Database } from 'lucide-react';
 
 interface Props {

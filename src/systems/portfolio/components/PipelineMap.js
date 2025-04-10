@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
-import { pipelineDeals } from '../../data/pipelineData';
+import { pipelineDeals } from '../../../data/pipelineData';
 import 'leaflet/dist/leaflet.css';
 const PipelineMap = () => {
     const center = [-33.8688, 151.2093]; // Sydney CBD coordinates

@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Bar } from 'react-chartjs-2';
 import { TrendingUp, DollarSign, Target, Shield } from 'lucide-react';
 import { useFundParameters } from '../../store/fundParameters';
-import { pipelineDeals } from '../../data/pipelineData';
+import { pipelineDeals } from '../../../data/pipelineData';
 const InsightsDashboard = () => {
     const { targetIRR, maxLTV, remainingAllocation } = useFundParameters();
     // Filter approved deals (score >= 80)

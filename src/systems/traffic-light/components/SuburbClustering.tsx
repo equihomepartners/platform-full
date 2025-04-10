@@ -1,7 +1,7 @@
 import React from 'react';
 import { Scatter } from 'react-chartjs-2';
 import { Brain, ArrowRight, TrendingUp, AlertTriangle, Building, LineChart } from 'lucide-react';
-import { formatNumber } from '../../utils/formatters';
+import { formatNumber } from '../../../shared/utils/formatters';
 
 interface ClusterData {
   suburb: string;

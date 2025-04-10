@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getMLSystemStatus } from '../../services/mlAnalytics';
+import { getMLSystemStatus } from '../services/mlAnalytics';
 import { Activity, RefreshCw, Brain, AlertTriangle, Database, Zap } from 'lucide-react';
-import { formatNumber } from '../../utils/formatters';
+import { formatNumber } from '../../../shared/utils/formatters';
 
 const MLSystemHeader: React.FC = () => {
   const [systemStatus, setSystemStatus] = useState(getMLSystemStatus());

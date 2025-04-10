@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { sampleDeals } from '../../data/sampleDeals';
+import { sampleDeals } from '../../../data/sampleDeals';
 const GeographicDistribution = () => {
     // Calculate suburb distribution from sample deals
     const suburbDistribution = useMemo(() => {

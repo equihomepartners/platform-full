@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { Pie } from 'react-chartjs-2';
-import { sampleDeals } from '../../data/sampleDeals';
+import { sampleDeals } from '../../../data/sampleDeals';
 import './ChartConfig';
 const PortfolioDistribution = () => {
     const total = sampleDeals.reduce((sum, deal) => sum + deal.loanAmount, 0);

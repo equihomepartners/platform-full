@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import { trafficLightZones } from '../../data/trafficLightZones';
+import { trafficLightZones } from '../../../data/trafficLightZones';
 
 interface Props {
   onSuburbSelect: (suburb: string) => void;

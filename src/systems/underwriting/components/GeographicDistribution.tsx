@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { sampleDeals } from '../../data/sampleDeals';
+import { sampleDeals } from '../../../data/sampleDeals';
 
 const GeographicDistribution: React.FC = () => {
   // Calculate suburb distribution from sample deals

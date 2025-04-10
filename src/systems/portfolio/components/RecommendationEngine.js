@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { CheckCircle, AlertTriangle, DollarSign, TrendingUp, Target, Shield } from 'lucide-react';
 import { useFundParameters } from '../../store/fundParameters';
-import { pipelineDeals } from '../../data/pipelineData';
+import { pipelineDeals } from '../../../data/pipelineData';
 const RecommendationEngine = () => {
     const { targetIRR, maxLTV, remainingAllocation } = useFundParameters();
     // Filter deals based on fund parameters

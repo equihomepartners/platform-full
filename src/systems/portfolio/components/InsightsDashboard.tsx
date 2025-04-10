@@ -2,7 +2,7 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { AlertTriangle, TrendingUp, DollarSign, Target, Shield } from 'lucide-react';
 import { useFundParameters } from '../../store/fundParameters';
-import { pipelineDeals } from '../../data/pipelineData';
+import { pipelineDeals } from '../../../data/pipelineData';
 
 const InsightsDashboard: React.FC = () => {
   const { targetIRR, maxLTV, remainingAllocation } = useFundParameters();

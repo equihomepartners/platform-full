@@ -1,6 +1,6 @@
 import React from 'react';
 import { TrendingUp, DollarSign, Percent, Clock, Coins } from 'lucide-react';
-import { sampleDeals } from '../../data/sampleDeals';
+import { sampleDeals } from '../../../data/sampleDeals';
 
 const FundMetrics: React.FC = () => {
   // Calculate total starting portfolio value

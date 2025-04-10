@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getMLSystemStatus, getUnderwritingIntegration } from '../../services/mlAnalytics';
+import { getMLSystemStatus, getUnderwritingIntegration } from '../services/mlAnalytics';
 import { Activity, Database, Cpu, RefreshCw, AlertTriangle, CheckCircle, Clock } from 'lucide-react';
 
 const MLSystemStatus: React.FC = () => {

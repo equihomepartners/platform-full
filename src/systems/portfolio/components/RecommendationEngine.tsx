@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckCircle, AlertTriangle, DollarSign, TrendingUp, Target, Shield } from 'lucide-react';
 import { useFundParameters } from '../../store/fundParameters';
-import { pipelineDeals } from '../../data/pipelineData';
+import { pipelineDeals } from '../../../data/pipelineData';
 
 const RecommendationEngine: React.FC = () => {
   const { targetIRR, maxLTV, remainingAllocation } = useFundParameters();

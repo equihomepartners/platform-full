@@ -1,7 +1,7 @@
 import React from 'react';
 import { TrendingUp, DollarSign, Percent, Building2 } from 'lucide-react';
 import type { LoanDecision } from '../../types';
-import { sampleDeals } from '../../data/sampleDeals';
+import { sampleDeals } from '../../../data/sampleDeals';
 
 interface Props {
   decision: LoanDecision;

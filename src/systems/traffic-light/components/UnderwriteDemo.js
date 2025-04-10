@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Brain, Calculator, LineChart } from 'lucide-react';
 import UnderwriteForm from './underwrite/UnderwriteForm';
 import UnderwriteResults from './underwrite/UnderwriteResults';
-import { analyzeLoanApplication } from '../../services/openai';
+import { analyzeLoanApplication } from '../../../shared/services/openai';
 const UnderwriteDemo = () => {
     const [decision, setDecision] = useState(null);
     const [loading, setLoading] = useState(false);

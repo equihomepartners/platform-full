@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import React, { useState, useMemo } from 'react';
 import { ChevronDown, ChevronUp, ArrowUpDown, Calendar, Home, DollarSign, Percent, AlertTriangle, TrendingUp } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
-import { pipelineDeals } from '../../data/pipelineData';
+import { pipelineDeals } from '../../../data/pipelineData';
 import { useFundParameters } from '../../store/fundParameters';
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, } from '../ui/table';
 const PipelineDeals = () => {

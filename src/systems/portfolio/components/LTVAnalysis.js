@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { Scatter } from 'react-chartjs-2';
-import { sampleDeals } from '../../data/sampleDeals';
+import { sampleDeals } from '../../../data/sampleDeals';
 import './ChartConfig';
 const LTVAnalysis = () => {
     const weightedAverageLTV = 29.84; // This is our portfolio weighted average

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup, ZoomControl, Tooltip } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { trafficLightZones } from '../../data/trafficLightZones';
+import { trafficLightZones } from '../../../data/trafficLightZones';
 
 interface SuburbData {
   name: string;

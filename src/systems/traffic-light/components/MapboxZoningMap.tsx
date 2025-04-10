@@ -9,8 +9,8 @@ import Map, {
   LayerProps,
   MapLayerMouseEvent
 } from 'react-map-gl';
-import { sydneySuburbsData } from '../../data/sydneySuburbsData';
-import { getSuburbAnalysis } from '../../services/mlAnalytics';
+import { sydneySuburbsData } from '../../../data/sydneySuburbsData';
+import { getSuburbAnalysis } from '../services/mlAnalytics';
 import MLAnalytics from './MLAnalytics';
 import 'mapbox-gl/dist/mapbox-gl.css';
 

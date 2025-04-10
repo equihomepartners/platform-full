@@ -433,8 +433,12 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         </div>
         <div className="bg-white rounded-lg border p-4">
           <div className="text-sm text-gray-600">ML Confidence</div>
-          <div className="text-2xl font-bold text-blue-600">94.3%</div>
-          <div className="text-xs text-gray-500">Based on 1.2M data points</div>
+          <div className="text-2xl font-bold text-blue-600">
+            {modelInfo ? `${(modelInfo.metrics.confidence * 100).toFixed(1)}%` : 'Loading...'}
+          </div>
+          <div className="text-xs text-gray-500">
+            Based on {modelInfo ? `${(modelInfo.metrics.data_points / 1000).toFixed(0)}K` : 'Loading...'} data points
+          </div>
         </div>
       </div>
 

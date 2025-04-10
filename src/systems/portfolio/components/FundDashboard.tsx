@@ -1,10 +1,10 @@
 import React from 'react';
-import FundMetrics from './fund/FundMetrics';
-import PortfolioDistribution from './fund/PortfolioDistribution';
-import GeographicDistribution from './fund/GeographicDistribution';
-import CashflowAnalysis from './fund/CashflowAnalysis';
-import IncomeAnalysis from './fund/IncomeAnalysis';
-import LTVAnalysis from './fund/LTVAnalysis';
+import FundMetrics from './FundMetrics';
+import PortfolioDistribution from './PortfolioDistribution';
+import GeographicDistribution from './GeographicDistribution';
+import CashflowAnalysis from './CashflowAnalysis';
+import IncomeAnalysis from './IncomeAnalysis';
+import LTVAnalysis from './LTVAnalysis';
 
 const FundDashboard: React.FC = () => {
   return (

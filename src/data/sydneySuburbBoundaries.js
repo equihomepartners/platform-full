@@ -4,7 +4,7 @@
 export const sydneySuburbBoundaries = {
   "type": "FeatureCollection",
   "features": [
-    // Inner Sydney
+    // Inner West - Orange Zone
     {
       "type": "Feature",
       "geometry": {
@@ -89,16 +89,62 @@ export const sydneySuburbBoundaries = {
 
 // Map suburb names to their zone classification
 export const suburbZones = {
-  // Orange Zone
+  // Green Zone - Premium suburbs with strong investment potential
+  "WOLLSTONECRAFT": "green",
+  "PUTNEY": "green",
+  "KILLARA": "green",
+  "MOSMAN": "green",
+  "DOUBLE BAY": "green",
+  "BELLEVUE HILL": "green",
+  "VAUCLUSE": "green",
+  "ROSE BAY": "green",
+  "CREMORNE": "green",
+  "NEUTRAL BAY": "green",
+  "NORTHBRIDGE": "green",
+  "MANLY": "green",
+  "BALMORAL": "green",
+  "COOGEE": "green",
+  "BRONTE": "green",
+  "NORTH SYDNEY": "green",
+  "KIRRIBILLI": "green",
+  "WOOLLAHRA": "green",
+  "PADDINGTON": "green",
+  "DARLING POINT": "green",
+
+  // Orange Zone - Transitioning suburbs with growth potential
   "CROYDON PARK": "orange",
   "CAMPSIE": "orange",
   "CONCORD": "orange",
   "CANTERBURY": "orange",
+  "MARRICKVILLE": "orange",
+  "ASHFIELD": "orange",
+  "BURWOOD": "orange",
+  "STRATHFIELD": "orange",
+  "LEICHHARDT": "orange",
+  "SUMMER HILL": "orange",
+  "DULWICH HILL": "orange",
+  "PETERSHAM": "orange",
+  "STANMORE": "orange",
+  "NEWTOWN": "orange",
+  "ERSKINEVILLE": "orange",
+  "ALEXANDRIA": "orange",
+  "WATERLOO": "orange",
+  "ZETLAND": "orange",
 
-  // Green Zone
-  "WOLLSTONECRAFT": "green",
-  "PUTNEY": "green",
-  "KILLARA": "green"
+  // Red Zone - Higher risk suburbs
+  "MOUNT DRUITT": "red",
+  "BLACKTOWN": "red",
+  "LIVERPOOL": "red",
+  "CAMPBELLTOWN": "red",
+  "PENRITH": "red",
+  "ST MARYS": "red",
+  "FAIRFIELD": "red",
+  "CABRAMATTA": "red",
+  "AUBURN": "red",
+  "BANKSTOWN": "red",
+  "PUNCHBOWL": "red",
+  "LAKEMBA": "red",
+  "PARRAMATTA": "red"
 };
 
 export default sydneySuburbBoundaries;

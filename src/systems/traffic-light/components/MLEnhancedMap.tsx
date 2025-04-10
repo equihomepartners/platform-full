@@ -23,6 +23,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   const [popupInfo, setPopupInfo] = useState<any>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTab, setSelectedTab] = useState('all');
+  const [selectedLayer, setSelectedLayer] = useState('suburbs'); // 'suburbs', 'postcodes', etc.
 
   // Debug logs
   useEffect(() => {
@@ -314,6 +315,25 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         </div>
       </div>
 
+      {/* Layer Control */}
+      <div className="mb-4 flex space-x-2">
+        <div className="bg-white rounded-lg border p-2 flex">
+          <button
+            className={`px-4 py-1 rounded-md ${selectedLayer === 'suburbs' ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:bg-gray-100'}`}
+            onClick={() => setSelectedLayer('suburbs')}
+          >
+            Suburbs
+          </button>
+          <button
+            className={`px-4 py-1 rounded-md ${selectedLayer === 'postcodes' ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:bg-gray-100'}`}
+            onClick={() => setSelectedLayer('postcodes')}
+            disabled={true}
+          >
+            Postcodes (Coming Soon)
+          </button>
+        </div>
+      </div>
+
       {/* Map Container */}
       <div className="h-[500px] rounded-lg overflow-hidden">
         <Map
@@ -324,7 +344,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           }}
           mapStyle="mapbox://styles/mapbox/light-v11"
           mapboxAccessToken={MAPBOX_TOKEN}
-          interactiveLayerIds={['suburb-polygons', 'suburb-polygon-outlines']}
+          interactiveLayerIds={selectedLayer === 'suburbs' ? ['suburb-polygons', 'suburb-polygon-outlines'] : []}
           onClick={handleClick}
           onError={handleError}
           onLoad={handleLoad}
@@ -339,21 +359,37 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             </Source>
           ))}
 
-          {/* Suburb Boundaries Layer */}
-          <Source
-            id="suburb-polygons"
-            type="geojson"
-            data={{
-              type: 'FeatureCollection',
-              features: suburbFeatures.filter(f =>
-                (selectedTab === 'all' || f.properties.zone === selectedTab) &&
-                (!searchTerm || f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()))
-              )
-            }}
-          >
-            <Layer {...polygonLayerStyle} />
-            <Layer {...polygonOutlineStyle} />
-          </Source>
+          {/* Suburb Boundaries Layer - Only show when suburbs layer is selected */}
+          {selectedLayer === 'suburbs' && (
+            <Source
+              id="suburb-polygons"
+              type="geojson"
+              data={{
+                type: 'FeatureCollection',
+                features: suburbFeatures.filter(f =>
+                  (selectedTab === 'all' || f.properties.zone === selectedTab) &&
+                  (!searchTerm || f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                )
+              }}
+            >
+              <Layer {...polygonLayerStyle} />
+              <Layer {...polygonOutlineStyle} />
+            </Source>
+          )}
+
+          {/* Postcodes Layer - Will be implemented in the future */}
+          {selectedLayer === 'postcodes' && (
+            <Source
+              id="postcodes-placeholder"
+              type="geojson"
+              data={{
+                type: 'FeatureCollection',
+                features: []
+              }}
+            >
+              {/* Placeholder for future postcode layers */}
+            </Source>
+          )}
 
           {/* Enhanced Popup */}
           {popupInfo && (

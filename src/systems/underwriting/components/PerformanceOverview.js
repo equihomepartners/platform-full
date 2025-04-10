@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Line } from 'react-chartjs-2';
 import { TrendingUp, DollarSign, Percent, Building2, LineChart } from 'lucide-react';
-import { commonOptions } from '../fund/ChartConfig';
+import { commonOptions } from '../../../shared/fund/ChartConfig';
 const PerformanceOverview = () => {
     const monthlyData = {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],

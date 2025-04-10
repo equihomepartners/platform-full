@@ -3,8 +3,8 @@ import React, { useState, useMemo } from 'react';
 import { ChevronDown, ChevronUp, ArrowUpDown, Calendar, Home, DollarSign, Percent, AlertTriangle, TrendingUp } from 'lucide-react';
 import { Line } from 'react-chartjs-2';
 import { pipelineDeals } from '../../../data/pipelineData';
-import { useFundParameters } from '../../store/fundParameters';
-import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, } from '../ui/table';
+import { useFundParameters } from '../../../store/fundParameters';
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell, } from '../../../components/ui/table';
 const PipelineDeals = () => {
     const [expandedDeal, setExpandedDeal] = useState(null);
     const [sortField, setSortField] = useState('applicationDate');

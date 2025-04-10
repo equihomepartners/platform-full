@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Line } from 'react-chartjs-2';
-import { commonOptions } from '../fund/ChartConfig';
+import { commonOptions } from '../../../shared/fund/ChartConfig';
 const MarketAnalysis = () => {
     const globalComparisonData = {
         labels: ['2004', '2006', '2008', '2010', '2012', '2014', '2016', '2018', '2020', '2022'],

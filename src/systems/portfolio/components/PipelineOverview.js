@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Bar } from 'react-chartjs-2';
 import { DollarSign, Target, Users, Clock, Percent } from 'lucide-react';
-import { useFundParameters } from '../../store/fundParameters';
+import { useFundParameters } from '../../../store/fundParameters';
 import { pipelineDeals } from '../../../data/pipelineData';
 const PipelineOverview = () => {
     const { targetIRR, maxLTV, remainingAllocation } = useFundParameters();

@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Line } from 'react-chartjs-2';
-import { commonOptions } from '../fund/ChartConfig';
+import { commonOptions } from '../../../shared/fund/ChartConfig';
 const AssetClassComparison = () => {
     const data = {
         labels: ['2019', '2020', '2021', '2022', '2023', '2024'],

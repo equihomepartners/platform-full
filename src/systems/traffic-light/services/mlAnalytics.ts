@@ -1,4 +1,4 @@
-import { trafficLightZones } from '../data/zoneData.js';
+import { trafficLightZones } from '../../../data/zoneData.js';
 
 interface SuburbAnalysis {
   confidence: number;
@@ -85,7 +85,7 @@ export const getSuburbAnalysis = (suburb: string): SuburbAnalysis => {
   const basePrice = zone === 'green' ? 2500000 : zone === 'orange' ? 1500000 : 800000;
 
   // Add some randomization for realistic variation
-  const randomize = (base: number, variance: number) => 
+  const randomize = (base: number, variance: number) =>
     base + (Math.random() * variance * 2 - variance);
 
   // Add dynamic timestamp and iteration info
@@ -120,8 +120,8 @@ export const getSuburbAnalysis = (suburb: string): SuburbAnalysis => {
           'Current market momentum',
           'Recent comparable sales',
           'Buyer demand levels',
-          zone === 'green' ? 'Premium location appeal' : 
-          zone === 'orange' ? 'Improving infrastructure' : 
+          zone === 'green' ? 'Premium location appeal' :
+          zone === 'orange' ? 'Improving infrastructure' :
           'Affordability advantage'
         ]
       },

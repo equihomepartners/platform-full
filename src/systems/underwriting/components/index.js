@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Home, List } from 'lucide-react';
-import Logo from '../Logo';
+import Logo from '../../../shared/components/Logo';
 import ExecutiveSummary from './ExecutiveSummary';
 import PerformanceOverview from './PerformanceOverview';
 import MarketAnalysis from './MarketAnalysis';

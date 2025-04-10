@@ -1,5 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '../../../components/ui/tabs';
 import PipelineOverview from './PipelineOverview';
 import DealScoring from './DealScoring';
 import PipelineMap from './PipelineMap';

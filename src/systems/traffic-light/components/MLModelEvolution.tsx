@@ -23,11 +23,11 @@ const initialModel: ModelEvolution = {
     'Comparable suburb identification'
   ],
   dataSources: [
-    'PropTrack API',
-    'CoreLogic Property Data',
-    'Domain Group Market Data',
+    'RBA Housing Market Data',
     'ABS Census Demographics',
-    'NSW Government Infrastructure Plans'
+    'ABS Property Price Index',
+    'NSW Government Infrastructure Plans',
+    'NSW Land Registry Services'
   ],
   accuracy: 85.7,
   dataPoints: 250000,

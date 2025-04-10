@@ -613,13 +613,13 @@ The Traffic Light System uses a machine learning system to analyze property mark
 
 #### Data Sources
 
-The ML system integrates with the following data sources:
+The ML system integrates with the following free government data sources:
 
-- **PropTrack API**: Property listing and sales data
-- **CoreLogic Property Data**: Comprehensive property information and analytics
-- **Domain Group Market Data**: Market trends and property insights
+- **RBA Housing Market Data**: Interest rates, housing credit, and market indicators
 - **ABS Census Demographics**: Population and demographic information
+- **ABS Property Price Index**: Quarterly property price changes across regions
 - **NSW Government Infrastructure Plans**: Current and planned infrastructure projects
+- **NSW Land Registry Services**: Property ownership and sales data
 
 #### Update Schedule
 

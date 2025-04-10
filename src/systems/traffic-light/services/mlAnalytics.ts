@@ -213,11 +213,11 @@ export const getMLSystemStatus = () => {
       latency: 180 // ms
     },
     integrations: {
-      propTrack: 'connected',
-      coreLogic: 'connected',
-      domainGroup: 'connected',
-      absData: 'connected',
-      nswGov: 'connected'
+      rba: 'connected',
+      absCensus: 'connected',
+      absPriceIndex: 'connected',
+      nswGovInfra: 'connected',
+      nswLandRegistry: 'connected'
     }
   };
 };

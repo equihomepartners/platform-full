@@ -113,6 +113,7 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Updated model accuracy metrics to reflect early-stage ML system
 - Added data source documentation to ML model information
 - Ensured consistency across all ML-related components
+- Replaced commercial data sources with free government data sources (RBA, ABS, NSW Government)
 
 ## Next Steps
 

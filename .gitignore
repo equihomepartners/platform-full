@@ -6,3 +6,6 @@ dist
 dist-ssr
 *.local
 .vite
+
+# Temporary data processing files
+temp_data/

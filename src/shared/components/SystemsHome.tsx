@@ -16,9 +16,9 @@ const SystemsHome: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Traffic Light System */}
-        <Link 
+        <Link
           to="/traffic-light"
-          className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100"
+          className="card-traffic-light bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100"
         >
           <div className="bg-gradient-to-r from-green-500 to-green-600 p-6">
             <Brain className="h-12 w-12 text-white mb-4" />
@@ -55,9 +55,9 @@ const SystemsHome: React.FC = () => {
         </Link>
 
         {/* Portfolio Management System */}
-        <Link 
+        <Link
           to="/portfolio"
-          className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100"
+          className="card-portfolio bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100"
         >
           <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6">
             <BarChart2 className="h-12 w-12 text-white mb-4" />
@@ -94,9 +94,9 @@ const SystemsHome: React.FC = () => {
         </Link>
 
         {/* Underwriting System */}
-        <Link 
+        <Link
           to="/underwriting"
-          className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100"
+          className="card-underwriting bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100"
         >
           <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-6">
             <FileCheck className="h-12 w-12 text-white mb-4" />

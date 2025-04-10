@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { LayoutGrid, PieChart, Settings, Brain, ListFilter, Calculator, BookOpen } from 'lucide-react';
+import { Link, useLocation, NavLink } from 'react-router-dom';
+import { Home, Brain, BarChart2, FileCheck, BookOpen } from 'lucide-react';
 import Logo from './Logo';
-import { NavLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
-  
+
   const isActive = (path: string) => {
     return location.pathname === path;
   };
@@ -21,95 +20,59 @@ const Navbar: React.FC = () => {
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <NavLink
-                to="/platform-guide"
+                to="/"
                 className={({ isActive }) =>
                   `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                    isActive
+                    isActive && location.pathname === '/'
                       ? 'border-blue-500 text-gray-900'
                       : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                   }`
                 }
               >
-                <BookOpen className="h-4 w-4 mr-2" />
-                Platform Guide
+                <Home className="h-4 w-4 mr-2" />
+                Home
               </NavLink>
 
               <NavLink
-                to="/cio"
+                to="/traffic-light"
                 className={({ isActive }) =>
                   `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                    isActive
-                      ? 'border-blue-500 text-gray-900'
+                    isActive || location.pathname.startsWith('/traffic-light')
+                      ? 'border-green-500 text-gray-900'
                       : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                   }`
                 }
               >
-                CIO Dashboard
-              </NavLink>
-              
-              <NavLink
-                to="/underwrite"
-                className={({ isActive }) =>
-                  `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                    isActive
-                      ? 'border-blue-500 text-gray-900'
-                      : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                  }`
-                }
-              >
-                Underwriting
+                <Brain className="h-4 w-4 mr-2 text-green-500" />
+                Traffic Light System
               </NavLink>
 
               <NavLink
-                to="/pipeline"
+                to="/portfolio"
                 className={({ isActive }) =>
                   `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                    isActive
+                    isActive || location.pathname.startsWith('/portfolio')
                       ? 'border-blue-500 text-gray-900'
                       : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                   }`
                 }
               >
-                Pipeline
+                <BarChart2 className="h-4 w-4 mr-2 text-blue-500" />
+                Portfolio Management
               </NavLink>
 
               <NavLink
-                to="/model"
+                to="/underwriting"
                 className={({ isActive }) =>
                   `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                    isActive
-                      ? 'border-blue-500 text-gray-900'
+                    isActive || location.pathname.startsWith('/underwriting')
+                      ? 'border-purple-500 text-gray-900'
                       : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
                   }`
                 }
               >
-                Financial Modeling
-              </NavLink>
-
-              <NavLink
-                to="/report"
-                className={({ isActive }) =>
-                  `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                    isActive
-                      ? 'border-blue-500 text-gray-900'
-                      : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                  }`
-                }
-              >
-                Fund Dashboard
-              </NavLink>
-
-              <NavLink
-                to="/data-feeds"
-                className={({ isActive }) =>
-                  `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
-                    isActive
-                      ? 'border-blue-500 text-gray-900'
-                      : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                  }`
-                }
-              >
-                Data Feeds
+                <FileCheck className="h-4 w-4 mr-2 text-purple-500" />
+                Underwriting System
               </NavLink>
             </div>
           </div>

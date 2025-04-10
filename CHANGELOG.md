@@ -73,6 +73,8 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Fixed JSX syntax issues in FundParameters component
 - Made application containers full screen with minimum height
 - Updated container classes to use full width
+- Added real suburb boundaries to Traffic Light System map using GeoJSON
+- Created comprehensive README for Traffic Light System with backend/ML requirements
 
 ## Next Steps
 

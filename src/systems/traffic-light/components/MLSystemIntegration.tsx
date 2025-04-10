@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getMLSystemStatus, getUnderwritingIntegration } from '../../services/mlAnalytics';
+import { getMLSystemStatus, getUnderwritingIntegration } from '../services/mlAnalytics';
 import { Activity, RefreshCw, Brain, AlertTriangle, Database, Zap, Shield, CheckCircle } from 'lucide-react';
-import { formatNumber } from '../../utils/formatters';
+import { formatNumber } from '../../../shared/utils/formatters';
 
 const MLSystemIntegration: React.FC = () => {
   const [systemStatus, setSystemStatus] = useState(getMLSystemStatus());
@@ -58,7 +58,7 @@ const MLSystemIntegration: React.FC = () => {
                 <span className="font-medium">{formatNumber.percentage(systemStatus.modelMetrics.accuracy)}</span>
               </div>
               <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div 
+                <div
                   className="h-full bg-green-500 rounded-full transition-all duration-500"
                   style={{ width: `${systemStatus.modelMetrics.accuracy}%` }}
                 />
@@ -70,7 +70,7 @@ const MLSystemIntegration: React.FC = () => {
                 <span className="font-medium">{formatNumber.percentage(systemStatus.modelMetrics.validationScore * 100)}</span>
               </div>
               <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div 
+                <div
                   className="h-full bg-blue-500 rounded-full transition-all duration-500"
                   style={{ width: `${systemStatus.modelMetrics.validationScore * 100}%` }}
                 />
@@ -89,7 +89,7 @@ const MLSystemIntegration: React.FC = () => {
                 <span className="font-medium">{formatNumber.percentage(underwritingStatus.automationRate)}</span>
               </div>
               <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div 
+                <div
                   className="h-full bg-indigo-500 rounded-full transition-all duration-500"
                   style={{ width: `${underwritingStatus.automationRate}%` }}
                 />
@@ -148,4 +148,4 @@ const MLSystemIntegration: React.FC = () => {
   );
 };
 
-export default MLSystemIntegration; 
+export default MLSystemIntegration;

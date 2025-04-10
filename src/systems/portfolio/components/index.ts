@@ -6,4 +6,6 @@ export { default as FundDashboard } from './FundDashboard';
 export { default as Pipeline } from './Pipeline';
 export { default as DealList } from './DealList';
 export { default as FundPerformance } from './FundPerformance';
+export { default as PortfolioDashboard } from './PortfolioDashboard';
+export { default as PortfolioLayout } from './PortfolioLayout';
 // Add more component exports as needed

@@ -154,6 +154,7 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Added detailed API endpoints and webhooks documentation
 - Created development guidelines and component structure documentation
 - Simplified the main README with links to the detailed documentation
+- Added documentation structure guidelines to the master README for all systems to follow
 
 ## Next Steps
 

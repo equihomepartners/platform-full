@@ -156,6 +156,84 @@ npx playwright show-report
 4. Use Supabase for all data persistence
 5. Write Playwright tests for all features
 6. Update the CHANGELOG.md after every 10 significant commands/changes
+7. Follow the documentation structure guidelines
+
+## Documentation Guidelines
+
+### Documentation Structure
+
+Each system (Traffic Light System, Portfolio Management System, and Underwriting System) should follow this documentation structure:
+
+```
+src/systems/[system-name]/
+├── README.md                # Main system README with overview and quick links
+└── docs/                    # Documentation directory
+    ├── README.md            # Documentation index
+    ├── architecture/        # Architecture documentation
+    │   ├── README.md        # Architecture documentation index
+    │   ├── OVERVIEW.md      # System overview
+    │   ├── DATA_FLOW.md     # Data flow documentation
+    │   ├── ML_MODEL.md      # ML model documentation (if applicable)
+    │   └── REQUIREMENTS.md  # System requirements
+    ├── api/                 # API documentation
+    │   ├── README.md        # API documentation index
+    │   ├── OVERVIEW.md      # API overview
+    │   ├── ENDPOINTS.md     # API endpoints documentation
+    │   ├── INTEGRATION.md   # Integration with other systems
+    │   └── WEBHOOKS.md      # Webhook documentation
+    └── development/         # Development documentation
+        ├── README.md        # Development documentation index
+        ├── GUIDELINES.md    # Development guidelines
+        ├── COMPONENTS.md    # Component structure
+        └── TESTING.md       # Testing guidelines
+```
+
+### README Content Guidelines
+
+#### Main System README (src/systems/[system-name]/README.md)
+
+- **System Overview**: Brief description of the system's purpose and functionality
+- **Quick Start**: Basic commands to run the system
+- **Key Features**: List of key features
+- **Documentation Links**: Links to detailed documentation
+- **Integration**: Brief overview of integration with other systems
+- **Development Status**: Current development status
+
+#### Documentation Index (src/systems/[system-name]/docs/README.md)
+
+- **Documentation Structure**: Overview of the documentation structure
+- **Quick Links**: Direct links to key documentation files
+
+#### Architecture Documentation
+
+- **System Overview**: Detailed description of the system's architecture
+- **Data Flow**: Description of data flow within the system
+- **ML Model** (if applicable): Details about ML models used
+- **Requirements**: System requirements and specifications
+
+#### API Documentation
+
+- **API Overview**: Overview of the API structure
+- **Endpoints**: Detailed documentation of all API endpoints
+- **Integration**: Details about integrating with other systems
+- **Webhooks**: Documentation of webhook endpoints
+
+#### Development Documentation
+
+- **Guidelines**: Development guidelines and best practices
+- **Components**: Component structure and hierarchy
+- **Testing**: Testing guidelines and procedures
+
+### Documentation Standards
+
+1. **Markdown Format**: All documentation should be in Markdown format
+2. **Code Examples**: Include code examples where appropriate
+3. **Diagrams**: Use ASCII diagrams or links to external diagram tools
+4. **Versioning**: Include version information where applicable
+5. **Cross-References**: Use relative links to reference other documentation files
+6. **Consistency**: Maintain consistent terminology across all documentation
+7. **Completeness**: Document all aspects of the system
+8. **Clarity**: Write clear, concise documentation with proper headings and structure
 
 ## Version Control Guidelines
 

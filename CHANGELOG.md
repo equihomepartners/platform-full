@@ -48,6 +48,15 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Organized imports by system
 - Added placeholder for Underwriting System
 
+### UI Redesign - 2023-11-18
+- Created new home page with system selection cards
+- Implemented system-specific layouts with tabs
+- Added consistent navigation between systems
+- Created placeholder dashboards for each system
+- Updated color scheme for a clean, fintech feel
+- Fixed 404 errors from removed demo components
+- Implemented redirects for legacy routes
+
 ## Next Steps
 
 ### Immediate Tasks

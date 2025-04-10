@@ -1,77 +1,85 @@
 import React from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 // Import from shared components
 import { Navbar, Footer } from './shared/components';
+import SystemsHome from './shared/components/SystemsHome';
 import HelpButton from './components/HelpButton'; // Will migrate later
 
-// Import from Traffic Light System
-import { CIODashboard } from './systems/traffic-light/components';
+// Import Traffic Light System components
+import TrafficLightLayout from './systems/traffic-light/components/TrafficLightLayout';
+import TrafficLightDashboard from './systems/traffic-light/components/TrafficLightDashboard';
+import { CIODashboard, TrafficLightZones } from './systems/traffic-light/components';
 
-// Import from Portfolio Management System
-import { FundDashboard, Pipeline } from './systems/portfolio/components';
-import InvestmentGrid from './components/InvestmentGrid'; // Will migrate later
-import DealAnalysis from './components/DealAnalysis'; // Will migrate later
+// Import Portfolio Management System components
+import PortfolioLayout from './systems/portfolio/components/PortfolioLayout';
+import PortfolioDashboard from './systems/portfolio/components/PortfolioDashboard';
+import { Pipeline } from './systems/portfolio/components';
 import FinancialModeling from './components/FinancialModeling'; // Will migrate later
 
-// Import from Underwriting System
+// Import Underwriting System components
+import UnderwritingLayout from './systems/underwriting/components/UnderwritingLayout';
+import UnderwritingDashboard from './systems/underwriting/components/UnderwritingDashboard';
 import { AssetReport } from './systems/underwriting/components';
 
 // Import remaining components (to be migrated or removed later)
 import WelcomeScreen from './components/WelcomeScreen';
 import ConfidentialityScreen from './components/ConfidentialityScreen';
-import DataFeeds from './components/data-feeds/DataFeeds';
-import PlatformGuide from './components/platform-guide/PlatformGuide';
 
 const App: React.FC = () => {
-  const location = useLocation();
-  const isGuidedTour = location.pathname === '/guided-demo';
-
   return (
     <>
-      <Routes>
-        <Route path="/" element={<ConfidentialityScreen />} />
-        <Route path="/welcome" element={<WelcomeScreen />} />
-        <Route path="/asset-report" element={<AssetReport />} />
-        <Route
-          path="/*"
-          element={
-            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
-              <Navbar />
-              <main className="py-12">
-                <Routes>
-                  <Route path="/platform-guide" element={<PlatformGuide />} />
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
+        <Navbar />
+        <main className="py-12">
+          <Routes>
+            {/* Authentication Routes */}
+            <Route path="/login" element={<ConfidentialityScreen />} />
+            <Route path="/welcome" element={<WelcomeScreen />} />
 
-                  {/* Traffic Light System Routes */}
-                  <Route path="/cio" element={<CIODashboard />} />
+            {/* Home Route */}
+            <Route path="/" element={<SystemsHome />} />
 
-                  {/* Portfolio Management System Routes */}
-                  <Route path="/pipeline" element={<Pipeline />} />
-                  <Route path="/model" element={<FinancialModeling />} />
-                  <Route path="/report" element={<FundDashboard />} />
-                  <Route path="/loans" element={<InvestmentGrid />} />
-                  <Route path="/deal/:id" element={<DealAnalysis />} />
+            {/* Traffic Light System Routes */}
+            <Route path="/traffic-light" element={<TrafficLightLayout />}>
+              <Route index element={<TrafficLightDashboard />} />
+              <Route path="zones" element={<TrafficLightZones />} />
+              <Route path="analysis" element={<CIODashboard />} />
+              <Route path="settings" element={<div className="p-4">Traffic Light System Settings</div>} />
+            </Route>
 
-                  {/* Underwriting System Routes */}
-                  <Route path="/underwrite" element={
-                    <div className="p-8 text-center">
-                      <h2 className="text-2xl font-bold mb-4">Underwriting System</h2>
-                      <p className="text-gray-600 mb-8">
-                        The Underwriting System is ready for implementation. This placeholder will be replaced with the actual Underwriting System components.
-                      </p>
-                    </div>
-                  } />
+            {/* Portfolio Management System Routes */}
+            <Route path="/portfolio" element={<PortfolioLayout />}>
+              <Route index element={<PortfolioDashboard />} />
+              <Route path="pipeline" element={<Pipeline />} />
+              <Route path="deals" element={<div className="p-4">Deal Management</div>} />
+              <Route path="analytics" element={<FinancialModeling />} />
+              <Route path="settings" element={<div className="p-4">Portfolio System Settings</div>} />
+            </Route>
 
-                  {/* Other Routes */}
-                  <Route path="/data-feeds" element={<DataFeeds />} />
-                  <Route path="*" element={<Navigate to="/platform-guide" replace />} />
-                </Routes>
-              </main>
-              <Footer />
-            </div>
-          }
-        />
-      </Routes>
+            {/* Underwriting System Routes */}
+            <Route path="/underwriting" element={<UnderwritingLayout />}>
+              <Route index element={<UnderwritingDashboard />} />
+              <Route path="applications" element={<div className="p-4">Loan Applications</div>} />
+              <Route path="modeling" element={<div className="p-4">Financial Modeling</div>} />
+              <Route path="analytics" element={<AssetReport />} />
+              <Route path="settings" element={<div className="p-4">Underwriting System Settings</div>} />
+            </Route>
+
+            {/* Redirect legacy routes */}
+            <Route path="/cio" element={<Navigate to="/traffic-light" replace />} />
+            <Route path="/pipeline" element={<Navigate to="/portfolio/pipeline" replace />} />
+            <Route path="/model" element={<Navigate to="/portfolio/analytics" replace />} />
+            <Route path="/report" element={<Navigate to="/portfolio" replace />} />
+            <Route path="/underwrite" element={<Navigate to="/underwriting" replace />} />
+            <Route path="/asset-report" element={<Navigate to="/underwriting/analytics" replace />} />
+
+            {/* Fallback route */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
       <HelpButton />
     </>
   );

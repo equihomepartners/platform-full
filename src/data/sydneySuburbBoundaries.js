@@ -89,10 +89,13 @@ export const sydneySuburbBoundaries = {
 
 // Map suburb names to their zone classification
 export const suburbZones = {
+  // Orange Zone
   "CROYDON PARK": "orange",
   "CAMPSIE": "orange",
   "CONCORD": "orange",
   "CANTERBURY": "orange",
+
+  // Green Zone
   "WOLLSTONECRAFT": "green",
   "PUTNEY": "green",
   "KILLARA": "green"

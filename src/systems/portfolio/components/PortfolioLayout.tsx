@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { BarChart2, PieChart, Briefcase, TrendingUp, Settings } from 'lucide-react';
+import { BarChart2, PieChart, Briefcase, TrendingUp, Settings, Sliders } from 'lucide-react';
 
 const PortfolioLayout: React.FC = () => {
   const location = useLocation();
-  
+
   const tabs = [
     { name: 'Dashboard', path: '/portfolio', icon: <BarChart2 className="h-5 w-5" /> },
     { name: 'Pipeline', path: '/portfolio/pipeline', icon: <TrendingUp className="h-5 w-5" /> },
     { name: 'Deals', path: '/portfolio/deals', icon: <Briefcase className="h-5 w-5" /> },
     { name: 'Analytics', path: '/portfolio/analytics', icon: <PieChart className="h-5 w-5" /> },
+    { name: 'Fund Parameters', path: '/portfolio/fund-parameters', icon: <Sliders className="h-5 w-5" /> },
     { name: 'Settings', path: '/portfolio/settings', icon: <Settings className="h-5 w-5" /> },
   ];
 
@@ -23,14 +24,14 @@ const PortfolioLayout: React.FC = () => {
               Optimize and manage your loan portfolio
             </p>
           </div>
-          <Link 
+          <Link
             to="/"
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200"
           >
             Back to Home
           </Link>
         </div>
-        
+
         <div className="mt-6">
           <div className="sm:hidden">
             <label htmlFor="tabs" className="sr-only">Select a tab</label>

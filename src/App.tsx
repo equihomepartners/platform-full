@@ -8,14 +8,15 @@ import HelpButton from './components/HelpButton'; // Will migrate later
 
 // Import Traffic Light System components
 import TrafficLightLayout from './systems/traffic-light/components/TrafficLightLayout';
-import TrafficLightDashboard from './systems/traffic-light/components/TrafficLightDashboard';
-import { CIODashboard, TrafficLightZones } from './systems/traffic-light/components';
+import { TrafficLightZones } from './systems/traffic-light/components';
+import DataFeeds from './components/data-feeds/DataFeeds';
 
 // Import Portfolio Management System components
 import PortfolioLayout from './systems/portfolio/components/PortfolioLayout';
 import PortfolioDashboard from './systems/portfolio/components/PortfolioDashboard';
 import { Pipeline } from './systems/portfolio/components';
 import FinancialModeling from './components/FinancialModeling'; // Will migrate later
+import { FundParameters } from './systems/traffic-light/components';
 
 // Import Underwriting System components
 import UnderwritingLayout from './systems/underwriting/components/UnderwritingLayout';
@@ -42,10 +43,9 @@ const App: React.FC = () => {
 
             {/* Traffic Light System Routes */}
             <Route path="/traffic-light" element={<TrafficLightLayout />}>
-              <Route index element={<TrafficLightDashboard />} />
-              <Route path="zones" element={<TrafficLightZones />} />
-              <Route path="analysis" element={<CIODashboard />} />
-              <Route path="settings" element={<div className="p-4">Traffic Light System Settings</div>} />
+              <Route index element={<TrafficLightZones />} />
+              <Route path="forecasting" element={<div className="p-4">Suburb Transition Forecasting</div>} />
+              <Route path="data-feeds" element={<DataFeeds />} />
             </Route>
 
             {/* Portfolio Management System Routes */}
@@ -54,6 +54,7 @@ const App: React.FC = () => {
               <Route path="pipeline" element={<Pipeline />} />
               <Route path="deals" element={<div className="p-4">Deal Management</div>} />
               <Route path="analytics" element={<FinancialModeling />} />
+              <Route path="fund-parameters" element={<FundParameters />} />
               <Route path="settings" element={<div className="p-4">Portfolio System Settings</div>} />
             </Route>
 

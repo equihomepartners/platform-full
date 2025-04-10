@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { Brain, Map, LineChart, Settings } from 'lucide-react';
+import { Map, LineChart, Database } from 'lucide-react';
 
 const TrafficLightLayout: React.FC = () => {
   const location = useLocation();
-  
+
   const tabs = [
-    { name: 'Dashboard', path: '/traffic-light', icon: <Brain className="h-5 w-5" /> },
-    { name: 'Zones', path: '/traffic-light/zones', icon: <Map className="h-5 w-5" /> },
-    { name: 'Analysis', path: '/traffic-light/analysis', icon: <LineChart className="h-5 w-5" /> },
-    { name: 'Settings', path: '/traffic-light/settings', icon: <Settings className="h-5 w-5" /> },
+    { name: 'Zones', path: '/traffic-light', icon: <Map className="h-5 w-5" /> },
+    { name: 'Suburb Forecasting', path: '/traffic-light/forecasting', icon: <LineChart className="h-5 w-5" /> },
+    { name: 'Data Feeds', path: '/traffic-light/data-feeds', icon: <Database className="h-5 w-5" /> },
   ];
 
   return (
@@ -22,14 +21,14 @@ const TrafficLightLayout: React.FC = () => {
               Market analysis and opportunity identification
             </p>
           </div>
-          <Link 
+          <Link
             to="/"
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200"
           >
             Back to Home
           </Link>
         </div>
-        
+
         <div className="mt-6">
           <div className="sm:hidden">
             <label htmlFor="tabs" className="sr-only">Select a tab</label>

@@ -397,10 +397,10 @@ const calculatePortfolioImpact = ({
 
   const currentIRR = 16.61; // From Fund Dashboard
   const targetIRR = 24.2;   // Future target
-  
+
   // Calculate blended IRR properly
   const blendedIRR = (
-    (currentIRR * (deployedPercentage/100)) + 
+    (currentIRR * (deployedPercentage/100)) +
     (targetIRR * (remainingPercentage/100))
   ).toFixed(1);
 
@@ -410,7 +410,7 @@ const calculatePortfolioImpact = ({
     blendedIRR: Number(blendedIRR),
     irrImprovement: (Number(blendedIRR) - currentIRR).toFixed(1),
     portfolioMix: {
-      current: { 
+      current: {
         green: 62,    // Based on actual loan distribution
         orange: 38,   // Based on actual loan distribution
         red: 0        // Based on actual loan distribution
@@ -437,7 +437,7 @@ const calculatePortfolioImpact = ({
 
 const FundParameters: React.FC = () => {
   // Use the store for fund parameters
-  const { 
+  const {
     interestRate, maxLoanSize, maxLTV, maxCombinedLTV, targetIRR,
     minPropertyValue, maxPropertyValue, maxSuburbExposure,
     weeklyApprovalTarget, remainingAllocation, zoneAllocation,
@@ -501,7 +501,7 @@ const FundParameters: React.FC = () => {
   const applyPreset = (presetKey: string) => {
     const preset = presets[presetKey];
     setSelectedPreset(presetKey);
-    
+
     if (presetKey === 'custom') return;
 
     // Update all parameters based on preset
@@ -511,7 +511,7 @@ const FundParameters: React.FC = () => {
     setParameter('maxSuburbExposure', preset.parameters.riskParameters.maxSuburbConcentration);
     setParameter('targetIRR', preset.targetReturn);
     setParameter('interestRate', preset.parameters.loanParameters.baseRate || 5.5);
-    
+
     // Update zone allocations
     Object.entries(preset.parameters.zoneAllocation).forEach(([zone, value]) => {
       setZoneAllocation(zone as keyof typeof preset.parameters.zoneAllocation, value);
@@ -541,50 +541,50 @@ const FundParameters: React.FC = () => {
 
   // Update the suburb exposure data to match actual portfolio distribution
   const suburbExposure = [
-    { 
-      name: 'Neutral Bay', 
+    {
+      name: 'Neutral Bay',
       exposure: 12.6, // Actual percentage from portfolio
       trend: 'stable',
       value: 630000 // 12.6% of $5M deployed
     },
-    { 
-      name: 'Bronte', 
+    {
+      name: 'Bronte',
       exposure: 9.7,
       trend: 'stable',
       value: 485000
     },
-    { 
-      name: 'Freshwater', 
+    {
+      name: 'Freshwater',
       exposure: 15.5,
       trend: 'stable',
       value: 775000
     },
     {
-      name: 'Willoughby', 
+      name: 'Willoughby',
       exposure: 14.6,
       trend: 'stable',
       value: 730000
     },
     {
-      name: 'Pymble', 
+      name: 'Pymble',
       exposure: 12.6,
       trend: 'stable',
       value: 630000
     },
     {
-      name: 'Beecroft', 
+      name: 'Beecroft',
       exposure: 12.6,
       trend: 'stable',
       value: 630000
     },
     {
-      name: 'Mosman', 
+      name: 'Mosman',
       exposure: 9.7,
       trend: 'stable',
       value: 485000
     },
     {
-      name: 'Randwick', 
+      name: 'Randwick',
       exposure: 12.6,
       trend: 'stable',
       value: 630000
@@ -615,12 +615,12 @@ const FundParameters: React.FC = () => {
     const remaining = 100 - value;
     const otherZones = Object.keys(zoneAllocation).filter(k => k !== zone) as Array<'green' | 'orange' | 'red'>;
     const oldSum = otherZones.reduce((sum, key) => sum + zoneAllocation[key], 0);
-    
+
     otherZones.forEach(key => {
       const newValue = oldSum > 0 ? Math.round((zoneAllocation[key] / oldSum) * remaining) : 0;
       setZoneAllocation(key, newValue);
     });
-    
+
     setZoneAllocation(zone, value);
   };
 
@@ -681,28 +681,10 @@ const FundParameters: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Control Tabs */}
-      <Tabs defaultValue="underwriting" className="bg-white rounded-lg shadow-sm p-6">
-        <TabsList className="grid grid-cols-4 gap-4 mb-6">
-          <TabsTrigger value="underwriting">
-            <Shield className="h-4 w-4 mr-2" />
-            Underwriting
-          </TabsTrigger>
-          <TabsTrigger value="ml-controls">
-            <Brain className="h-4 w-4 mr-2" />
-            ML Controls
-          </TabsTrigger>
-          <TabsTrigger value="data-config">
-            <Database className="h-4 w-4 mr-2" />
-            Data Configuration
-          </TabsTrigger>
-          <TabsTrigger value="system-settings">
-            <Settings className="h-4 w-4 mr-2" />
-            System Settings
-          </TabsTrigger>
-        </TabsList>
+      {/* Main Control Section */}
+      <div className="bg-white rounded-lg shadow-sm p-6">
 
-        <TabsContent value="underwriting">
+
           {/* Fund Overview */}
           <div className="bg-white rounded-lg p-6 mb-6">
             <div className="flex justify-between items-start mb-6">
@@ -712,8 +694,8 @@ const FundParameters: React.FC = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <div className={`px-3 py-1 rounded-full text-sm font-medium
-                  ${fundInfo.status === 'active' ? 'bg-green-100 text-green-800' : 
-                    fundInfo.status === 'pending' ? 'bg-yellow-100 text-yellow-800' : 
+                  ${fundInfo.status === 'active' ? 'bg-green-100 text-green-800' :
+                    fundInfo.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
                     'bg-gray-100 text-gray-800'}
                 `}>
                   {fundInfo.status.charAt(0).toUpperCase() + fundInfo.status.slice(1)}
@@ -800,18 +782,18 @@ const FundParameters: React.FC = () => {
                       </h3>
                     </div>
                     <div className={`px-2 py-1 rounded-full text-xs font-medium
-                      ${selectedPreset === key ? 
-                        key === 'aiRecommended' ? 'bg-blue-100 text-blue-700' : 'bg-indigo-100 text-indigo-700' 
+                      ${selectedPreset === key ?
+                        key === 'aiRecommended' ? 'bg-blue-100 text-blue-700' : 'bg-indigo-100 text-indigo-700'
                         : 'bg-gray-100 text-gray-700'}
                     `}>
                       {selectedPreset === key ? 'Active' : 'Select'}
                     </div>
                   </div>
-                  
+
                   <p className={`text-sm mb-2 ${key === 'aiRecommended' ? 'text-blue-700' : 'text-gray-600'}`}>
                     {preset.description}
                   </p>
-                  
+
                   <div className="space-y-1 text-sm">
                     <div className="flex justify-between">
                       <span>Target Return</span>
@@ -1098,7 +1080,7 @@ const FundParameters: React.FC = () => {
                     <span>{((fundInfo.deployed / fundInfo.size) * 100).toFixed(0)}%</span>
                   </div>
                   <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className="h-full bg-indigo-600 rounded-full transition-all duration-500"
                       style={{ width: `${(fundInfo.deployed / fundInfo.size) * 100}%` }}
                     />
@@ -1116,14 +1098,14 @@ const FundParameters: React.FC = () => {
                   <Brain className="h-6 w-6 text-blue-600 mr-2" />
                   <h3 className="text-lg font-semibold text-blue-900">AI Recommendations</h3>
                 </div>
-                <button 
+                <button
                   className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                   onClick={() => applyPreset('aiRecommended')}
                 >
                   Apply AI Settings
                 </button>
               </div>
-              
+
               {selectedPreset === 'aiRecommended' ? (
                 <div className="text-sm text-blue-700">
                   <p className="mb-2">ML-Optimized Market Positioning:</p>
@@ -1158,7 +1140,7 @@ const FundParameters: React.FC = () => {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <h4 className="font-medium text-blue-800">Portfolio Enhancement</h4>
                     <ul className="space-y-1 text-sm text-blue-700">
@@ -1172,7 +1154,7 @@ const FundParameters: React.FC = () => {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <h4 className="font-medium text-blue-800">Return Potential</h4>
                     <ul className="space-y-1 text-sm text-blue-700">
@@ -1224,8 +1206,8 @@ const FundParameters: React.FC = () => {
                       </span>
                     </div>
                     <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-green-500 rounded-full transition-all duration-500" 
+                      <div
+                        className="h-full bg-green-500 rounded-full transition-all duration-500"
                         style={{ width: `${((16.61 * 0.1) + (presets[selectedPreset].targetReturn * 0.9)) / 25 * 100}%` }}
                       />
                     </div>
@@ -1365,8 +1347,8 @@ const FundParameters: React.FC = () => {
                   <span className="font-medium">High Impact Potential:</span>
                 </div>
                 <p className="mt-1">
-                  With 90% of the fund ($45M) still available for deployment, current parameter adjustments 
-                  will have a significant impact on the final portfolio composition and returns. These settings 
+                  With 90% of the fund ($45M) still available for deployment, current parameter adjustments
+                  will have a significant impact on the final portfolio composition and returns. These settings
                   will guide the majority of our future investments.
                 </p>
               </div>
@@ -1379,7 +1361,7 @@ const FundParameters: React.FC = () => {
               <Target className="h-5 w-5 text-indigo-600 mr-2" />
               Geographic Concentration Analysis
             </h3>
-            
+
             <div className="grid grid-cols-3 gap-6">
               {/* Current Exposure */}
               <div>
@@ -1401,7 +1383,7 @@ const FundParameters: React.FC = () => {
                         </div>
                       </div>
                       <div className="mt-2 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                        <div 
+                        <div
                           className={`h-full rounded-full ${
                             suburb.exposure > 10 ? 'bg-orange-500' : 'bg-green-500'
                           }`}
@@ -1494,7 +1476,7 @@ const FundParameters: React.FC = () => {
 
                   <div className="pt-4 border-t border-gray-200">
                     <div className="text-xs text-gray-600">
-                      ML Recommendation: Current geographic distribution shows concentration 
+                      ML Recommendation: Current geographic distribution shows concentration
                       in premium North Shore and Eastern Suburbs locations. With $45M remaining allocation, recommend:
                       1. Maximum 15% exposure per suburb going forward
                       2. Maintain focus on premium suburbs while considering emerging areas
@@ -1515,11 +1497,11 @@ const FundParameters: React.FC = () => {
                 <Brain className="h-5 w-5 text-indigo-600 mr-2" />
                 Model Parameters
               </h3>
-              
+
               {/* Confidence Controls */}
               <div>
                 <label className="text-sm font-medium">Confidence Threshold</label>
-                <Slider 
+                <Slider
                   value={[mlParameters.confidenceThreshold]}
                   max={100}
                   min={50}

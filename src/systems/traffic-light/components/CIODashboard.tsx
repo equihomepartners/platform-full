@@ -4,7 +4,7 @@ import { Info, X } from 'lucide-react';
 import TrafficLightZones from './TrafficLightZones';
 import FrontrunSuburbs from './FrontrunSuburbs';
 import FundParameters from './FundParameters';
-import DataFeeds from '../data-feeds/DataFeeds';
+import DataFeeds from '../../../components/data-feeds/DataFeeds';
 
 const CIODashboard: React.FC = () => {
   const [showInfo, setShowInfo] = useState(false);
@@ -25,8 +25,8 @@ const CIODashboard: React.FC = () => {
           </span>
         </div>
         <p className="text-gray-600 text-xl mt-2 mb-4">Control center for our AI/ML underwriting system</p>
-        
-        <button 
+
+        <button
           onClick={() => setShowInfo(true)}
           className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg border border-blue-200 transition-colors"
         >
@@ -36,7 +36,7 @@ const CIODashboard: React.FC = () => {
       </div>
 
       {showInfo && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
           onClick={handleBackdropClick}
         >
@@ -44,7 +44,7 @@ const CIODashboard: React.FC = () => {
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-gray-900">CIO Dashboard Overview</h2>
-                <button 
+                <button
                   onClick={() => setShowInfo(false)}
                   className="p-1 hover:bg-gray-100 rounded-full"
                 >
@@ -52,23 +52,23 @@ const CIODashboard: React.FC = () => {
                 </button>
               </div>
             </div>
-            
+
             <div className="p-6 space-y-8">
               <div>
                 <h3 className="text-xl font-semibold text-blue-900 mb-4">Fund Parameters</h3>
                 <div className="space-y-6 text-gray-600">
                   <div>
                     <p className="mb-4">
-                      The Fund Parameters section serves as the primary control interface for the fund's investment 
-                      strategy and risk management framework. These parameters directly influence the AI/ML underwriting 
+                      The Fund Parameters section serves as the primary control interface for the fund's investment
+                      strategy and risk management framework. These parameters directly influence the AI/ML underwriting
                       system's decision-making process and portfolio construction methodology.
                     </p>
-                    
+
                     <div className="bg-blue-50 p-4 rounded-lg mb-6">
                       <h4 className="font-medium text-blue-900 mb-2">Strategic Investment Control</h4>
                       <p className="text-blue-800">
-                        Investment strategy control enables precise calibration of risk-return parameters, geographic 
-                        exposure limits, and portfolio composition targets. This granular control ensures the fund's 
+                        Investment strategy control enables precise calibration of risk-return parameters, geographic
+                        exposure limits, and portfolio composition targets. This granular control ensures the fund's
                         deployment aligns with market conditions while maintaining optimal risk-adjusted returns.
                       </p>
                     </div>
@@ -77,7 +77,7 @@ const CIODashboard: React.FC = () => {
                       <div>
                         <h4 className="font-medium text-gray-900 mb-3">Investment Strategy Presets</h4>
                         <p className="mb-3">Each preset represents a comprehensive investment approach with specific risk-return characteristics:</p>
-                        
+
                         <div className="space-y-4 pl-4">
                           <div>
                             <h5 className="font-medium text-gray-800">Premium Suburbs Strategy (Lower Risk)</h5>
@@ -127,19 +127,19 @@ const CIODashboard: React.FC = () => {
                         </p>
                         <ul className="list-disc pl-5 space-y-2">
                           <li>
-                            <span className="font-medium">Underwriting Framework:</span> Configures property valuation 
+                            <span className="font-medium">Underwriting Framework:</span> Configures property valuation
                             thresholds, risk assessment criteria, and approval parameters
                           </li>
                           <li>
-                            <span className="font-medium">Risk Controls:</span> Establishes LTV limits, concentration 
+                            <span className="font-medium">Risk Controls:</span> Establishes LTV limits, concentration
                             thresholds, and exposure caps across different market segments
                           </li>
                           <li>
-                            <span className="font-medium">Deal Prioritization:</span> Sets deal scoring criteria and 
+                            <span className="font-medium">Deal Prioritization:</span> Sets deal scoring criteria and
                             pipeline management priorities based on strategy objectives
                           </li>
                           <li>
-                            <span className="font-medium">Portfolio Construction:</span> Defines target allocations 
+                            <span className="font-medium">Portfolio Construction:</span> Defines target allocations
                             across geographic zones and property segments
                           </li>
                         </ul>

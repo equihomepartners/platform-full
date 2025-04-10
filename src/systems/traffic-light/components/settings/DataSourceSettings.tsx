@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Database, Plus, RefreshCw, AlertTriangle, CheckCircle, Clock, Settings, Trash2, Save } from 'lucide-react';
+import { Database, Plus, RefreshCw, AlertTriangle, CheckCircle, Clock, Settings, Trash2, Save, Brain } from 'lucide-react';
 import { useMLData } from '../../context/MLDataContext';
 
 interface DataSource {
@@ -20,7 +20,7 @@ const DataSourceSettings: React.FC = () => {
   const [editingSource, setEditingSource] = useState<string | null>(null);
   const [saveLoading, setSaveLoading] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
-  
+
   // Initial data sources based on free government data
   const [dataSources, setDataSources] = useState<DataSource[]>([
     {
@@ -98,11 +98,11 @@ const DataSourceSettings: React.FC = () => {
   const handleAddSource = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaveLoading(true);
-    
+
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       // Add new source
       const newId = (dataSources.length + 1).toString();
       setDataSources(prev => [
@@ -114,7 +114,7 @@ const DataSourceSettings: React.FC = () => {
           ...newSource
         }
       ]);
-      
+
       // Reset form and close modal
       setNewSource({
         name: '',
@@ -293,7 +293,7 @@ const DataSourceSettings: React.FC = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-md w-full">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Add Data Source</h3>
-            
+
             <form onSubmit={handleAddSource} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -309,7 +309,7 @@ const DataSourceSettings: React.FC = () => {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-1">
                   Type
@@ -327,7 +327,7 @@ const DataSourceSettings: React.FC = () => {
                   <option value="file">File Import</option>
                 </select>
               </div>
-              
+
               <div>
                 <label htmlFor="endpoint" className="block text-sm font-medium text-gray-700 mb-1">
                   Endpoint URL
@@ -341,7 +341,7 @@ const DataSourceSettings: React.FC = () => {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="apiKey" className="block text-sm font-medium text-gray-700 mb-1">
                   API Key (if required)
@@ -355,7 +355,7 @@ const DataSourceSettings: React.FC = () => {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="frequency" className="block text-sm font-medium text-gray-700 mb-1">
                   Update Frequency
@@ -374,7 +374,7 @@ const DataSourceSettings: React.FC = () => {
                   <option value="Quarterly">Quarterly</option>
                 </select>
               </div>
-              
+
               <div>
                 <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
                   Description
@@ -388,7 +388,7 @@ const DataSourceSettings: React.FC = () => {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md"
                 />
               </div>
-              
+
               <div className="flex justify-end space-x-3 pt-4">
                 <button
                   type="button"
@@ -420,7 +420,7 @@ const DataSourceSettings: React.FC = () => {
       {/* Data Flow Diagram */}
       <div className="bg-white rounded-lg border border-gray-200 p-4 mt-6">
         <h3 className="font-semibold text-gray-900 mb-4">Data Flow Architecture</h3>
-        
+
         <div className="relative">
           {/* Data Flow Steps */}
           <div className="grid grid-cols-4 gap-6">
@@ -500,7 +500,7 @@ const DataSourceSettings: React.FC = () => {
                 ))}
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-medium text-gray-900 mb-2">Update Schedule</h4>
             <ul className="text-sm space-y-1">

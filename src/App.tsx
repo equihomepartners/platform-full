@@ -1,20 +1,25 @@
 import React from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import InvestmentGrid from './components/InvestmentGrid';
-import DealAnalysis from './components/DealAnalysis';
-import FundDashboard from './components/fund/FundDashboard';
-import { CIODashboard } from './components/cio';
-import UnderwriteDemo from './components/UnderwriteDemo';
+
+// Import from shared components
+import { Navbar, Footer } from './shared/components';
+import HelpButton from './components/HelpButton'; // Will migrate later
+
+// Import from Traffic Light System
+import { CIODashboard } from './systems/traffic-light/components';
+
+// Import from Portfolio Management System
+import { FundDashboard, Pipeline } from './systems/portfolio/components';
+import InvestmentGrid from './components/InvestmentGrid'; // Will migrate later
+import DealAnalysis from './components/DealAnalysis'; // Will migrate later
+import FinancialModeling from './components/FinancialModeling'; // Will migrate later
+
+// Import from Underwriting System
+import { AssetReport } from './systems/underwriting/components';
+
+// Import remaining components (to be migrated or removed later)
 import WelcomeScreen from './components/WelcomeScreen';
 import ConfidentialityScreen from './components/ConfidentialityScreen';
-import HelpButton from './components/HelpButton';
-import AssetReport from './components/AssetReport';
-import Pipeline from './components/Pipeline';
-import FinancialModeling from './components/FinancialModeling';
-import PropTrackDemo from './components/PropTrackDemo';
-import GuidedDemo from './components/GuidedDemo';
 import DataFeeds from './components/data-feeds/DataFeeds';
 import PlatformGuide from './components/platform-guide/PlatformGuide';
 
@@ -28,8 +33,6 @@ const App: React.FC = () => {
         <Route path="/" element={<ConfidentialityScreen />} />
         <Route path="/welcome" element={<WelcomeScreen />} />
         <Route path="/asset-report" element={<AssetReport />} />
-        <Route path="/proptrack" element={<PropTrackDemo />} />
-        <Route path="/guided-demo" element={<GuidedDemo />} />
         <Route
           path="/*"
           element={
@@ -38,13 +41,28 @@ const App: React.FC = () => {
               <main className="py-12">
                 <Routes>
                   <Route path="/platform-guide" element={<PlatformGuide />} />
+
+                  {/* Traffic Light System Routes */}
                   <Route path="/cio" element={<CIODashboard />} />
-                  <Route path="/underwrite" element={<UnderwriteDemo />} />
+
+                  {/* Portfolio Management System Routes */}
                   <Route path="/pipeline" element={<Pipeline />} />
                   <Route path="/model" element={<FinancialModeling />} />
                   <Route path="/report" element={<FundDashboard />} />
                   <Route path="/loans" element={<InvestmentGrid />} />
                   <Route path="/deal/:id" element={<DealAnalysis />} />
+
+                  {/* Underwriting System Routes */}
+                  <Route path="/underwrite" element={
+                    <div className="p-8 text-center">
+                      <h2 className="text-2xl font-bold mb-4">Underwriting System</h2>
+                      <p className="text-gray-600 mb-8">
+                        The Underwriting System is ready for implementation. This placeholder will be replaced with the actual Underwriting System components.
+                      </p>
+                    </div>
+                  } />
+
+                  {/* Other Routes */}
                   <Route path="/data-feeds" element={<DataFeeds />} />
                   <Route path="*" element={<Navigate to="/platform-guide" replace />} />
                 </Routes>

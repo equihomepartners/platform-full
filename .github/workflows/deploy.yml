@@ -1,0 +1,42 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Build
+      run: npm run build
+      
+    # This is a placeholder for your actual deployment step
+    # You would replace this with your specific deployment logic
+    - name: Deploy
+      run: |
+        echo "Deploying application..."
+        # Add your deployment commands here
+        # For example, deploying to Vercel, Netlify, AWS, etc.
+        
+    - name: Notify deployment status
+      if: always()
+      run: |
+        if [ ${{ job.status }} == 'success' ]; then
+          echo "Deployment successful!"
+        else
+          echo "Deployment failed!"
+        fi

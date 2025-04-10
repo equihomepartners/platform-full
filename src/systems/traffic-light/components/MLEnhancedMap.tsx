@@ -1,13 +1,13 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import Map, { 
-  Source, 
-  Layer, 
+import Map, {
+  Source,
+  Layer,
   NavigationControl,
   CircleLayer,
   Popup
 } from 'react-map-gl';
-import { trafficLightZones, suburbCoordinates } from '../../data/zoneData';
-import { formatNumber } from '../../utils/formatters';
+import { trafficLightZones, suburbCoordinates } from '../../../data/zoneData';
+import { formatNumber } from '../../../shared/utils/formatters';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import type { MapLayerMouseEvent } from 'react-map-gl';
 
@@ -212,7 +212,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
 
   // Filter suburbs based on search and tab
   const filteredFeatures = suburbFeatures
-    .filter(f => 
+    .filter(f =>
       f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (selectedTab === 'all' || f.properties.zone === selectedTab)
     );
@@ -231,14 +231,14 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        
+
         {/* Zone Filter Tabs */}
         <div className="flex space-x-2">
           <button
             onClick={() => setSelectedTab('all')}
             className={`px-4 py-2 rounded-lg ${
-              selectedTab === 'all' 
-                ? 'bg-blue-100 text-blue-800' 
+              selectedTab === 'all'
+                ? 'bg-blue-100 text-blue-800'
                 : 'bg-gray-100 text-gray-600'
             }`}
           >
@@ -247,8 +247,8 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           <button
             onClick={() => setSelectedTab('green')}
             className={`px-4 py-2 rounded-lg ${
-              selectedTab === 'green' 
-                ? 'bg-green-100 text-green-800' 
+              selectedTab === 'green'
+                ? 'bg-green-100 text-green-800'
                 : 'bg-gray-100 text-gray-600'
             }`}
           >
@@ -257,8 +257,8 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           <button
             onClick={() => setSelectedTab('orange')}
             className={`px-4 py-2 rounded-lg ${
-              selectedTab === 'orange' 
-                ? 'bg-orange-100 text-orange-800' 
+              selectedTab === 'orange'
+                ? 'bg-orange-100 text-orange-800'
                 : 'bg-gray-100 text-gray-600'
             }`}
           >
@@ -267,8 +267,8 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           <button
             onClick={() => setSelectedTab('red')}
             className={`px-4 py-2 rounded-lg ${
-              selectedTab === 'red' 
-                ? 'bg-red-100 text-red-800' 
+              selectedTab === 'red'
+                ? 'bg-red-100 text-red-800'
                 : 'bg-gray-100 text-gray-600'
             }`}
           >
@@ -287,14 +287,14 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         <div className="bg-white rounded-lg border p-4">
           <div className="text-sm text-gray-600">Zone Distribution</div>
           <div className="flex space-x-2 mt-2">
-            <div className="flex-1 bg-green-100 rounded h-2" style={{ 
-              width: `${(filteredFeatures.filter(f => f.properties.zone === 'green').length / filteredFeatures.length) * 100}%` 
+            <div className="flex-1 bg-green-100 rounded h-2" style={{
+              width: `${(filteredFeatures.filter(f => f.properties.zone === 'green').length / filteredFeatures.length) * 100}%`
             }} />
-            <div className="flex-1 bg-orange-100 rounded h-2" style={{ 
-              width: `${(filteredFeatures.filter(f => f.properties.zone === 'orange').length / filteredFeatures.length) * 100}%` 
+            <div className="flex-1 bg-orange-100 rounded h-2" style={{
+              width: `${(filteredFeatures.filter(f => f.properties.zone === 'orange').length / filteredFeatures.length) * 100}%`
             }} />
-            <div className="flex-1 bg-red-100 rounded h-2" style={{ 
-              width: `${(filteredFeatures.filter(f => f.properties.zone === 'red').length / filteredFeatures.length) * 100}%` 
+            <div className="flex-1 bg-red-100 rounded h-2" style={{
+              width: `${(filteredFeatures.filter(f => f.properties.zone === 'red').length / filteredFeatures.length) * 100}%`
             }} />
           </div>
         </div>
@@ -328,8 +328,8 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           {/* Growth Corridor Layers */}
           {predictiveMode && corridorLayers.map((layer, index) => (
             <Source key={layer.id} {...layer.source}>
-              <Layer 
-                {...layer} 
+              <Layer
+                {...layer}
                 onClick={() => handleCorridorClick(growthCorridors[index].name)}
               />
             </Source>
@@ -418,4 +418,4 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   );
 };
 
-export default MLEnhancedMap; 
+export default MLEnhancedMap;

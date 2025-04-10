@@ -639,9 +639,9 @@ const FundParameters: React.FC = () => {
     }
   });
 
+  // Return a single div to avoid JSX fragment issues
   return (
-    <>
-      <div className="space-y-6">
+    <div className="space-y-6">
       {/* Header with System Status */}
       <div className="bg-white rounded-lg shadow-sm p-6">
         <div className="flex items-center justify-between mb-4">
@@ -1861,7 +1861,6 @@ const FundParameters: React.FC = () => {
         </div>
       </div>
     </div>
-    </>
   );
 };
 

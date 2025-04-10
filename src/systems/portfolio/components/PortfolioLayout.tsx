@@ -15,7 +15,7 @@ const PortfolioLayout: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
       <div className="mb-8">
         <div className="flex items-center justify-between">
           <div>
@@ -83,7 +83,7 @@ const PortfolioLayout: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white shadow rounded-lg p-6">
+      <div className="bg-white shadow rounded-lg p-6 min-h-[calc(100vh-250px)]">
         <Outlet />
       </div>
     </div>

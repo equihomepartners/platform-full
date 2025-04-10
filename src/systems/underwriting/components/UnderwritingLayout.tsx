@@ -4,7 +4,7 @@ import { FileCheck, FileText, Calculator, BarChart2, Settings } from 'lucide-rea
 
 const UnderwritingLayout: React.FC = () => {
   const location = useLocation();
-  
+
   const tabs = [
     { name: 'Dashboard', path: '/underwriting', icon: <FileCheck className="h-5 w-5" /> },
     { name: 'Applications', path: '/underwriting/applications', icon: <FileText className="h-5 w-5" /> },
@@ -14,7 +14,7 @@ const UnderwritingLayout: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
       <div className="mb-8">
         <div className="flex items-center justify-between">
           <div>
@@ -23,14 +23,14 @@ const UnderwritingLayout: React.FC = () => {
               Evaluate properties and homeowners
             </p>
           </div>
-          <Link 
+          <Link
             to="/"
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200"
           >
             Back to Home
           </Link>
         </div>
-        
+
         <div className="mt-6">
           <div className="sm:hidden">
             <label htmlFor="tabs" className="sr-only">Select a tab</label>
@@ -82,7 +82,7 @@ const UnderwritingLayout: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white shadow rounded-lg p-6">
+      <div className="bg-white shadow rounded-lg p-6 min-h-[calc(100vh-250px)]">
         <Outlet />
       </div>
     </div>

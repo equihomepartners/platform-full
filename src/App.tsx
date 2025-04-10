@@ -33,7 +33,7 @@ const App: React.FC = () => {
     <>
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
         <Navbar />
-        <main className="py-12">
+        <main className="py-6">
           <Routes>
             {/* Authentication Routes */}
             <Route path="/login" element={<ConfidentialityScreen />} />

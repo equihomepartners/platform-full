@@ -10,6 +10,7 @@ import HelpButton from './components/HelpButton'; // Will migrate later
 import TrafficLightLayout from './systems/traffic-light/components/TrafficLightLayout';
 import { TrafficLightZones } from './systems/traffic-light/components';
 import DataFeeds from './components/data-feeds/DataFeeds';
+import FrontrunSuburbs from './systems/traffic-light/components/FrontrunSuburbs';
 
 // Import Portfolio Management System components
 import PortfolioLayout from './systems/portfolio/components/PortfolioLayout';
@@ -44,7 +45,7 @@ const App: React.FC = () => {
             {/* Traffic Light System Routes */}
             <Route path="/traffic-light" element={<TrafficLightLayout />}>
               <Route index element={<TrafficLightZones />} />
-              <Route path="forecasting" element={<div className="p-4">Suburb Transition Forecasting</div>} />
+              <Route path="forecasting" element={<FrontrunSuburbs />} />
               <Route path="data-feeds" element={<DataFeeds />} />
             </Route>
 

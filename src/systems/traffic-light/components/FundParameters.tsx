@@ -1841,9 +1841,8 @@ const FundParameters: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="bg-white rounded-lg shadow-sm p-6">
+        {/* Action Panel */}
+        <div className="bg-white rounded-lg shadow-sm p-6 mt-6">
         {/* Action Panel */}
         <div className="flex justify-between items-center">
           <div className="space-y-1">

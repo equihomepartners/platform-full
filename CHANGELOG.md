@@ -75,6 +75,9 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Updated container classes to use full width
 - Added real suburb boundaries to Traffic Light System map using GeoJSON
 - Created comprehensive README for Traffic Light System with backend/ML requirements
+- Fixed map rendering to use only GeoJSON boundaries for suburbs
+- Improved polygon styling with better colors and opacity
+- Simplified map code by removing fallback to point data
 
 ## Next Steps
 

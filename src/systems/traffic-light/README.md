@@ -513,31 +513,90 @@ Example: The system is designed to expand to other cities, with scalable archite
 Feedback Loop Specificity:
 The feedback loop now specifies how it captures loan outcomes (e.g., default rates from the PMS) and uses them to improve both ML models and the LLM, ensuring continuous learning.
 Example: If green-zone suburbs show high default rates, the feedback loop triggers ML retraining and LLM fine-tuning to adjust zoning criteria.
-## Map Visualization
+## Frontend Implementation
+
+### Map Visualization
 
 The Traffic Light System includes a sophisticated map visualization component with the following features:
 
-### Suburb Boundaries
+#### Suburb Boundaries
 - Comprehensive GeoJSON data for all Sydney suburbs with accurate geographic boundaries
 - Classification of suburbs into green, orange, and red zones based on investment potential
 - Additional metadata for each suburb (postcode, population, median income, area, etc.)
 - Interactive popups with detailed suburb information
 
-### Layer Control
+#### Layer Control
 - Ability to switch between Suburbs and Postcodes views
 - Future support for additional data layers (e.g., infrastructure projects, transport accessibility)
 
-### User Experience
+#### User Experience
 - Loading indicator for map data
 - Map legend for zone colors
 - Filtering by zone type and search term
 - Responsive design for various screen sizes
 
-### Technical Implementation
+#### Technical Implementation
 - Uses Mapbox GL JS for high-performance map rendering
 - Optimized data files to meet GitHub size limitations
 - Efficient filtering and rendering of large datasets
 - Support for predictive mode with transition probabilities
+
+### API Integration
+
+The Traffic Light System is designed to integrate with backend APIs for real data. The frontend is currently using mock data but is prepared for API integration.
+
+#### API Services
+
+The following API services have been implemented:
+
+1. **Suburb API**
+   - `getSuburbClassifications`: Get classification for all suburbs
+   - `getSuburbAnalysis`: Get detailed analysis for a specific suburb
+   - `getComparableSuburbs`: Get comparable suburbs for a specific suburb
+   - `getMarketCycle`: Get market cycle position for a specific suburb
+
+2. **Risk API**
+   - `getRiskCorrelationMatrix`: Get risk correlation matrix
+
+3. **ML API**
+   - `getMLDecisionFactors`: Get ML decision factors for a specific suburb
+   - `getMLSystemStatus`: Get ML system status
+
+4. **Growth API**
+   - `getGrowthCorridors`: Get growth corridors
+
+5. **Integration API**
+   - `getUnderwritingIntegration`: Get underwriting integration status and metrics
+   - `getPortfolioSimulationIntegration`: Get portfolio simulation integration data
+
+#### API Integration Strategy
+
+The frontend is designed to work with both mock data and real API data:
+
+1. **Fallback Mechanism**: API services try to fetch data from the backend first, and fall back to mock data if the API call fails.
+
+2. **Data Conversion**: API responses are converted to match the existing data structures used by the frontend components.
+
+3. **TypeScript Interfaces**: All API responses have TypeScript interfaces defined to ensure type safety.
+
+4. **Placeholder UI**: UI components are designed to handle empty/loading states gracefully until real data is available.
+
+#### API Endpoints
+
+The following API endpoints are expected to be implemented by the backend:
+
+```
+GET /api/suburbs/classification
+GET /api/suburbs/analysis/{suburbName}
+GET /api/suburbs/comparable/{suburbName}
+GET /api/market/cycle/{suburbName}
+GET /api/risk/correlation
+GET /api/ml/decisions/{suburbName}
+GET /api/ml/system/status
+GET /api/growth/corridors
+GET /api/integration/underwriting
+GET /api/integration/portfolio
+```
 
 ## Additional Recommendations
 

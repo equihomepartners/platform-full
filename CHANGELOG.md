@@ -78,6 +78,9 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Fixed map rendering to use only GeoJSON boundaries for suburbs
 - Improved polygon styling with better colors and opacity
 - Simplified map code by removing fallback to point data
+- Added layer control UI for switching between Suburbs and Postcodes
+- Expanded suburb zone classifications with more Sydney suburbs
+- Added placeholder for future Postcode layer
 
 ## Next Steps
 

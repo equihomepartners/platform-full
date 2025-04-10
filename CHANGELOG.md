@@ -146,6 +146,15 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Documented how the Traffic Light System integrates with Portfolio Management and Underwriting systems
 - Prepared the system for future backend and ML integration
 
+### Documentation Reorganization - 2024-04-10
+- Reorganized all Traffic Light System documentation into a structured folder system
+- Created a dedicated docs folder with architecture, API, and development sections
+- Moved API integration documentation to the API docs folder
+- Created comprehensive documentation for system architecture, data flow, and ML model
+- Added detailed API endpoints and webhooks documentation
+- Created development guidelines and component structure documentation
+- Simplified the main README with links to the detailed documentation
+
 ## Next Steps
 
 ### Immediate Tasks

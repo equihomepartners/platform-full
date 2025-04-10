@@ -82,6 +82,18 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Expanded suburb zone classifications with more Sydney suburbs
 - Added placeholder for future Postcode layer
 
+### Traffic Light System Map Enhancement - 2024-04-10
+- Implemented comprehensive Sydney suburb boundaries using GeoJSON data
+- Added proper zone classifications (green, orange, red) for all Sydney suburbs
+- Created optimized data files for suburb boundaries and postcode placeholders
+- Added layer control UI for switching between Suburbs and Postcodes views
+- Implemented loading indicator for map to improve user experience
+- Enhanced suburb popups with additional metadata (postcode, population, median income, area)
+- Added map legend for zone colors to improve usability
+- Improved stats display with better filtering information
+- Solved GitHub file size limitations by processing large datasets locally
+- Created feature branch for clean implementation without large temporary files
+
 ## Next Steps
 
 ### Immediate Tasks

@@ -71,6 +71,8 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Removed subtabs from Fund Parameters (Underwriting, ML Controls, Data Config, System Settings)
 - Added FrontrunSuburbs component to the Forecasting tab
 - Fixed JSX syntax issues in FundParameters component
+- Made application containers full screen with minimum height
+- Updated container classes to use full width
 
 ## Next Steps
 

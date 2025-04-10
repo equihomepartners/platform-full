@@ -69,6 +69,8 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Updated Traffic Light tabs to focus on Zones, Forecasting, and Data Feeds
 - Removed Dashboard tab from Traffic Light
 - Removed subtabs from Fund Parameters (Underwriting, ML Controls, Data Config, System Settings)
+- Added FrontrunSuburbs component to the Forecasting tab
+- Fixed JSX syntax issues in FundParameters component
 
 ## Next Steps
 

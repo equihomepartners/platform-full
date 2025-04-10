@@ -8,8 +8,9 @@ import Map, {
 } from 'react-map-gl';
 import { Badge } from '../../../components/ui/badge';
 import { trafficLightZones, suburbCoordinates } from '../../../data/zoneData';
-import sydneySuburbBoundaries, { suburbZones } from '../../../data/sydneySuburbBoundaries';
+import sydneySuburbBoundaries from '../../../data/sydneySuburbBoundaries';
 import sydneyPostcodeBoundaries from '../../../data/sydneyPostcodeBoundaries';
+import suburbScores, { zoneStats } from '../../../data/suburbScores';
 import { formatNumber } from '../../../shared/utils/formatters';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import type { MapLayerMouseEvent } from 'react-map-gl';
@@ -37,13 +38,23 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
     console.log('Sydney Postcodes:', sydneyPostcodeBoundaries.features.length);
   }, []);
 
-  // Use suburb boundaries from GeoJSON with added transition probability for predictive mode
+  // Use suburb boundaries from GeoJSON with added scores and confidence levels
   const suburbFeatures = sydneySuburbBoundaries.features.map(feature => {
+    const suburbName = feature.properties?.nsw_loca_2;
+    const scoreData = suburbScores[suburbName] || {
+      score: Math.floor(Math.random() * 100),
+      confidence: Math.floor(Math.random() * 100),
+      zone: Math.random() > 0.66 ? 'green' : (Math.random() > 0.5 ? 'yellow' : 'red')
+    };
+
     return {
       ...feature,
       properties: {
         ...feature.properties,
-        transitionProbability: Math.random() // Simulated probability for demo
+        score: scoreData.score,
+        confidence: scoreData.confidence,
+        zone: scoreData.zone,
+        transitionProbability: predictiveMode ? scoreData.confidence / 100 : 0 // Use confidence for predictive mode
       }
     };
   });
@@ -125,7 +136,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
     }
   };
 
-  // Style for polygon features (suburb boundaries)
+  // Style for polygon features (suburb boundaries) with gradient color scheme based on score and confidence
   const polygonLayerStyle = {
     id: 'suburb-polygons',
     type: 'fill',
@@ -135,16 +146,39 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         'interpolate',
         ['linear'],
         ['get', 'transitionProbability'],
-        0.3, '#ef4444',
-        0.6, '#f97316',
-        0.9, '#22c55e'
+        0.3, '#ef4444', // Low confidence - red
+        0.5, '#f97316', // Medium confidence - orange
+        0.7, '#facc15', // Higher confidence - yellow
+        0.9, '#22c55e'  // High confidence - green
       ] : [
-        'match',
-        ['get', 'zone'],
-        'green', '#22c55e',
-        'orange', '#f97316',
-        'red', '#ef4444',
-        '#888888' // Default color for unclassified suburbs
+        'case',
+        ['==', ['get', 'zone'], 'green'],
+        [
+          'interpolate',
+          ['linear'],
+          ['get', 'score'],
+          75, '#4ade80', // Light green for lower green scores
+          85, '#22c55e', // Medium green
+          95, '#16a34a'  // Dark green for premium suburbs
+        ],
+        ['==', ['get', 'zone'], 'yellow'],
+        [
+          'interpolate',
+          ['linear'],
+          ['get', 'score'],
+          50, '#fde047', // Light yellow for lower yellow scores
+          60, '#facc15', // Medium yellow
+          70, '#f97316'  // Orange for higher yellow scores
+        ],
+        // Red zone with gradient
+        [
+          'interpolate',
+          ['linear'],
+          ['get', 'score'],
+          0, '#b91c1c',  // Dark red for very low scores
+          25, '#ef4444', // Medium red
+          45, '#f87171'  // Light red for higher red scores
+        ]
       ],
       'fill-opacity': 0.7
     }

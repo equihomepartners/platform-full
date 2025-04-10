@@ -104,6 +104,16 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Prepared frontend components for real data integration
 - Defined clear API endpoints for backend implementation
 
+### ML Model Simplification - 2024-04-10
+- Simplified ML model to a single version (1.0) with today's date (April 10, 2025)
+- Created a barebones version with general APIs to data sources
+- Reduced data points to a more realistic 250K for initial version
+- Added weekly update schedule for ML model data
+- Implemented API simulation for fetching model information
+- Updated model accuracy metrics to reflect early-stage ML system
+- Added data source documentation to ML model information
+- Ensured consistency across all ML-related components
+
 ## Next Steps
 
 ### Immediate Tasks

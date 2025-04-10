@@ -6,8 +6,10 @@ import Map, {
   CircleLayer,
   Popup
 } from 'react-map-gl';
+import { Badge } from '../../../components/ui/badge';
 import { trafficLightZones, suburbCoordinates } from '../../../data/zoneData';
 import sydneySuburbBoundaries, { suburbZones } from '../../../data/sydneySuburbBoundaries';
+import sydneyPostcodeBoundaries from '../../../data/sydneyPostcodeBoundaries';
 import { formatNumber } from '../../../shared/utils/formatters';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import type { MapLayerMouseEvent } from 'react-map-gl';
@@ -24,16 +26,30 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTab, setSelectedTab] = useState('all');
   const [selectedLayer, setSelectedLayer] = useState('suburbs'); // 'suburbs', 'postcodes', etc.
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
 
   // Debug logs
   useEffect(() => {
     console.log('Mapbox Token:', MAPBOX_TOKEN);
     console.log('Traffic Light Zones:', trafficLightZones);
     console.log('Suburb Coordinates:', suburbCoordinates);
+    console.log('Sydney Suburbs:', sydneySuburbBoundaries.features.length);
+    console.log('Sydney Postcodes:', sydneyPostcodeBoundaries.features.length);
   }, []);
 
   // Use suburb boundaries from GeoJSON with added transition probability for predictive mode
   const suburbFeatures = sydneySuburbBoundaries.features.map(feature => {
+    return {
+      ...feature,
+      properties: {
+        ...feature.properties,
+        transitionProbability: Math.random() // Simulated probability for demo
+      }
+    };
+  });
+
+  // Use postcode boundaries from GeoJSON (currently empty, for future use)
+  const postcodeFeatures = sydneyPostcodeBoundaries.features.map(feature => {
     return {
       ...feature,
       properties: {
@@ -191,12 +207,20 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         const longitude = event.lngLat.lng;
         const latitude = event.lngLat.lat;
 
-        setPopupInfo({
+        // Extract additional metadata from feature properties
+        const popupData = {
           suburb: name,
           longitude,
           latitude,
-          zone: feature.properties?.zone
-        });
+          zone: feature.properties?.zone,
+          postcode: feature.properties?.postcode,
+          population: feature.properties?.population,
+          median_income: feature.properties?.median_income,
+          area_sqkm: feature.properties?.area_sqkm,
+          local_govt: feature.properties?.local_govt
+        };
+
+        setPopupInfo(popupData);
         onSuburbSelect(name);
       }
     }
@@ -208,6 +232,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
 
   const handleLoad = (event: any) => {
     console.log('Map loaded:', event);
+    setIsMapLoaded(true);
   };
 
   if (!MAPBOX_TOKEN) {
@@ -215,12 +240,16 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
     return <div>Error: No Mapbox token</div>;
   }
 
-  // Filter suburbs based on search and tab
-  const filteredFeatures = suburbFeatures
-    .filter(f =>
-      f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (selectedTab === 'all' || f.properties.zone === selectedTab)
-    );
+  // Filter features based on search, tab, and selected layer
+  const filteredFeatures = selectedLayer === 'suburbs'
+    ? suburbFeatures.filter(f =>
+        f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (selectedTab === 'all' || f.properties.zone === selectedTab)
+      )
+    : postcodeFeatures.filter(f =>
+        (f.properties.name || '').toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (selectedTab === 'all' || f.properties.zone === selectedTab)
+      );
 
   return (
     <div className="space-y-4">
@@ -282,12 +311,50 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         </div>
       </div>
 
+      {/* Layer Control */}
+      <div className="mb-4">
+        <h3 className="text-sm font-medium mb-2">Map Layers</h3>
+        <div className="bg-white rounded-lg border shadow-sm p-2 flex space-x-2">
+          <button
+            className={`px-4 py-2 rounded-md transition-colors ${selectedLayer === 'suburbs' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100'}`}
+            onClick={() => setSelectedLayer('suburbs')}
+          >
+            <span className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              Suburbs
+            </span>
+          </button>
+          <button
+            className={`px-4 py-2 rounded-md transition-colors ${selectedLayer === 'postcodes' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100 opacity-70'}`}
+            onClick={() => setSelectedLayer('postcodes')}
+            disabled={true}
+            title="Coming soon"
+          >
+            <span className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+              </svg>
+              Postcodes
+              <span className="ml-1 text-xs bg-gray-200 text-gray-700 px-1 rounded">Soon</span>
+            </span>
+          </button>
+        </div>
+      </div>
+
       {/* Quick Stats */}
       <div className="grid grid-cols-4 gap-4">
         <div className="bg-white rounded-lg border p-4">
-          <div className="text-sm text-gray-600">Total Suburbs</div>
+          <div className="text-sm text-gray-600">
+            {selectedLayer === 'suburbs' ? 'Total Suburbs' : 'Total Postcodes'}
+          </div>
           <div className="text-2xl font-bold">{filteredFeatures.length}</div>
-          <div className="text-xs text-gray-500">Currently visible</div>
+          <div className="text-xs text-gray-500">
+            {searchTerm ? `Matching "${searchTerm}"` : 'Currently visible'}
+            {selectedTab !== 'all' && ` in ${selectedTab} zone`}
+          </div>
         </div>
         <div className="bg-white rounded-lg border p-4">
           <div className="text-sm text-gray-600">Zone Distribution</div>
@@ -315,27 +382,19 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         </div>
       </div>
 
-      {/* Layer Control */}
-      <div className="mb-4 flex space-x-2">
-        <div className="bg-white rounded-lg border p-2 flex">
-          <button
-            className={`px-4 py-1 rounded-md ${selectedLayer === 'suburbs' ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:bg-gray-100'}`}
-            onClick={() => setSelectedLayer('suburbs')}
-          >
-            Suburbs
-          </button>
-          <button
-            className={`px-4 py-1 rounded-md ${selectedLayer === 'postcodes' ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:bg-gray-100'}`}
-            onClick={() => setSelectedLayer('postcodes')}
-            disabled={true}
-          >
-            Postcodes (Coming Soon)
-          </button>
-        </div>
-      </div>
+
 
       {/* Map Container */}
-      <div className="h-[500px] rounded-lg overflow-hidden">
+      <div className="h-[500px] rounded-lg overflow-hidden relative">
+        {/* Loading Indicator */}
+        {!isMapLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-70 z-10">
+            <div className="flex flex-col items-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700 mb-2"></div>
+              <p className="text-sm text-gray-700">Loading map data...</p>
+            </div>
+          </div>
+        )}
         <Map
           initialViewState={{
             latitude: -33.8688,
@@ -366,10 +425,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
               type="geojson"
               data={{
                 type: 'FeatureCollection',
-                features: suburbFeatures.filter(f =>
-                  (selectedTab === 'all' || f.properties.zone === selectedTab) &&
-                  (!searchTerm || f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()))
-                )
+                features: filteredFeatures
               }}
             >
               <Layer {...polygonLayerStyle} />
@@ -384,10 +440,11 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
               type="geojson"
               data={{
                 type: 'FeatureCollection',
-                features: []
+                features: filteredFeatures
               }}
             >
-              {/* Placeholder for future postcode layers */}
+              <Layer {...polygonLayerStyle} />
+              <Layer {...polygonOutlineStyle} />
             </Source>
           )}
 
@@ -416,9 +473,50 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
                   </div>
                 </div>
               ) : (
-                <div className="p-2">
+                <div className="p-2 max-w-xs">
                   <h3 className="font-semibold text-lg">{popupInfo.suburb}</h3>
-                  <p className="text-sm text-gray-600">
+
+                  {/* Zone Badge */}
+                  <div className="mt-2">
+                    <Badge
+                      className={`${popupInfo.zone === 'green' ? 'bg-green-500' : popupInfo.zone === 'orange' ? 'bg-orange-500' : 'bg-red-500'}`}
+                    >
+                      {popupInfo.zone === 'green' ? 'Green Zone' : popupInfo.zone === 'orange' ? 'Orange Zone' : 'Red Zone'}
+                    </Badge>
+                  </div>
+
+                  {/* Additional Metadata */}
+                  {popupInfo.postcode && (
+                    <div className="mt-2 text-sm">
+                      <div className="grid grid-cols-2 gap-1">
+                        <div className="text-gray-500">Postcode:</div>
+                        <div>{popupInfo.postcode}</div>
+
+                        {popupInfo.population && (
+                          <>
+                            <div className="text-gray-500">Population:</div>
+                            <div>{formatNumber(popupInfo.population)}</div>
+                          </>
+                        )}
+
+                        {popupInfo.median_income && (
+                          <>
+                            <div className="text-gray-500">Median Income:</div>
+                            <div>${formatNumber(popupInfo.median_income)}</div>
+                          </>
+                        )}
+
+                        {popupInfo.area_sqkm && (
+                          <>
+                            <div className="text-gray-500">Area:</div>
+                            <div>{popupInfo.area_sqkm} km²</div>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  <p className="mt-2 text-sm text-gray-600">
                     {predictiveMode ? 'Click for transition analysis' : 'Click for detailed analysis'}
                   </p>
                 </div>
@@ -427,6 +525,29 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           )}
 
           <NavigationControl position="top-right" />
+
+          {/* Map Legend */}
+          <div className="absolute bottom-5 right-5 bg-white p-3 rounded-lg shadow-md z-10 max-w-xs">
+            <h4 className="text-sm font-medium mb-2">Zone Legend</h4>
+            <div className="space-y-2">
+              <div className="flex items-center">
+                <div className="w-4 h-4 rounded-sm bg-green-500 mr-2"></div>
+                <span className="text-xs">Green Zone - Premium suburbs</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-4 h-4 rounded-sm bg-orange-500 mr-2"></div>
+                <span className="text-xs">Orange Zone - Transitioning suburbs</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-4 h-4 rounded-sm bg-red-500 mr-2"></div>
+                <span className="text-xs">Red Zone - Higher risk suburbs</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-4 h-4 rounded-sm bg-gray-400 mr-2"></div>
+                <span className="text-xs">Unclassified</span>
+              </div>
+            </div>
+          </div>
         </Map>
       </div>
 

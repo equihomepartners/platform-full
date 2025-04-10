@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { Map, LineChart, Database } from 'lucide-react';
+import { Map, LineChart, Settings } from 'lucide-react';
 import { MLDataProvider } from '../context/MLDataContext';
 
 const TrafficLightLayout: React.FC = () => {
@@ -9,7 +9,7 @@ const TrafficLightLayout: React.FC = () => {
   const tabs = [
     { name: 'Zones', path: '/traffic-light', icon: <Map className="h-5 w-5" /> },
     { name: 'Suburb Forecasting', path: '/traffic-light/forecasting', icon: <LineChart className="h-5 w-5" /> },
-    { name: 'Data Feeds', path: '/traffic-light/data-feeds', icon: <Database className="h-5 w-5" /> },
+    { name: 'Settings', path: '/traffic-light/settings', icon: <Settings className="h-5 w-5" /> },
   ];
 
   return (

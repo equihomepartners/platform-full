@@ -53,15 +53,23 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
       zone: Math.random() > 0.66 ? 'green' : (Math.random() > 0.5 ? 'yellow' : 'red')
     };
 
-    // Use ML model confidence if available
+    // Always use ML model confidence if available, overriding any hardcoded values
     if (modelInfo && systemStatus) {
       // Use the model's confidence level for all suburbs
       // In a real implementation, this would be suburb-specific from the API
       const mlConfidence = Math.round(modelInfo.metrics.confidence * 100);
+
+      // Override any existing confidence value with the ML model confidence
       scoreData = {
         ...scoreData,
         confidence: mlConfidence
       };
+
+      // Log for debugging
+      if (suburbName === 'Vaucluse') {
+        console.log('ML Model Confidence:', mlConfidence);
+        console.log('Updated Suburb Data:', scoreData);
+      }
     }
 
     return {

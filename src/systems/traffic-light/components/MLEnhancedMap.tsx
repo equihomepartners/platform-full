@@ -12,6 +12,7 @@ import sydneySuburbBoundaries from '../../../data/sydneySuburbBoundaries';
 import sydneyPostcodeBoundaries from '../../../data/sydneyPostcodeBoundaries';
 import suburbScores, { zoneStats } from '../../../data/suburbScores';
 import { formatNumber } from '../../../shared/utils/formatters';
+import { useMLData } from '../context/MLDataContext';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import type { MapLayerMouseEvent } from 'react-map-gl';
 
@@ -29,6 +30,9 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   const [selectedLayer, setSelectedLayer] = useState('suburbs'); // 'suburbs', 'postcodes', etc.
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
+  // Get ML data for confidence levels
+  const { modelInfo, systemStatus } = useMLData();
+
   // Debug logs
   useEffect(() => {
     console.log('Mapbox Token:', MAPBOX_TOKEN);
@@ -41,11 +45,24 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   // Use suburb boundaries from GeoJSON with added scores and confidence levels
   const suburbFeatures = sydneySuburbBoundaries.features.map(feature => {
     const suburbName = feature.properties?.nsw_loca_2;
-    const scoreData = suburbScores[suburbName] || {
+
+    // Get base score data from static data
+    let scoreData = suburbScores[suburbName] || {
       score: Math.floor(Math.random() * 100),
-      confidence: Math.floor(Math.random() * 100),
+      confidence: 0,
       zone: Math.random() > 0.66 ? 'green' : (Math.random() > 0.5 ? 'yellow' : 'red')
     };
+
+    // Use ML model confidence if available
+    if (modelInfo && systemStatus) {
+      // Use the model's confidence level for all suburbs
+      // In a real implementation, this would be suburb-specific from the API
+      const mlConfidence = Math.round(modelInfo.metrics.confidence * 100);
+      scoreData = {
+        ...scoreData,
+        confidence: mlConfidence
+      };
+    }
 
     return {
       ...feature,

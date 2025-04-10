@@ -1,6 +1,6 @@
 /**
  * Traffic Light System API Types
- * 
+ *
  * This file contains TypeScript interfaces for all API responses in the Traffic Light System.
  * These interfaces match the expected response format from the backend API.
  */
@@ -221,6 +221,27 @@ export interface MLSystemStatus {
   };
   integration_statuses: {
     [key: string]: 'connected' | 'disconnected' | 'degraded';
+  };
+}
+
+// ML Model Info API
+export interface MLModelInfo {
+  version: string;
+  release_date: string;
+  next_update: string;
+  features: string[];
+  data_sources: string[];
+  metrics: {
+    accuracy: number;
+    confidence: number;
+    data_points: number;
+    validation_score: number;
+  };
+  training_info: {
+    last_training: string;
+    training_duration: number; // hours
+    iterations: number;
+    convergence_rate: number;
   };
 }
 

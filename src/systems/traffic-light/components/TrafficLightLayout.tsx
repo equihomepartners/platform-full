@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Map, LineChart, Database } from 'lucide-react';
+import { MLDataProvider } from '../context/MLDataContext';
 
 const TrafficLightLayout: React.FC = () => {
   const location = useLocation();
@@ -81,7 +82,9 @@ const TrafficLightLayout: React.FC = () => {
       </div>
 
       <div className="bg-white shadow rounded-lg p-6 min-h-[calc(100vh-250px)]">
-        <Outlet />
+        <MLDataProvider refreshInterval={300000}> {/* Refresh every 5 minutes */}
+          <Outlet />
+        </MLDataProvider>
       </div>
     </div>
   );

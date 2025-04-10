@@ -597,7 +597,13 @@ GET /api/ml/model-info
 GET /api/growth/corridors
 GET /api/integration/underwriting
 GET /api/integration/portfolio
+POST /api/webhooks/portfolio-feedback
+POST /api/webhooks/underwriting-feedback
 ```
+
+#### System Integration
+
+For detailed information about how the Traffic Light System integrates with the Portfolio Management System and Underwriting System, see the [API Integration Documentation](../docs/API_INTEGRATION.md).
 
 ### ML System Architecture
 

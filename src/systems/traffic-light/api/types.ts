@@ -3,6 +3,8 @@
  *
  * This file contains TypeScript interfaces for all API responses in the Traffic Light System.
  * These interfaces match the expected response format from the backend API.
+ *
+ * It also includes types for webhook payloads received from other systems.
  */
 
 // Common types
@@ -322,4 +324,49 @@ export interface PortfolioSimulationIntegration {
       risk_factors: string[];
     };
   };
+}
+
+// Webhook API Types
+
+// Portfolio Feedback Webhook
+export type FeedbackType = 'performance' | 'risk_assessment' | 'diversification' | 'recommendation';
+export type RecommendationType = 'continue_prioritizing' | 'reduce_exposure' | 'increase_exposure' | 'pause_origination' | 'adjust_risk_weights';
+
+export interface PortfolioFeedback {
+  suburb: string;
+  feedback_type: FeedbackType;
+  metrics: {
+    default_rate?: number;
+    roi?: number;
+    ltv_ratio?: number;
+    diversification_impact?: number;
+    risk_score?: number;
+  };
+  recommendation: RecommendationType;
+  confidence: number;
+  timestamp?: string; // ISO date string
+  additional_notes?: string;
+}
+
+// Underwriting Feedback Webhook
+export interface UnderwritingFeedback {
+  suburb: string;
+  feedback_type: FeedbackType;
+  metrics: {
+    approval_rate?: number;
+    average_processing_time?: number;
+    risk_factors?: {
+      name: string;
+      impact: number;
+    }[];
+    default_probability?: number;
+    homeowner_metrics?: {
+      credit_score_impact: number;
+      income_stability_impact: number;
+    };
+  };
+  recommendation: RecommendationType;
+  confidence: number;
+  timestamp?: string; // ISO date string
+  additional_notes?: string;
 }

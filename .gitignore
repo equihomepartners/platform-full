@@ -6,3 +6,7 @@ dist
 dist-ssr
 *.local
 .vite
+
+# Temporary data files
+temp_data/
+*.geojson

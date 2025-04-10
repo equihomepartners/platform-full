@@ -243,12 +243,12 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   // Filter features based on search, tab, and selected layer
   const filteredFeatures = selectedLayer === 'suburbs'
     ? suburbFeatures.filter(f =>
-        f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (selectedTab === 'all' || f.properties.zone === selectedTab)
+        (f.properties?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (selectedTab === 'all' || f.properties?.zone === selectedTab)
       )
     : postcodeFeatures.filter(f =>
-        (f.properties.name || '').toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (selectedTab === 'all' || f.properties.zone === selectedTab)
+        (f.properties?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (selectedTab === 'all' || f.properties?.zone === selectedTab)
       );
 
   return (

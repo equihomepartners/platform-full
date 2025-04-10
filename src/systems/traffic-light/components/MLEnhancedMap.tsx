@@ -7,6 +7,7 @@ import Map, {
   Popup
 } from 'react-map-gl';
 import { trafficLightZones, suburbCoordinates } from '../../../data/zoneData';
+import sydneySuburbBoundaries, { suburbZones } from '../../../data/sydneySuburbBoundaries';
 import { formatNumber } from '../../../shared/utils/formatters';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import type { MapLayerMouseEvent } from 'react-map-gl';
@@ -30,23 +31,36 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
     console.log('Suburb Coordinates:', suburbCoordinates);
   }, []);
 
-  // Convert suburbs data to GeoJSON features
-  const suburbFeatures = Object.entries(suburbCoordinates as Record<string, [number, number]>).map(([name, coords]: [string, [number, number]]) => {
-    const feature = {
-      type: 'Feature' as const,
+  // Use real suburb boundaries from GeoJSON
+  const suburbFeatures = sydneySuburbBoundaries.features.map(feature => {
+    // Add transition probability for predictive mode
+    return {
+      ...feature,
       properties: {
-        name,
-        zone: trafficLightZones.green.includes(name) ? 'green' :
-              trafficLightZones.orange.includes(name) ? 'orange' : 'red'
-      },
-      geometry: {
-        type: 'Point' as const,
-        coordinates: [coords[1], coords[0]] // [longitude, latitude]
+        ...feature.properties,
+        transitionProbability: Math.random() // Simulated probability for demo
       }
     };
-    console.log('Created feature:', feature);
-    return feature;
   });
+
+  // Fallback to point data for suburbs without boundaries
+  const pointFeatures = Object.entries(suburbCoordinates as Record<string, [number, number]>)
+    .filter(([name]) => !sydneySuburbBoundaries.features.some(f => f.properties.name === name))
+    .map(([name, coords]: [string, [number, number]]) => {
+      return {
+        type: 'Feature' as const,
+        properties: {
+          name,
+          zone: trafficLightZones.green.includes(name) ? 'green' :
+                trafficLightZones.orange.includes(name) ? 'orange' : 'red',
+          transitionProbability: Math.random() // Simulated probability for demo
+        },
+        geometry: {
+          type: 'Point' as const,
+          coordinates: [coords[1], coords[0]] // [longitude, latitude]
+        }
+      };
+    });
 
   console.log('All features:', suburbFeatures);
 
@@ -114,11 +128,47 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
     }
   };
 
-  // Modify layer style to use circles instead of symbols
-  const layerStyle: CircleLayer = {
-    id: 'suburbs',
+  // Style for polygon features (real suburb boundaries)
+  const polygonLayerStyle = {
+    id: 'suburb-polygons',
+    type: 'fill',
+    source: 'suburb-polygons',
+    paint: {
+      'fill-color': predictiveMode ? [
+        'interpolate',
+        ['linear'],
+        ['get', 'transitionProbability'],
+        0.3, '#ef4444',
+        0.6, '#f97316',
+        0.9, '#22c55e'
+      ] : [
+        'match',
+        ['get', 'zone'],
+        'green', '#22c55e',
+        'orange', '#f97316',
+        '#ef4444'
+      ],
+      'fill-opacity': 0.6,
+      'fill-outline-color': '#ffffff'
+    }
+  };
+
+  // Style for polygon outlines
+  const polygonOutlineStyle = {
+    id: 'suburb-polygon-outlines',
+    type: 'line',
+    source: 'suburb-polygons',
+    paint: {
+      'line-color': '#ffffff',
+      'line-width': 2
+    }
+  };
+
+  // Fallback style for point features (suburbs without boundaries)
+  const circleLayerStyle: CircleLayer = {
+    id: 'suburb-points',
     type: 'circle',
-    source: 'suburbs',
+    source: 'suburb-points',
     paint: {
       'circle-radius': predictiveMode ? [
         'interpolate',
@@ -186,11 +236,23 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
       const feature = features[0];
       const name = feature.properties?.name as string;
       if (name) {
-        const [longitude, latitude] = (feature.geometry as any).coordinates;
+        let longitude, latitude;
+
+        // Handle different geometry types
+        if (feature.geometry.type === 'Point') {
+          // For point features
+          [longitude, latitude] = (feature.geometry as any).coordinates;
+        } else if (feature.geometry.type === 'Polygon') {
+          // For polygon features, use the click point as popup location
+          longitude = event.lngLat.lng;
+          latitude = event.lngLat.lat;
+        }
+
         setPopupInfo({
           suburb: name,
           longitude,
-          latitude
+          latitude,
+          zone: feature.properties?.zone
         });
         onSuburbSelect(name);
       }
@@ -211,11 +273,20 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   }
 
   // Filter suburbs based on search and tab
-  const filteredFeatures = suburbFeatures
+  const filteredPolygonFeatures = suburbFeatures
     .filter(f =>
       f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (selectedTab === 'all' || f.properties.zone === selectedTab)
     );
+
+  const filteredPointFeatures = pointFeatures
+    .filter(f =>
+      f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (selectedTab === 'all' || f.properties.zone === selectedTab)
+    );
+
+  // Combined features for stats and display
+  const filteredFeatures = [...filteredPolygonFeatures, ...filteredPointFeatures];
 
   return (
     <div className="space-y-4">
@@ -320,7 +391,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           }}
           mapStyle="mapbox://styles/mapbox/light-v11"
           mapboxAccessToken={MAPBOX_TOKEN}
-          interactiveLayerIds={['suburbs']}
+          interactiveLayerIds={['suburb-polygons', 'suburb-polygon-outlines', 'suburb-points']}
           onClick={handleClick}
           onError={handleError}
           onLoad={handleLoad}
@@ -335,22 +406,35 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             </Source>
           ))}
 
-          {/* Suburbs Layer */}
+          {/* Suburb Polygons Layer */}
           <Source
-            id="suburbs"
+            id="suburb-polygons"
             type="geojson"
             data={{
               type: 'FeatureCollection',
-              features: filteredFeatures.map(f => ({
-                ...f,
-                properties: {
-                  ...f.properties,
-                  transitionProbability: Math.random() // Replace with actual probability
-                }
-              }))
+              features: suburbFeatures.filter(f =>
+                (selectedTab === 'all' || f.properties.zone === selectedTab) &&
+                (!searchTerm || f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()))
+              )
             }}
           >
-            <Layer {...layerStyle} />
+            <Layer {...polygonLayerStyle} />
+            <Layer {...polygonOutlineStyle} />
+          </Source>
+
+          {/* Suburb Points Layer (fallback for suburbs without boundaries) */}
+          <Source
+            id="suburb-points"
+            type="geojson"
+            data={{
+              type: 'FeatureCollection',
+              features: pointFeatures.filter(f =>
+                (selectedTab === 'all' || f.properties.zone === selectedTab) &&
+                (!searchTerm || f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()))
+              )
+            }}
+          >
+            <Layer {...circleLayerStyle} />
           </Source>
 
           {/* Enhanced Popup */}

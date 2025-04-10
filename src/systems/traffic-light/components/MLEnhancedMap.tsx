@@ -327,10 +327,8 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             </span>
           </button>
           <button
-            className={`px-4 py-2 rounded-md transition-colors ${selectedLayer === 'postcodes' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100 opacity-70'}`}
+            className={`px-4 py-2 rounded-md transition-colors ${selectedLayer === 'postcodes' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100'}`}
             onClick={() => setSelectedLayer('postcodes')}
-            disabled={true}
-            title="Coming soon"
           >
             <span className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
@@ -338,7 +336,6 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
                 <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
               </svg>
               Postcodes
-              <span className="ml-1 text-xs bg-gray-200 text-gray-700 px-1 rounded">Soon</span>
             </span>
           </button>
         </div>

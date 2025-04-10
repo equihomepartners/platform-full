@@ -64,6 +64,11 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Created shared components and utilities for cross-system use
 - Fixed all import issues in mlAnalytics, portfolio, and underwriting components
 - Added shared chart configuration for consistent styling
+- Reorganized system tabs according to requirements
+- Moved Fund Parameters from Traffic Light to Portfolio Management
+- Updated Traffic Light tabs to focus on Zones, Forecasting, and Data Feeds
+- Removed Dashboard tab from Traffic Light
+- Removed subtabs from Fund Parameters (Underwriting, ML Controls, Data Config, System Settings)
 
 ## Next Steps
 

@@ -1842,8 +1842,8 @@ const FundParameters: React.FC = () => {
         </div>
       </div>
 
-      {/* Action Panel */}
       <div className="bg-white rounded-lg shadow-sm p-6">
+        {/* Action Panel */}
         <div className="flex justify-between items-center">
           <div className="space-y-1">
             <h3 className="font-semibold">System Changes</h3>

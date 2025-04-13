@@ -442,7 +442,6 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         </div>
       </div>
 
-<<<<<<< HEAD
       {/* Layer Control */}
       <div className="mb-4">
         <h3 className="text-sm font-medium mb-2">Map Layers</h3>

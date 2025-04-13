@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { ApiProvider } from './services/api/ApiContext';
 
 // Import from shared components
 import { Navbar, Footer } from './shared/components';
-import SystemsHome from './shared/components/SystemsHome';
+import InstitutionalHome from './shared/components/InstitutionalHome';
 import HelpButton from './components/HelpButton'; // Will migrate later
+
+// Import Admin components
+import {
+  AdminLayout,
+  UserManagement,
+  SystemSettings,
+  SecurityCompliance,
+  Documentation,
+  AuditLogs,
+  ApiAccess
+} from './systems/admin';
 
 // Import Traffic Light System components
 import TrafficLightLayout from './systems/traffic-light/components/TrafficLightLayout';
@@ -14,15 +26,20 @@ import FrontrunSuburbs from './systems/traffic-light/components/FrontrunSuburbs'
 
 // Import Portfolio Management System components
 import PortfolioLayout from './systems/portfolio/components/PortfolioLayout';
-import PortfolioDashboard from './systems/portfolio/components/PortfolioDashboard';
-import { Pipeline } from './systems/portfolio/components';
-import FinancialModeling from './components/FinancialModeling'; // Will migrate later
-import { FundParameters } from './systems/traffic-light/components';
+import PortfolioDashboardPro from './systems/portfolio/components/PortfolioDashboardPro';
+import PortfolioManagement from './systems/portfolio/components/PortfolioManagement';
+import Simulation from './systems/portfolio/components/Simulation';
+import Analytics from './systems/portfolio/components/Analytics';
+import PortfolioSettings from './systems/portfolio/components/Settings';
+import FundParameters from './systems/portfolio/components/FundParameters';
+import DocumentManagement from './systems/portfolio/components/DocumentManagement';
+import StressTest from './systems/portfolio/components/StressTest';
+// Removed unused import: StandaloneCalculator
+import StandaloneSimulation from './systems/portfolio/components/simulation/StandaloneSimulation';
 
 // Import Underwriting System components
 import UnderwritingLayout from './systems/underwriting/components/UnderwritingLayout';
-import UnderwritingDashboard from './systems/underwriting/components/UnderwritingDashboard';
-import { AssetReport } from './systems/underwriting/components';
+import { UnderwritingSystem } from './systems/underwriting';
 
 // Import remaining components (to be migrated or removed later)
 import WelcomeScreen from './components/WelcomeScreen';
@@ -30,17 +47,17 @@ import ConfidentialityScreen from './components/ConfidentialityScreen';
 
 const App: React.FC = () => {
   return (
-    <>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100">
+    <ApiProvider>
+      <div className="min-h-screen bg-neutral-50">
         <Navbar />
-        <main className="py-6">
+        <main>
           <Routes>
             {/* Authentication Routes */}
             <Route path="/login" element={<ConfidentialityScreen />} />
             <Route path="/welcome" element={<WelcomeScreen />} />
 
             {/* Home Route */}
-            <Route path="/" element={<SystemsHome />} />
+            <Route path="/" element={<InstitutionalHome />} />
 
             {/* Traffic Light System Routes */}
             <Route path="/traffic-light" element={<TrafficLightLayout />}>
@@ -51,26 +68,37 @@ const App: React.FC = () => {
 
             {/* Portfolio Management System Routes */}
             <Route path="/portfolio" element={<PortfolioLayout />}>
-              <Route index element={<PortfolioDashboard />} />
-              <Route path="pipeline" element={<Pipeline />} />
-              <Route path="deals" element={<div className="p-4">Deal Management</div>} />
-              <Route path="analytics" element={<FinancialModeling />} />
+              <Route index element={<PortfolioDashboardPro />} />
+              <Route path="management" element={<PortfolioManagement />} />
               <Route path="fund-parameters" element={<FundParameters />} />
-              <Route path="settings" element={<div className="p-4">Portfolio System Settings</div>} />
+              <Route path="simulation" element={<Simulation />} />
+              <Route path="analytics" element={<Analytics />} />
+              <Route path="stress-test" element={<StressTest />} />
+              <Route path="settings" element={<PortfolioSettings />} />
             </Route>
+
+            {/* Standalone Simulation Routes */}
+            <Route path="/portfolio/simulation/fullscreen" element={<StandaloneSimulation />} />
 
             {/* Underwriting System Routes */}
             <Route path="/underwriting" element={<UnderwritingLayout />}>
-              <Route index element={<UnderwritingDashboard />} />
-              <Route path="applications" element={<div className="p-4">Loan Applications</div>} />
-              <Route path="modeling" element={<div className="p-4">Financial Modeling</div>} />
-              <Route path="analytics" element={<AssetReport />} />
-              <Route path="settings" element={<div className="p-4">Underwriting System Settings</div>} />
+              <Route index element={<UnderwritingSystem />} />
+            </Route>
+
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Navigate to="/admin/users" replace />} />
+              <Route path="users" element={<UserManagement />} />
+              <Route path="settings" element={<SystemSettings />} />
+              <Route path="security" element={<SecurityCompliance />} />
+              <Route path="docs" element={<Documentation />} />
+              <Route path="audit" element={<AuditLogs />} />
+              <Route path="api" element={<ApiAccess />} />
             </Route>
 
             {/* Redirect legacy routes */}
             <Route path="/cio" element={<Navigate to="/traffic-light" replace />} />
-            <Route path="/pipeline" element={<Navigate to="/portfolio/pipeline" replace />} />
+            <Route path="/pipeline" element={<Navigate to="/underwriting/pipeline" replace />} />
             <Route path="/model" element={<Navigate to="/portfolio/analytics" replace />} />
             <Route path="/report" element={<Navigate to="/portfolio" replace />} />
             <Route path="/underwrite" element={<Navigate to="/underwriting" replace />} />
@@ -83,7 +111,7 @@ const App: React.FC = () => {
         <Footer />
       </div>
       <HelpButton />
-    </>
+    </ApiProvider>
   );
 };
 

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Generation - Equihome Fund Modeling</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-content">
+        <div class="logo">Equihome Fund Modeling</div>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="fund-settings.html" class="nav-link">Fund Settings</a>
+          <a href="portfolio-generation.html" class="nav-link active">Portfolio Generation</a>
+          <a href="fund-overview.html" class="nav-link">Fund Overview</a>
+          <a href="gp-economics.html" class="nav-link">GP Economics</a>
+          <a href="lp-economics.html" class="nav-link">LP Economics</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1 class="section-title">Portfolio Generation</h1>
+      <p>Generate a portfolio of loans based on your fund parameters.</p>
+
+      <div class="card">
+        <h2 class="section-title">Fund Summary</h2>
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label class="form-label">Fund Name</label>
+              <p id="fund-name">Equihome Fund I</p>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="form-group">
+              <label class="form-label">Fund Size</label>
+              <p id="fund-size">$100,000,000</p>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="form-group">
+              <label class="form-label">Average Property Value</label>
+              <p id="avg-property-value">$500,000</p>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="form-group">
+              <label class="form-label">Average LTV</label>
+              <p id="avg-ltv">50.00%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Portfolio Parameters</h2>
+        <p class="parameter-description">Customize how the portfolio will be generated.</p>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="num_loans" class="form-label">Number of Loans</label>
+              <input type="text" id="num_loans" class="form-input" value="400">
+              <p class="parameter-description">The number of loans to generate in the portfolio. This is calculated based on fund size, average LTV, and average property value.</p>
+              <div class="tooltip">
+                <span class="material-icons info-icon">info</span>
+                <span class="tooltiptext">
+                  <strong>Formula:</strong> Number of Loans = Fund Size / (Average Property Value × Average LTV)<br>
+                  <strong>Example:</strong> $100M fund with $500K properties at 50% LTV = 400 loans
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="form-group">
+              <label for="ltv_variance" class="form-label">LTV Variance</label>
+              <input type="text" id="ltv_variance" class="form-input" value="10.00%">
+              <div class="slider-container">
+                <input type="range" min="0" max="30" value="10" step="1" class="slider" id="ltv_variance_slider">
+                <div class="slider-value">10.00%</div>
+              </div>
+              <p class="parameter-description">Controls how much individual loan LTVs can vary from the average. Higher values create more diverse portfolios.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="property_value_variance" class="form-label">Property Value Variance</label>
+              <input type="text" id="property_value_variance" class="form-input" value="20.00%">
+              <div class="slider-container">
+                <input type="range" min="0" max="50" value="20" step="1" class="slider" id="property_value_variance_slider">
+                <div class="slider-value">20.00%</div>
+              </div>
+              <p class="parameter-description">Controls how much individual property values can vary from the average. Higher values create more diverse portfolios.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="section-title">Appreciation Rates by Zone</h3>
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label for="appreciation_rate_green" class="form-label">Green Zone Appreciation Rate</label>
+              <input type="text" id="appreciation_rate_green" class="form-input" value="5.00%">
+              <div class="slider-container">
+                <input type="range" min="0" max="10" value="5" step="0.5" class="slider" id="appreciation_rate_green_slider">
+                <div class="slider-value">5.00%</div>
+              </div>
+              <p class="parameter-description">Annual property appreciation rate for Green Zone properties.</p>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="form-group">
+              <label for="appreciation_rate_orange" class="form-label">Orange Zone Appreciation Rate</label>
+              <input type="text" id="appreciation_rate_orange" class="form-input" value="3.00%">
+              <div class="slider-container">
+                <input type="range" min="0" max="10" value="3" step="0.5" class="slider" id="appreciation_rate_orange_slider">
+                <div class="slider-value">3.00%</div>
+              </div>
+              <p class="parameter-description">Annual property appreciation rate for Orange Zone properties.</p>
+            </div>
+          </div>
+
+          <div class="form-col">
+            <div class="form-group">
+              <label for="appreciation_rate_red" class="form-label">Red Zone Appreciation Rate</label>
+              <input type="text" id="appreciation_rate_red" class="form-input" value="1.00%">
+              <div class="slider-container">
+                <input type="range" min="0" max="10" value="1" step="0.5" class="slider" id="appreciation_rate_red_slider">
+                <div class="slider-value">1.00%</div>
+              </div>
+              <p class="parameter-description">Annual property appreciation rate for Red Zone properties.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+          <button id="generate-button" class="btn">Generate Portfolio</button>
+        </div>
+      </div>
+
+      <div id="portfolio-summary" class="card" style="display: none;">
+        <h2 class="section-title">Portfolio Summary</h2>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-title">Number of Loans</div>
+            <div class="metric-value" id="num-loans-value">400</div>
+            <div class="metric-description">Total number of loans in the portfolio</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">Total Loan Amount</div>
+            <div class="metric-value" id="total-loan-amount-value">$100,000,000</div>
+            <div class="metric-description">Total principal amount of all loans</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">Average Loan Size</div>
+            <div class="metric-value" id="avg-loan-size-value">$250,000</div>
+            <div class="metric-description">Average principal amount per loan</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">Average LTV</div>
+            <div class="metric-value" id="avg-ltv-value">50.00%</div>
+            <div class="metric-description">Average Loan-to-Value ratio across portfolio</div>
+          </div>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-title">Green Zone Loans</div>
+            <div class="metric-value" id="green-zone-loans-value">240</div>
+            <div class="metric-description">60% of portfolio</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">Orange Zone Loans</div>
+            <div class="metric-value" id="orange-zone-loans-value">120</div>
+            <div class="metric-description">30% of portfolio</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">Red Zone Loans</div>
+            <div class="metric-value" id="red-zone-loans-value">40</div>
+            <div class="metric-description">10% of portfolio</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">Expected Appreciation</div>
+            <div class="metric-value" id="expected-appreciation-value">3.80%</div>
+            <div class="metric-description">Weighted average annual appreciation</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="fund-overview.html" class="btn">View Fund Overview</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/state-manager.js"></script>
+    <script src="js/math-utils.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Check if fund settings are complete
+        if (!StateManager.isJourneyStepComplete('fundSettingsComplete')) {
+          // Show warning message
+          const warningDiv = document.createElement('div');
+          warningDiv.className = 'alert alert-warning';
+          warningDiv.innerHTML = '<p><strong>Warning:</strong> Please complete the Fund Settings before generating a portfolio.</p>';
+          document.querySelector('main').insertBefore(warningDiv, document.querySelector('.card'));
+
+          // Add a button to go to fund settings
+          const goToSettingsBtn = document.createElement('a');
+          goToSettingsBtn.href = 'fund-settings.html';
+          goToSettingsBtn.className = 'btn';
+          goToSettingsBtn.textContent = 'Go to Fund Settings';
+          warningDiv.appendChild(goToSettingsBtn);
+        }
+
+        // Load state from state manager
+        const fundSettings = StateManager.getStateSection('fundSettings');
+        const portfolioGeneration = StateManager.getStateSection('portfolioGeneration');
+
+        // Calculate derived values
+        const derivedValues = StateManager.calculateDerivedValues();
+
+        // Update fund summary
+        document.getElementById('fund-name').textContent = fundSettings.fund_name;
+        document.getElementById('fund-size').textContent = '$' + formatNumberWithCommas(fundSettings.fund_size);
+        document.getElementById('avg-property-value').textContent = '$' + formatNumberWithCommas(fundSettings.average_property_value);
+        document.getElementById('avg-ltv').textContent = formatPercentage(fundSettings.average_ltv);
+
+        // Update portfolio parameters
+        document.getElementById('num_loans').value = formatNumberWithCommas(derivedValues.estimatedLoans);
+
+        // Check if portfolio has been generated
+        if (portfolioGeneration.portfolioGenerated) {
+          // Show portfolio summary
+          document.getElementById('portfolio-summary').style.display = 'block';
+
+          // Update portfolio summary values
+          document.getElementById('num-loans-value').textContent = formatNumberWithCommas(portfolioGeneration.num_loans);
+          document.getElementById('total-loan-amount-value').textContent = '$' + formatNumberWithCommas(fundSettings.fund_size);
+          document.getElementById('avg-loan-size-value').textContent = '$' + formatNumberWithCommas(derivedValues.avgLoanSize);
+          document.getElementById('avg-ltv-value').textContent = formatPercentage(fundSettings.average_ltv);
+
+          // Calculate zone distribution
+          const greenZoneLoans = Math.round(portfolioGeneration.num_loans * fundSettings.green_zone_allocation);
+          const orangeZoneLoans = Math.round(portfolioGeneration.num_loans * fundSettings.orange_zone_allocation);
+          const redZoneLoans = portfolioGeneration.num_loans - greenZoneLoans - orangeZoneLoans;
+
+          document.getElementById('green-zone-loans-value').textContent = formatNumberWithCommas(greenZoneLoans);
+          document.getElementById('orange-zone-loans-value').textContent = formatNumberWithCommas(orangeZoneLoans);
+          document.getElementById('red-zone-loans-value').textContent = formatNumberWithCommas(redZoneLoans);
+
+          // Calculate weighted average appreciation
+          const weightedAppreciation =
+            fundSettings.green_zone_allocation * portfolioGeneration.appreciation_rate_green +
+            fundSettings.orange_zone_allocation * portfolioGeneration.appreciation_rate_orange +
+            fundSettings.red_zone_allocation * portfolioGeneration.appreciation_rate_red;
+
+          document.getElementById('expected-appreciation-value').textContent = formatPercentage(weightedAppreciation);
+        }
+        // Format all numeric inputs with commas
+        const numericInputs = document.querySelectorAll('input[type="text"], input[type="number"]');
+        numericInputs.forEach(input => {
+          // Skip percentage inputs
+          if (input.id.includes('_rate') || input.id.includes('ltv') || input.id.includes('variance')) {
+            return;
+          }
+
+          // Format numeric inputs on load
+          if (input.value && !isNaN(parseNumberWithCommas(input.value))) {
+            input.value = formatNumberWithCommas(parseNumberWithCommas(input.value));
+          }
+
+          // Add event listeners for focus/blur to handle comma formatting
+          input.addEventListener('focus', function() {
+            if (this.value.includes(',')) {
+              this.value = parseNumberWithCommas(this.value);
+            }
+          });
+
+          input.addEventListener('blur', function() {
+            if (!isNaN(parseFloat(this.value))) {
+              this.value = formatNumberWithCommas(parseFloat(this.value));
+            }
+          });
+        });
+
+        // Handle slider changes
+        const sliders = document.querySelectorAll('.slider');
+        sliders.forEach(slider => {
+          const input = slider.parentElement.previousElementSibling;
+          const valueDisplay = slider.nextElementSibling;
+
+          // Update input when slider changes
+          slider.addEventListener('input', function() {
+            let value = this.value;
+
+            // Format based on input type
+            if (input.id.includes('_rate') || input.id.includes('variance')) {
+              value = value + '.00%';
+            } else {
+              value = formatNumberWithCommas(value);
+            }
+
+            input.value = value;
+            valueDisplay.textContent = value;
+          });
+
+          // Update slider when input changes
+          input.addEventListener('change', function() {
+            let value = this.value;
+
+            // Parse based on input type
+            if (value.includes('%')) {
+              value = parseFloat(value.replace('%', ''));
+            } else {
+              value = parseNumberWithCommas(value);
+            }
+
+            slider.value = value;
+            valueDisplay.textContent = this.value;
+          });
+        });
+
+        // Handle generate button
+        document.getElementById('generate-button').addEventListener('click', function() {
+          // Show loading state
+          this.textContent = 'Generating...';
+          this.disabled = true;
+
+          // Get form values
+          const formData = {};
+          formData.num_loans = parseNumberWithCommas(document.getElementById('num_loans').value);
+          formData.ltv_variance = parsePercentage(document.getElementById('ltv_variance').value);
+          formData.property_value_variance = parsePercentage(document.getElementById('property_value_variance').value);
+          formData.appreciation_rate_green = parsePercentage(document.getElementById('appreciation_rate_green').value);
+          formData.appreciation_rate_orange = parsePercentage(document.getElementById('appreciation_rate_orange').value);
+          formData.appreciation_rate_red = parsePercentage(document.getElementById('appreciation_rate_red').value);
+
+          // Get fund settings
+          const fundSettings = StateManager.getStateSection('fundSettings');
+          const derivedValues = StateManager.calculateDerivedValues();
+
+          // Generate portfolio (in a real app, this would be an API call)
+          // Simulate API call delay
+          setTimeout(() => {
+            // Generate portfolio data
+            const portfolio = generatePortfolio(formData, fundSettings, derivedValues);
+
+            // Update state with portfolio data
+            formData.portfolio = portfolio;
+            formData.portfolioGenerated = true;
+            formData.generationDate = new Date().toISOString();
+            StateManager.updateState('portfolioGeneration', formData);
+
+            // Mark portfolio generation as complete in user journey
+            StateManager.completeJourneyStep('portfolioGenerationComplete');
+
+            // Reset fund returns when portfolio changes
+            StateManager.resetStateSection('fundReturns');
+
+            // Update portfolio summary values
+            document.getElementById('num-loans-value').textContent = formatNumberWithCommas(formData.num_loans);
+            document.getElementById('total-loan-amount-value').textContent = '$' + formatNumberWithCommas(fundSettings.fund_size);
+            document.getElementById('avg-loan-size-value').textContent = '$' + formatNumberWithCommas(derivedValues.avgLoanSize);
+            document.getElementById('avg-ltv-value').textContent = formatPercentage(fundSettings.average_ltv);
+
+            // Calculate zone distribution
+            const greenZoneLoans = Math.round(formData.num_loans * fundSettings.green_zone_allocation);
+            const orangeZoneLoans = Math.round(formData.num_loans * fundSettings.orange_zone_allocation);
+            const redZoneLoans = formData.num_loans - greenZoneLoans - orangeZoneLoans;
+
+            document.getElementById('green-zone-loans-value').textContent = formatNumberWithCommas(greenZoneLoans);
+            document.getElementById('orange-zone-loans-value').textContent = formatNumberWithCommas(orangeZoneLoans);
+            document.getElementById('red-zone-loans-value').textContent = formatNumberWithCommas(redZoneLoans);
+
+            // Calculate weighted average appreciation
+            const weightedAppreciation =
+              fundSettings.green_zone_allocation * formData.appreciation_rate_green +
+              fundSettings.orange_zone_allocation * formData.appreciation_rate_orange +
+              fundSettings.red_zone_allocation * formData.appreciation_rate_red;
+
+            document.getElementById('expected-appreciation-value').textContent = formatPercentage(weightedAppreciation);
+
+            // Show portfolio summary
+            document.getElementById('portfolio-summary').style.display = 'block';
+
+            // Reset button
+            this.textContent = 'Generate Portfolio';
+            this.disabled = false;
+
+            // Scroll to portfolio summary
+            document.getElementById('portfolio-summary').scrollIntoView({ behavior: 'smooth' });
+          }, 1500);
+        });
+
+        /**
+         * Generate a portfolio of loans with realistic distributions and accurate calculations
+         * @param {Object} portfolioParams - Portfolio generation parameters
+         * @param {Object} fundSettings - Fund settings
+         * @param {Object} derivedValues - Derived values
+         * @returns {Object} Generated portfolio
+         */
+        function generatePortfolio(portfolioParams, fundSettings, derivedValues) {
+          const portfolio = {
+            loans: [],
+            reinvestments: [],
+            metrics: {
+              initialLoans: portfolioParams.num_loans,
+              totalReinvestments: 0,
+              totalLoans: portfolioParams.num_loans,
+              averageLoanSize: derivedValues.avgLoanSize,
+              averageLTV: fundSettings.average_ltv,
+              weightedAppreciation: 0,
+              extendedTerm: derivedValues.extendedFundTerm,
+              totalInitialValue: 0,
+              totalReinvestmentValue: 0,
+              expectedIRR: 0,
+              expectedMultiple: 0
+            }
+          };
+
+          // Generate initial loans
+          for (let i = 0; i < portfolioParams.num_loans; i++) {
+            // Determine zone using proper probability distribution
+            let zone;
+            const zoneProbability = Math.random();
+            if (zoneProbability < fundSettings.green_zone_allocation) {
+              zone = 'green';
+            } else if (zoneProbability < fundSettings.green_zone_allocation + fundSettings.orange_zone_allocation) {
+              zone = 'orange';
+            } else {
+              zone = 'red';
+            }
+
+            // Determine property value with normal distribution around the average
+            const stdDev = fundSettings.average_property_value * portfolioParams.property_value_variance;
+            const propertyValue = MathUtils.randomNormal(fundSettings.average_property_value, stdDev);
+
+            // Ensure property value is positive and reasonable
+            const finalPropertyValue = MathUtils.clamp(
+              propertyValue,
+              fundSettings.average_property_value * 0.5,  // Min: 50% of average
+              fundSettings.average_property_value * 1.5   // Max: 150% of average
+            );
+
+            // Determine LTV with normal distribution around the average, capped at max_ltv
+            const ltvStdDev = fundSettings.average_ltv * portfolioParams.ltv_variance;
+            let ltv = MathUtils.randomNormal(fundSettings.average_ltv, ltvStdDev);
+
+            // Ensure LTV is within reasonable bounds
+            ltv = MathUtils.clamp(ltv, 0.2, fundSettings.max_ltv);
+
+            // Calculate loan amount with precise decimal math
+            const loanAmount = finalPropertyValue * ltv;
+
+            // Determine if loan will exit early using probability
+            const willExitEarly = Math.random() < fundSettings.early_exit_probability;
+
+            // Determine exit year using normal distribution around average exit year
+            let exitYear;
+            if (willExitEarly) {
+              // Use normal distribution around average exit year
+              exitYear = MathUtils.randomNormal(fundSettings.average_exit_year, fundSettings.exit_year_std_dev);
+
+              // Ensure exit year is within reasonable bounds (1 to fund term)
+              exitYear = Math.round(MathUtils.clamp(exitYear, 1, fundSettings.fund_term - 1));
+            } else {
+              exitYear = fundSettings.fund_term;
+            }
+
+            // Determine appreciation rate based on zone with some randomization
+            let baseAppreciationRate;
+            let appreciationStdDev;
+
+            switch (zone) {
+              case 'green':
+                baseAppreciationRate = portfolioParams.appreciation_rate_green;
+                appreciationStdDev = 0.01; // 1% standard deviation
+                break;
+              case 'orange':
+                baseAppreciationRate = portfolioParams.appreciation_rate_orange;
+                appreciationStdDev = 0.0075; // 0.75% standard deviation
+                break;
+              case 'red':
+                baseAppreciationRate = portfolioParams.appreciation_rate_red;
+                appreciationStdDev = 0.005; // 0.5% standard deviation
+                break;
+            }
+
+            // Add some randomization to appreciation rate
+            const appreciationRate = MathUtils.randomNormal(baseAppreciationRate, appreciationStdDev);
+
+            // Ensure appreciation rate is positive
+            const finalAppreciationRate = Math.max(0.001, appreciationRate);
+
+            // Calculate origination fee
+            const originationFee = loanAmount * fundSettings.origination_fee_rate;
+
+            // Add loan to portfolio with precise values
+            portfolio.loans.push({
+              id: `loan_${i + 1}`,
+              propertyValue: finalPropertyValue,
+              loanAmount: loanAmount,
+              ltv: ltv,
+              zone: zone,
+              exitYear: exitYear,
+              appreciationRate: finalAppreciationRate,
+              originationYear: 0, // Year 0 = fund inception
+              willExitEarly: willExitEarly,
+              willBeReinvested: willExitEarly && exitYear <= fundSettings.reinvestment_cap_year,
+              originationFee: originationFee,
+              interestRate: fundSettings.simple_interest_rate,
+              // Calculate expected metrics for this loan
+              expectedExitValue: calculateLoanExitValue({
+                propertyValue: finalPropertyValue,
+                loanAmount: loanAmount,
+                ltv: ltv,
+                appreciationRate: finalAppreciationRate,
+                exitYear: exitYear,
+                originationYear: 0
+              }, fundSettings)
+            });
+
+            // Add to total initial value
+            portfolio.metrics.totalInitialValue += loanAmount;
+          }
+
+          // Calculate reinvestments with more realistic modeling
+          const earlyExitLoans = portfolio.loans.filter(loan => loan.willBeReinvested);
+
+          // For each early exit loan that will be reinvested
+          earlyExitLoans.forEach(loan => {
+            // Calculate future value of the loan at exit with precise math
+            const exitValue = calculateLoanExitValue(loan, fundSettings);
+
+            // Create a new loan with the exit value
+            // In real life, this would likely be split into multiple loans
+            // For simplicity, we'll create one loan per reinvestment
+            const reinvestmentLoan = {
+              id: `reinv_${loan.id}_${loan.exitYear}`,
+              propertyValue: exitValue / loan.ltv, // Back-calculate property value from loan amount and LTV
+              loanAmount: exitValue,
+              ltv: loan.ltv,
+              zone: loan.zone,
+              exitYear: loan.exitYear + fundSettings.fund_term, // New 10-year term from reinvestment
+              appreciationRate: loan.appreciationRate,
+              originationYear: loan.exitYear,
+              willExitEarly: false, // Simplification: reinvestments don't exit early
+              willBeReinvested: false,
+              reinvestedFrom: loan.id,
+              originationFee: exitValue * fundSettings.origination_fee_rate,
+              interestRate: fundSettings.simple_interest_rate,
+              // Calculate expected metrics for this reinvestment loan
+              expectedExitValue: calculateLoanExitValue({
+                propertyValue: exitValue / loan.ltv,
+                loanAmount: exitValue,
+                ltv: loan.ltv,
+                appreciationRate: loan.appreciationRate,
+                exitYear: loan.exitYear + fundSettings.fund_term,
+                originationYear: loan.exitYear
+              }, fundSettings)
+            };
+
+            // Add reinvestment to portfolio
+            portfolio.reinvestments.push(reinvestmentLoan);
+
+            // Add to total reinvestment value
+            portfolio.metrics.totalReinvestmentValue += exitValue;
+          });
+
+          // Update portfolio metrics with precise calculations
+          portfolio.metrics.totalReinvestments = portfolio.reinvestments.length;
+          portfolio.metrics.totalLoans = portfolio.loans.length + portfolio.reinvestments.length;
+
+          // Calculate weighted appreciation using proper weighted average function
+          const appreciationRates = portfolio.loans.map(loan => loan.appreciationRate);
+          const loanAmounts = portfolio.loans.map(loan => loan.loanAmount);
+          portfolio.metrics.weightedAppreciation = MathUtils.calculateWeightedAverage(appreciationRates, loanAmounts);
+
+          // Calculate expected IRR and multiple for the portfolio
+          calculatePortfolioPerformanceMetrics(portfolio, fundSettings);
+
+          return portfolio;
+        }
+
+        /**
+         * Calculate the exit value of a loan with precise financial calculations
+         * @param {Object} loan - Loan object
+         * @param {Object} fundSettings - Fund settings
+         * @returns {number} Exit value of the loan
+         */
+        function calculateLoanExitValue(loan, fundSettings) {
+          // Calculate property appreciation with compound interest formula
+          const yearsHeld = loan.exitYear - loan.originationYear;
+          const appreciatedPropertyValue = MathUtils.calculateCompoundInterest(
+            loan.propertyValue,
+            loan.appreciationRate,
+            yearsHeld,
+            1 // Annual compounding
+          );
+
+          // Calculate simple interest on the loan amount
+          const interest = MathUtils.calculateSimpleInterest(
+            loan.loanAmount,
+            fundSettings.simple_interest_rate,
+            yearsHeld
+          );
+
+          // Calculate appreciation fee (equivalent to LTV entry point)
+          const appreciationFee = (appreciatedPropertyValue - loan.propertyValue) * loan.ltv;
+
+          // Add origination fee if it exists in the loan object
+          const originationFee = loan.originationFee || (loan.loanAmount * fundSettings.origination_fee_rate);
+
+          // Calculate total exit value with precise decimal math
+          const exitValue = loan.loanAmount + interest + appreciationFee;
+
+          return exitValue;
+        }
+
+        /**
+         * Calculate portfolio performance metrics including IRR and multiple
+         * @param {Object} portfolio - Portfolio object
+         * @param {Object} fundSettings - Fund settings
+         */
+        function calculatePortfolioPerformanceMetrics(portfolio, fundSettings) {
+          // Create cash flow array for IRR calculation
+          // Year 0: Initial investment (negative)
+          // Years 1-extendedTerm: Cash inflows from loan exits
+
+          const extendedTerm = portfolio.metrics.extendedTerm;
+          const cashFlows = new Array(extendedTerm + 1).fill(0);
+
+          // Year 0: Initial investment (negative)
+          cashFlows[0] = -portfolio.metrics.totalInitialValue;
+
+          // Add cash flows from initial loans
+          portfolio.loans.forEach(loan => {
+            if (!loan.willBeReinvested) {
+              // If loan won't be reinvested, add its exit value to the cash flow
+              cashFlows[loan.exitYear] += loan.expectedExitValue;
+            }
+          });
+
+          // Add cash flows from reinvestment loans
+          portfolio.reinvestments.forEach(loan => {
+            // Add reinvestment as negative cash flow in the origination year
+            cashFlows[loan.originationYear] -= loan.loanAmount;
+
+            // Add exit value as positive cash flow in the exit year
+            if (loan.exitYear <= extendedTerm) {
+              cashFlows[loan.exitYear] += loan.expectedExitValue;
+            }
+          });
+
+          // Calculate IRR using proper financial function
+          try {
+            portfolio.metrics.expectedIRR = MathUtils.calculateIRR(cashFlows);
+          } catch (e) {
+            console.error('Error calculating IRR:', e);
+            portfolio.metrics.expectedIRR = 0.10; // Fallback to 10%
+          }
+
+          // Calculate total inflows and outflows for multiple calculation
+          let totalOutflows = 0;
+          let totalInflows = 0;
+
+          cashFlows.forEach(cf => {
+            if (cf < 0) {
+              totalOutflows += Math.abs(cf);
+            } else {
+              totalInflows += cf;
+            }
+          });
+
+          // Calculate equity multiple
+          portfolio.metrics.expectedMultiple = totalOutflows > 0 ? totalInflows / totalOutflows : 0;
+
+          // Calculate additional risk metrics
+          calculateRiskMetrics(portfolio, cashFlows);
+        }
+
+        /**
+         * Calculate risk metrics for the portfolio
+         * @param {Object} portfolio - Portfolio object
+         * @param {Array<number>} cashFlows - Cash flows array
+         */
+        function calculateRiskMetrics(portfolio, cashFlows) {
+          // Calculate yearly returns from cash flows
+          const yearlyReturns = [];
+          let cumulativeInvestment = Math.abs(cashFlows[0]);
+
+          for (let i = 1; i < cashFlows.length; i++) {
+            if (cashFlows[i] !== 0 && cumulativeInvestment > 0) {
+              const yearlyReturn = cashFlows[i] / cumulativeInvestment;
+              yearlyReturns.push(yearlyReturn);
+            }
+
+            // Update cumulative investment
+            if (cashFlows[i] < 0) {
+              cumulativeInvestment += Math.abs(cashFlows[i]);
+            }
+          }
+
+          // Calculate standard deviation of returns
+          if (yearlyReturns.length > 0) {
+            portfolio.metrics.returnStdDev = MathUtils.calculateStandardDeviation(yearlyReturns);
+          } else {
+            portfolio.metrics.returnStdDev = 0;
+          }
+
+          // Calculate Sharpe ratio (assuming risk-free rate of 2%)
+          const riskFreeRate = 0.02;
+          if (portfolio.metrics.returnStdDev > 0) {
+            portfolio.metrics.sharpeRatio = MathUtils.calculateSharpeRatio(
+              portfolio.metrics.expectedIRR,
+              riskFreeRate,
+              portfolio.metrics.returnStdDev
+            );
+          } else {
+            portfolio.metrics.sharpeRatio = 0;
+          }
+
+          // Calculate downside deviation (minimum acceptable return of 6%)
+          const minAcceptableReturn = 0.06;
+          portfolio.metrics.downsideDeviation = MathUtils.calculateDownsideDeviation(yearlyReturns, minAcceptableReturn);
+
+          // Calculate Sortino ratio
+          if (portfolio.metrics.downsideDeviation > 0) {
+            portfolio.metrics.sortinoRatio = MathUtils.calculateSortinoRatio(
+              portfolio.metrics.expectedIRR,
+              riskFreeRate,
+              portfolio.metrics.downsideDeviation
+            );
+          } else {
+            portfolio.metrics.sortinoRatio = 0;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

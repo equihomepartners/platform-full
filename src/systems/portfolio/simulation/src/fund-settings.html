@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fund Settings - Equihome Fund Modeling</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-content">
+        <div class="logo">Equihome Fund Modeling</div>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="fund-settings.html" class="nav-link active">Fund Settings</a>
+          <a href="portfolio-generation.html" class="nav-link">Portfolio Generation</a>
+          <a href="fund-overview.html" class="nav-link">Fund Overview</a>
+          <a href="gp-economics.html" class="nav-link">GP Economics</a>
+          <a href="lp-economics.html" class="nav-link">LP Economics</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1 class="section-title">Fund Settings</h1>
+      <p>Configure your fund parameters to model performance and returns.</p>
+
+      <div class="tabs">
+        <div class="tab active" data-tab="fund-info">Fund Information</div>
+        <div class="tab" data-tab="fee-structure">Fee Structure</div>
+        <div class="tab" data-tab="capital-calls">Capital Calls</div>
+        <div class="tab" data-tab="loan-parameters">Loan Parameters</div>
+      </div>
+
+      <div class="card">
+        <div class="tab-content active" id="fund-info-tab">
+          <h2 class="section-title">Fund Information</h2>
+          <p class="parameter-description">Configure the fundamental parameters of your fund including name, size, term, and type.</p>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="fund_name" class="form-label">Fund Name</label>
+                <input type="text" id="fund_name" class="form-input" value="Equihome Fund I">
+                <p class="parameter-description">The official name of the fund that will be used in all legal documents and marketing materials.</p>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="fund_size" class="form-label">Fund Size ($)</label>
+                <input type="text" id="fund_size" class="form-input" value="100,000,000">
+                <p class="parameter-description">The total capital commitment for the fund. This determines the scale of operations and investment capacity.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="fund_type" class="form-label">Fund Type</label>
+                <select id="fund_type" class="form-select">
+                  <option value="closed">Closed-End</option>
+                  <option value="open">Open-End</option>
+                  <option value="evergreen">Evergreen</option>
+                </select>
+                <p class="parameter-description">The legal structure of the fund that determines capital raising, deployment, and exit strategies.</p>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="fund_term" class="form-label">Fund Term (years)</label>
+                <input type="number" id="fund_term" class="form-input" value="10" min="1" max="30">
+                <p class="parameter-description">The total lifespan of the fund from inception to liquidation. Affects IRR calculations and exit timing.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="vintage_year" class="form-label">Vintage Year</label>
+                <input type="number" id="vintage_year" class="form-input" value="2023" min="2000" max="2050">
+                <p class="parameter-description">The year in which the fund begins investing capital. Used for benchmarking and performance metrics.</p>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="time_horizon" class="form-label">Investment Time Horizon (years)</label>
+                <input type="number" id="time_horizon" class="form-input" value="10" min="1" max="30">
+                <p class="parameter-description">The period over which investment returns are projected. Used for calculating long-term performance metrics.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-info">
+            <p><strong>Note:</strong> The fund term and investment time horizon affect how returns are calculated. The fund term determines the legal lifespan of the fund, while the investment time horizon is used for performance projections and may account for early exits or extensions.</p>
+          </div>
+        </div>
+
+        <div class="tab-content" id="fee-structure-tab">
+          <h2 class="section-title">Fee Structure</h2>
+          <p class="parameter-description">Configure the fee structure for your fund, including management fees, performance fees, and loan-specific fees.</p>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="management_fee_rate" class="form-label">Management Fee Rate</label>
+                <input type="text" id="management_fee_rate" class="form-input" value="2.00%">
+                <div class="slider-container">
+                  <input type="range" min="0" max="5" value="2" step="0.1" class="slider" id="management_fee_slider">
+                  <div class="slider-value">2.00%</div>
+                </div>
+                <p class="parameter-description">Annual fee charged by the GP to cover operating expenses, typically 1-2% of committed capital.</p>
+                <div class="tooltip">
+                  <span class="material-icons info-icon">info</span>
+                  <span class="tooltiptext">
+                    <strong>Formula:</strong> Management Fee = Fund Size × Management Fee Rate<br>
+                    <strong>Example:</strong> $100M fund with 2% management fee = $2M annual fee
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="performance_fee_rate" class="form-label">Performance Fee Rate</label>
+                <input type="text" id="performance_fee_rate" class="form-input" value="20.00%">
+                <div class="slider-container">
+                  <input type="range" min="0" max="50" value="20" step="1" class="slider" id="performance_fee_slider">
+                  <div class="slider-value">20.00%</div>
+                </div>
+                <p class="parameter-description">Percentage of profits above the hurdle rate that goes to the GP, typically 20%.</p>
+                <div class="tooltip">
+                  <span class="material-icons info-icon">info</span>
+                  <span class="tooltiptext">
+                    <strong>Formula:</strong> Carried Interest = (Profit - Hurdle Amount) × Performance Fee Rate<br>
+                    <strong>Example:</strong> With 20% carry and $10M profit above hurdle, GP receives $2M
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="hurdle_rate" class="form-label">Hurdle Rate</label>
+                <input type="text" id="hurdle_rate" class="form-input" value="6.00%">
+                <div class="slider-container">
+                  <input type="range" min="0" max="15" value="6" step="0.5" class="slider" id="hurdle_rate_slider">
+                  <div class="slider-value">6.00%</div>
+                </div>
+                <p class="parameter-description">Minimum return that must be achieved before performance fees apply, typically 6-8%.</p>
+                <div class="tooltip">
+                  <span class="material-icons info-icon">info</span>
+                  <span class="tooltiptext">
+                    <strong>Formula:</strong> Hurdle Amount = LP Investment × ((1 + Hurdle Rate)^Term - 1)<br>
+                    <strong>Example:</strong> $100M with 8% hurdle over 10 years = $115.9M hurdle amount
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="origination_fee_rate" class="form-label">Origination Fee Rate</label>
+                <input type="text" id="origination_fee_rate" class="form-input" value="3.00%">
+                <div class="slider-container">
+                  <input type="range" min="0" max="10" value="3" step="0.5" class="slider" id="origination_fee_slider">
+                  <div class="slider-value">3.00%</div>
+                </div>
+                <p class="parameter-description">One-time fee charged to homeowners at loan origination, typically 2-3%.</p>
+                <div class="tooltip">
+                  <span class="material-icons info-icon">info</span>
+                  <span class="tooltiptext">
+                    <strong>Formula:</strong> Origination Fee = Loan Amount × Origination Fee Rate<br>
+                    <strong>Example:</strong> $250K loan with 3% fee = $7,500 origination fee
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="simple_interest_rate" class="form-label">Simple Interest Rate</label>
+                <input type="text" id="simple_interest_rate" class="form-input" value="5.00%">
+                <div class="slider-container">
+                  <input type="range" min="0" max="15" value="5" step="0.5" class="slider" id="simple_interest_slider">
+                  <div class="slider-value">5.00%</div>
+                </div>
+                <p class="parameter-description">Annual interest rate charged on loans, typically 4-6%.</p>
+                <div class="tooltip">
+                  <span class="material-icons info-icon">info</span>
+                  <span class="tooltiptext">
+                    <strong>Formula:</strong> Interest = Principal × Rate × Term<br>
+                    <strong>Example:</strong> $250K loan at 5% for 10 years = $125K total interest
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="gp_investment_percentage" class="form-label">GP Investment Percentage</label>
+                <input type="text" id="gp_investment_percentage" class="form-input" value="5.00%">
+                <div class="slider-container">
+                  <input type="range" min="0" max="20" value="5" step="0.5" class="slider" id="gp_investment_percentage_slider">
+                  <div class="slider-value">5.00%</div>
+                </div>
+                <p class="parameter-description">Percentage of fund size invested by the General Partner, typically 1-10%.</p>
+                <div class="tooltip">
+                  <span class="material-icons info-icon">info</span>
+                  <span class="tooltiptext">
+                    <strong>Formula:</strong> GP Investment = Fund Size × GP Investment Percentage<br>
+                    <strong>Example:</strong> $100M fund with 5% GP investment = $5M GP investment
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-info">
+            <p><strong>Waterfall Structure:</strong> The model uses a standard waterfall structure with:</p>
+            <ol>
+              <li>Return of capital to LPs</li>
+              <li>Preferred return to LPs (hurdle rate)</li>
+              <li>Catch-up provision for GP (if applicable)</li>
+              <li>Carried interest split on remaining profits</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="tab-content" id="capital-calls-tab">
+          <h2 class="section-title">Capital Calls & Deployment</h2>
+          <p class="parameter-description">Configure how and when capital is called from investors and deployed into investments.</p>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="capital_call_schedule" class="form-label">Capital Call Schedule</label>
+                <select id="capital_call_schedule" class="form-select">
+                  <option value="upfront">Upfront (100% at closing)</option>
+                  <option value="standard">Standard (25% quarterly in year 1)</option>
+                  <option value="custom" selected>Custom Schedule</option>
+                </select>
+                <p class="parameter-description">Determines how capital is called from investors over time.</p>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="initial_investment" class="form-label">Initial Investment</label>
+                <input type="text" id="initial_investment" class="form-input" value="25,000,000">
+                <p class="parameter-description">Amount of capital deployed at fund inception.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="section-title">Custom Capital Call Schedule</h3>
+          <p class="parameter-description">Define when additional capital will be called from investors. Dates are in months from fund inception.</p>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="call1_date" class="form-label">Call 1 Date (months)</label>
+                <input type="number" id="call1_date" class="form-input" value="0" min="0" max="120">
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="call1_amount" class="form-label">Call 1 Amount ($)</label>
+                <input type="text" id="call1_amount" class="form-input" value="25,000,000">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="call2_date" class="form-label">Call 2 Date (months)</label>
+                <input type="number" id="call2_date" class="form-input" value="3" min="0" max="120">
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="call2_amount" class="form-label">Call 2 Amount ($)</label>
+                <input type="text" id="call2_amount" class="form-input" value="25,000,000">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="call3_date" class="form-label">Call 3 Date (months)</label>
+                <input type="number" id="call3_date" class="form-input" value="6" min="0" max="120">
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="call3_amount" class="form-label">Call 3 Amount ($)</label>
+                <input type="text" id="call3_amount" class="form-input" value="25,000,000">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="call4_date" class="form-label">Call 4 Date (months)</label>
+                <input type="number" id="call4_date" class="form-input" value="9" min="0" max="120">
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="call4_amount" class="form-label">Call 4 Amount ($)</label>
+                <input type="text" id="call4_amount" class="form-input" value="25,000,000">
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-info">
+            <p><strong>Capital Call Impact:</strong> The timing of capital calls affects fund performance metrics:</p>
+            <ul>
+              <li>IRR improves with delayed capital calls as investments have less time to generate returns</li>
+              <li>Management fees may be calculated on committed capital or invested capital</li>
+              <li>Deployment timing affects the fund's J-curve and time to positive returns</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tab-content" id="loan-parameters-tab">
+          <h2 class="section-title">Loan Parameters</h2>
+          <p class="parameter-description">Configure the parameters for the loans that will be generated in the portfolio.</p>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="average_property_value" class="form-label">Average Property Value ($)</label>
+                <input type="text" id="average_property_value" class="form-input" value="500,000">
+                <p class="parameter-description">The average value of properties in the portfolio.</p>
+                <div class="tooltip">
+                  <span class="material-icons info-icon">info</span>
+                  <span class="tooltiptext">
+                    <strong>Formula:</strong> Average Loan Size = Average Property Value × Average LTV<br>
+                    <strong>Example:</strong> $500K property with 50% LTV = $250K average loan size
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="average_ltv" class="form-label">Average LTV</label>
+                <input type="text" id="average_ltv" class="form-input" value="50.00%">
+                <div class="slider-container">
+                  <input type="range" min="10" max="90" value="50" step="1" class="slider" id="average_ltv_slider">
+                  <div class="slider-value">50.00%</div>
+                </div>
+                <p class="parameter-description">Average Loan-to-Value ratio across the portfolio.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="max_ltv" class="form-label">Maximum LTV</label>
+                <input type="text" id="max_ltv" class="form-input" value="75.00%">
+                <div class="slider-container">
+                  <input type="range" min="10" max="90" value="75" step="1" class="slider" id="max_ltv_slider">
+                  <div class="slider-value">75.00%</div>
+                </div>
+                <p class="parameter-description">Maximum allowed LTV for any individual loan.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="section-title">Zone Allocation</h3>
+          <p class="parameter-description">Allocate the portfolio across different risk zones. Total must equal 100%.</p>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="green_zone_allocation" class="form-label">Green Zone Allocation</label>
+                <input type="text" id="green_zone_allocation" class="form-input" value="60.00%">
+                <div class="slider-container">
+                  <input type="range" min="0" max="100" value="60" step="1" class="slider" id="green_zone_slider">
+                  <div class="slider-value">60.00%</div>
+                </div>
+                <p class="parameter-description">High appreciation potential, low risk.</p>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="orange_zone_allocation" class="form-label">Orange Zone Allocation</label>
+                <input type="text" id="orange_zone_allocation" class="form-input" value="30.00%">
+                <div class="slider-container">
+                  <input type="range" min="0" max="100" value="30" step="1" class="slider" id="orange_zone_slider">
+                  <div class="slider-value">30.00%</div>
+                </div>
+                <p class="parameter-description">Moderate appreciation potential, medium risk.</p>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="red_zone_allocation" class="form-label">Red Zone Allocation</label>
+                <input type="text" id="red_zone_allocation" class="form-input" value="10.00%">
+                <div class="slider-container">
+                  <input type="range" min="0" max="100" value="10" step="1" class="slider" id="red_zone_slider">
+                  <div class="slider-value">10.00%</div>
+                </div>
+                <p class="parameter-description">Lower appreciation potential, higher risk.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="section-title">Early Exit Parameters</h3>
+          <p class="parameter-description">Configure the probability and timing of early loan exits.</p>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="early_exit_probability" class="form-label">Early Exit Probability</label>
+                <input type="text" id="early_exit_probability" class="form-input" value="10.00%">
+                <div class="slider-container">
+                  <input type="range" min="0" max="50" value="10" step="1" class="slider" id="early_exit_probability_slider">
+                  <div class="slider-value">10.00%</div>
+                </div>
+                <p class="parameter-description">Chance of early loan repayment before the full term.</p>
+                <div class="tooltip">
+                  <span class="material-icons info-icon">info</span>
+                  <span class="tooltiptext">
+                    <strong>Impact:</strong> Higher values lead to more reinvestments and potentially higher returns, but also more transaction costs.<br>
+                    <strong>Example:</strong> With 10% probability, approximately 40 out of 400 loans will exit early.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="average_exit_year" class="form-label">Average Exit Year</label>
+                <input type="number" id="average_exit_year" class="form-input" value="5" min="1" max="10" step="0.5">
+                <p class="parameter-description">The average year when early exits occur.</p>
+                <div class="tooltip">
+                  <span class="material-icons info-icon">info</span>
+                  <span class="tooltiptext">
+                    <strong>Distribution:</strong> Early exits follow a normal distribution around this average.<br>
+                    <strong>Example:</strong> With average year 5, most early exits will occur between years 3-7.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-col">
+              <div class="form-group">
+                <label for="exit_year_std_dev" class="form-label">Exit Year Std Deviation</label>
+                <input type="number" id="exit_year_std_dev" class="form-input" value="1.5" min="0.5" max="5" step="0.1">
+                <p class="parameter-description">Controls the spread of early exits around the average.</p>
+                <div class="tooltip">
+                  <span class="material-icons info-icon">info</span>
+                  <span class="tooltiptext">
+                    <strong>Impact:</strong> Higher values create more sporadic/dispersed exit patterns.<br>
+                    <strong>Example:</strong> With std dev of 1.5, ~68% of early exits will occur within ±1.5 years of the average.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="reinvestment_cap_year" class="form-label">Reinvestment Cap Year</label>
+                <input type="number" id="reinvestment_cap_year" class="form-input" value="5" min="1" max="10">
+                <p class="parameter-description">The year after which no reinvestments will be made. Early exits before this year will be reinvested.</p>
+                <div class="tooltip">
+                  <span class="material-icons info-icon">info</span>
+                  <span class="tooltiptext">
+                    <strong>Impact:</strong> This extends the fund's timeline. If set to year 5 with a 10-year fund term, the last reinvestments could extend to year 15.<br>
+                    <strong>Example:</strong> With cap year 5, exits in years 3-4 are reinvested for new 10-year loans.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert alert-info">
+            <p><strong>Portfolio Metrics:</strong> Based on your inputs, the portfolio will have approximately:</p>
+            <ul>
+              <li>Average Loan Size: $250,000</li>
+              <li>Estimated Number of Loans: 400</li>
+              <li>Zone Allocation: 60.00% Green, 30.00% Orange, 10.00% Red</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="text-align: right; margin-top: 20px;">
+          <button id="save-button" class="btn">Save Fund Settings</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/state-manager.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Load state from state manager
+        const fundSettings = StateManager.getStateSection('fundSettings');
+
+        // Populate form fields with values from state
+        for (const key in fundSettings) {
+          const input = document.getElementById(key);
+          if (input) {
+            // Format value based on input type
+            if (key.includes('_rate') || key.includes('ltv') || key.includes('allocation') || key.includes('probability') || key.includes('percentage')) {
+              input.value = formatPercentage(fundSettings[key]);
+            } else if (typeof fundSettings[key] === 'number') {
+              input.value = formatNumberWithCommas(fundSettings[key]);
+            } else {
+              input.value = fundSettings[key];
+            }
+
+            // Update sliders if applicable
+            const slider = document.getElementById(key + '_slider');
+            if (slider) {
+              slider.value = key.includes('_rate') || key.includes('ltv') || key.includes('allocation') || key.includes('probability') || key.includes('percentage')
+                ? fundSettings[key] * 100
+                : fundSettings[key];
+
+              // Update slider value display
+              const valueDisplay = slider.nextElementSibling;
+              if (valueDisplay) {
+                valueDisplay.textContent = input.value;
+              }
+            }
+          }
+        }
+        // Format all numeric inputs with commas
+        const numericInputs = document.querySelectorAll('input[type="text"], input[type="number"]');
+        numericInputs.forEach(input => {
+          // Skip percentage inputs
+          if (input.id.includes('_rate') || input.id.includes('ltv') || input.id.includes('allocation') || input.id.includes('probability')) {
+            return;
+          }
+
+          // Format numeric inputs on load
+          if (input.value && !isNaN(parseNumberWithCommas(input.value))) {
+            input.value = formatNumberWithCommas(parseNumberWithCommas(input.value));
+          }
+
+          // Add event listeners for focus/blur to handle comma formatting
+          input.addEventListener('focus', function() {
+            if (this.value.includes(',')) {
+              this.value = parseNumberWithCommas(this.value);
+            }
+          });
+
+          input.addEventListener('blur', function() {
+            if (!isNaN(parseFloat(this.value))) {
+              this.value = formatNumberWithCommas(parseFloat(this.value));
+            }
+          });
+        });
+
+        // Handle slider changes
+        const sliders = document.querySelectorAll('.slider');
+        sliders.forEach(slider => {
+          const input = slider.parentElement.previousElementSibling;
+          const valueDisplay = slider.nextElementSibling;
+
+          // Update input when slider changes
+          slider.addEventListener('input', function() {
+            let value = this.value;
+
+            // Format based on input type
+            if (input.id.includes('_rate') || input.id.includes('ltv') || input.id.includes('allocation') || input.id.includes('probability')) {
+              value = value + '.00%';
+            } else {
+              value = formatNumberWithCommas(value);
+            }
+
+            input.value = value;
+            valueDisplay.textContent = value;
+          });
+
+          // Update slider when input changes
+          input.addEventListener('change', function() {
+            let value = this.value;
+
+            // Parse based on input type
+            if (value.includes('%')) {
+              value = parseFloat(value.replace('%', ''));
+            } else {
+              value = parseNumberWithCommas(value);
+            }
+
+            slider.value = value;
+            valueDisplay.textContent = this.value;
+          });
+        });
+
+        // Handle save button
+        document.getElementById('save-button').addEventListener('click', function() {
+          // Collect all form values
+          const formData = {};
+
+          // Process fund information
+          formData.fund_name = document.getElementById('fund_name').value;
+          formData.fund_size = parseNumberWithCommas(document.getElementById('fund_size').value);
+          formData.fund_term = parseInt(document.getElementById('fund_term').value);
+          formData.fund_type = document.getElementById('fund_type').value;
+          formData.vintage_year = parseInt(document.getElementById('vintage_year').value);
+          formData.time_horizon = parseInt(document.getElementById('time_horizon').value);
+
+          // Process fee structure
+          formData.management_fee_rate = parsePercentage(document.getElementById('management_fee_rate').value);
+          formData.hurdle_rate = parsePercentage(document.getElementById('hurdle_rate').value);
+          formData.performance_fee_rate = parsePercentage(document.getElementById('performance_fee_rate').value);
+          formData.origination_fee_rate = parsePercentage(document.getElementById('origination_fee_rate').value);
+          formData.simple_interest_rate = parsePercentage(document.getElementById('simple_interest_rate').value);
+          formData.gp_investment_percentage = parsePercentage(document.getElementById('gp_investment_percentage').value);
+
+          // Process capital calls
+          formData.capital_call_schedule = document.getElementById('capital_call_schedule').value;
+          formData.initial_investment = parseNumberWithCommas(document.getElementById('initial_investment').value);
+          formData.call1_date = parseInt(document.getElementById('call1_date').value);
+          formData.call1_amount = parseNumberWithCommas(document.getElementById('call1_amount').value);
+          formData.call2_date = parseInt(document.getElementById('call2_date').value);
+          formData.call2_amount = parseNumberWithCommas(document.getElementById('call2_amount').value);
+          formData.call3_date = parseInt(document.getElementById('call3_date').value);
+          formData.call3_amount = parseNumberWithCommas(document.getElementById('call3_amount').value);
+          formData.call4_date = parseInt(document.getElementById('call4_date').value);
+          formData.call4_amount = parseNumberWithCommas(document.getElementById('call4_amount').value);
+
+          // Process loan parameters
+          formData.average_property_value = parseNumberWithCommas(document.getElementById('average_property_value').value);
+          formData.average_ltv = parsePercentage(document.getElementById('average_ltv').value);
+          formData.max_ltv = parsePercentage(document.getElementById('max_ltv').value);
+          formData.green_zone_allocation = parsePercentage(document.getElementById('green_zone_allocation').value);
+          formData.orange_zone_allocation = parsePercentage(document.getElementById('orange_zone_allocation').value);
+          formData.red_zone_allocation = parsePercentage(document.getElementById('red_zone_allocation').value);
+          formData.early_exit_probability = parsePercentage(document.getElementById('early_exit_probability').value);
+          formData.average_exit_year = parseFloat(document.getElementById('average_exit_year').value);
+          formData.exit_year_std_dev = parseFloat(document.getElementById('exit_year_std_dev').value);
+          formData.reinvestment_cap_year = parseInt(document.getElementById('reinvestment_cap_year').value);
+
+          // Update state
+          StateManager.updateState('fundSettings', formData);
+
+          // Mark fund settings as complete in user journey
+          StateManager.completeJourneyStep('fundSettingsComplete');
+
+          // Reset portfolio generation and fund returns when fund settings change
+          StateManager.resetStateSection('portfolioGeneration');
+          StateManager.resetStateSection('fundReturns');
+
+          // Show success message
+          const alert = document.createElement('div');
+          alert.className = 'alert alert-success';
+          alert.innerHTML = '<p>Fund settings saved successfully!</p>';
+
+          // Insert before the button
+          this.parentElement.insertBefore(alert, this);
+
+          // Remove after 3 seconds
+          setTimeout(() => {
+            alert.remove();
+          }, 3000);
+
+          // Redirect to portfolio generation
+          setTimeout(() => {
+            window.location.href = 'portfolio-generation.html';
+          }, 1000);
+        });
+
+        // Ensure zone allocations sum to 100%
+        const zoneSliders = [
+          document.getElementById('green_zone_slider'),
+          document.getElementById('orange_zone_slider'),
+          document.getElementById('red_zone_slider')
+        ];
+
+        zoneSliders.forEach(slider => {
+          slider.addEventListener('input', function() {
+            const greenValue = parseInt(zoneSliders[0].value);
+            const orangeValue = parseInt(zoneSliders[1].value);
+            const redValue = parseInt(zoneSliders[2].value);
+
+            const total = greenValue + orangeValue + redValue;
+
+            if (total !== 100) {
+              // Adjust the other sliders
+              if (this === zoneSliders[0]) {
+                // Adjust orange and red proportionally
+                const remaining = 100 - greenValue;
+                const orangeRatio = orangeValue / (orangeValue + redValue) || 0.5;
+
+                zoneSliders[1].value = Math.round(remaining * orangeRatio);
+                zoneSliders[2].value = 100 - greenValue - zoneSliders[1].value;
+              } else if (this === zoneSliders[1]) {
+                // Adjust red
+                zoneSliders[2].value = 100 - greenValue - orangeValue;
+              } else {
+                // Adjust orange
+                zoneSliders[1].value = 100 - greenValue - redValue;
+              }
+
+              // Update displays
+              zoneSliders.forEach((s, i) => {
+                const input = s.parentElement.previousElementSibling;
+                const valueDisplay = s.nextElementSibling;
+                input.value = s.value + '.00%';
+                valueDisplay.textContent = s.value + '.00%';
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -97,6 +97,7 @@ The Equihome platform is structured with:
 - TailwindCSS for styling
 - Zustand for state management
 - React Router for navigation
+- Chart.js for data visualization
 
 ### Three Backend Systems
 1. **Underwriting System**
@@ -108,16 +109,54 @@ The Equihome platform is structured with:
    - Deal tracking
    - Scenario Simulations from the Traffic Light Zones
    - Portfolio Simulation and Optimization
+   - Python-based simulation engine for financial calculations
+   - Interactive charts for visualizing fund performance
 
 3. **Traffic Light System**
    - ML into Traffic Light Zones for Sydney
    - Metrics and analytics
    - Investment Thesis generation for our portfolio and where to invest
+   - Geographic visualization with map integration
 
 ### Data Layer
 - Supabase for database, authentication, and storage
 - Real-time data synchronization
 - Type-safe database access
+
+### Python Simulation Backend
+The Portfolio Management System includes a Python-based simulation engine that:
+- Calculates fund performance metrics
+- Generates cashflow projections
+- Computes waterfall distributions
+- Provides NAV calculations
+- Exposes API endpoints for the frontend to consume
+- Located in `src/systems/portfolio/simulation/` and `src/systems/portfolio/services/python/`
+
+## Current State of the Project
+
+### Implemented Features
+
+#### Portfolio Management System
+- **Advanced Simulation Module**
+  - Complete financial simulation with parameter-based calculations
+  - Interactive charts for visualizing fund performance
+  - Fund Overview with NAV progression and capital structure visualization
+  - Cashflow projections with detailed yearly breakdown
+  - Waterfall distribution modeling
+  - GP and LP economics calculations
+  - Python backend for complex financial calculations
+
+#### Traffic Light System
+- Map integration for Sydney suburbs
+- Zone visualization with confidence levels
+- Data feed management
+
+### Next Steps
+- Implement real data integration with Supabase
+- Complete the Underwriting System
+- Enhance Traffic Light System with ML predictions
+- Add user authentication and role-based access control
+- Implement portfolio optimization algorithms
 
 ## Running the Application
 
@@ -156,8 +195,100 @@ npx playwright show-report
 4. Use Supabase for all data persistence
 5. Write Playwright tests for all features
 6. Update the CHANGELOG.md after every 10 significant commands/changes
+7. Follow the documentation structure guidelines
+
+## Documentation Guidelines
+
+### Documentation Structure
+
+Each system (Traffic Light System, Portfolio Management System, and Underwriting System) should follow this documentation structure:
+
+```
+src/systems/[system-name]/
+├── README.md                # Main system README with overview and quick links
+└── docs/                    # Documentation directory
+    ├── README.md            # Documentation index
+    ├── architecture/        # Architecture documentation
+    │   ├── README.md        # Architecture documentation index
+    │   ├── OVERVIEW.md      # System overview
+    │   ├── DATA_FLOW.md     # Data flow documentation
+    │   ├── ML_MODEL.md      # ML model documentation (if applicable)
+    │   └── REQUIREMENTS.md  # System requirements
+    ├── api/                 # API documentation
+    │   ├── README.md        # API documentation index
+    │   ├── OVERVIEW.md      # API overview
+    │   ├── ENDPOINTS.md     # API endpoints documentation
+    │   ├── INTEGRATION.md   # Integration with other systems
+    │   └── WEBHOOKS.md      # Webhook documentation
+    └── development/         # Development documentation
+        ├── README.md        # Development documentation index
+        ├── GUIDELINES.md    # Development guidelines
+        ├── COMPONENTS.md    # Component structure
+        └── TESTING.md       # Testing guidelines
+```
+
+### README Content Guidelines
+
+#### Main System README (src/systems/[system-name]/README.md)
+
+- **System Overview**: Brief description of the system's purpose and functionality
+- **Quick Start**: Basic commands to run the system
+- **Key Features**: List of key features
+- **Documentation Links**: Links to detailed documentation
+- **Integration**: Brief overview of integration with other systems
+- **Development Status**: Current development status
+
+#### Documentation Index (src/systems/[system-name]/docs/README.md)
+
+- **Documentation Structure**: Overview of the documentation structure
+- **Quick Links**: Direct links to key documentation files
+
+#### Architecture Documentation
+
+- **System Overview**: Detailed description of the system's architecture
+- **Data Flow**: Description of data flow within the system
+- **ML Model** (if applicable): Details about ML models used
+- **Requirements**: System requirements and specifications
+
+#### API Documentation
+
+- **API Overview**: Overview of the API structure
+- **Endpoints**: Detailed documentation of all API endpoints
+- **Integration**: Details about integrating with other systems
+- **Webhooks**: Documentation of webhook endpoints
+
+#### Development Documentation
+
+- **Guidelines**: Development guidelines and best practices
+- **Components**: Component structure and hierarchy
+- **Testing**: Testing guidelines and procedures
+
+### Documentation Standards
+
+1. **Markdown Format**: All documentation should be in Markdown format
+2. **Code Examples**: Include code examples where appropriate
+3. **Diagrams**: Use ASCII diagrams or links to external diagram tools
+4. **Versioning**: Include version information where applicable
+5. **Cross-References**: Use relative links to reference other documentation files
+6. **Consistency**: Maintain consistent terminology across all documentation
+7. **Completeness**: Document all aspects of the system
+8. **Clarity**: Write clear, concise documentation with proper headings and structure
 
 ## Version Control Guidelines
+
+### Version Information
+
+**Current Version**: Alpha 2.1.2
+
+#### Version Naming Convention
+- **Alpha**: Early development versions (e.g., Alpha 1.0.0)
+- **Beta**: Feature-complete testing versions (e.g., Beta 1.0.0)
+- **Release**: Production versions (e.g., 1.0.0)
+
+#### Version Number Structure
+- **First digit**: Major version (significant changes)
+- **Second digit**: Minor version (new features)
+- **Third digit**: Patch version (bug fixes)
 
 ### Git Repository Management
 
@@ -484,7 +615,7 @@ Copy
 }
 3. Underwrite System
 Purpose and Design
-The Underwrite System is the third layer of the Equihome platform, designed to evaluate individual properties and homeowners for no-monthly-payment loan approval within the green-zone suburbs identified by the Traffic Light System. It performs due diligence, financial modeling, and risk assessment, with underwriting predominantly focused on the asset (property), to ensure each loan aligns with Equihome’s investment criteria and financial goals.
+The Underwrite System is the third layer of the Equihome platform, designed to evaluate individual properties and homeowners for no-monthly-payment loan approval within the green-zone suburbs identified by the Traffic Light System. It performs due diligence, financial modeling, and risk assessment, with underwriting predominantly focus ed on the asset (property), to ensure each loan aligns with Equihome’s investment criteria and financial goals.
 
 Use Case
 Loan Evaluation: Assesses whether a property in a green-zone suburb and its homeowner meet our criteria (e.g., property value, equity, LTV, homeowner credit risk).

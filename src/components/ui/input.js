@@ -24,4 +24,4 @@ const Input = forwardRef(({ className, type, formatNumber: shouldFormat, onChang
     return (_jsx("input", { type: shouldFormat ? 'text' : type, className: className, ref: ref, value: displayValue, onChange: handleChange, ...props }));
 });
 Input.displayName = 'Input';
-export default Input;
+export { Input };

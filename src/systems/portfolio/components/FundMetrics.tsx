@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { TrendingUp, DollarSign, Percent, Clock, Coins } from 'lucide-react';
 import { sampleDeals } from '../../../data/sampleDeals';
+import { mockPortfolioData } from '../data/mockData';
 
 const FundMetrics: React.FC = () => {
   // Calculate total starting portfolio value
@@ -13,18 +14,18 @@ const FundMetrics: React.FC = () => {
     const now = new Date();
     const elapsedMonths = (now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 30.44);
     const isActive = now < endDate;
-    
+
     // Calculate current property value based on yearly growth rate
     const yearlyGrowthRate = deal.propertyDetails.yearlyGrowth / 100;
     const monthlyGrowthRate = yearlyGrowthRate / 12;
     const currentValue = deal.propertyValue * Math.pow(1 + monthlyGrowthRate, elapsedMonths);
     const appreciation = currentValue - deal.propertyValue;
-    
+
     // Calculate returns
     const monthlyInterestRate = deal.loanTerms.interestRate / 100 / 12;
     const accruedInterest = deal.loanAmount * (Math.pow(1 + monthlyInterestRate, elapsedMonths) - 1);
     const appreciationShare = appreciation * (deal.loanAmount / deal.propertyValue);
-    
+
     return {
       startDate,
       endDate,
@@ -47,12 +48,15 @@ const FundMetrics: React.FC = () => {
   const portfolioGrowth = ((totalCurrentValue - totalStartingValue) / totalStartingValue) * 100;
 
   // Calculate weighted average LTV
-  const weightedLTV = sampleDeals.reduce((sum, deal) => 
-    sum + (deal.loanAmount / deal.propertyValue * 100 * deal.loanAmount), 0) / 
+  const weightedLTV = sampleDeals.reduce((sum, deal) =>
+    sum + (deal.loanAmount / deal.propertyValue * 100 * deal.loanAmount), 0) /
     sampleDeals.reduce((sum, deal) => sum + deal.loanAmount, 0);
 
-  // Monthly IRR (provided value)
-  const monthlyIRR = 16.61;
+  // Get Fund IRR from mock data
+  const [fundIRR, setFundIRR] = useState<number>(mockPortfolioData.portfolioSummary.fundIRR);
+
+  // Convert annual IRR to monthly IRR
+  const monthlyIRR = (Math.pow(1 + fundIRR / 100, 1/12) - 1) * 100;
 
   // Calculate total returns
   const totalReturns = portfolioMetrics.reduce((acc, deal) => ({
@@ -112,7 +116,8 @@ const FundMetrics: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Monthly IRR</p>
-              <p className="text-2xl font-semibold mt-1">{monthlyIRR}%</p>
+              <p className="text-2xl font-semibold mt-1">{monthlyIRR.toFixed(2)}%</p>
+              <p className="text-xs text-gray-500 mt-1">Annual: {fundIRR.toFixed(1)}%</p>
             </div>
             <TrendingUp className="h-8 w-8 text-green-600" />
           </div>

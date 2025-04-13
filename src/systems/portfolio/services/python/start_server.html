@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Starting Python Server</title>
+    <script>
+        // This script attempts to start the Python server
+        window.onload = function() {
+            try {
+                // Create a new XMLHttpRequest
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '/start_python_server', true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            console.log('Python server started successfully');
+                        } else {
+                            console.error('Failed to start Python server');
+                        }
+                    }
+                };
+                xhr.send();
+            } catch (error) {
+                console.error('Error starting Python server:', error);
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Starting Python Server...</h1>
+    <p>This page is attempting to start the Python server. You can close this window once the server has started.</p>
+    <p>If the server doesn't start automatically, please start it manually:</p>
+    <ol>
+        <li>Open a terminal</li>
+        <li>Navigate to: <code>src/systems/portfolio/services/python</code></li>
+        <li>Run: <code>python api.py</code></li>
+    </ol>
+</body>
+</html>

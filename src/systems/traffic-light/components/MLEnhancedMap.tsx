@@ -6,9 +6,13 @@ import Map, {
   CircleLayer,
   Popup
 } from 'react-map-gl';
+import { Badge } from '../../../components/ui/badge';
+import { trafficLightZones, suburbCoordinates } from '../../../data/zoneData';
 import sydneySuburbBoundaries from '../../../data/sydneySuburbBoundaries';
 import sydneyPostcodeBoundaries from '../../../data/sydneyPostcodeBoundaries';
+import suburbScores, { zoneStats } from '../../../data/suburbScores';
 import { formatNumber } from '../../../shared/utils/formatters';
+import { useMLData } from '../context/MLDataContext';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import type { MapLayerMouseEvent } from 'react-map-gl';
 
@@ -26,20 +30,56 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   const [selectedLayer, setSelectedLayer] = useState('suburbs'); // 'suburbs', 'postcodes', etc.
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
+  // Get ML data for confidence levels
+  const { modelInfo, systemStatus } = useMLData();
+
   // Debug logs
   useEffect(() => {
     console.log('Mapbox Token:', MAPBOX_TOKEN);
+    console.log('Traffic Light Zones:', trafficLightZones);
+    console.log('Suburb Coordinates:', suburbCoordinates);
     console.log('Sydney Suburbs:', sydneySuburbBoundaries.features.length);
     console.log('Sydney Postcodes:', sydneyPostcodeBoundaries.features.length);
   }, []);
 
-  // Use suburb boundaries from GeoJSON with added transition probability for predictive mode
+  // Use suburb boundaries from GeoJSON with added scores and confidence levels
   const suburbFeatures = sydneySuburbBoundaries.features.map(feature => {
+    const suburbName = feature.properties?.nsw_loca_2;
+
+    // Get base score data from static data
+    let scoreData = suburbScores[suburbName] || {
+      score: Math.floor(Math.random() * 100),
+      confidence: 0,
+      zone: Math.random() > 0.66 ? 'green' : (Math.random() > 0.5 ? 'yellow' : 'red')
+    };
+
+    // Always use ML model confidence if available, overriding any hardcoded values
+    if (modelInfo && systemStatus) {
+      // Use the model's confidence level for all suburbs
+      // In a real implementation, this would be suburb-specific from the API
+      const mlConfidence = Math.round(modelInfo.metrics.confidence * 100);
+
+      // Override any existing confidence value with the ML model confidence
+      scoreData = {
+        ...scoreData,
+        confidence: mlConfidence
+      };
+
+      // Log for debugging
+      if (suburbName === 'Vaucluse') {
+        console.log('ML Model Confidence:', mlConfidence);
+        console.log('Updated Suburb Data:', scoreData);
+      }
+    }
+
     return {
       ...feature,
       properties: {
         ...feature.properties,
-        transitionProbability: Math.random() // Simulated probability for demo
+        score: scoreData.score,
+        confidence: scoreData.confidence,
+        zone: scoreData.zone,
+        transitionProbability: predictiveMode ? scoreData.confidence / 100 : 0 // Use confidence for predictive mode
       }
     };
   });
@@ -121,7 +161,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
     }
   };
 
-  // Style for polygon features (suburb boundaries)
+  // Style for polygon features (suburb boundaries) with gradient color scheme based on score and confidence
   const polygonLayerStyle = {
     id: 'suburb-polygons',
     type: 'fill',
@@ -131,16 +171,39 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         'interpolate',
         ['linear'],
         ['get', 'transitionProbability'],
-        0.3, '#ef4444',
-        0.6, '#f97316',
-        0.9, '#22c55e'
+        0.3, '#ef4444', // Low confidence - red
+        0.5, '#f97316', // Medium confidence - orange
+        0.7, '#facc15', // Higher confidence - yellow
+        0.9, '#22c55e'  // High confidence - green
       ] : [
-        'match',
-        ['get', 'zone'],
-        'green', '#22c55e',
-        'orange', '#f97316',
-        'red', '#ef4444',
-        '#888888' // Default color for unclassified suburbs
+        'case',
+        ['==', ['get', 'zone'], 'green'],
+        [
+          'interpolate',
+          ['linear'],
+          ['get', 'score'],
+          75, '#4ade80', // Light green for lower green scores
+          85, '#22c55e', // Medium green
+          95, '#16a34a'  // Dark green for premium suburbs
+        ],
+        ['==', ['get', 'zone'], 'yellow'],
+        [
+          'interpolate',
+          ['linear'],
+          ['get', 'score'],
+          50, '#fde047', // Light yellow for lower yellow scores
+          60, '#facc15', // Medium yellow
+          70, '#f97316'  // Orange for higher yellow scores
+        ],
+        // Red zone with gradient
+        [
+          'interpolate',
+          ['linear'],
+          ['get', 'score'],
+          0, '#b91c1c',  // Dark red for very low scores
+          25, '#ef4444', // Medium red
+          45, '#f87171'  // Light red for higher red scores
+        ]
       ],
       'fill-opacity': 0.7
     }
@@ -239,12 +302,12 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   // Filter features based on search, tab, and selected layer
   const filteredFeatures = selectedLayer === 'suburbs'
     ? suburbFeatures.filter(f =>
-        f.properties.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (selectedTab === 'all' || f.properties.zone === selectedTab)
+        (f.properties?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (selectedTab === 'all' || f.properties?.zone === selectedTab)
       )
     : postcodeFeatures.filter(f =>
-        (f.properties.name || '').toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (selectedTab === 'all' || f.properties.zone === selectedTab)
+        (f.properties?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (selectedTab === 'all' || f.properties?.zone === selectedTab)
       );
 
   return (
@@ -307,6 +370,36 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         </div>
       </div>
 
+      {/* Layer Control */}
+      <div className="mb-4">
+        <h3 className="text-sm font-medium mb-2">Map Layers</h3>
+        <div className="bg-white rounded-lg border shadow-sm p-2 flex space-x-2">
+          <button
+            className={`px-4 py-2 rounded-md transition-colors ${selectedLayer === 'suburbs' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100'}`}
+            onClick={() => setSelectedLayer('suburbs')}
+          >
+            <span className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              Suburbs
+            </span>
+          </button>
+          <button
+            className={`px-4 py-2 rounded-md transition-colors ${selectedLayer === 'postcodes' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100'}`}
+            onClick={() => setSelectedLayer('postcodes')}
+          >
+            <span className="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+              </svg>
+              Postcodes
+            </span>
+          </button>
+        </div>
+      </div>
+
       {/* Quick Stats */}
       <div className="grid grid-cols-4 gap-4">
         <div className="bg-white rounded-lg border p-4">
@@ -340,11 +433,16 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         </div>
         <div className="bg-white rounded-lg border p-4">
           <div className="text-sm text-gray-600">ML Confidence</div>
-          <div className="text-2xl font-bold text-blue-600">94.3%</div>
-          <div className="text-xs text-gray-500">Based on 1.2M data points</div>
+          <div className="text-2xl font-bold text-blue-600">
+            {modelInfo ? `${(modelInfo.metrics.confidence * 100).toFixed(1)}%` : 'Loading...'}
+          </div>
+          <div className="text-xs text-gray-500">
+            Based on {modelInfo ? `${(modelInfo.metrics.data_points / 1000).toFixed(0)}K` : 'Loading...'} data points
+          </div>
         </div>
       </div>
 
+<<<<<<< HEAD
       {/* Layer Control */}
       <div className="mb-4">
         <h3 className="text-sm font-medium mb-2">Map Layers</h3>

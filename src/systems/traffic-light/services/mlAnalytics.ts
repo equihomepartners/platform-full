@@ -152,12 +152,12 @@ export const getSuburbAnalysis = (suburb: string): SuburbAnalysis => {
     },
     lastUpdated: new Date(),
     iteration: currentIteration,
-    dataPoints: 15234 + Math.floor(Math.random() * 1000),
-    modelVersion: '3.2.1',
+    dataPoints: 250000 + Math.floor(Math.random() * 1000),
+    modelVersion: '1.0',
     updateMetrics: {
       confidence: baseConfidence + dailyVariation,
-      dataQuality: 96.3,
-      predictionAccuracy: 94.2
+      dataQuality: 85.3,
+      predictionAccuracy: 85.7
     }
   };
 };
@@ -196,26 +196,28 @@ export const getSydneyAverages = (): SydneyAverages & {
 export const getMLSystemStatus = () => {
   return {
     lastUpdate: new Date(),
-    nextUpdate: new Date(Date.now() + 24 * 60 * 60 * 1000), // Next day
+    nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // Weekly updates
     dataPoints: {
-      total: 1243567,
-      last24h: 15234,
-      newProperties: 342
+      total: 250000,
+      last24h: 2500,
+      newProperties: 120
     },
     modelMetrics: {
-      accuracy: 94.3,
-      confidence: 92.7,
-      validationScore: 0.89
+      accuracy: 85.7,
+      confidence: 83.5,
+      validationScore: 0.82
     },
     systemHealth: {
       status: 'operational',
-      uptime: 99.98,
-      latency: 145 // ms
+      uptime: 99.5,
+      latency: 180 // ms
     },
     integrations: {
-      propTrack: 'connected',
-      coreLogic: 'connected',
-      domainGroup: 'connected'
+      rba: 'connected',
+      absCensus: 'connected',
+      absPriceIndex: 'connected',
+      nswGovInfra: 'connected',
+      nswLandRegistry: 'connected'
     }
   };
 };

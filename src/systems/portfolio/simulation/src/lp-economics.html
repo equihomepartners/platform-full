@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LP Economics - Equihome Fund Modeling</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+      .chart-container {
+        height: 300px;
+        margin: 20px 0;
+        background-color: #f5f5f5;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+      }
+
+      .table-container {
+        margin: 20px 0;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f5f5f5;
+        font-weight: 500;
+      }
+
+      tr:hover {
+        background-color: #f9f9f9;
+      }
+
+      .waterfall-item {
+        display: flex;
+        margin-bottom: 15px;
+        align-items: center;
+      }
+
+      .waterfall-label {
+        width: 200px;
+        font-weight: 500;
+      }
+
+      .waterfall-value {
+        width: 150px;
+        text-align: right;
+        font-weight: 500;
+      }
+
+      .waterfall-bar-container {
+        flex: 1;
+        height: 30px;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        margin-left: 20px;
+        position: relative;
+      }
+
+      .waterfall-bar {
+        height: 100%;
+        border-radius: 4px;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .waterfall-bar.positive {
+        background-color: var(--primary-color);
+      }
+
+      .waterfall-bar.negative {
+        background-color: var(--error-color);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-content">
+        <div class="logo">Equihome Fund Modeling</div>
+        <nav class="nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="fund-settings.html" class="nav-link">Fund Settings</a>
+          <a href="portfolio-generation.html" class="nav-link">Portfolio Generation</a>
+          <a href="fund-overview.html" class="nav-link">Fund Overview</a>
+          <a href="gp-economics.html" class="nav-link">GP Economics</a>
+          <a href="lp-economics.html" class="nav-link active">LP Economics</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1 class="section-title">LP Economics</h1>
+      <p>Detailed analysis of returns and economics from the Limited Partner perspective.</p>
+
+      <div class="card">
+        <h2 class="section-title">LP Returns Summary</h2>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-title">LP Investment</div>
+            <div class="metric-value" id="lp-investment-value">$95,000,000</div>
+            <div class="metric-description">95% of total fund size</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">LP IRR</div>
+            <div class="metric-value" id="lp-irr-value">13.50%</div>
+            <div class="metric-description">Internal Rate of Return for LPs</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">LP Multiple</div>
+            <div class="metric-value" id="lp-multiple-value">2.15x</div>
+            <div class="metric-description">Multiple on LP's invested capital</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">Total LP Return</div>
+            <div class="metric-value" id="total-lp-return-value">$204,000,000</div>
+            <div class="metric-description">Total value returned to LPs</div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <p>LP Returns Chart (Placeholder)</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">LP Economics Breakdown</h2>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-title">Return of Capital</div>
+            <div class="metric-value" id="return-of-capital-value">$95,000,000</div>
+            <div class="metric-description">Original LP investment</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">Preferred Return</div>
+            <div class="metric-value" id="preferred-return-value">$60,000,000</div>
+            <div class="metric-description">6% annual preferred return</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">Residual Profits</div>
+            <div class="metric-value" id="residual-profits-value">$49,000,000</div>
+            <div class="metric-description">80% of profits above hurdle</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">Net Profit</div>
+            <div class="metric-value" id="net-profit-value">$109,000,000</div>
+            <div class="metric-description">Total LP return minus investment</div>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Amount</th>
+                <th>% of Total LP Return</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Return of Capital</td>
+                <td>$95,000,000</td>
+                <td>46.6%</td>
+                <td>Original LP investment</td>
+              </tr>
+              <tr>
+                <td>Preferred Return</td>
+                <td>$60,000,000</td>
+                <td>29.4%</td>
+                <td>6% annual preferred return</td>
+              </tr>
+              <tr>
+                <td>Residual Profits</td>
+                <td>$49,000,000</td>
+                <td>24.0%</td>
+                <td>80% of profits above hurdle</td>
+              </tr>
+              <tr>
+                <td><strong>Total LP Return</strong></td>
+                <td><strong>$204,000,000</strong></td>
+                <td><strong>100.0%</strong></td>
+                <td><strong>Total value returned to LPs</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">LP Performance Metrics</h2>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-title">DPI</div>
+            <div class="metric-value" id="dpi-value">2.15x</div>
+            <div class="metric-description">Distributions to Paid-In Capital</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">RVPI</div>
+            <div class="metric-value" id="rvpi-value">0.00x</div>
+            <div class="metric-description">Remaining Value to Paid-In Capital</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">TVPI</div>
+            <div class="metric-value" id="tvpi-value">2.15x</div>
+            <div class="metric-description">Total Value to Paid-In Capital</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-title">PIC</div>
+            <div class="metric-value" id="pic-value">100.00%</div>
+            <div class="metric-description">Paid-In Capital percentage</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">LP Cash Flow Analysis</h2>
+
+        <div class="chart-container">
+          <p>LP Cash Flow Chart (Placeholder)</p>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Capital Called</th>
+                <th>Distributions</th>
+                <th>Net Cash Flow</th>
+                <th>Cumulative Net CF</th>
+                <th>NAV</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2023</td>
+                <td>$23,750,000</td>
+                <td>$0</td>
+                <td>-$23,750,000</td>
+                <td>-$23,750,000</td>
+                <td>$24,462,500</td>
+              </tr>
+              <tr>
+                <td>2024</td>
+                <td>$23,750,000</td>
+                <td>$0</td>
+                <td>-$23,750,000</td>
+                <td>-$47,500,000</td>
+                <td>$50,392,750</td>
+              </tr>
+              <tr>
+                <td>2025</td>
+                <td>$23,750,000</td>
+                <td>$0</td>
+                <td>-$23,750,000</td>
+                <td>-$71,250,000</td>
+                <td>$77,944,413</td>
+              </tr>
+              <tr>
+                <td>2026</td>
+                <td>$23,750,000</td>
+                <td>$0</td>
+                <td>-$23,750,000</td>
+                <td>-$95,000,000</td>
+                <td>$107,286,970</td>
+              </tr>
+              <tr>
+                <td>2027</td>
+                <td>$0</td>
+                <td>$4,750,000</td>
+                <td>$4,750,000</td>
+                <td>-$90,250,000</td>
+                <td>$120,505,918</td>
+              </tr>
+              <tr>
+                <td>2028</td>
+                <td>$0</td>
+                <td>$9,500,000</td>
+                <td>$9,500,000</td>
+                <td>-$80,750,000</td>
+                <td>$130,656,637</td>
+              </tr>
+              <tr>
+                <td>2029</td>
+                <td>$0</td>
+                <td>$14,250,000</td>
+                <td>$14,250,000</td>
+                <td>-$66,500,000</td>
+                <td>$137,189,469</td>
+              </tr>
+              <tr>
+                <td>2030</td>
+                <td>$0</td>
+                <td>$19,000,000</td>
+                <td>$19,000,000</td>
+                <td>-$47,500,000</td>
+                <td>$139,298,754</td>
+              </tr>
+              <tr>
+                <td>2031</td>
+                <td>$0</td>
+                <td>$28,500,000</td>
+                <td>$28,500,000</td>
+                <td>-$19,000,000</td>
+                <td>$132,996,081</td>
+              </tr>
+              <tr>
+                <td>2032</td>
+                <td>$0</td>
+                <td>$38,000,000</td>
+                <td>$38,000,000</td>
+                <td>$19,000,000</td>
+                <td>$115,895,963</td>
+              </tr>
+              <tr>
+                <td>2033</td>
+                <td>$0</td>
+                <td>$114,000,000</td>
+                <td>$114,000,000</td>
+                <td>$133,000,000</td>
+                <td>$0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/utils.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/state-manager.js"></script>
+    <script src="js/math-utils.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Check if GP economics has been viewed
+        if (!StateManager.isJourneyStepComplete('gpEconomicsViewed')) {
+          // Show warning message
+          const warningDiv = document.createElement('div');
+          warningDiv.className = 'alert alert-warning';
+          warningDiv.innerHTML = '<p><strong>Warning:</strong> Please view the GP Economics before viewing LP Economics.</p>';
+          document.querySelector('main').insertBefore(warningDiv, document.querySelector('.card'));
+
+          // Add a button to go to GP economics
+          const goToGPBtn = document.createElement('a');
+          goToGPBtn.href = 'gp-economics.html';
+          goToGPBtn.className = 'btn';
+          goToGPBtn.textContent = 'Go to GP Economics';
+          warningDiv.appendChild(goToGPBtn);
+        }
+
+        // Load state from state manager
+        const fundSettings = StateManager.getStateSection('fundSettings');
+        const fundReturns = StateManager.getStateSection('fundReturns');
+        const derivedValues = StateManager.calculateDerivedValues();
+
+        // Mark LP economics as viewed in user journey
+        StateManager.completeJourneyStep('lpEconomicsViewed');
+
+        // Update LP returns summary
+        document.getElementById('lp-investment-value').textContent = '$' + formatNumberWithCommas(derivedValues.lpInvestment);
+        document.getElementById('lp-irr-value').textContent = formatPercentage(calculateLPIRR(fundReturns, derivedValues));
+        document.getElementById('lp-multiple-value').textContent = calculateLPMultiple(fundReturns, derivedValues).toFixed(2) + 'x';
+        document.getElementById('total-lp-return-value').textContent = '$' + formatNumberWithCommas(fundReturns.lp_return);
+
+        // Update LP economics breakdown
+        const returnOfCapital = derivedValues.lpInvestment;
+        const preferredReturn = fundReturns.hurdle_amount;
+        const residualProfits = fundReturns.lp_return - returnOfCapital - preferredReturn;
+        const netProfit = fundReturns.lp_return - returnOfCapital;
+
+        document.getElementById('return-of-capital-value').textContent = '$' + formatNumberWithCommas(returnOfCapital);
+        document.getElementById('preferred-return-value').textContent = '$' + formatNumberWithCommas(preferredReturn);
+        document.getElementById('residual-profits-value').textContent = '$' + formatNumberWithCommas(Math.max(0, residualProfits));
+        document.getElementById('net-profit-value').textContent = '$' + formatNumberWithCommas(netProfit);
+
+        // Update LP performance metrics
+        const dpi = fundReturns.lp_return / derivedValues.lpInvestment;
+        const rvpi = 0; // Assuming all value is distributed at the end
+        const tvpi = dpi + rvpi;
+        const pic = 1.0; // Assuming 100% of capital is called
+
+        document.getElementById('dpi-value').textContent = dpi.toFixed(2) + 'x';
+        document.getElementById('rvpi-value').textContent = rvpi.toFixed(2) + 'x';
+        document.getElementById('tvpi-value').textContent = tvpi.toFixed(2) + 'x';
+        document.getElementById('pic-value').textContent = formatPercentage(pic);
+
+        // Generate LP cash flow table
+        const cashFlowTable = document.querySelector('table tbody');
+        if (cashFlowTable && fundReturns.cashFlows) {
+          cashFlowTable.innerHTML = '';
+
+          // Initialize cumulative cash flow
+          let cumulativeNetCF = 0;
+
+          fundReturns.cashFlows.forEach((yearData, year) => {
+            // Skip years beyond extended term
+            if (year > derivedValues.extendedFundTerm) return;
+
+            const row = document.createElement('tr');
+
+            // Calculate LP capital called (proportional to total capital called)
+            const lpCapitalCalled = yearData.capitalCalled * (derivedValues.lpInvestment / fundSettings.fund_size);
+
+            // Calculate LP distributions (proportional to total distributions)
+            const lpDistributions = yearData.distributions * (fundReturns.lp_return / fundReturns.total_return);
+
+            // Calculate net cash flow
+            const netCashFlow = lpDistributions - lpCapitalCalled;
+
+            // Update cumulative cash flow
+            cumulativeNetCF += netCashFlow;
+
+            // Calculate NAV (proportional to total NAV)
+            const nav = yearData.nav * (derivedValues.lpInvestment / fundSettings.fund_size);
+
+            row.innerHTML = `
+              <td>Year ${year}</td>
+              <td>$${formatNumberWithCommas(lpCapitalCalled)}</td>
+              <td>$${formatNumberWithCommas(lpDistributions)}</td>
+              <td>$${formatNumberWithCommas(netCashFlow)}</td>
+              <td>$${formatNumberWithCommas(cumulativeNetCF)}</td>
+              <td>$${formatNumberWithCommas(nav)}</td>
+            `;
+
+            cashFlowTable.appendChild(row);
+          });
+        }
+        // Format all numeric values with commas
+        const numericValues = document.querySelectorAll('.metric-value, .waterfall-value');
+        numericValues.forEach(value => {
+          const text = value.textContent;
+
+          // Skip percentage values and values with 'x' (multiples)
+          if (text.includes('%') || text.includes('x')) {
+            return;
+          }
+
+          // Format currency values
+          if (text.startsWith('$')) {
+            const number = parseNumberWithCommas(text.substring(1));
+            value.textContent = '$' + formatNumberWithCommas(number);
+          }
+          // Format other numeric values
+          else if (!isNaN(parseNumberWithCommas(text))) {
+            value.textContent = formatNumberWithCommas(parseNumberWithCommas(text));
+          }
+        });
+
+        // Format table values
+        const tableCells = document.querySelectorAll('td');
+        tableCells.forEach(cell => {
+          const text = cell.textContent;
+
+          // Skip percentage values and non-numeric cells
+          if (text.includes('%') || isNaN(parseNumberWithCommas(text.replace('$', '')))) {
+            return;
+          }
+
+          // Format currency values
+          if (text.startsWith('$')) {
+            const number = parseNumberWithCommas(text.substring(1));
+            cell.textContent = '$' + formatNumberWithCommas(number);
+          }
+        });
+      });
+
+      /**
+       * Calculate LP IRR with accurate financial calculations
+       * @param {Object} fundReturns - Fund returns data
+       * @param {Object} derivedValues - Derived values
+       * @returns {number} LP IRR
+       */
+      function calculateLPIRR(fundReturns, derivedValues) {
+        // LP IRR is slightly lower than fund IRR due to GP carried interest
+        const lpInvestment = derivedValues.lpInvestment;
+        const lpReturn = fundReturns.lp_return;
+
+        // Extract LP cash flows from fund cash flows
+        const lpCashFlows = [];
+
+        // If we have detailed cash flows, use them
+        if (fundReturns.cashFlows && fundReturns.cashFlows.length > 0) {
+          // Initial investment (negative)
+          lpCashFlows.push(-lpInvestment);
+
+          // Calculate LP portion of each year's cash flow
+          const fundTerm = fundReturns.fundSettings?.fund_term || 10;
+          const extendedTerm = derivedValues.extendedFundTerm || fundTerm;
+
+          // Process capital calls based on fund settings
+          if (fundReturns.fundSettings?.capital_call_schedule === 'custom') {
+            // First cash flow is already accounted for
+            // Add subsequent capital calls
+            const callDates = [
+              { date: fundReturns.fundSettings.call2_date, amount: fundReturns.fundSettings.call2_amount },
+              { date: fundReturns.fundSettings.call3_date, amount: fundReturns.fundSettings.call3_amount },
+              { date: fundReturns.fundSettings.call4_date, amount: fundReturns.fundSettings.call4_amount }
+            ];
+
+            // Convert to LP portion
+            const lpRatio = lpInvestment / fundReturns.total_investment;
+
+            callDates.forEach(call => {
+              // Convert months to years
+              const year = Math.floor(call.date / 12);
+              if (year <= extendedTerm && year > 0) {
+                // Ensure we have enough elements in the array
+                while (lpCashFlows.length <= year) {
+                  lpCashFlows.push(0);
+                }
+
+                // Add capital call (negative cash flow)
+                lpCashFlows[year] -= call.amount * lpRatio;
+              }
+            });
+          }
+
+          // Add distributions based on waterfall
+          // Simplification: distribute LP return proportionally over the fund term
+          const totalDistributions = lpReturn - lpInvestment; // Net distributions after return of capital
+
+          if (totalDistributions > 0) {
+            // Return of capital at the end
+            while (lpCashFlows.length <= extendedTerm) {
+              lpCashFlows.push(0);
+            }
+
+            // Add return of capital and preferred return at the end
+            lpCashFlows[extendedTerm] += lpInvestment + totalDistributions;
+          }
+        } else {
+          // Simplified cash flows if detailed data is not available
+          lpCashFlows.push(-lpInvestment); // Initial investment
+
+          // Final return at the end of term
+          const fundTerm = fundReturns.fundSettings?.fund_term || 10;
+          for (let i = 1; i < fundTerm; i++) {
+            lpCashFlows.push(0);
+          }
+          lpCashFlows.push(lpReturn);
+        }
+
+        // Calculate IRR using proper financial function
+        try {
+          return MathUtils.calculateIRR(lpCashFlows);
+        } catch (e) {
+          console.error('Error calculating LP IRR:', e);
+
+          // Fallback calculation
+          const lpMultiple = lpReturn / lpInvestment;
+          const fundTerm = fundReturns.fundSettings?.fund_term || 10;
+          return Math.pow(lpMultiple, 1 / fundTerm) - 1;
+        }
+      }
+
+      /**
+       * Calculate LP Multiple with accurate financial calculations
+       * @param {Object} fundReturns - Fund returns data
+       * @param {Object} derivedValues - Derived values
+       * @returns {number} LP Multiple
+       */
+      function calculateLPMultiple(fundReturns, derivedValues) {
+        const lpInvestment = derivedValues.lpInvestment;
+        const lpReturn = fundReturns.lp_return;
+
+        // Use proper financial function
+        return MathUtils.calculateEquityMultiple(lpReturn, lpInvestment);
+      }
+    </script>
+  </body>
+</html>

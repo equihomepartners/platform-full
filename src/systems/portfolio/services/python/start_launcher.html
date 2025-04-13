@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Starting Python Server Launcher</title>
+    <script>
+        // This script attempts to start the Python server launcher
+        window.onload = function() {
+            try {
+                // Create a new XMLHttpRequest to execute the shell script
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '/execute-script?script=src/systems/portfolio/services/python/start_launcher.sh', true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            console.log('Python server launcher started successfully');
+                            // Close the window after a short delay
+                            setTimeout(function() {
+                                window.close();
+                            }, 1000);
+                        } else {
+                            console.error('Failed to start Python server launcher');
+                            document.getElementById('status').innerHTML = 'Failed to start Python server launcher. Please start it manually.';
+                        }
+                    }
+                };
+                xhr.send();
+                
+                // Also try to start the Python server directly
+                var xhr2 = new XMLHttpRequest();
+                xhr2.open('GET', 'http://localhost:3001/start-python-server', true);
+                xhr2.onreadystatechange = function() {
+                    if (xhr2.readyState === 4) {
+                        if (xhr2.status === 200) {
+                            console.log('Python server started successfully via launcher');
+                            document.getElementById('status').innerHTML = 'Python server started successfully!';
+                            // Close the window after a short delay
+                            setTimeout(function() {
+                                window.close();
+                            }, 1000);
+                        }
+                    }
+                };
+                xhr2.send();
+            } catch (error) {
+                console.error('Error starting Python server launcher:', error);
+                document.getElementById('status').innerHTML = 'Error starting Python server launcher: ' + error.message;
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1>Starting Python Server Launcher...</h1>
+    <p id="status">Attempting to start the Python server launcher...</p>
+    <p>If the server doesn't start automatically, please start it manually:</p>
+    <ol>
+        <li>Open a terminal</li>
+        <li>Navigate to: <code>src/systems/portfolio/services/python</code></li>
+        <li>Run: <code>./start_launcher.sh</code></li>
+        <li>Then run: <code>python api.py</code></li>
+    </ol>
+</body>
+</html>

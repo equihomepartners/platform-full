@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equihome Fund Modeling</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-content">
+        <div class="logo">Equihome Fund Modeling</div>
+        <nav class="nav">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="fund-settings.html" class="nav-link">Fund Settings</a>
+          <a href="portfolio-generation.html" class="nav-link">Portfolio Generation</a>
+          <a href="portfolio-growth.html" class="nav-link">Portfolio Growth</a>
+          <a href="fund-overview.html" class="nav-link">Fund Overview</a>
+          <a href="gp-economics.html" class="nav-link">GP Economics</a>
+          <a href="lp-economics.html" class="nav-link">LP Economics</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="card">
+        <h1 class="section-title">Welcome to Equihome Fund Modeling</h1>
+        <p>A comprehensive tool for modeling and analyzing Equihome's 10-year loan product with no monthly payments.</p>
+
+        <div class="grid">
+          <div class="feature-card">
+            <span class="material-icons feature-icon">analytics</span>
+            <h3 class="feature-title">Comprehensive Fund Modeling</h3>
+            <p class="feature-description">Model fund performance with detailed parameters and assumptions. Analyze returns, cash flows, and portfolio metrics.</p>
+          </div>
+
+          <div class="feature-card">
+            <span class="material-icons feature-icon">show_chart</span>
+            <h3 class="feature-title">Monte Carlo Simulations</h3>
+            <p class="feature-description">Run simulations to analyze risk and return distributions. Understand the probability of achieving target returns.</p>
+          </div>
+
+          <div class="feature-card">
+            <span class="material-icons feature-icon">account_balance</span>
+            <h3 class="feature-title">GP/LP Economics</h3>
+            <p class="feature-description">Detailed analysis of returns for both General and Limited Partners. Waterfall calculations with hurdle rates and catch-up provisions.</p>
+          </div>
+
+          <div class="feature-card">
+            <span class="material-icons feature-icon">call_split</span>
+            <h3 class="feature-title">Waterfall Calculations</h3>
+            <p class="feature-description">Sophisticated waterfall models with hurdle rates and catch-up provisions. Analyze carried interest and LP returns.</p>
+          </div>
+
+          <div class="feature-card">
+            <span class="material-icons feature-icon">payments</span>
+            <h3 class="feature-title">Capital Call Modeling</h3>
+            <p class="feature-description">Model complex capital call structures and deployment schedules. Analyze the impact on IRR and other performance metrics.</p>
+          </div>
+
+          <div class="feature-card">
+            <span class="material-icons feature-icon">bar_chart</span>
+            <h3 class="feature-title">Interactive Visualizations</h3>
+            <p class="feature-description">Explore data through interactive charts and tables. Visualize portfolio composition, returns, and cash flows.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="workflow">
+        <h2 class="section-title">Getting Started</h2>
+        <p>Follow these steps to model your fund:</p>
+
+        <div class="workflow-steps">
+          <div class="workflow-step">
+            <div class="step-title">
+              <span class="step-number">1</span>
+              Fund Settings
+            </div>
+            <p class="step-description">Configure your fund parameters including size, term, fee structure, and more.</p>
+            <a href="fund-settings.html" class="btn">Start</a>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-title">
+              <span class="step-number">2</span>
+              Portfolio Generation
+            </div>
+            <p class="step-description">Generate a portfolio of loans based on your fund parameters.</p>
+            <a href="portfolio-generation.html" class="btn">Start</a>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-title">
+              <span class="step-number">3</span>
+              Portfolio Growth
+            </div>
+            <p class="step-description">Track portfolio evolution over time, including reinvestments.</p>
+            <a href="portfolio-growth.html" class="btn">Start</a>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-title">
+              <span class="step-number">4</span>
+              Fund Overview
+            </div>
+            <p class="step-description">View comprehensive fund performance metrics and analysis.</p>
+            <a href="fund-overview.html" class="btn">Start</a>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-title">
+              <span class="step-number">5</span>
+              GP/LP Economics
+            </div>
+            <p class="step-description">Analyze returns from both GP and LP perspectives.</p>
+            <div style="display: flex; gap: 10px; margin-top: 16px;">
+              <a href="gp-economics.html" class="btn" style="flex: 1;">GP View</a>
+              <a href="lp-economics.html" class="btn" style="flex: 1;">LP View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/navigation.js"></script>
+  </body>
+</html>

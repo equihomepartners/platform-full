@@ -1,90 +1,77 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { BarChart2, PieChart, Briefcase, TrendingUp, Settings, Sliders } from 'lucide-react';
+import { BarChart2, PieChart, Calculator, Settings, Sliders, Database, HelpCircle, FileText, AlertTriangle, Download, RefreshCw } from 'lucide-react';
 
 const PortfolioLayout: React.FC = () => {
   const location = useLocation();
 
   const tabs = [
     { name: 'Dashboard', path: '/portfolio', icon: <BarChart2 className="h-5 w-5" /> },
-    { name: 'Pipeline', path: '/portfolio/pipeline', icon: <TrendingUp className="h-5 w-5" /> },
-    { name: 'Deals', path: '/portfolio/deals', icon: <Briefcase className="h-5 w-5" /> },
-    { name: 'Analytics', path: '/portfolio/analytics', icon: <PieChart className="h-5 w-5" /> },
+    { name: 'Portfolio Management', path: '/portfolio/management', icon: <Database className="h-5 w-5" /> },
     { name: 'Fund Parameters', path: '/portfolio/fund-parameters', icon: <Sliders className="h-5 w-5" /> },
+    { name: 'Simulation', path: '/portfolio/simulation', icon: <Calculator className="h-5 w-5" /> },
+    { name: 'Analytics', path: '/portfolio/analytics', icon: <PieChart className="h-5 w-5" /> },
+    { name: 'Stress Test', path: '/portfolio/stress-test', icon: <AlertTriangle className="h-5 w-5" /> },
     { name: 'Settings', path: '/portfolio/settings', icon: <Settings className="h-5 w-5" /> },
   ];
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
-      <div className="mb-8">
-        <div className="flex items-center justify-between">
+    <div className="min-h-screen bg-neutral-50">
+      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Portfolio Management</h1>
-            <p className="mt-1 text-sm text-gray-500">
-              Optimize and manage your loan portfolio
+            <h1 className="text-2xl font-semibold text-primary-900">Portfolio Management System</h1>
+            <p className="mt-1 text-sm text-neutral-600">
+              Institutional-grade portfolio optimization and management
             </p>
           </div>
-          <Link
-            to="/"
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200"
-          >
-            Back to Home
-          </Link>
-        </div>
-
-        <div className="mt-6">
-          <div className="sm:hidden">
-            <label htmlFor="tabs" className="sr-only">Select a tab</label>
-            <select
-              id="tabs"
-              name="tabs"
-              className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
-              defaultValue={tabs.find(tab => location.pathname === tab.path)?.name}
-              onChange={(e) => {
-                const tab = tabs.find(tab => tab.name === e.target.value);
-                if (tab) {
-                  window.location.href = tab.path;
-                }
-              }}
-            >
-              {tabs.map((tab) => (
-                <option key={tab.name}>{tab.name}</option>
-              ))}
-            </select>
-          </div>
-          <div className="hidden sm:block">
-            <div className="border-b border-gray-200">
-              <nav className="-mb-px flex space-x-8" aria-label="Tabs">
-                {tabs.map((tab) => {
-                  const isActive = location.pathname === tab.path;
-                  return (
-                    <Link
-                      key={tab.name}
-                      to={tab.path}
-                      className={`
-                        ${isActive
-                          ? 'border-blue-500 text-blue-600'
-                          : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                        }
-                        whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center
-                      `}
-                      aria-current={isActive ? 'page' : undefined}
-                    >
-                      <span className={`${isActive ? 'text-blue-500' : 'text-gray-400'} mr-2`}>
-                        {tab.icon}
-                      </span>
-                      {tab.name}
-                    </Link>
-                  );
-                })}
-              </nav>
-            </div>
+          <div className="flex space-x-3">
+            <button className="inline-flex items-center px-3 py-2 border border-neutral-300 shadow-sm text-sm font-medium rounded-md text-neutral-700 bg-white hover:bg-neutral-50 focus:outline-none transition-colors duration-150">
+              <RefreshCw className="h-4 w-4 mr-2" />
+              Refresh Data
+            </button>
+            <button className="inline-flex items-center px-3 py-2 border border-neutral-300 shadow-sm text-sm font-medium rounded-md text-neutral-700 bg-white hover:bg-neutral-50 focus:outline-none transition-colors duration-150">
+              <Download className="h-4 w-4 mr-2" />
+              Export
+            </button>
+            <button className="inline-flex items-center px-3 py-2 border border-primary-500 shadow-sm text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none transition-colors duration-150">
+              <HelpCircle className="h-4 w-4 mr-2" />
+              Help
+            </button>
           </div>
         </div>
-      </div>
 
-      <div className="bg-white shadow rounded-lg p-6 min-h-[calc(100vh-250px)]">
-        <Outlet />
+        <div className="bg-white shadow-lg rounded-lg border border-neutral-200">
+          <div className="border-b border-neutral-200 bg-neutral-50">
+            <nav className="flex space-x-1 px-4" aria-label="Tabs">
+              {tabs.map((tab) => {
+                const isActive = location.pathname === tab.path;
+                return (
+                  <Link
+                    key={tab.name}
+                    to={tab.path}
+                    className={`
+                      ${isActive
+                        ? 'bg-white text-primary-700 border-t-2 border-primary-500 shadow-sm'
+                        : 'text-neutral-600 hover:text-primary-600 hover:bg-neutral-100'
+                      }
+                      whitespace-nowrap py-4 px-5 font-medium text-sm flex items-center transition-colors duration-150 rounded-t-md
+                    `}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    <span className={`${isActive ? 'text-primary-500' : 'text-neutral-400'} mr-2`}>
+                      {tab.icon}
+                    </span>
+                    {tab.name}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+          <div className="p-8 min-h-[calc(100vh-250px)]">
+            <Outlet />
+          </div>
+        </div>
       </div>
     </div>
   );

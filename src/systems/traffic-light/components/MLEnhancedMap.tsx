@@ -171,10 +171,10 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         'interpolate',
         ['linear'],
         ['get', 'transitionProbability'],
-        0.3, '#dc2626', // Low confidence - red (more saturated)
-        0.5, '#ea580c', // Medium confidence - orange (more saturated)
-        0.7, '#ca8a04', // Higher confidence - amber (more professional)
-        0.9, '#16a34a'  // High confidence - green (more saturated)
+        0.3, '#fca5a5', // Low confidence - light red (softer)
+        0.5, '#fdba74', // Medium confidence - light orange (softer)
+        0.7, '#fcd34d', // Higher confidence - light amber (softer)
+        0.9, '#86efac'  // High confidence - light green (softer)
       ] : [
         'case',
         ['==', ['get', 'zone'], 'green'],
@@ -182,42 +182,43 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           'interpolate',
           ['linear'],
           ['get', 'score'],
-          75, '#22c55e', // Light green (more saturated)
-          85, '#16a34a', // Medium green (more saturated)
-          95, '#15803d'  // Dark green (more saturated)
+          75, '#86efac', // Light green (softer)
+          85, '#4ade80', // Medium green (softer)
+          95, '#22c55e'  // Dark green (softer)
         ],
         ['==', ['get', 'zone'], 'yellow'],
         [
           'interpolate',
           ['linear'],
           ['get', 'score'],
-          50, '#eab308', // Light amber (more professional)
-          60, '#d97706', // Medium amber (more professional)
-          70, '#ea580c'  // Dark amber (more professional)
+          50, '#fef08a', // Light yellow (softer)
+          60, '#fcd34d', // Medium yellow (softer)
+          70, '#fdba74'  // Light orange (softer)
         ],
         // Red zone with gradient
         [
           'interpolate',
           ['linear'],
           ['get', 'score'],
-          0, '#991b1b',  // Dark red (more saturated)
-          25, '#dc2626', // Medium red (more saturated)
-          45, '#ef4444'  // Light red (more saturated)
+          0, '#ef4444',  // Medium red (softer)
+          25, '#fca5a5', // Light red (softer)
+          45, '#fee2e2'  // Very light red (softer)
         ]
       ],
-      'fill-opacity': 0.8
+      'fill-opacity': 0.7
     }
   };
 
-  // Style for polygon outlines - sharper and more professional
+  // Style for polygon outlines - cleaner and more visible
   const polygonOutlineStyle = {
     id: 'suburb-polygon-outlines',
     type: 'line',
     source: 'suburb-polygons',
     paint: {
       'line-color': '#ffffff',
-      'line-width': 0.75,
-      'line-opacity': 0.9
+      'line-width': 1,
+      'line-opacity': 0.8,
+      'line-blur': 0.5
     }
   };
 
@@ -338,7 +339,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             onClick={() => setSelectedTab('all')}
             className={`px-4 py-2 rounded-md border ${
               selectedTab === 'all'
-                ? 'bg-primary-50 text-primary-700 border-primary-200 font-medium'
+                ? 'bg-blue-50 text-blue-500 border-blue-100 font-medium'
                 : 'bg-white text-neutral-600 border-neutral-200 hover:bg-neutral-50'
             } transition-colors duration-150`}
           >
@@ -348,7 +349,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             onClick={() => setSelectedTab('green')}
             className={`px-4 py-2 rounded-md border ${
               selectedTab === 'green'
-                ? 'bg-green-50 text-green-700 border-green-200 font-medium'
+                ? 'bg-green-50 text-green-600 border-green-100 font-medium'
                 : 'bg-white text-neutral-600 border-neutral-200 hover:bg-neutral-50'
             } transition-colors duration-150`}
           >
@@ -358,7 +359,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             onClick={() => setSelectedTab('yellow')}
             className={`px-4 py-2 rounded-md border ${
               selectedTab === 'yellow'
-                ? 'bg-amber-50 text-amber-700 border-amber-200 font-medium'
+                ? 'bg-yellow-50 text-yellow-600 border-yellow-100 font-medium'
                 : 'bg-white text-neutral-600 border-neutral-200 hover:bg-neutral-50'
             } transition-colors duration-150`}
           >
@@ -368,7 +369,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             onClick={() => setSelectedTab('red')}
             className={`px-4 py-2 rounded-md border ${
               selectedTab === 'red'
-                ? 'bg-red-50 text-red-700 border-red-200 font-medium'
+                ? 'bg-red-50 text-red-500 border-red-100 font-medium'
                 : 'bg-white text-neutral-600 border-neutral-200 hover:bg-neutral-50'
             } transition-colors duration-150`}
           >
@@ -384,7 +385,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           <button
             className={`px-4 py-2 rounded-md transition-colors ${
               selectedLayer === 'suburbs'
-                ? 'bg-primary-50 text-primary-700 border border-primary-200 font-medium'
+                ? 'bg-blue-50 text-blue-500 border border-blue-100 font-medium'
                 : 'text-neutral-600 hover:bg-neutral-50 border border-transparent'
             }`}
             onClick={() => setSelectedLayer('suburbs')}
@@ -399,7 +400,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           <button
             className={`px-4 py-2 rounded-md transition-colors ${
               selectedLayer === 'postcodes'
-                ? 'bg-primary-50 text-primary-700 border border-primary-200 font-medium'
+                ? 'bg-blue-50 text-blue-500 border border-blue-100 font-medium'
                 : 'text-neutral-500 border border-transparent opacity-60 cursor-not-allowed'
             }`}
             onClick={() => setSelectedLayer('postcodes')}
@@ -433,13 +434,13 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
           <div className="text-sm text-neutral-600 font-medium">Zone Distribution</div>
           <div className="flex space-x-1 mt-3 h-3">
-            <div className="rounded-l-full bg-gradient-to-r from-green-600 to-green-500" style={{
+            <div className="rounded-l-full bg-gradient-to-r from-green-500 to-green-300" style={{
               width: `${(filteredFeatures.filter(f => f.properties.zone === 'green').length / filteredFeatures.length) * 100}%`
             }} />
-            <div className="bg-gradient-to-r from-amber-500 to-amber-400" style={{
+            <div className="bg-gradient-to-r from-yellow-400 to-yellow-300" style={{
               width: `${(filteredFeatures.filter(f => f.properties.zone === 'yellow').length / filteredFeatures.length) * 100}%`
             }} />
-            <div className="rounded-r-full bg-gradient-to-r from-red-600 to-red-500" style={{
+            <div className="rounded-r-full bg-gradient-to-r from-red-400 to-red-300" style={{
               width: `${(filteredFeatures.filter(f => f.properties.zone === 'red').length / filteredFeatures.length) * 100}%`
             }} />
           </div>
@@ -451,22 +452,22 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         </div>
         <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
           <div className="text-sm text-neutral-600 font-medium">Average Growth</div>
-          <div className="text-2xl font-bold text-green-600 mt-1">+4.2%</div>
+          <div className="text-2xl font-bold text-green-500 mt-1">+4.2%</div>
           <div className="text-xs text-neutral-500 mt-1">Last 12 months</div>
           <div className="mt-2 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-green-500 to-green-400" style={{ width: '42%' }}></div>
+            <div className="h-full bg-gradient-to-r from-green-500 to-green-300" style={{ width: '42%' }}></div>
           </div>
         </div>
         <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
           <div className="text-sm text-neutral-600 font-medium">ML Confidence</div>
-          <div className="text-2xl font-bold text-primary-600 mt-1">
+          <div className="text-2xl font-bold text-blue-500 mt-1">
             {modelInfo ? `${(modelInfo.metrics.confidence * 100).toFixed(1)}%` : 'Loading...'}
           </div>
           <div className="text-xs text-neutral-500 mt-1">
             Based on {modelInfo ? `${(modelInfo.metrics.data_points / 1000).toFixed(0)}K` : 'Loading...'} data points
           </div>
           <div className="mt-2 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-primary-600 to-primary-400"
+            <div className="h-full bg-gradient-to-r from-blue-500 to-blue-300"
                  style={{ width: modelInfo ? `${modelInfo.metrics.confidence * 100}%` : '0%' }}></div>
           </div>
         </div>
@@ -478,7 +479,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         {!isMapLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-neutral-100 bg-opacity-80 z-10">
             <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg border border-neutral-200">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600 mb-3"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-400 mb-3"></div>
               <p className="text-sm text-neutral-700 font-medium">Loading map data...</p>
               <p className="text-xs text-neutral-500 mt-1">Please wait while we load the Sydney suburbs</p>
             </div>
@@ -490,10 +491,10 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             longitude: 151.2093,
             zoom: 10.5
           }}
-          mapStyle="mapbox://styles/mapbox/streets-v12"
+          mapStyle="mapbox://styles/mapbox/light-v11"
           mapboxAccessToken={MAPBOX_TOKEN}
           interactiveLayerIds={selectedLayer === 'suburbs' ? ['suburb-polygons', 'suburb-polygon-outlines'] : []}
-          terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
+          terrain={{ source: 'mapbox-dem', exaggeration: 1.2 }}
           onClick={handleClick}
           onError={handleError}
           onLoad={handleLoad}
@@ -621,19 +622,19 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             <h4 className="text-sm font-semibold mb-3 text-neutral-800">Zone Classification</h4>
             <div className="space-y-3">
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-green-600 to-green-500 mr-3 shadow-sm"></div>
+                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-green-500 to-green-300 mr-3 shadow-sm"></div>
                 <span className="text-xs text-neutral-700">Green Zone - Premium investment areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-amber-600 to-amber-500 mr-3 shadow-sm"></div>
+                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-yellow-400 to-yellow-300 mr-3 shadow-sm"></div>
                 <span className="text-xs text-neutral-700">Yellow Zone - Transitioning areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-red-700 to-red-600 mr-3 shadow-sm"></div>
+                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-red-400 to-red-300 mr-3 shadow-sm"></div>
                 <span className="text-xs text-neutral-700">Red Zone - Higher risk areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-neutral-400 mr-3 shadow-sm"></div>
+                <div className="w-4 h-4 rounded-sm bg-neutral-300 mr-3 shadow-sm"></div>
                 <span className="text-xs text-neutral-700">Unclassified</span>
               </div>
             </div>
@@ -646,15 +647,15 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-green-600 to-green-500 shadow-sm" />
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-green-500 to-green-300 shadow-sm" />
               <span className="text-sm text-neutral-700 font-medium">Green Zone</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 shadow-sm" />
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-300 shadow-sm" />
               <span className="text-sm text-neutral-700 font-medium">Yellow Zone</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-red-700 to-red-600 shadow-sm" />
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-red-400 to-red-300 shadow-sm" />
               <span className="text-sm text-neutral-700 font-medium">Red Zone</span>
             </div>
           </div>

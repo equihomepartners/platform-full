@@ -393,7 +393,7 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Aligned all components to use the same calculation approach
 - Fixed variable naming inconsistencies across components
 - Added null checks to prevent errors when data is not available
-- Implemented detailed fallback cashflow calculations
+- Implemented detailed fallback cashflow calculations  run the
 - Added proper calculation of payback period and breakeven metrics
 - Added interactive charts for cashflow visualization using Chart.js
 - Implemented combined line/bar chart for cashflow projection
@@ -563,16 +563,16 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Simplified the main README with links to the detailed documentation
 - Added documentation structure guidelines to the master README for all systems to follow
 
-### Map Improvements - 2024-04-10
+### Map UI Improvements - 2024-04-10
+- Updated map colors to be lighter and easier on the eyes
 - Replaced GeoJSON boundaries with more accurate data from tonywr71/GeoJson-Data
-- Improved map appearance with sharper, more professional gradients
-- Updated color scheme to use more saturated, professional colors
-- Enhanced UI components with consistent styling and better visual hierarchy
-- Added progress indicators to stats for better data visualization
-- Increased map height for better visibility
-- Added terrain features to the map for more context
-- Improved loading indicator with better feedback
-- Updated layer controls and filter tabs with more professional styling
+- Improved gradient colors with softer, more professional tones
+- Enhanced polygon outlines for better visibility
+- Changed map style to light-v11 for a cleaner look
+- Updated all UI components to match the new color scheme
+- Added more comprehensive Sydney suburb boundaries
+- Improved loading indicator and progress bars
+- Enhanced overall visual consistency and professionalism
 
 ### UI Consistency Updates - 2024-04-10
 - Updated Traffic Light System layout to match Portfolio Management System

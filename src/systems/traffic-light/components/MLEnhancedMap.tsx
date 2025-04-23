@@ -161,7 +161,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
     }
   };
 
-  // Style for polygon features (suburb boundaries) with gradient color scheme based on score and confidence
+  // Style for polygon features (suburb boundaries) with professional gradient color scheme
   const polygonLayerStyle = {
     id: 'suburb-polygons',
     type: 'fill',
@@ -171,10 +171,10 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         'interpolate',
         ['linear'],
         ['get', 'transitionProbability'],
-        0.3, '#ef4444', // Low confidence - red
-        0.5, '#f97316', // Medium confidence - orange
-        0.7, '#facc15', // Higher confidence - yellow
-        0.9, '#22c55e'  // High confidence - green
+        0.3, '#dc2626', // Low confidence - red (more saturated)
+        0.5, '#ea580c', // Medium confidence - orange (more saturated)
+        0.7, '#ca8a04', // Higher confidence - amber (more professional)
+        0.9, '#16a34a'  // High confidence - green (more saturated)
       ] : [
         'case',
         ['==', ['get', 'zone'], 'green'],
@@ -182,42 +182,42 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           'interpolate',
           ['linear'],
           ['get', 'score'],
-          75, '#4ade80', // Light green for lower green scores
-          85, '#22c55e', // Medium green
-          95, '#16a34a'  // Dark green for premium suburbs
+          75, '#22c55e', // Light green (more saturated)
+          85, '#16a34a', // Medium green (more saturated)
+          95, '#15803d'  // Dark green (more saturated)
         ],
         ['==', ['get', 'zone'], 'yellow'],
         [
           'interpolate',
           ['linear'],
           ['get', 'score'],
-          50, '#fde047', // Light yellow for lower yellow scores
-          60, '#facc15', // Medium yellow
-          70, '#f97316'  // Orange for higher yellow scores
+          50, '#eab308', // Light amber (more professional)
+          60, '#d97706', // Medium amber (more professional)
+          70, '#ea580c'  // Dark amber (more professional)
         ],
         // Red zone with gradient
         [
           'interpolate',
           ['linear'],
           ['get', 'score'],
-          0, '#b91c1c',  // Dark red for very low scores
-          25, '#ef4444', // Medium red
-          45, '#f87171'  // Light red for higher red scores
+          0, '#991b1b',  // Dark red (more saturated)
+          25, '#dc2626', // Medium red (more saturated)
+          45, '#ef4444'  // Light red (more saturated)
         ]
       ],
-      'fill-opacity': 0.7
+      'fill-opacity': 0.8
     }
   };
 
-  // Style for polygon outlines
+  // Style for polygon outlines - sharper and more professional
   const polygonOutlineStyle = {
     id: 'suburb-polygon-outlines',
     type: 'line',
     source: 'suburb-polygons',
     paint: {
       'line-color': '#ffffff',
-      'line-width': 1.5,
-      'line-opacity': 0.8
+      'line-width': 0.75,
+      'line-opacity': 0.9
     }
   };
 
@@ -316,173 +316,171 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
       <div className="flex items-center space-x-4">
         {/* Search Input */}
         <div className="flex-1">
-          <input
-            type="text"
-            placeholder="Search suburbs..."
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-neutral-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <input
+              type="text"
+              placeholder="Search suburbs..."
+              className="w-full pl-10 pr-4 py-2 border border-neutral-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500 shadow-sm"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
         </div>
 
         {/* Zone Filter Tabs */}
         <div className="flex space-x-2">
           <button
             onClick={() => setSelectedTab('all')}
-            className={`px-4 py-2 rounded-lg ${
+            className={`px-4 py-2 rounded-md border ${
               selectedTab === 'all'
-                ? 'bg-blue-100 text-blue-800'
-                : 'bg-gray-100 text-gray-600'
-            }`}
+                ? 'bg-primary-50 text-primary-700 border-primary-200 font-medium'
+                : 'bg-white text-neutral-600 border-neutral-200 hover:bg-neutral-50'
+            } transition-colors duration-150`}
           >
-            All
+            All Zones
           </button>
           <button
             onClick={() => setSelectedTab('green')}
-            className={`px-4 py-2 rounded-lg ${
+            className={`px-4 py-2 rounded-md border ${
               selectedTab === 'green'
-                ? 'bg-green-100 text-green-800'
-                : 'bg-gray-100 text-gray-600'
-            }`}
+                ? 'bg-green-50 text-green-700 border-green-200 font-medium'
+                : 'bg-white text-neutral-600 border-neutral-200 hover:bg-neutral-50'
+            } transition-colors duration-150`}
           >
-            Green
+            Green Zone
           </button>
           <button
-            onClick={() => setSelectedTab('orange')}
-            className={`px-4 py-2 rounded-lg ${
-              selectedTab === 'orange'
-                ? 'bg-orange-100 text-orange-800'
-                : 'bg-gray-100 text-gray-600'
-            }`}
+            onClick={() => setSelectedTab('yellow')}
+            className={`px-4 py-2 rounded-md border ${
+              selectedTab === 'yellow'
+                ? 'bg-amber-50 text-amber-700 border-amber-200 font-medium'
+                : 'bg-white text-neutral-600 border-neutral-200 hover:bg-neutral-50'
+            } transition-colors duration-150`}
           >
-            Orange
+            Yellow Zone
           </button>
           <button
             onClick={() => setSelectedTab('red')}
-            className={`px-4 py-2 rounded-lg ${
+            className={`px-4 py-2 rounded-md border ${
               selectedTab === 'red'
-                ? 'bg-red-100 text-red-800'
-                : 'bg-gray-100 text-gray-600'
+                ? 'bg-red-50 text-red-700 border-red-200 font-medium'
+                : 'bg-white text-neutral-600 border-neutral-200 hover:bg-neutral-50'
+            } transition-colors duration-150`}
+          >
+            Red Zone
+          </button>
+        </div>
+      </div>
+
+      {/* Layer Control - Professional styling */}
+      <div className="mb-4">
+        <h3 className="text-sm font-medium mb-2 text-neutral-700">Map Layers</h3>
+        <div className="bg-white rounded-md border border-neutral-200 shadow-sm p-2 flex space-x-2">
+          <button
+            className={`px-4 py-2 rounded-md transition-colors ${
+              selectedLayer === 'suburbs'
+                ? 'bg-primary-50 text-primary-700 border border-primary-200 font-medium'
+                : 'text-neutral-600 hover:bg-neutral-50 border border-transparent'
             }`}
-          >
-            Red
-          </button>
-        </div>
-      </div>
-
-      {/* Layer Control */}
-      <div className="mb-4">
-        <h3 className="text-sm font-medium mb-2">Map Layers</h3>
-        <div className="bg-white rounded-lg border shadow-sm p-2 flex space-x-2">
-          <button
-            className={`px-4 py-2 rounded-md transition-colors ${selectedLayer === 'suburbs' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100'}`}
             onClick={() => setSelectedLayer('suburbs')}
           >
             <span className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
               Suburbs
             </span>
           </button>
           <button
-            className={`px-4 py-2 rounded-md transition-colors ${selectedLayer === 'postcodes' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100'}`}
-            onClick={() => setSelectedLayer('postcodes')}
-          >
-            <span className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-              </svg>
-              Postcodes
-            </span>
-          </button>
-        </div>
-      </div>
-
-      {/* Quick Stats */}
-      <div className="grid grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg border p-4">
-          <div className="text-sm text-gray-600">
-            {selectedLayer === 'suburbs' ? 'Total Suburbs' : 'Total Postcodes'}
-          </div>
-          <div className="text-2xl font-bold">{filteredFeatures.length}</div>
-          <div className="text-xs text-gray-500">
-            {searchTerm ? `Matching "${searchTerm}"` : 'Currently visible'}
-            {selectedTab !== 'all' && ` in ${selectedTab} zone`}
-          </div>
-        </div>
-        <div className="bg-white rounded-lg border p-4">
-          <div className="text-sm text-gray-600">Zone Distribution</div>
-          <div className="flex space-x-2 mt-2">
-            <div className="flex-1 bg-green-100 rounded h-2" style={{
-              width: `${(filteredFeatures.filter(f => f.properties.zone === 'green').length / filteredFeatures.length) * 100}%`
-            }} />
-            <div className="flex-1 bg-orange-100 rounded h-2" style={{
-              width: `${(filteredFeatures.filter(f => f.properties.zone === 'orange').length / filteredFeatures.length) * 100}%`
-            }} />
-            <div className="flex-1 bg-red-100 rounded h-2" style={{
-              width: `${(filteredFeatures.filter(f => f.properties.zone === 'red').length / filteredFeatures.length) * 100}%`
-            }} />
-          </div>
-        </div>
-        <div className="bg-white rounded-lg border p-4">
-          <div className="text-sm text-gray-600">Average Growth</div>
-          <div className="text-2xl font-bold text-green-600">+4.2%</div>
-          <div className="text-xs text-gray-500">Last 12 months</div>
-        </div>
-        <div className="bg-white rounded-lg border p-4">
-          <div className="text-sm text-gray-600">ML Confidence</div>
-          <div className="text-2xl font-bold text-blue-600">
-            {modelInfo ? `${(modelInfo.metrics.confidence * 100).toFixed(1)}%` : 'Loading...'}
-          </div>
-          <div className="text-xs text-gray-500">
-            Based on {modelInfo ? `${(modelInfo.metrics.data_points / 1000).toFixed(0)}K` : 'Loading...'} data points
-          </div>
-        </div>
-      </div>
-
-      {/* Layer Control */}
-      <div className="mb-4">
-        <h3 className="text-sm font-medium mb-2">Map Layers</h3>
-        <div className="bg-white rounded-lg border shadow-sm p-2 flex space-x-2">
-          <button
-            className={`px-4 py-2 rounded-md transition-colors ${selectedLayer === 'suburbs' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100'}`}
-            onClick={() => setSelectedLayer('suburbs')}
-          >
-            <span className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-              </svg>
-              Suburbs
-            </span>
-          </button>
-          <button
-            className={`px-4 py-2 rounded-md transition-colors ${selectedLayer === 'postcodes' ? 'bg-blue-100 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100 opacity-70'}`}
+            className={`px-4 py-2 rounded-md transition-colors ${
+              selectedLayer === 'postcodes'
+                ? 'bg-primary-50 text-primary-700 border border-primary-200 font-medium'
+                : 'text-neutral-500 border border-transparent opacity-60 cursor-not-allowed'
+            }`}
             onClick={() => setSelectedLayer('postcodes')}
             disabled={true}
             title="Coming soon"
           >
             <span className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
                 <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
               </svg>
               Postcodes
-              <span className="ml-1 text-xs bg-gray-200 text-gray-700 px-1 rounded">Soon</span>
+              <span className="ml-1 text-xs bg-neutral-100 text-neutral-600 px-1.5 py-0.5 rounded-full text-[10px] font-medium">Soon</span>
             </span>
           </button>
         </div>
       </div>
 
+      {/* Quick Stats - Professional styling */}
+      <div className="grid grid-cols-4 gap-4">
+        <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
+          <div className="text-sm text-neutral-600 font-medium">
+            {selectedLayer === 'suburbs' ? 'Total Suburbs' : 'Total Postcodes'}
+          </div>
+          <div className="text-2xl font-bold text-neutral-800 mt-1">{filteredFeatures.length}</div>
+          <div className="text-xs text-neutral-500 mt-1">
+            {searchTerm ? `Matching "${searchTerm}"` : 'Currently visible'}
+            {selectedTab !== 'all' && ` in ${selectedTab} zone`}
+          </div>
+        </div>
+        <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
+          <div className="text-sm text-neutral-600 font-medium">Zone Distribution</div>
+          <div className="flex space-x-1 mt-3 h-3">
+            <div className="rounded-l-full bg-gradient-to-r from-green-600 to-green-500" style={{
+              width: `${(filteredFeatures.filter(f => f.properties.zone === 'green').length / filteredFeatures.length) * 100}%`
+            }} />
+            <div className="bg-gradient-to-r from-amber-500 to-amber-400" style={{
+              width: `${(filteredFeatures.filter(f => f.properties.zone === 'yellow').length / filteredFeatures.length) * 100}%`
+            }} />
+            <div className="rounded-r-full bg-gradient-to-r from-red-600 to-red-500" style={{
+              width: `${(filteredFeatures.filter(f => f.properties.zone === 'red').length / filteredFeatures.length) * 100}%`
+            }} />
+          </div>
+          <div className="flex justify-between mt-1 text-xs text-neutral-500">
+            <span>Green</span>
+            <span>Yellow</span>
+            <span>Red</span>
+          </div>
+        </div>
+        <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
+          <div className="text-sm text-neutral-600 font-medium">Average Growth</div>
+          <div className="text-2xl font-bold text-green-600 mt-1">+4.2%</div>
+          <div className="text-xs text-neutral-500 mt-1">Last 12 months</div>
+          <div className="mt-2 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-green-500 to-green-400" style={{ width: '42%' }}></div>
+          </div>
+        </div>
+        <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
+          <div className="text-sm text-neutral-600 font-medium">ML Confidence</div>
+          <div className="text-2xl font-bold text-primary-600 mt-1">
+            {modelInfo ? `${(modelInfo.metrics.confidence * 100).toFixed(1)}%` : 'Loading...'}
+          </div>
+          <div className="text-xs text-neutral-500 mt-1">
+            Based on {modelInfo ? `${(modelInfo.metrics.data_points / 1000).toFixed(0)}K` : 'Loading...'} data points
+          </div>
+          <div className="mt-2 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-primary-600 to-primary-400"
+                 style={{ width: modelInfo ? `${modelInfo.metrics.confidence * 100}%` : '0%' }}></div>
+          </div>
+        </div>
+      </div>
+
       {/* Map Container */}
-      <div className="h-[500px] rounded-lg overflow-hidden relative">
+      <div className="h-[600px] rounded-lg overflow-hidden relative shadow-lg border border-neutral-200">
         {/* Loading Indicator */}
         {!isMapLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-70 z-10">
-            <div className="flex flex-col items-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700 mb-2"></div>
-              <p className="text-sm text-gray-700">Loading map data...</p>
+          <div className="absolute inset-0 flex items-center justify-center bg-neutral-100 bg-opacity-80 z-10">
+            <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg border border-neutral-200">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600 mb-3"></div>
+              <p className="text-sm text-neutral-700 font-medium">Loading map data...</p>
+              <p className="text-xs text-neutral-500 mt-1">Please wait while we load the Sydney suburbs</p>
             </div>
           </div>
         )}
@@ -490,11 +488,12 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           initialViewState={{
             latitude: -33.8688,
             longitude: 151.2093,
-            zoom: 11
+            zoom: 10.5
           }}
-          mapStyle="mapbox://styles/mapbox/light-v11"
+          mapStyle="mapbox://styles/mapbox/streets-v12"
           mapboxAccessToken={MAPBOX_TOKEN}
           interactiveLayerIds={selectedLayer === 'suburbs' ? ['suburb-polygons', 'suburb-polygon-outlines'] : []}
+          terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
           onClick={handleClick}
           onError={handleError}
           onLoad={handleLoad}
@@ -617,49 +616,49 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
 
           <NavigationControl position="top-right" />
 
-          {/* Map Legend */}
-          <div className="absolute bottom-5 right-5 bg-white p-3 rounded-lg shadow-md z-10 max-w-xs">
-            <h4 className="text-sm font-medium mb-2">Zone Legend</h4>
-            <div className="space-y-2">
+          {/* Map Legend - Professional styling */}
+          <div className="absolute bottom-5 right-5 bg-white p-4 rounded-lg shadow-lg z-10 max-w-xs border border-neutral-200">
+            <h4 className="text-sm font-semibold mb-3 text-neutral-800">Zone Classification</h4>
+            <div className="space-y-3">
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-green-500 mr-2"></div>
-                <span className="text-xs">Green Zone - Premium suburbs</span>
+                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-green-600 to-green-500 mr-3 shadow-sm"></div>
+                <span className="text-xs text-neutral-700">Green Zone - Premium investment areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-orange-500 mr-2"></div>
-                <span className="text-xs">Orange Zone - Transitioning suburbs</span>
+                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-amber-600 to-amber-500 mr-3 shadow-sm"></div>
+                <span className="text-xs text-neutral-700">Yellow Zone - Transitioning areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-red-500 mr-2"></div>
-                <span className="text-xs">Red Zone - Higher risk suburbs</span>
+                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-red-700 to-red-600 mr-3 shadow-sm"></div>
+                <span className="text-xs text-neutral-700">Red Zone - Higher risk areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-gray-400 mr-2"></div>
-                <span className="text-xs">Unclassified</span>
+                <div className="w-4 h-4 rounded-sm bg-neutral-400 mr-3 shadow-sm"></div>
+                <span className="text-xs text-neutral-700">Unclassified</span>
               </div>
             </div>
           </div>
         </Map>
       </div>
 
-      {/* Legend */}
-      <div className="bg-white rounded-lg border p-4">
+      {/* Bottom Legend - Professional styling */}
+      <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-green-500" />
-              <span className="text-sm">Green Zone</span>
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-green-600 to-green-500 shadow-sm" />
+              <span className="text-sm text-neutral-700 font-medium">Green Zone</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-orange-500" />
-              <span className="text-sm">Orange Zone</span>
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 shadow-sm" />
+              <span className="text-sm text-neutral-700 font-medium">Yellow Zone</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <span className="text-sm">Red Zone</span>
+              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-red-700 to-red-600 shadow-sm" />
+              <span className="text-sm text-neutral-700 font-medium">Red Zone</span>
             </div>
           </div>
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-neutral-600 font-medium">
             Click on any suburb for detailed analysis
           </div>
         </div>

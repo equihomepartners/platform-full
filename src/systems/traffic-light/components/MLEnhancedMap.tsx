@@ -509,9 +509,9 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         )}
         <Map
           initialViewState={{
-            latitude: -33.8688,
+            latitude: -33.8688, // Sydney CBD
             longitude: 151.2093,
-            zoom: 9.5 // Zoomed out slightly to show more suburbs
+            zoom: 9.0 // Zoomed out to show all Sydney suburbs
           }}
           mapStyle="mapbox://styles/mapbox/light-v11"
           mapboxAccessToken={MAPBOX_TOKEN}

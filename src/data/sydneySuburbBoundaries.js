@@ -1,146 +1,11 @@
 // Sydney suburb boundaries from GeoJSON data
 // Source: https://github.com/tonywr71/GeoJson-Data/blob/master/suburb-2-nsw.geojson
 // Filtered to include only Sydney suburbs
+// Direct implementation from tonywr71/GeoJson-Data repository
 
 const sydneySuburbBoundaries = {
   "type": "FeatureCollection",
   "features": [
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.20333953,
-              -33.8311648
-            ],
-            [
-              151.20431596,
-              -33.83267873
-            ],
-            [
-              151.19411096,
-              -33.83828271
-            ],
-            [
-              151.18911529,
-              -33.83371794
-            ],
-            [
-              151.19272531,
-              -33.82796803
-            ],
-            [
-              151.19786122,
-              -33.82533284
-            ],
-            [
-              151.20333953,
-              -33.8311648
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "25101",
-        "dt_create": "2015-09-03Z",
-        "dt_retire": null,
-        "loc_pid": "NSW4391",
-        "nsw_locali": "2015-11-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "WOLLSTONECRAFT",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "WOLLSTONECRAFT",
-        "zone": "green",
-        "score": 85
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.8"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.16810561,
-              -33.75505568
-            ],
-            [
-              151.17793785,
-              -33.76739739
-            ],
-            [
-              151.17158182,
-              -33.76701663
-            ],
-            [
-              151.16188965,
-              -33.7710672
-            ],
-            [
-              151.1587005,
-              -33.77543882
-            ],
-            [
-              151.14951483,
-              -33.77552708
-            ],
-            [
-              151.14343878,
-              -33.78311663
-            ],
-            [
-              151.13952618,
-              -33.782019
-            ],
-            [
-              151.13795379,
-              -33.77442888
-            ],
-            [
-              151.14230941,
-              -33.7708562
-            ],
-            [
-              151.14519232,
-              -33.76655219
-            ],
-            [
-              151.15866934,
-              -33.75803729
-            ],
-            [
-              151.16810561,
-              -33.75505568
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "20526",
-        "dt_create": "2013-03-07Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2153",
-        "nsw_locali": "2013-04-30Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "KILLARA",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "KILLARA",
-        "zone": "yellow",
-        "score": 65
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.18"
-    },
     {
       "type": "Feature",
       "geometry": {
@@ -228,8 +93,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "RICHMOND HILL",
-        "zone": "green",
-        "score": 95
+        "zone": "red",
+        "score": 13
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.36"
     },
@@ -1564,206 +1429,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
-        "zone": "green",
-        "score": 95
+        "zone": "red",
+        "score": 28
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.106"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.22832148,
-              -33.53055079
-            ],
-            [
-              151.22695464,
-              -33.52245299
-            ],
-            [
-              151.21818279,
-              -33.52260105
-            ],
-            [
-              151.21913573,
-              -33.51722904
-            ],
-            [
-              151.22761659,
-              -33.51805898
-            ],
-            [
-              151.23069957,
-              -33.52249296
-            ],
-            [
-              151.22832148,
-              -33.53055079
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "20756",
-        "dt_create": "2013-06-06Z",
-        "dt_retire": null,
-        "loc_pid": "NSW974",
-        "nsw_locali": "2013-11-01Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "COGRA BAY",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "COGRA BAY",
-        "zone": "yellow",
-        "score": 58
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.120"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.19054259,
-              -33.74733513
-            ],
-            [
-              151.19206614,
-              -33.74810814
-            ],
-            [
-              151.19576131,
-              -33.75380338
-            ],
-            [
-              151.19069939,
-              -33.755445
-            ],
-            [
-              151.19062297,
-              -33.7574555
-            ],
-            [
-              151.19220767,
-              -33.75869205
-            ],
-            [
-              151.18400359,
-              -33.76239806
-            ],
-            [
-              151.17791043,
-              -33.76816538
-            ],
-            [
-              151.17793785,
-              -33.76739739
-            ],
-            [
-              151.16810561,
-              -33.75505568
-            ],
-            [
-              151.1711639,
-              -33.75169982
-            ],
-            [
-              151.1801242,
-              -33.74672339
-            ],
-            [
-              151.19054259,
-              -33.74733513
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "20220",
-        "dt_create": "2013-03-07Z",
-        "dt_retire": null,
-        "loc_pid": "NSW1372",
-        "nsw_locali": "2013-04-30Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "EAST KILLARA",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "EAST KILLARA",
-        "zone": "yellow",
-        "score": 66
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.130"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.12938514,
-              -33.72057563
-            ],
-            [
-              151.12869324,
-              -33.72853913
-            ],
-            [
-              151.1238293,
-              -33.73019261
-            ],
-            [
-              151.11524185,
-              -33.73868399
-            ],
-            [
-              151.11274102,
-              -33.73666177
-            ],
-            [
-              151.11965309,
-              -33.72836044
-            ],
-            [
-              151.12269775,
-              -33.71920764
-            ],
-            [
-              151.12938514,
-              -33.72057563
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "25913",
-        "dt_create": "2016-02-29Z",
-        "dt_retire": null,
-        "loc_pid": "NSW4200",
-        "nsw_locali": "2016-05-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "WARRAWEE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "WARRAWEE",
-        "zone": "yellow",
-        "score": 69
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.200"
     },
     {
       "type": "Feature",
@@ -1833,7 +1502,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "KINGSFORD",
         "zone": "green",
-        "score": 84
+        "score": 95
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.211"
     },
@@ -1896,134 +1565,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "LA PEROUSE",
-        "zone": "red",
-        "score": 39
+        "zone": "green",
+        "score": 81
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.281"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.20557464,
-              -33.81345188
-            ],
-            [
-              151.2103835,
-              -33.81765885
-            ],
-            [
-              151.2045773,
-              -33.82024211
-            ],
-            [
-              151.19905661,
-              -33.82206611
-            ],
-            [
-              151.19361586,
-              -33.81757721
-            ],
-            [
-              151.19380472,
-              -33.81258714
-            ],
-            [
-              151.20557464,
-              -33.81345188
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "21953",
-        "dt_create": "2013-11-25Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2924",
-        "nsw_locali": "2014-02-01Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "NAREMBURN",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "NAREMBURN",
-        "zone": "green",
-        "score": 80
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.282"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.18673218,
-              -33.82248157
-            ],
-            [
-              151.19272531,
-              -33.82796803
-            ],
-            [
-              151.18911529,
-              -33.83371794
-            ],
-            [
-              151.18181329,
-              -33.83304615
-            ],
-            [
-              151.18065377,
-              -33.82648723
-            ],
-            [
-              151.1798642,
-              -33.82532171
-            ],
-            [
-              151.17898826,
-              -33.81745622
-            ],
-            [
-              151.17884038,
-              -33.81669792
-            ],
-            [
-              151.17893547,
-              -33.81657529
-            ],
-            [
-              151.18673218,
-              -33.82248157
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "25100",
-        "dt_create": "2015-09-03Z",
-        "dt_retire": null,
-        "loc_pid": "NSW1787",
-        "nsw_locali": "2015-11-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "GREENWICH",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "GREENWICH",
-        "zone": "green",
-        "score": 78
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.291"
     },
     {
       "type": "Feature",
@@ -2104,8 +1649,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "CLOVELLY",
-        "zone": "yellow",
-        "score": 68
+        "zone": "green",
+        "score": 87
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.336"
     },
@@ -2192,8 +1737,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "STRATHFIELD",
-        "zone": "yellow",
-        "score": 70
+        "zone": "red",
+        "score": 1
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.337"
     },
@@ -2248,8 +1793,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BRONTE",
-        "zone": "green",
-        "score": 75
+        "zone": "red",
+        "score": 2
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.338"
     },
@@ -2308,8 +1853,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "EAST RYDE",
-        "zone": "yellow",
-        "score": 57
+        "zone": "green",
+        "score": 81
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.333"
     },
@@ -2356,8 +1901,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "QUEENS PARK",
-        "zone": "red",
-        "score": 25
+        "zone": "yellow",
+        "score": 70
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.340"
     },
@@ -2421,7 +1966,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "BROOKVALE",
         "zone": "yellow",
-        "score": 62
+        "score": 67
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.343"
     },
@@ -2568,8 +2113,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "KATOOMBA",
-        "zone": "yellow",
-        "score": 50
+        "zone": "green",
+        "score": 93
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.380"
     },
@@ -2669,109 +2214,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "RYDE",
         "zone": "green",
-        "score": 87
+        "score": 91
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.386"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.16764721,
-              -33.68795587
-            ],
-            [
-              151.156228,
-              -33.70460053
-            ],
-            [
-              151.15394681,
-              -33.71574149
-            ],
-            [
-              151.14947817,
-              -33.72292888
-            ],
-            [
-              151.14338963,
-              -33.71636752
-            ],
-            [
-              151.14409779,
-              -33.70868284
-            ],
-            [
-              151.14080403,
-              -33.69688067
-            ],
-            [
-              151.13772523,
-              -33.69307613
-            ],
-            [
-              151.13776424,
-              -33.68439728
-            ],
-            [
-              151.13797273,
-              -33.68339463
-            ],
-            [
-              151.13889374,
-              -33.67757217
-            ],
-            [
-              151.14661285,
-              -33.67465485
-            ],
-            [
-              151.14937971,
-              -33.6693905
-            ],
-            [
-              151.16141377,
-              -33.65998069
-            ],
-            [
-              151.16891044,
-              -33.66733209
-            ],
-            [
-              151.16704098,
-              -33.67315301
-            ],
-            [
-              151.17164407,
-              -33.67709364
-            ],
-            [
-              151.16764721,
-              -33.68795587
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "24915",
-        "dt_create": "2015-09-03Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3041",
-        "nsw_locali": "2015-11-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "NORTH TURRAMURRA",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "NORTH TURRAMURRA",
-        "zone": "green",
-        "score": 86
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.388"
     },
     {
       "type": "Feature",
@@ -2864,8 +2309,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "NORTH RYDE",
-        "zone": "yellow",
-        "score": 61
+        "zone": "green",
+        "score": 84
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3781"
     },
@@ -2916,78 +2361,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "ZETLAND",
-        "zone": "red",
-        "score": 34
+        "zone": "yellow",
+        "score": 63
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.489"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.20824448,
-              -33.79469245
-            ],
-            [
-              151.20149062,
-              -33.79674683
-            ],
-            [
-              151.20110413,
-              -33.7968669
-            ],
-            [
-              151.20121247,
-              -33.7973895
-            ],
-            [
-              151.2012496,
-              -33.79750119
-            ],
-            [
-              151.20288315,
-              -33.80112387
-            ],
-            [
-              151.19384327,
-              -33.7993601
-            ],
-            [
-              151.19510747,
-              -33.79315482
-            ],
-            [
-              151.20299982,
-              -33.7902388
-            ],
-            [
-              151.20824448,
-              -33.79469245
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "17547",
-        "dt_create": "2012-05-15Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3044",
-        "nsw_locali": "2012-07-27Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "NORTH WILLOUGHBY",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "NORTH WILLOUGHBY",
-        "zone": "yellow",
-        "score": 60
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.622"
     },
     {
       "type": "Feature",
@@ -3265,7 +2642,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "BOTANY BAY",
         "zone": "green",
-        "score": 85
+        "score": 95
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.684"
     },
@@ -3340,8 +2717,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "CAMDEN",
-        "zone": "red",
-        "score": 19
+        "zone": "green",
+        "score": 95
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.703"
     },
@@ -3396,66 +2773,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "LANE COVE WEST",
-        "zone": "yellow",
-        "score": 59
+        "zone": "red",
+        "score": 1
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.714"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.23002976,
-              -33.87298215
-            ],
-            [
-              151.23061418,
-              -33.87405877
-            ],
-            [
-              151.22937282,
-              -33.8762195
-            ],
-            [
-              151.22954457,
-              -33.87677943
-            ],
-            [
-              151.22443816,
-              -33.87598566
-            ],
-            [
-              151.22517213,
-              -33.87403939
-            ],
-            [
-              151.23002976,
-              -33.87298215
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "26621",
-        "dt_create": "2016-09-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3475",
-        "nsw_locali": "2016-11-11Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "RUSHCUTTERS BAY",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "RUSHCUTTERS BAY",
-        "zone": "green",
-        "score": 90
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.773"
     },
     {
       "type": "Feature",
@@ -3580,8 +2901,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "CAMPBELLTOWN",
-        "zone": "yellow",
-        "score": 60
+        "zone": "red",
+        "score": 43
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1246"
     },
@@ -3684,8 +3005,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "RICHMOND VALE",
-        "zone": "yellow",
-        "score": 54
+        "zone": "green",
+        "score": 79
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.785"
     },
@@ -3748,8 +3069,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BURWOOD",
-        "zone": "yellow",
-        "score": 56
+        "zone": "green",
+        "score": 91
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.809"
     },
@@ -3836,266 +3157,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "PALM BEACH",
-        "zone": "yellow",
-        "score": 58
+        "zone": "green",
+        "score": 83
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.813"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.20870275,
-              -33.82888018
-            ],
-            [
-              151.20333953,
-              -33.8311648
-            ],
-            [
-              151.19786122,
-              -33.82533284
-            ],
-            [
-              151.19905661,
-              -33.82206611
-            ],
-            [
-              151.2045773,
-              -33.82024211
-            ],
-            [
-              151.20870275,
-              -33.82888018
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "23055",
-        "dt_create": "2014-08-27Z",
-        "dt_retire": null,
-        "loc_pid": "NSW1143",
-        "nsw_locali": "2014-02-01Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "CROWS NEST",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "CROWS NEST",
-        "zone": "yellow",
-        "score": 64
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.820"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.11806298,
-              -33.75288444
-            ],
-            [
-              151.11875112,
-              -33.76248299
-            ],
-            [
-              151.11560639,
-              -33.76120842
-            ],
-            [
-              151.105367,
-              -33.76118468
-            ],
-            [
-              151.10009004,
-              -33.75352254
-            ],
-            [
-              151.09284641,
-              -33.74586286
-            ],
-            [
-              151.10488542,
-              -33.74240135
-            ],
-            [
-              151.11210303,
-              -33.74487361
-            ],
-            [
-              151.11806298,
-              -33.75288444
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "14679",
-        "dt_create": "2011-05-17Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3631",
-        "nsw_locali": "2012-02-04Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "SOUTH TURRAMURRA",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "SOUTH TURRAMURRA",
-        "zone": "green",
-        "score": 87
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.831"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.19220767,
-              -33.75869205
-            ],
-            [
-              151.19828789,
-              -33.76219045
-            ],
-            [
-              151.19849092,
-              -33.76806957
-            ],
-            [
-              151.19296341,
-              -33.77331329
-            ],
-            [
-              151.18232549,
-              -33.77519424
-            ],
-            [
-              151.17791043,
-              -33.76816538
-            ],
-            [
-              151.18400359,
-              -33.76239806
-            ],
-            [
-              151.19220767,
-              -33.75869205
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "20288",
-        "dt_create": "2013-03-07Z",
-        "dt_retire": null,
-        "loc_pid": "NSW1374",
-        "nsw_locali": "2013-04-30Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "EAST LINDFIELD",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "EAST LINDFIELD",
-        "zone": "green",
-        "score": 85
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.845"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.15990708,
-              -33.61867058
-            ],
-            [
-              151.16062357,
-              -33.62221447
-            ],
-            [
-              151.1771648,
-              -33.62678642
-            ],
-            [
-              151.1652279,
-              -33.64090778
-            ],
-            [
-              151.15330491,
-              -33.64345971
-            ],
-            [
-              151.14392049,
-              -33.63966975
-            ],
-            [
-              151.13696952,
-              -33.6400139
-            ],
-            [
-              151.13707776,
-              -33.63334365
-            ],
-            [
-              151.13234912,
-              -33.63208856
-            ],
-            [
-              151.12965028,
-              -33.62171921
-            ],
-            [
-              151.13645978,
-              -33.61753443
-            ],
-            [
-              151.15336713,
-              -33.61148963
-            ],
-            [
-              151.15990708,
-              -33.61867058
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "24102",
-        "dt_create": "2015-02-24Z",
-        "dt_retire": null,
-        "loc_pid": "NSW309",
-        "nsw_locali": "2015-05-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "BEROWRA",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "BEROWRA",
-        "zone": "green",
-        "score": 94
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.914"
     },
     {
       "type": "Feature",
@@ -4176,8 +3241,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "LANE COVE",
-        "zone": "green",
-        "score": 90
+        "zone": "yellow",
+        "score": 68
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.923"
     },
@@ -4248,8 +3313,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "WEST GOSFORD",
-        "zone": "green",
-        "score": 85
+        "zone": "yellow",
+        "score": 67
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.924"
     },
@@ -4348,8 +3413,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "NORTH SHORE",
-        "zone": "red",
-        "score": 34
+        "zone": "yellow",
+        "score": 64
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.942"
     },
@@ -4397,7 +3462,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "WATSONS BAY",
         "zone": "yellow",
-        "score": 57
+        "score": 65
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1005"
     },
@@ -4508,8 +3573,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "HORNSBY HEIGHTS",
-        "zone": "yellow",
-        "score": 58
+        "zone": "red",
+        "score": 15
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.987"
     },
@@ -4564,274 +3629,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "NORTH GOSFORD",
-        "zone": "yellow",
-        "score": 58
+        "zone": "green",
+        "score": 91
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1064"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.77949962,
-              -32.02132494
-            ],
-            [
-              151.77628346,
-              -32.03812736
-            ],
-            [
-              151.76528347,
-              -32.03715618
-            ],
-            [
-              151.76358998,
-              -32.04622335
-            ],
-            [
-              151.76332852,
-              -32.04762322
-            ],
-            [
-              151.759632,
-              -32.07187397
-            ],
-            [
-              151.74220602,
-              -32.06937649
-            ],
-            [
-              151.74171975,
-              -32.0716718
-            ],
-            [
-              151.73850204,
-              -32.07322349
-            ],
-            [
-              151.73372601,
-              -32.07411643
-            ],
-            [
-              151.7316772,
-              -32.07746954
-            ],
-            [
-              151.73185214,
-              -32.07894427
-            ],
-            [
-              151.73218628,
-              -32.08786964
-            ],
-            [
-              151.73206906,
-              -32.08778049
-            ],
-            [
-              151.7266701,
-              -32.08505344
-            ],
-            [
-              151.72617555,
-              -32.08500355
-            ],
-            [
-              151.72566848,
-              -32.08502655
-            ],
-            [
-              151.72520043,
-              -32.08509154
-            ],
-            [
-              151.72476759,
-              -32.0852142
-            ],
-            [
-              151.72064798,
-              -32.08297158
-            ],
-            [
-              151.72043428,
-              -32.08265351
-            ],
-            [
-              151.71894432,
-              -32.08109894
-            ],
-            [
-              151.71847674,
-              -32.08077459
-            ],
-            [
-              151.71823629,
-              -32.08061506
-            ],
-            [
-              151.71777891,
-              -32.08028313
-            ],
-            [
-              151.71682427,
-              -32.07987891
-            ],
-            [
-              151.71633542,
-              -32.07991199
-            ],
-            [
-              151.70793737,
-              -32.08034459
-            ],
-            [
-              151.70131782,
-              -32.07809286
-            ],
-            [
-              151.70094277,
-              -32.07819741
-            ],
-            [
-              151.69772829,
-              -32.07726051
-            ],
-            [
-              151.69729871,
-              -32.07713603
-            ],
-            [
-              151.69636714,
-              -32.07696052
-            ],
-            [
-              151.69794566,
-              -32.06752697
-            ],
-            [
-              151.67981019,
-              -32.06515228
-            ],
-            [
-              151.66216825,
-              -32.06613328
-            ],
-            [
-              151.66738973,
-              -32.0385702
-            ],
-            [
-              151.67910054,
-              -32.04084757
-            ],
-            [
-              151.68117175,
-              -32.04044861
-            ],
-            [
-              151.68265722,
-              -32.0398387
-            ],
-            [
-              151.6830092,
-              -32.03760389
-            ],
-            [
-              151.68555393,
-              -32.03522764
-            ],
-            [
-              151.69176242,
-              -32.03172179
-            ],
-            [
-              151.69833183,
-              -32.03470236
-            ],
-            [
-              151.71706812,
-              -32.03722149
-            ],
-            [
-              151.72445341,
-              -32.03334075
-            ],
-            [
-              151.72475743,
-              -32.03339948
-            ],
-            [
-              151.72568513,
-              -32.03357874
-            ],
-            [
-              151.72826164,
-              -32.03352167
-            ],
-            [
-              151.7292465,
-              -32.03186401
-            ],
-            [
-              151.73207099,
-              -32.02871872
-            ],
-            [
-              151.73447275,
-              -32.02868636
-            ],
-            [
-              151.73603707,
-              -32.02934152
-            ],
-            [
-              151.74304266,
-              -32.03105444
-            ],
-            [
-              151.74330447,
-              -32.03109905
-            ],
-            [
-              151.74565251,
-              -32.01891147
-            ],
-            [
-              151.76228762,
-              -32.0212638
-            ],
-            [
-              151.76270549,
-              -32.01905366
-            ],
-            [
-              151.77949962,
-              -32.02132494
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "18819",
-        "dt_create": "2012-11-21Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2003",
-        "nsw_locali": "2012-02-04Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "INVERGORDON",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "INVERGORDON",
-        "zone": "red",
-        "score": 21
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1026"
     },
     {
       "type": "Feature",
@@ -4908,8 +3709,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "GOSFORD",
-        "zone": "red",
-        "score": 37
+        "zone": "green",
+        "score": 90
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1066"
     },
@@ -5017,197 +3818,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "HORNSBY",
         "zone": "yellow",
-        "score": 50
+        "score": 64
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1553"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.13797273,
-              -33.68339463
-            ],
-            [
-              151.13776424,
-              -33.68439728
-            ],
-            [
-              151.12149516,
-              -33.69228612
-            ],
-            [
-              151.11117662,
-              -33.69695413
-            ],
-            [
-              151.10178495,
-              -33.6938766
-            ],
-            [
-              151.10509841,
-              -33.68212198
-            ],
-            [
-              151.11236314,
-              -33.67924726
-            ],
-            [
-              151.11781921,
-              -33.6809514
-            ],
-            [
-              151.13797273,
-              -33.68339463
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27143",
-        "dt_create": "2016-12-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW103",
-        "nsw_locali": "2015-05-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "ASQUITH",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "ASQUITH",
-        "zone": "yellow",
-        "score": 65
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1554"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.22001698,
-              -33.81771138
-            ],
-            [
-              151.22401314,
-              -33.82141246
-            ],
-            [
-              151.21734414,
-              -33.82801543
-            ],
-            [
-              151.21463429,
-              -33.82979121
-            ],
-            [
-              151.20870275,
-              -33.82888018
-            ],
-            [
-              151.2045773,
-              -33.82024211
-            ],
-            [
-              151.2103835,
-              -33.81765885
-            ],
-            [
-              151.22001698,
-              -33.81771138
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "22856",
-        "dt_create": "2014-08-27Z",
-        "dt_retire": null,
-        "loc_pid": "NSW793",
-        "nsw_locali": "2014-11-07Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "CAMMERAY",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "CAMMERAY",
-        "zone": "green",
-        "score": 81
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1160"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.15821334,
-              -33.74282031
-            ],
-            [
-              151.1711639,
-              -33.75169982
-            ],
-            [
-              151.16810561,
-              -33.75505568
-            ],
-            [
-              151.15866934,
-              -33.75803729
-            ],
-            [
-              151.14519232,
-              -33.76655219
-            ],
-            [
-              151.14230941,
-              -33.7708562
-            ],
-            [
-              151.1423768,
-              -33.75892099
-            ],
-            [
-              151.14044487,
-              -33.75490012
-            ],
-            [
-              151.15821334,
-              -33.74282031
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "23894",
-        "dt_create": "2015-02-24Z",
-        "dt_retire": null,
-        "loc_pid": "NSW1735",
-        "nsw_locali": "2015-05-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "GORDON",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "GORDON",
-        "zone": "red",
-        "score": 22
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1183"
     },
     {
       "type": "Feature",
@@ -5253,7 +3866,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "DOVER HEIGHTS",
         "zone": "yellow",
-        "score": 60
+        "score": 69
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1187"
     },
@@ -5308,8 +3921,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "NORTH BONDI",
-        "zone": "green",
-        "score": 80
+        "zone": "yellow",
+        "score": 63
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1188"
     },
@@ -5400,8 +4013,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "ALEXANDRIA",
-        "zone": "red",
-        "score": 3
+        "zone": "green",
+        "score": 82
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1203"
     },
@@ -5488,8 +4101,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "ROSEBERY",
-        "zone": "yellow",
-        "score": 52
+        "zone": "red",
+        "score": 27
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1204"
     },
@@ -5548,8 +4161,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "EASTGARDENS",
-        "zone": "red",
-        "score": 31
+        "zone": "yellow",
+        "score": 66
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2417"
     },
@@ -5609,609 +4222,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "LITTLE BAY",
         "zone": "red",
-        "score": 22
+        "score": 7
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1255"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.21157214,
-              -33.80241909
-            ],
-            [
-              151.2063893,
-              -33.80247478
-            ],
-            [
-              151.20600139,
-              -33.80248449
-            ],
-            [
-              151.20590301,
-              -33.80248663
-            ],
-            [
-              151.20494908,
-              -33.80250527
-            ],
-            [
-              151.20370612,
-              -33.80253281
-            ],
-            [
-              151.20288315,
-              -33.80112387
-            ],
-            [
-              151.2012496,
-              -33.79750119
-            ],
-            [
-              151.20121247,
-              -33.7973895
-            ],
-            [
-              151.20110413,
-              -33.7968669
-            ],
-            [
-              151.20149062,
-              -33.79674683
-            ],
-            [
-              151.20824448,
-              -33.79469245
-            ],
-            [
-              151.20852481,
-              -33.79529687
-            ],
-            [
-              151.20943194,
-              -33.79738352
-            ],
-            [
-              151.20950508,
-              -33.79756037
-            ],
-            [
-              151.20956366,
-              -33.79769326
-            ],
-            [
-              151.21087926,
-              -33.80070019
-            ],
-            [
-              151.21145284,
-              -33.80201805
-            ],
-            [
-              151.21157214,
-              -33.80241909
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "19884",
-        "dt_create": "2012-11-21Z",
-        "dt_retire": null,
-        "loc_pid": "NSW4336",
-        "nsw_locali": "2013-01-23Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "WILLOUGHBY EAST",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "WILLOUGHBY EAST",
-        "zone": "green",
-        "score": 82
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1285"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              149.95402431,
-              -34.54918054
-            ],
-            [
-              149.95423195,
-              -34.54911674
-            ],
-            [
-              149.96204509,
-              -34.55021336
-            ],
-            [
-              149.9610009,
-              -34.55547298
-            ],
-            [
-              149.96031332,
-              -34.55893689
-            ],
-            [
-              149.95906057,
-              -34.56580632
-            ],
-            [
-              149.97148363,
-              -34.56738289
-            ],
-            [
-              149.96975597,
-              -34.57274639
-            ],
-            [
-              149.95941296,
-              -34.58020537
-            ],
-            [
-              149.95375669,
-              -34.58501144
-            ],
-            [
-              149.95401998,
-              -34.58589086
-            ],
-            [
-              149.95468806,
-              -34.59062652
-            ],
-            [
-              149.95474078,
-              -34.59093283
-            ],
-            [
-              149.95414088,
-              -34.59352253
-            ],
-            [
-              149.95338303,
-              -34.59722899
-            ],
-            [
-              149.95576508,
-              -34.59746054
-            ],
-            [
-              149.94895707,
-              -34.63262311
-            ],
-            [
-              149.94459005,
-              -34.62510411
-            ],
-            [
-              149.92640843,
-              -34.63356433
-            ],
-            [
-              149.92724758,
-              -34.64694438
-            ],
-            [
-              149.93059355,
-              -34.64942435
-            ],
-            [
-              149.93042801,
-              -34.65191837
-            ],
-            [
-              149.92961261,
-              -34.65212738
-            ],
-            [
-              149.92672864,
-              -34.6515204
-            ],
-            [
-              149.92105674,
-              -34.65167145
-            ],
-            [
-              149.91057096,
-              -34.65694756
-            ],
-            [
-              149.90644906,
-              -34.65897761
-            ],
-            [
-              149.89851531,
-              -34.67043971
-            ],
-            [
-              149.89105101,
-              -34.66989397
-            ],
-            [
-              149.88763912,
-              -34.66679903
-            ],
-            [
-              149.87951097,
-              -34.66579735
-            ],
-            [
-              149.86183281,
-              -34.66361698
-            ],
-            [
-              149.86455112,
-              -34.64766565
-            ],
-            [
-              149.86092266,
-              -34.64721492
-            ],
-            [
-              149.86362544,
-              -34.63251984
-            ],
-            [
-              149.86378444,
-              -34.63235684
-            ],
-            [
-              149.86769076,
-              -34.61714088
-            ],
-            [
-              149.86835741,
-              -34.61662538
-            ],
-            [
-              149.87149335,
-              -34.61540226
-            ],
-            [
-              149.87202492,
-              -34.61580652
-            ],
-            [
-              149.88060986,
-              -34.62060487
-            ],
-            [
-              149.88209979,
-              -34.62093816
-            ],
-            [
-              149.88549736,
-              -34.61671353
-            ],
-            [
-              149.88477901,
-              -34.61668713
-            ],
-            [
-              149.88435839,
-              -34.61666815
-            ],
-            [
-              149.88392029,
-              -34.61664958
-            ],
-            [
-              149.88055685,
-              -34.60692372
-            ],
-            [
-              149.87951791,
-              -34.6072376
-            ],
-            [
-              149.87861187,
-              -34.60532048
-            ],
-            [
-              149.87918028,
-              -34.60506112
-            ],
-            [
-              149.88220546,
-              -34.59742366
-            ],
-            [
-              149.88153323,
-              -34.59670176
-            ],
-            [
-              149.8835933,
-              -34.59152034
-            ],
-            [
-              149.88413213,
-              -34.59091447
-            ],
-            [
-              149.88370908,
-              -34.58879789
-            ],
-            [
-              149.88333104,
-              -34.58848857
-            ],
-            [
-              149.8828032,
-              -34.58789345
-            ],
-            [
-              149.88240219,
-              -34.58742554
-            ],
-            [
-              149.88188094,
-              -34.58448958
-            ],
-            [
-              149.88182767,
-              -34.58406361
-            ],
-            [
-              149.8817601,
-              -34.58352318
-            ],
-            [
-              149.88184249,
-              -34.58185758
-            ],
-            [
-              149.88214558,
-              -34.58151769
-            ],
-            [
-              149.88242222,
-              -34.58142435
-            ],
-            [
-              149.88284815,
-              -34.58160235
-            ],
-            [
-              149.88932049,
-              -34.58111644
-            ],
-            [
-              149.88969141,
-              -34.58021074
-            ],
-            [
-              149.88956865,
-              -34.573737
-            ],
-            [
-              149.88979179,
-              -34.57310965
-            ],
-            [
-              149.89069418,
-              -34.56987671
-            ],
-            [
-              149.8909617,
-              -34.56901684
-            ],
-            [
-              149.89218855,
-              -34.56606552
-            ],
-            [
-              149.89233456,
-              -34.56536118
-            ],
-            [
-              149.89231526,
-              -34.56518006
-            ],
-            [
-              149.89074303,
-              -34.56371281
-            ],
-            [
-              149.8901465,
-              -34.56416094
-            ],
-            [
-              149.88935035,
-              -34.56591578
-            ],
-            [
-              149.88899099,
-              -34.56715395
-            ],
-            [
-              149.887708,
-              -34.56848632
-            ],
-            [
-              149.88656074,
-              -34.5691934
-            ],
-            [
-              149.88612988,
-              -34.5693772
-            ],
-            [
-              149.88553327,
-              -34.56931898
-            ],
-            [
-              149.88498756,
-              -34.56870982
-            ],
-            [
-              149.88450825,
-              -34.56799783
-            ],
-            [
-              149.8812048,
-              -34.56298368
-            ],
-            [
-              149.88064466,
-              -34.5634743
-            ],
-            [
-              149.88021629,
-              -34.56423668
-            ],
-            [
-              149.88032561,
-              -34.56487063
-            ],
-            [
-              149.87657961,
-              -34.56273406
-            ],
-            [
-              149.87675437,
-              -34.56222361
-            ],
-            [
-              149.87707394,
-              -34.56134808
-            ],
-            [
-              149.8771666,
-              -34.56108565
-            ],
-            [
-              149.87789052,
-              -34.55612085
-            ],
-            [
-              149.87804781,
-              -34.55561081
-            ],
-            [
-              149.87884418,
-              -34.55284338
-            ],
-            [
-              149.87855966,
-              -34.55270542
-            ],
-            [
-              149.87796769,
-              -34.55227093
-            ],
-            [
-              149.87616745,
-              -34.55076835
-            ],
-            [
-              149.87575369,
-              -34.55043091
-            ],
-            [
-              149.87891389,
-              -34.54928585
-            ],
-            [
-              149.87950539,
-              -34.54919956
-            ],
-            [
-              149.88083966,
-              -34.54783715
-            ],
-            [
-              149.88103284,
-              -34.54735518
-            ],
-            [
-              149.8858395,
-              -34.54984555
-            ],
-            [
-              149.8865438,
-              -34.54998804
-            ],
-            [
-              149.88678234,
-              -34.5482898
-            ],
-            [
-              149.88658765,
-              -34.54670308
-            ],
-            [
-              149.88068767,
-              -34.54292209
-            ],
-            [
-              149.88008376,
-              -34.54264702
-            ],
-            [
-              149.8808799,
-              -34.54139856
-            ],
-            [
-              149.8814883,
-              -34.5412974
-            ],
-            [
-              149.89118125,
-              -34.53855902
-            ],
-            [
-              149.92463795,
-              -34.54296653
-            ],
-            [
-              149.9309741,
-              -34.53040234
-            ],
-            [
-              149.93133309,
-              -34.53045192
-            ],
-            [
-              149.93039967,
-              -34.54671254
-            ],
-            [
-              149.95402431,
-              -34.54918054
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "18649",
-        "dt_create": "2012-11-21Z",
-        "dt_retire": null,
-        "loc_pid": "NSW1788",
-        "nsw_locali": "2013-01-23Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "GREENWICH PARK",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "GREENWICH PARK",
-        "zone": "green",
-        "score": 86
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1306"
     },
     {
       "type": "Feature",
@@ -6253,285 +4266,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
         "zone": "yellow",
-        "score": 70
+        "score": 64
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1408"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.11812432,
-              -33.70194456
-            ],
-            [
-              151.12246951,
-              -33.7051835
-            ],
-            [
-              151.14409779,
-              -33.70868284
-            ],
-            [
-              151.14338963,
-              -33.71636752
-            ],
-            [
-              151.13180653,
-              -33.71655371
-            ],
-            [
-              151.12938514,
-              -33.72057563
-            ],
-            [
-              151.12269775,
-              -33.71920764
-            ],
-            [
-              151.11965309,
-              -33.72836044
-            ],
-            [
-              151.11274102,
-              -33.73666177
-            ],
-            [
-              151.10488542,
-              -33.74240135
-            ],
-            [
-              151.09284641,
-              -33.74586286
-            ],
-            [
-              151.09117514,
-              -33.73893648
-            ],
-            [
-              151.09263448,
-              -33.73300939
-            ],
-            [
-              151.10056452,
-              -33.73045718
-            ],
-            [
-              151.10489255,
-              -33.72033722
-            ],
-            [
-              151.0998421,
-              -33.71566695
-            ],
-            [
-              151.09977783,
-              -33.71521961
-            ],
-            [
-              151.10904266,
-              -33.71274817
-            ],
-            [
-              151.11192481,
-              -33.70466777
-            ],
-            [
-              151.11812432,
-              -33.70194456
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27658",
-        "dt_create": "2017-06-13Z",
-        "dt_retire": null,
-        "loc_pid": "NSW4121",
-        "nsw_locali": "2017-08-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "WAHROONGA",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "WAHROONGA",
-        "zone": "red",
-        "score": 18
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2424"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.15749693,
-              -33.52683721
-            ],
-            [
-              151.16428706,
-              -33.52920479
-            ],
-            [
-              151.15532165,
-              -33.54320752
-            ],
-            [
-              151.15162902,
-              -33.55152898
-            ],
-            [
-              151.15224073,
-              -33.55792086
-            ],
-            [
-              151.15968217,
-              -33.56164004
-            ],
-            [
-              151.15392529,
-              -33.57208678
-            ],
-            [
-              151.13424864,
-              -33.57090949
-            ],
-            [
-              151.13300422,
-              -33.58147472
-            ],
-            [
-              151.11944103,
-              -33.58860219
-            ],
-            [
-              151.12537524,
-              -33.59710028
-            ],
-            [
-              151.12305171,
-              -33.59691418
-            ],
-            [
-              151.10783847,
-              -33.59350572
-            ],
-            [
-              151.10375975,
-              -33.58699983
-            ],
-            [
-              151.10961734,
-              -33.58549325
-            ],
-            [
-              151.11954244,
-              -33.58625358
-            ],
-            [
-              151.12464916,
-              -33.57843038
-            ],
-            [
-              151.12565677,
-              -33.57175008
-            ],
-            [
-              151.13083691,
-              -33.56813612
-            ],
-            [
-              151.14797327,
-              -33.56553328
-            ],
-            [
-              151.14620247,
-              -33.5550291
-            ],
-            [
-              151.14724695,
-              -33.54575239
-            ],
-            [
-              151.13719011,
-              -33.54678449
-            ],
-            [
-              151.14090118,
-              -33.53269343
-            ],
-            [
-              151.13648916,
-              -33.52593292
-            ],
-            [
-              151.11594115,
-              -33.51478175
-            ],
-            [
-              151.11218945,
-              -33.52198196
-            ],
-            [
-              151.10407587,
-              -33.52238667
-            ],
-            [
-              151.11014089,
-              -33.52073808
-            ],
-            [
-              151.11891411,
-              -33.50445622
-            ],
-            [
-              151.12136795,
-              -33.51272052
-            ],
-            [
-              151.13429232,
-              -33.51345689
-            ],
-            [
-              151.14064345,
-              -33.52429094
-            ],
-            [
-              151.14846314,
-              -33.52286042
-            ],
-            [
-              151.15749693,
-              -33.52683721
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27797",
-        "dt_create": "2017-06-13Z",
-        "dt_retire": null,
-        "loc_pid": "NSW310",
-        "nsw_locali": "2017-08-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "BEROWRA CREEK",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "BEROWRA CREEK",
-        "zone": "green",
-        "score": 90
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2426"
     },
     {
       "type": "Feature",
@@ -6604,8 +4341,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "KENSINGTON",
-        "zone": "red",
-        "score": 38
+        "zone": "green",
+        "score": 82
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1456"
     },
@@ -6656,158 +4393,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "WATERLOO",
-        "zone": "red",
-        "score": 33
+        "zone": "green",
+        "score": 78
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1459"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.20978592,
-              -33.86104027
-            ],
-            [
-              151.20547107,
-              -33.86315367
-            ],
-            [
-              151.20690013,
-              -33.85878966
-            ],
-            [
-              151.20974501,
-              -33.8542221
-            ],
-            [
-              151.20978592,
-              -33.86104027
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "18012",
-        "dt_create": "2012-08-15Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3875",
-        "nsw_locali": "2012-10-30Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "THE ROCKS",
-        "nsw_loca_3": null,
-        "nsw_loca_4": "2000",
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "THE ROCKS",
-        "zone": "yellow",
-        "score": 65
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1469"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.20464284,
-              -33.85663277
-            ],
-            [
-              151.20690013,
-              -33.85878966
-            ],
-            [
-              151.20547107,
-              -33.86315367
-            ],
-            [
-              151.20295501,
-              -33.86307541
-            ],
-            [
-              151.2026856,
-              -33.85629545
-            ],
-            [
-              151.20464284,
-              -33.85663277
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "28063",
-        "dt_create": "2017-09-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2641",
-        "nsw_locali": "2013-11-01Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "MILLERS POINT",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "MILLERS POINT",
-        "zone": "red",
-        "score": 1
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1488"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.20566178,
-              -33.84274491
-            ],
-            [
-              151.20626297,
-              -33.84626516
-            ],
-            [
-              151.19970938,
-              -33.84190301
-            ],
-            [
-              151.2005484,
-              -33.84042255
-            ],
-            [
-              151.20566178,
-              -33.84274491
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27912",
-        "dt_create": "2017-09-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2568",
-        "nsw_locali": "2017-11-07Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "MCMAHONS POINT",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "MCMAHONS POINT",
-        "zone": "green",
-        "score": 86
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1490"
     },
     {
       "type": "Feature",
@@ -6884,8 +4473,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "ASHFIELD",
-        "zone": "green",
-        "score": 95
+        "zone": "red",
+        "score": 43
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1522"
     },
@@ -6964,8 +4553,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "HUNTERS HILL",
-        "zone": "red",
-        "score": 21
+        "zone": "green",
+        "score": 79
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1523"
     },
@@ -7012,8 +4601,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "CHATSWOOD WEST",
-        "zone": "yellow",
-        "score": 61
+        "zone": "red",
+        "score": 21
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1541"
     },
@@ -7057,7 +4646,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "CHATSWOOD WEST",
         "zone": "green",
-        "score": 90
+        "score": 75
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1542"
     },
@@ -7124,8 +4713,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BANKSTOWN AERODROME",
-        "zone": "green",
-        "score": 94
+        "zone": "yellow",
+        "score": 69
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1595"
     },
@@ -7208,8 +4797,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "WINDSOR DOWNS",
-        "zone": "yellow",
-        "score": 55
+        "zone": "green",
+        "score": 84
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1599"
     },
@@ -7360,8 +4949,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "COOGEE",
-        "zone": "green",
-        "score": 79
+        "zone": "red",
+        "score": 3
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1607"
     },
@@ -7437,7 +5026,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "MIRANDA",
         "zone": "yellow",
-        "score": 63
+        "score": 69
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1621"
     },
@@ -7505,7 +5094,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "HURSTVILLE",
         "zone": "yellow",
-        "score": 52
+        "score": 60
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1624"
     },
@@ -7588,8 +5177,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "LIVERPOOL",
-        "zone": "green",
-        "score": 89
+        "zone": "yellow",
+        "score": 63
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1654"
     },
@@ -7661,7 +5250,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "BANKSTOWN",
         "zone": "green",
-        "score": 94
+        "score": 83
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1631"
     },
@@ -7716,238 +5305,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "CAMDEN HEAD",
-        "zone": "green",
-        "score": 93
+        "zone": "yellow",
+        "score": 55
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1633"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.16126816,
-              -33.65030959
-            ],
-            [
-              151.16141377,
-              -33.65998069
-            ],
-            [
-              151.14937971,
-              -33.6693905
-            ],
-            [
-              151.14661285,
-              -33.67465485
-            ],
-            [
-              151.13889374,
-              -33.67757217
-            ],
-            [
-              151.13797273,
-              -33.68339463
-            ],
-            [
-              151.11781921,
-              -33.6809514
-            ],
-            [
-              151.11236314,
-              -33.67924726
-            ],
-            [
-              151.10509841,
-              -33.68212198
-            ],
-            [
-              151.10393024,
-              -33.68043805
-            ],
-            [
-              151.10278262,
-              -33.67120997
-            ],
-            [
-              151.11120395,
-              -33.65743199
-            ],
-            [
-              151.11050613,
-              -33.6520128
-            ],
-            [
-              151.11528191,
-              -33.64642375
-            ],
-            [
-              151.12592689,
-              -33.65280987
-            ],
-            [
-              151.12901073,
-              -33.6578288
-            ],
-            [
-              151.12392018,
-              -33.6638651
-            ],
-            [
-              151.13133209,
-              -33.66800279
-            ],
-            [
-              151.14541764,
-              -33.66556782
-            ],
-            [
-              151.14834054,
-              -33.65610194
-            ],
-            [
-              151.15377792,
-              -33.65192541
-            ],
-            [
-              151.16126816,
-              -33.65030959
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "23573",
-        "dt_create": "2014-12-02Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2772",
-        "nsw_locali": "2015-02-12Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "MOUNT COLAH",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "MOUNT COLAH",
-        "zone": "green",
-        "score": 87
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1638"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.1652279,
-              -33.64090778
-            ],
-            [
-              151.16126816,
-              -33.65030959
-            ],
-            [
-              151.15377792,
-              -33.65192541
-            ],
-            [
-              151.14834054,
-              -33.65610194
-            ],
-            [
-              151.14541764,
-              -33.66556782
-            ],
-            [
-              151.13133209,
-              -33.66800279
-            ],
-            [
-              151.12392018,
-              -33.6638651
-            ],
-            [
-              151.12901073,
-              -33.6578288
-            ],
-            [
-              151.12592689,
-              -33.65280987
-            ],
-            [
-              151.11528191,
-              -33.64642375
-            ],
-            [
-              151.12026509,
-              -33.6430048
-            ],
-            [
-              151.11775208,
-              -33.63499649
-            ],
-            [
-              151.11905836,
-              -33.62610079
-            ],
-            [
-              151.12408299,
-              -33.61844724
-            ],
-            [
-              151.12965028,
-              -33.62171921
-            ],
-            [
-              151.13234912,
-              -33.63208856
-            ],
-            [
-              151.13707776,
-              -33.63334365
-            ],
-            [
-              151.13696952,
-              -33.6400139
-            ],
-            [
-              151.14392049,
-              -33.63966975
-            ],
-            [
-              151.15330491,
-              -33.64345971
-            ],
-            [
-              151.1652279,
-              -33.64090778
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "23574",
-        "dt_create": "2014-12-02Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2794",
-        "nsw_locali": "2015-02-12Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "MOUNT KURING-GAI",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "MOUNT KURING-GAI",
-        "zone": "green",
-        "score": 78
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1639"
     },
     {
       "type": "Feature",
@@ -8037,7 +5398,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "LEPPINGTON",
         "zone": "yellow",
-        "score": 51
+        "score": 61
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1712"
     },
@@ -8149,7 +5510,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "MAROUBRA",
         "zone": "green",
-        "score": 75
+        "score": 90
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1723"
     },
@@ -8281,73 +5642,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "RANDWICK",
         "zone": "red",
-        "score": 44
+        "score": 10
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1724"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.18150593,
-              -33.86370911
-            ],
-            [
-              151.18530085,
-              -33.86827857
-            ],
-            [
-              151.17349824,
-              -33.87123067
-            ],
-            [
-              151.17332774,
-              -33.87112233
-            ],
-            [
-              151.16931057,
-              -33.87175419
-            ],
-            [
-              151.1656128,
-              -33.86431205
-            ],
-            [
-              151.16108732,
-              -33.86260126
-            ],
-            [
-              151.16935085,
-              -33.85729849
-            ],
-            [
-              151.18150593,
-              -33.86370911
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27886",
-        "dt_create": "2017-09-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3467",
-        "nsw_locali": "2017-11-07Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "ROZELLE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "ROZELLE",
-        "zone": "red",
-        "score": 1
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1722"
     },
     {
       "type": "Feature",
@@ -8412,238 +5709,6 @@ const sydneySuburbBoundaries = {
         "score": 52
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1725"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.18602454,
-              -33.85477304
-            ],
-            [
-              151.17561437,
-              -33.85248505
-            ],
-            [
-              151.18078044,
-              -33.8477586
-            ],
-            [
-              151.18602454,
-              -33.85477304
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27772",
-        "dt_create": "2017-06-13Z",
-        "dt_retire": null,
-        "loc_pid": "NSW377",
-        "nsw_locali": "2017-08-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "BIRCHGROVE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "BIRCHGROVE",
-        "zone": "yellow",
-        "score": 65
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2496"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.22753282,
-              -33.86805496
-            ],
-            [
-              151.22517213,
-              -33.87403939
-            ],
-            [
-              151.22443816,
-              -33.87598566
-            ],
-            [
-              151.22138357,
-              -33.87509394
-            ],
-            [
-              151.22128143,
-              -33.86904249
-            ],
-            [
-              151.22753282,
-              -33.86805496
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "17916",
-        "dt_create": "2012-08-15Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3282",
-        "nsw_locali": "2012-10-30Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "POTTS POINT",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "POTTS POINT",
-        "zone": "red",
-        "score": 32
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1768"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.24967359,
-              -33.42624669
-            ],
-            [
-              151.25564681,
-              -33.43114866
-            ],
-            [
-              151.26195293,
-              -33.4403358
-            ],
-            [
-              151.2496297,
-              -33.44382969
-            ],
-            [
-              151.2461428,
-              -33.44958772
-            ],
-            [
-              151.23600514,
-              -33.45876188
-            ],
-            [
-              151.2356852,
-              -33.46620148
-            ],
-            [
-              151.23871946,
-              -33.47276357
-            ],
-            [
-              151.22766254,
-              -33.4811935
-            ],
-            [
-              151.21400831,
-              -33.48413252
-            ],
-            [
-              151.20744923,
-              -33.4833019
-            ],
-            [
-              151.19941347,
-              -33.49371484
-            ],
-            [
-              151.2041592,
-              -33.50791739
-            ],
-            [
-              151.19474008,
-              -33.50861221
-            ],
-            [
-              151.19135813,
-              -33.50814523
-            ],
-            [
-              151.19346707,
-              -33.50332321
-            ],
-            [
-              151.18497911,
-              -33.48811926
-            ],
-            [
-              151.18535904,
-              -33.47998824
-            ],
-            [
-              151.1915929,
-              -33.47588319
-            ],
-            [
-              151.19525179,
-              -33.46638915
-            ],
-            [
-              151.20044768,
-              -33.4653861
-            ],
-            [
-              151.21204342,
-              -33.45367
-            ],
-            [
-              151.22073524,
-              -33.44960693
-            ],
-            [
-              151.23322298,
-              -33.44223783
-            ],
-            [
-              151.23690861,
-              -33.42617185
-            ],
-            [
-              151.24479195,
-              -33.43002431
-            ],
-            [
-              151.24967359,
-              -33.42624669
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "17917",
-        "dt_create": "2012-08-15Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2727",
-        "nsw_locali": "2012-10-30Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "MOONEY MOONEY CREEK",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "MOONEY MOONEY CREEK",
-        "zone": "red",
-        "score": 21
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1769"
     },
     {
       "type": "Feature",
@@ -8756,8 +5821,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "CASTLE HILL",
-        "zone": "yellow",
-        "score": 66
+        "zone": "green",
+        "score": 94
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1779"
     },
@@ -8869,153 +5934,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "BAULKHAM HILLS",
         "zone": "yellow",
-        "score": 62
+        "score": 68
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1780"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.15336713,
-              -33.61148963
-            ],
-            [
-              151.15320678,
-              -33.60098349
-            ],
-            [
-              151.14884106,
-              -33.59589666
-            ],
-            [
-              151.13239611,
-              -33.59142299
-            ],
-            [
-              151.13300422,
-              -33.58147472
-            ],
-            [
-              151.13424864,
-              -33.57090949
-            ],
-            [
-              151.15392529,
-              -33.57208678
-            ],
-            [
-              151.15968217,
-              -33.56164004
-            ],
-            [
-              151.15224073,
-              -33.55792086
-            ],
-            [
-              151.15162902,
-              -33.55152898
-            ],
-            [
-              151.15532165,
-              -33.54320752
-            ],
-            [
-              151.16428706,
-              -33.52920479
-            ],
-            [
-              151.15749693,
-              -33.52683721
-            ],
-            [
-              151.16199899,
-              -33.52305464
-            ],
-            [
-              151.16977387,
-              -33.519952
-            ],
-            [
-              151.18798962,
-              -33.52209091
-            ],
-            [
-              151.18882097,
-              -33.5254488
-            ],
-            [
-              151.18885598,
-              -33.52560381
-            ],
-            [
-              151.19309405,
-              -33.53644587
-            ],
-            [
-              151.19916134,
-              -33.53964126
-            ],
-            [
-              151.19390965,
-              -33.55399811
-            ],
-            [
-              151.19268069,
-              -33.56422618
-            ],
-            [
-              151.19414491,
-              -33.5779153
-            ],
-            [
-              151.18634155,
-              -33.58466768
-            ],
-            [
-              151.17492547,
-              -33.58964328
-            ],
-            [
-              151.17345958,
-              -33.59603555
-            ],
-            [
-              151.16443901,
-              -33.60637494
-            ],
-            [
-              151.15990708,
-              -33.61867058
-            ],
-            [
-              151.15336713,
-              -33.61148963
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27015",
-        "dt_create": "2016-12-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW1109",
-        "nsw_locali": "2015-05-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "COWAN",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "COWAN",
-        "zone": "yellow",
-        "score": 53
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1781"
     },
     {
       "type": "Feature",
@@ -9072,8 +5993,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "REDFERN",
-        "zone": "green",
-        "score": 93
+        "zone": "yellow",
+        "score": 58
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1872"
     },
@@ -9180,8 +6101,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BLACKTOWN",
-        "zone": "red",
-        "score": 2
+        "zone": "green",
+        "score": 89
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1968"
     },
@@ -9297,7 +6218,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "SOUTH WINDSOR",
         "zone": "red",
-        "score": 4
+        "score": 0
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.1977"
     },
@@ -9344,8 +6265,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BALMAIN EAST",
-        "zone": "green",
-        "score": 78
+        "zone": "yellow",
+        "score": 64
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2009"
     },
@@ -9400,8 +6321,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "SOUTH HURSTVILLE",
-        "zone": "yellow",
-        "score": 70
+        "zone": "red",
+        "score": 32
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2030"
     },
@@ -9456,8 +6377,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "DOUBLE BAY",
-        "zone": "yellow",
-        "score": 66
+        "zone": "green",
+        "score": 85
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2048"
     },
@@ -9509,189 +6430,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "DARLING POINT",
         "zone": "yellow",
-        "score": 57
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2049"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.2005484,
-              -33.84042255
-            ],
-            [
-              151.19970938,
-              -33.84190301
-            ],
-            [
-              151.19411096,
-              -33.83828271
-            ],
-            [
-              151.20431596,
-              -33.83267873
-            ],
-            [
-              151.2005484,
-              -33.84042255
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27913",
-        "dt_create": "2017-09-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW4237",
-        "nsw_locali": "2017-11-07Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "WAVERTON",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "WAVERTON",
-        "zone": "green",
-        "score": 87
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2050"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.21658596,
-              -33.80545666
-            ],
-            [
-              151.20912122,
-              -33.8053557
-            ],
-            [
-              151.21157214,
-              -33.80241909
-            ],
-            [
-              151.21145284,
-              -33.80201805
-            ],
-            [
-              151.21087926,
-              -33.80070019
-            ],
-            [
-              151.20956366,
-              -33.79769326
-            ],
-            [
-              151.21621633,
-              -33.79779181
-            ],
-            [
-              151.22947195,
-              -33.7976262
-            ],
-            [
-              151.22527853,
-              -33.80236761
-            ],
-            [
-              151.21658596,
-              -33.80545666
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "28157",
-        "dt_create": "2017-09-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW863",
-        "nsw_locali": "2017-11-07Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "CASTLECRAG",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "CASTLECRAG",
-        "zone": "yellow",
         "score": 64
       },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2051"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.17332774,
-              -33.87112233
-            ],
-            [
-              151.17349824,
-              -33.87123067
-            ],
-            [
-              151.17727897,
-              -33.87272923
-            ],
-            [
-              151.1768573,
-              -33.87603407
-            ],
-            [
-              151.17622133,
-              -33.88270399
-            ],
-            [
-              151.17250941,
-              -33.88752679
-            ],
-            [
-              151.16209958,
-              -33.88808997
-            ],
-            [
-              151.16745651,
-              -33.87996407
-            ],
-            [
-              151.17332774,
-              -33.87112233
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27885",
-        "dt_create": "2017-09-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW60",
-        "nsw_locali": "2017-11-07Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "ANNANDALE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "ANNANDALE",
-        "zone": "red",
-        "score": 32
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2044"
+      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2049"
     },
     {
       "type": "Feature",
@@ -9776,8 +6517,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "GLADESVILLE",
-        "zone": "green",
-        "score": 81
+        "zone": "yellow",
+        "score": 69
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2047"
     },
@@ -9864,150 +6605,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "CRONULLA",
-        "zone": "green",
-        "score": 86
+        "zone": "yellow",
+        "score": 52
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2113"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.14409779,
-              -33.70868284
-            ],
-            [
-              151.12246951,
-              -33.7051835
-            ],
-            [
-              151.11812432,
-              -33.70194456
-            ],
-            [
-              151.12149516,
-              -33.69228612
-            ],
-            [
-              151.13776424,
-              -33.68439728
-            ],
-            [
-              151.13772523,
-              -33.69307613
-            ],
-            [
-              151.14080403,
-              -33.69688067
-            ],
-            [
-              151.14409779,
-              -33.70868284
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27659",
-        "dt_create": "2017-06-13Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3043",
-        "nsw_locali": "2017-08-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "NORTH WAHROONGA",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "NORTH WAHROONGA",
-        "zone": "yellow",
-        "score": 63
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2132"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.15336713,
-              -33.61148963
-            ],
-            [
-              151.13645978,
-              -33.61753443
-            ],
-            [
-              151.12965028,
-              -33.62171921
-            ],
-            [
-              151.12408299,
-              -33.61844724
-            ],
-            [
-              151.12397123,
-              -33.60940023
-            ],
-            [
-              151.12088658,
-              -33.60498093
-            ],
-            [
-              151.12537524,
-              -33.59710028
-            ],
-            [
-              151.11944103,
-              -33.58860219
-            ],
-            [
-              151.13300422,
-              -33.58147472
-            ],
-            [
-              151.13239611,
-              -33.59142299
-            ],
-            [
-              151.14884106,
-              -33.59589666
-            ],
-            [
-              151.15320678,
-              -33.60098349
-            ],
-            [
-              151.15336713,
-              -33.61148963
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27798",
-        "dt_create": "2017-06-13Z",
-        "dt_retire": null,
-        "loc_pid": "NSW311",
-        "nsw_locali": "2017-08-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "BEROWRA HEIGHTS",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "BEROWRA HEIGHTS",
-        "zone": "green",
-        "score": 78
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2133"
     },
     {
       "type": "Feature",
@@ -10093,7 +6694,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "MATRAVILLE",
         "zone": "yellow",
-        "score": 61
+        "score": 57
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2122"
     },
@@ -10156,8 +6757,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "DRUMMOYNE",
-        "zone": "green",
-        "score": 86
+        "zone": "red",
+        "score": 24
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2126"
     },
@@ -10212,82 +6813,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BALMAIN",
-        "zone": "yellow",
-        "score": 70
+        "zone": "red",
+        "score": 33
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2127"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.1423768,
-              -33.75892099
-            ],
-            [
-              151.14230941,
-              -33.7708562
-            ],
-            [
-              151.13795379,
-              -33.77442888
-            ],
-            [
-              151.13203376,
-              -33.77455316
-            ],
-            [
-              151.12195031,
-              -33.77007127
-            ],
-            [
-              151.11875112,
-              -33.76248299
-            ],
-            [
-              151.11806298,
-              -33.75288444
-            ],
-            [
-              151.11996547,
-              -33.75128434
-            ],
-            [
-              151.12787974,
-              -33.75332145
-            ],
-            [
-              151.13558288,
-              -33.76105507
-            ],
-            [
-              151.1423768,
-              -33.75892099
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27796",
-        "dt_create": "2017-06-13Z",
-        "dt_retire": null,
-        "loc_pid": "NSW4284",
-        "nsw_locali": "2017-08-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "WEST PYMBLE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "WEST PYMBLE",
-        "zone": "yellow",
-        "score": 57
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2128"
     },
     {
       "type": "Feature",
@@ -10360,8 +6889,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "LANE COVE NORTH",
-        "zone": "green",
-        "score": 84
+        "zone": "red",
+        "score": 12
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2129"
     },
@@ -10449,81 +6978,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "CHATSWOOD",
         "zone": "yellow",
-        "score": 66
+        "score": 68
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2130"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.09062229,
-              -33.71639026
-            ],
-            [
-              151.08748943,
-              -33.72679247
-            ],
-            [
-              151.09263448,
-              -33.73300939
-            ],
-            [
-              151.09117514,
-              -33.73893648
-            ],
-            [
-              151.0749917,
-              -33.73289626
-            ],
-            [
-              151.07485781,
-              -33.7328173
-            ],
-            [
-              151.06951402,
-              -33.72496654
-            ],
-            [
-              151.07790096,
-              -33.72041215
-            ],
-            [
-              151.07967708,
-              -33.70530919
-            ],
-            [
-              151.08868461,
-              -33.71205667
-            ],
-            [
-              151.09062229,
-              -33.71639026
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27702",
-        "dt_create": "2017-06-13Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3887",
-        "nsw_locali": "2017-08-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "THORNLEIGH",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "THORNLEIGH",
-        "zone": "green",
-        "score": 89
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2131"
     },
     {
       "type": "Feature",
@@ -10565,7 +7022,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
         "zone": "yellow",
-        "score": 50
+        "score": 62
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3092"
     },
@@ -10612,8 +7069,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
-        "zone": "green",
-        "score": 82
+        "zone": "yellow",
+        "score": 61
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3093"
     },
@@ -10752,8 +7209,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "EASTLAKES",
-        "zone": "red",
-        "score": 36
+        "zone": "yellow",
+        "score": 69
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2207"
     },
@@ -10800,212 +7257,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
-        "zone": "green",
-        "score": 90
+        "zone": "red",
+        "score": 27
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2300"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.24619145,
-              -33.53700581
-            ],
-            [
-              151.24875043,
-              -33.54125078
-            ],
-            [
-              151.24098866,
-              -33.55529985
-            ],
-            [
-              151.24058073,
-              -33.56400088
-            ],
-            [
-              151.25115063,
-              -33.57700087
-            ],
-            [
-              151.26041356,
-              -33.57935131
-            ],
-            [
-              151.27005633,
-              -33.57883769
-            ],
-            [
-              151.27956793,
-              -33.57187493
-            ],
-            [
-              151.2847816,
-              -33.57219325
-            ],
-            [
-              151.28106101,
-              -33.57989047
-            ],
-            [
-              151.27234678,
-              -33.58292882
-            ],
-            [
-              151.26030262,
-              -33.58980352
-            ],
-            [
-              151.24938078,
-              -33.59050589
-            ],
-            [
-              151.25580501,
-              -33.59656094
-            ],
-            [
-              151.25443088,
-              -33.60362954
-            ],
-            [
-              151.24091799,
-              -33.60051793
-            ],
-            [
-              151.23153322,
-              -33.60350896
-            ],
-            [
-              151.2262413,
-              -33.59895401
-            ],
-            [
-              151.21829849,
-              -33.60071104
-            ],
-            [
-              151.21807254,
-              -33.60935099
-            ],
-            [
-              151.2073728,
-              -33.61546353
-            ],
-            [
-              151.19959705,
-              -33.62047529
-            ],
-            [
-              151.18527585,
-              -33.62258859
-            ],
-            [
-              151.1771648,
-              -33.62678642
-            ],
-            [
-              151.16062357,
-              -33.62221447
-            ],
-            [
-              151.15990708,
-              -33.61867058
-            ],
-            [
-              151.16443901,
-              -33.60637494
-            ],
-            [
-              151.17345958,
-              -33.59603555
-            ],
-            [
-              151.17492547,
-              -33.58964328
-            ],
-            [
-              151.18634155,
-              -33.58466768
-            ],
-            [
-              151.19414491,
-              -33.5779153
-            ],
-            [
-              151.19268069,
-              -33.56422618
-            ],
-            [
-              151.19390965,
-              -33.55399811
-            ],
-            [
-              151.19916134,
-              -33.53964126
-            ],
-            [
-              151.20776913,
-              -33.54086409
-            ],
-            [
-              151.22879726,
-              -33.53563646
-            ],
-            [
-              151.24237951,
-              -33.53539883
-            ],
-            [
-              151.24619145,
-              -33.53700581
-            ]
-          ],
-          [
-            [
-              151.24207498,
-              -33.5370128
-            ],
-            [
-              151.23809835,
-              -33.53671043
-            ],
-            [
-              151.23491309,
-              -33.54030327
-            ],
-            [
-              151.24267342,
-              -33.54006464
-            ],
-            [
-              151.24207498,
-              -33.5370128
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "23494",
-        "dt_create": "2014-12-02Z",
-        "dt_retire": null,
-        "loc_pid": "NSW606",
-        "nsw_locali": "2015-02-12Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "BROOKLYN",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "BROOKLYN",
-        "zone": "yellow",
-        "score": 69
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2309"
     },
     {
       "type": "Feature",
@@ -11059,7 +7314,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "SOUTH PENRITH",
         "zone": "red",
-        "score": 40
+        "score": 31
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2566"
     },
@@ -11106,54 +7361,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "POINT PIPER",
-        "zone": "green",
-        "score": 85
+        "zone": "yellow",
+        "score": 59
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2349"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.19501393,
-              -33.51502553
-            ],
-            [
-              151.19135813,
-              -33.50814523
-            ],
-            [
-              151.19474008,
-              -33.50861221
-            ],
-            [
-              151.19501393,
-              -33.51502553
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "20151",
-        "dt_create": "2012-11-21Z",
-        "dt_retire": null,
-        "loc_pid": "NSW909",
-        "nsw_locali": "2013-01-23Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "CHEERO POINT",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "CHEERO POINT",
-        "zone": "yellow",
-        "score": 51
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2369"
     },
     {
       "type": "Feature",
@@ -11346,8 +7557,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "WYONG CREEK",
-        "zone": "red",
-        "score": 12
+        "zone": "green",
+        "score": 83
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2405"
     },
@@ -11479,7 +7690,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "WYONG",
         "zone": "red",
-        "score": 23
+        "score": 20
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2444"
     },
@@ -11546,8 +7757,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "SOUTH COOGEE",
-        "zone": "green",
-        "score": 76
+        "zone": "yellow",
+        "score": 54
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2452"
     },
@@ -11634,8 +7845,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "MARRICKVILLE",
-        "zone": "yellow",
-        "score": 70
+        "zone": "red",
+        "score": 16
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3813"
     },
@@ -11682,8 +7893,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "CREMORNE POINT",
-        "zone": "red",
-        "score": 31
+        "zone": "yellow",
+        "score": 50
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2478"
     },
@@ -11747,409 +7958,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "CREMORNE",
         "zone": "red",
-        "score": 28
+        "score": 0
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2503"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.21658596,
-              -33.80545666
-            ],
-            [
-              151.22555542,
-              -33.80487386
-            ],
-            [
-              151.2321995,
-              -33.80694656
-            ],
-            [
-              151.23047711,
-              -33.81359465
-            ],
-            [
-              151.22001698,
-              -33.81771138
-            ],
-            [
-              151.2103835,
-              -33.81765885
-            ],
-            [
-              151.20557464,
-              -33.81345188
-            ],
-            [
-              151.20912122,
-              -33.8053557
-            ],
-            [
-              151.21658596,
-              -33.80545666
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27651",
-        "dt_create": "2017-06-13Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3050",
-        "nsw_locali": "2017-08-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "NORTHBRIDGE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "NORTHBRIDGE",
-        "zone": "red",
-        "score": 32
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2504"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.0998421,
-              -33.71566695
-            ],
-            [
-              151.10489255,
-              -33.72033722
-            ],
-            [
-              151.10056452,
-              -33.73045718
-            ],
-            [
-              151.09263448,
-              -33.73300939
-            ],
-            [
-              151.08748943,
-              -33.72679247
-            ],
-            [
-              151.09062229,
-              -33.71639026
-            ],
-            [
-              151.0998421,
-              -33.71566695
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27703",
-        "dt_create": "2017-06-13Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3002",
-        "nsw_locali": "2017-08-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "NORMANHURST",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "NORMANHURST",
-        "zone": "red",
-        "score": 21
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2505"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.12397123,
-              -33.60940023
-            ],
-            [
-              151.11665393,
-              -33.60325583
-            ],
-            [
-              151.12305171,
-              -33.59691418
-            ],
-            [
-              151.12537524,
-              -33.59710028
-            ],
-            [
-              151.12088658,
-              -33.60498093
-            ],
-            [
-              151.12397123,
-              -33.60940023
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27799",
-        "dt_create": "2017-06-13Z",
-        "dt_retire": null,
-        "loc_pid": "NSW312",
-        "nsw_locali": "2017-08-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "BEROWRA WATERS",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "BEROWRA WATERS",
-        "zone": "green",
-        "score": 88
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2506"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.28246444,
-              -33.4907435
-            ],
-            [
-              151.27197736,
-              -33.49691448
-            ],
-            [
-              151.2710274,
-              -33.50040437
-            ],
-            [
-              151.25736834,
-              -33.50992678
-            ],
-            [
-              151.25496718,
-              -33.52635778
-            ],
-            [
-              151.24619145,
-              -33.53700581
-            ],
-            [
-              151.24237951,
-              -33.53539883
-            ],
-            [
-              151.22879726,
-              -33.53563646
-            ],
-            [
-              151.22832148,
-              -33.53055079
-            ],
-            [
-              151.23069957,
-              -33.52249296
-            ],
-            [
-              151.22761659,
-              -33.51805898
-            ],
-            [
-              151.21913573,
-              -33.51722904
-            ],
-            [
-              151.21818279,
-              -33.52260105
-            ],
-            [
-              151.21184789,
-              -33.5209061
-            ],
-            [
-              151.21156623,
-              -33.51430521
-            ],
-            [
-              151.2041592,
-              -33.50791739
-            ],
-            [
-              151.19941347,
-              -33.49371484
-            ],
-            [
-              151.20744923,
-              -33.4833019
-            ],
-            [
-              151.21400831,
-              -33.48413252
-            ],
-            [
-              151.22766254,
-              -33.4811935
-            ],
-            [
-              151.23871946,
-              -33.47276357
-            ],
-            [
-              151.24188202,
-              -33.4717076
-            ],
-            [
-              151.25527701,
-              -33.47838312
-            ],
-            [
-              151.2663756,
-              -33.4762426
-            ],
-            [
-              151.2722985,
-              -33.48415048
-            ],
-            [
-              151.28246444,
-              -33.4907435
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "20961",
-        "dt_create": "2013-06-06Z",
-        "dt_retire": null,
-        "loc_pid": "NSW4403",
-        "nsw_locali": "2013-11-01Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "WONDABYNE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "WONDABYNE",
-        "zone": "green",
-        "score": 95
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2522"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.21818279,
-              -33.52260105
-            ],
-            [
-              151.22695464,
-              -33.52245299
-            ],
-            [
-              151.22832148,
-              -33.53055079
-            ],
-            [
-              151.22879726,
-              -33.53563646
-            ],
-            [
-              151.20776913,
-              -33.54086409
-            ],
-            [
-              151.19916134,
-              -33.53964126
-            ],
-            [
-              151.19309405,
-              -33.53644587
-            ],
-            [
-              151.18885598,
-              -33.52560381
-            ],
-            [
-              151.18882097,
-              -33.5254488
-            ],
-            [
-              151.18798962,
-              -33.52209091
-            ],
-            [
-              151.19514241,
-              -33.52357964
-            ],
-            [
-              151.19501393,
-              -33.51502553
-            ],
-            [
-              151.19474008,
-              -33.50861221
-            ],
-            [
-              151.2041592,
-              -33.50791739
-            ],
-            [
-              151.21156623,
-              -33.51430521
-            ],
-            [
-              151.21184789,
-              -33.5209061
-            ],
-            [
-              151.21818279,
-              -33.52260105
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "20962",
-        "dt_create": "2013-06-06Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2726",
-        "nsw_locali": "2013-11-01Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "MOONEY MOONEY",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "MOONEY MOONEY",
-        "zone": "green",
-        "score": 88
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2523"
     },
     {
       "type": "Feature",
@@ -12190,8 +8001,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "TAMARAMA",
-        "zone": "red",
-        "score": 7
+        "zone": "yellow",
+        "score": 70
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2636"
     },
@@ -12254,8 +8065,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "PORT BOTANY",
-        "zone": "red",
-        "score": 33
+        "zone": "yellow",
+        "score": 56
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2651"
     },
@@ -12302,8 +8113,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
-        "zone": "green",
-        "score": 87
+        "zone": "red",
+        "score": 31
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2730"
     },
@@ -12346,8 +8157,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
-        "zone": "red",
-        "score": 40
+        "zone": "green",
+        "score": 92
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2732"
     },
@@ -12394,8 +8205,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
-        "zone": "yellow",
-        "score": 51
+        "zone": "green",
+        "score": 83
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2735"
     },
@@ -12470,8 +8281,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "MONA VALE",
-        "zone": "green",
-        "score": 91
+        "zone": "yellow",
+        "score": 63
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2974"
     },
@@ -12538,210 +8349,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "MALABAR",
-        "zone": "green",
-        "score": 94
+        "zone": "yellow",
+        "score": 51
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2814"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              149.1549286,
-              -34.69638537
-            ],
-            [
-              149.15302854,
-              -34.70013316
-            ],
-            [
-              149.1590078,
-              -34.70563597
-            ],
-            [
-              149.15853425,
-              -34.71336807
-            ],
-            [
-              149.15127018,
-              -34.72809549
-            ],
-            [
-              149.14802788,
-              -34.73985973
-            ],
-            [
-              149.15094307,
-              -34.74327166
-            ],
-            [
-              149.14441664,
-              -34.752343
-            ],
-            [
-              149.130158,
-              -34.75689357
-            ],
-            [
-              149.12781551,
-              -34.76178515
-            ],
-            [
-              149.12020488,
-              -34.76557692
-            ],
-            [
-              149.10959278,
-              -34.75643325
-            ],
-            [
-              149.10177591,
-              -34.74438259
-            ],
-            [
-              149.1011516,
-              -34.73823922
-            ],
-            [
-              149.07443066,
-              -34.73517857
-            ],
-            [
-              149.07307814,
-              -34.74233086
-            ],
-            [
-              149.0533029,
-              -34.73982141
-            ],
-            [
-              149.03262193,
-              -34.7414839
-            ],
-            [
-              149.02761409,
-              -34.73718454
-            ],
-            [
-              149.02308884,
-              -34.7424428
-            ],
-            [
-              149.02600759,
-              -34.72758674
-            ],
-            [
-              149.00326484,
-              -34.72433789
-            ],
-            [
-              148.99659085,
-              -34.7178389
-            ],
-            [
-              148.99230377,
-              -34.70783188
-            ],
-            [
-              148.99392167,
-              -34.70240085
-            ],
-            [
-              149.00549031,
-              -34.69032376
-            ],
-            [
-              149.0057932,
-              -34.68199772
-            ],
-            [
-              149.01052582,
-              -34.67888831
-            ],
-            [
-              149.02311336,
-              -34.68260348
-            ],
-            [
-              149.03322591,
-              -34.67465758
-            ],
-            [
-              149.03963903,
-              -34.67950311
-            ],
-            [
-              149.05071033,
-              -34.68155743
-            ],
-            [
-              149.05116035,
-              -34.67506462
-            ],
-            [
-              149.05763727,
-              -34.6642143
-            ],
-            [
-              149.08379656,
-              -34.66748809
-            ],
-            [
-              149.10885662,
-              -34.66748595
-            ],
-            [
-              149.10784744,
-              -34.67280942
-            ],
-            [
-              149.12397444,
-              -34.67492539
-            ],
-            [
-              149.13362345,
-              -34.67752044
-            ],
-            [
-              149.13890638,
-              -34.68189182
-            ],
-            [
-              149.13790145,
-              -34.68677584
-            ],
-            [
-              149.14592023,
-              -34.68779086
-            ],
-            [
-              149.1549286,
-              -34.69638537
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27594",
-        "dt_create": "2017-06-13Z",
-        "dt_retire": null,
-        "loc_pid": "NSW588",
-        "nsw_locali": "2017-08-10Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "BROADWAY",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "BROADWAY",
-        "zone": "green",
-        "score": 90
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2849"
     },
     {
       "type": "Feature",
@@ -12826,8 +8437,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "PENRITH",
-        "zone": "red",
-        "score": 42
+        "zone": "green",
+        "score": 89
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2902"
     },
@@ -12943,7 +8554,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "MANLY",
         "zone": "red",
-        "score": 9
+        "score": 14
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.2908"
     },
@@ -13019,81 +8630,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "NORTH SYDNEY",
         "zone": "yellow",
-        "score": 51
+        "score": 50
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3017"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.21043701,
-              -33.78952958
-            ],
-            [
-              151.2176946,
-              -33.79305978
-            ],
-            [
-              151.21621633,
-              -33.79779181
-            ],
-            [
-              151.20956366,
-              -33.79769326
-            ],
-            [
-              151.20950508,
-              -33.79756037
-            ],
-            [
-              151.20943194,
-              -33.79738352
-            ],
-            [
-              151.20852481,
-              -33.79529687
-            ],
-            [
-              151.20824448,
-              -33.79469245
-            ],
-            [
-              151.20299982,
-              -33.7902388
-            ],
-            [
-              151.20087465,
-              -33.78532842
-            ],
-            [
-              151.21043701,
-              -33.78952958
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "26026",
-        "dt_create": "2016-06-07Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2623",
-        "nsw_locali": "2016-08-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "MIDDLE COVE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "MIDDLE COVE",
-        "zone": "green",
-        "score": 91
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3034"
     },
     {
       "type": "Feature",
@@ -13138,8 +8677,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
-        "zone": "green",
-        "score": 84
+        "zone": "yellow",
+        "score": 66
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3091"
     },
@@ -13203,7 +8742,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
         "zone": "red",
-        "score": 41
+        "score": 6
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3094"
     },
@@ -13266,8 +8805,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "DEE WHY",
-        "zone": "green",
-        "score": 77
+        "zone": "yellow",
+        "score": 52
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3114"
     },
@@ -13335,7 +8874,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "CAMDEN SOUTH",
         "zone": "green",
-        "score": 89
+        "score": 79
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3164"
     },
@@ -13438,8 +8977,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "CAMDEN PARK",
-        "zone": "red",
-        "score": 10
+        "zone": "yellow",
+        "score": 54
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3165"
     },
@@ -13498,70 +9037,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "EDGECLIFF",
-        "zone": "green",
-        "score": 77
+        "zone": "yellow",
+        "score": 65
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3178"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.19317077,
-              -33.88768332
-            ],
-            [
-              151.19469358,
-              -33.88444651
-            ],
-            [
-              151.19505995,
-              -33.88443585
-            ],
-            [
-              151.20290894,
-              -33.88377432
-            ],
-            [
-              151.20678962,
-              -33.88580788
-            ],
-            [
-              151.2018225,
-              -33.88911305
-            ],
-            [
-              151.1988246,
-              -33.88862369
-            ],
-            [
-              151.19317077,
-              -33.88768332
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "24239",
-        "dt_create": "2015-02-24Z",
-        "dt_retire": null,
-        "loc_pid": "NSW921",
-        "nsw_locali": "2015-05-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "CHIPPENDALE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "CHIPPENDALE",
-        "zone": "red",
-        "score": 14
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3467"
     },
     {
       "type": "Feature",
@@ -13618,8 +9097,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "LEICHHARDT",
-        "zone": "red",
-        "score": 16
+        "zone": "green",
+        "score": 92
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3201"
     },
@@ -13674,8 +9153,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "NORTH EPPING",
-        "zone": "yellow",
-        "score": 57
+        "zone": "green",
+        "score": 80
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3209"
     },
@@ -13738,58 +9217,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "GLEBE",
-        "zone": "green",
-        "score": 85
+        "zone": "yellow",
+        "score": 70
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3240"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.11192481,
-              -33.70466777
-            ],
-            [
-              151.10904266,
-              -33.71274817
-            ],
-            [
-              151.09977783,
-              -33.71521961
-            ],
-            [
-              151.10241681,
-              -33.70634423
-            ],
-            [
-              151.11192481,
-              -33.70466777
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "17094",
-        "dt_create": "2012-02-16Z",
-        "dt_retire": null,
-        "loc_pid": "NSW4122",
-        "nsw_locali": "2012-05-04Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "WAITARA",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "WAITARA",
-        "zone": "green",
-        "score": 79
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3285"
     },
     {
       "type": "Feature",
@@ -13843,7 +9274,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "HURSTVILLE GROVE",
         "zone": "yellow",
-        "score": 58
+        "score": 67
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3374"
     },
@@ -13894,8 +9325,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "ULTIMO",
-        "zone": "green",
-        "score": 84
+        "zone": "yellow",
+        "score": 69
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3398"
     },
@@ -13955,7 +9386,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "NEUTRAL BAY",
         "zone": "green",
-        "score": 91
+        "score": 94
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3399"
     },
@@ -14022,78 +9453,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "STRATHFIELD SOUTH",
-        "zone": "yellow",
-        "score": 60
+        "zone": "green",
+        "score": 75
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3412"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.1477353,
-              -33.73076289
-            ],
-            [
-              151.15545802,
-              -33.73299858
-            ],
-            [
-              151.15821334,
-              -33.74282031
-            ],
-            [
-              151.14044487,
-              -33.75490012
-            ],
-            [
-              151.1423768,
-              -33.75892099
-            ],
-            [
-              151.13558288,
-              -33.76105507
-            ],
-            [
-              151.12787974,
-              -33.75332145
-            ],
-            [
-              151.11996547,
-              -33.75128434
-            ],
-            [
-              151.13939966,
-              -33.72958816
-            ],
-            [
-              151.1477353,
-              -33.73076289
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "28110",
-        "dt_create": "2017-09-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3308",
-        "nsw_locali": "2017-11-07Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "PYMBLE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "PYMBLE",
-        "zone": "green",
-        "score": 88
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3453"
     },
     {
       "type": "Feature",
@@ -14238,8 +9601,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "MASCOT",
-        "zone": "yellow",
-        "score": 56
+        "zone": "red",
+        "score": 20
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3455"
     },
@@ -14335,7 +9698,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "MOSMAN",
         "zone": "green",
-        "score": 77
+        "score": 82
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3457"
     },
@@ -14391,7 +9754,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "BONDI BEACH",
         "zone": "green",
-        "score": 93
+        "score": 82
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3420"
     },
@@ -14526,70 +9889,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "AVALON BEACH",
-        "zone": "red",
-        "score": 4
+        "zone": "green",
+        "score": 77
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3486"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.18747823,
-              -33.88472033
-            ],
-            [
-              151.19469358,
-              -33.88444651
-            ],
-            [
-              151.19317077,
-              -33.88768332
-            ],
-            [
-              151.18834916,
-              -33.89138903
-            ],
-            [
-              151.17154453,
-              -33.8943022
-            ],
-            [
-              151.17250941,
-              -33.88752679
-            ],
-            [
-              151.17622133,
-              -33.88270399
-            ],
-            [
-              151.18747823,
-              -33.88472033
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "26052",
-        "dt_create": "2016-06-07Z",
-        "dt_retire": null,
-        "loc_pid": "NSW796",
-        "nsw_locali": "2016-08-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "CAMPERDOWN",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "CAMPERDOWN",
-        "zone": "green",
-        "score": 81
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3524"
     },
     {
       "type": "Feature",
@@ -14650,74 +9953,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "NEWTOWN",
-        "zone": "red",
-        "score": 36
+        "zone": "yellow",
+        "score": 58
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3525"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.14968393,
-              -33.8738638
-            ],
-            [
-              151.15052347,
-              -33.87209529
-            ],
-            [
-              151.1532186,
-              -33.86623906
-            ],
-            [
-              151.16108732,
-              -33.86260126
-            ],
-            [
-              151.1656128,
-              -33.86431205
-            ],
-            [
-              151.16931057,
-              -33.87175419
-            ],
-            [
-              151.17332774,
-              -33.87112233
-            ],
-            [
-              151.16745651,
-              -33.87996407
-            ],
-            [
-              151.14968393,
-              -33.8738638
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "26215",
-        "dt_create": "2016-06-07Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2348",
-        "nsw_locali": "2016-08-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "LILYFIELD",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "LILYFIELD",
-        "zone": "yellow",
-        "score": 61
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3536"
     },
     {
       "type": "Feature",
@@ -14803,7 +10042,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "SYDNEY",
         "zone": "yellow",
-        "score": 51
+        "score": 65
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3538"
     },
@@ -14858,70 +10097,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "PYRMONT",
-        "zone": "yellow",
-        "score": 66
+        "zone": "red",
+        "score": 14
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3571"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.22954457,
-              -33.87677943
-            ],
-            [
-              151.21911841,
-              -33.88176139
-            ],
-            [
-              151.21818569,
-              -33.88510319
-            ],
-            [
-              151.21211388,
-              -33.87685696
-            ],
-            [
-              151.21415668,
-              -33.87396432
-            ],
-            [
-              151.22138357,
-              -33.87509394
-            ],
-            [
-              151.22443816,
-              -33.87598566
-            ],
-            [
-              151.22954457,
-              -33.87677943
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "26626",
-        "dt_create": "2016-09-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW1222",
-        "nsw_locali": "2016-11-11Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "DARLINGHURST",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "DARLINGHURST",
-        "zone": "yellow",
-        "score": 51
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3572"
     },
     {
       "type": "Feature",
@@ -14982,50 +10161,6 @@ const sydneySuburbBoundaries = {
         "score": 54
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3585"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.20974501,
-              -33.8542221
-            ],
-            [
-              151.20690013,
-              -33.85878966
-            ],
-            [
-              151.20464284,
-              -33.85663277
-            ],
-            [
-              151.20974501,
-              -33.8542221
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "28062",
-        "dt_create": "2017-09-12Z",
-        "dt_retire": null,
-        "loc_pid": "NSW1233",
-        "nsw_locali": "2012-05-04Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "DAWES POINT",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "DAWES POINT",
-        "zone": "red",
-        "score": 0
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3624"
     },
     {
       "type": "Feature",
@@ -15118,8 +10253,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "SYDNEY OLYMPIC PARK",
-        "zone": "yellow",
-        "score": 60
+        "zone": "red",
+        "score": 1
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3693"
     },
@@ -15210,8 +10345,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "PARRAMATTA",
-        "zone": "red",
-        "score": 39
+        "zone": "green",
+        "score": 78
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3694"
     },
@@ -15274,8 +10409,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "WOOLLAHRA",
-        "zone": "yellow",
-        "score": 62
+        "zone": "red",
+        "score": 14
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3697"
     },
@@ -15323,7 +10458,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
         "zone": "yellow",
-        "score": 63
+        "score": 62
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3704"
     },
@@ -15406,8 +10541,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "WEST RYDE",
-        "zone": "green",
-        "score": 85
+        "zone": "red",
+        "score": 26
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3711"
     },
@@ -15462,8 +10597,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "WYONGAH",
-        "zone": "yellow",
-        "score": 52
+        "zone": "red",
+        "score": 45
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3717"
     },
@@ -15586,66 +10721,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "NORTH RICHMOND",
-        "zone": "green",
-        "score": 95
+        "zone": "yellow",
+        "score": 66
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3829"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.20911803,
-              -33.87970348
-            ],
-            [
-              151.20873311,
-              -33.88123427
-            ],
-            [
-              151.20871385,
-              -33.88132721
-            ],
-            [
-              151.20678962,
-              -33.88580788
-            ],
-            [
-              151.20290894,
-              -33.88377432
-            ],
-            [
-              151.19972816,
-              -33.877509
-            ],
-            [
-              151.20911803,
-              -33.87970348
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "26374",
-        "dt_create": "2016-06-07Z",
-        "dt_retire": null,
-        "loc_pid": "NSW1895",
-        "nsw_locali": "2016-08-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "HAYMARKET",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "HAYMARKET",
-        "zone": "yellow",
-        "score": 69
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4320"
     },
     {
       "type": "Feature",
@@ -15694,8 +10773,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "NORTH STRATHFIELD",
-        "zone": "green",
-        "score": 87
+        "zone": "yellow",
+        "score": 61
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4178"
     },
@@ -15794,8 +10873,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "NORTH MANLY",
-        "zone": "red",
-        "score": 28
+        "zone": "yellow",
+        "score": 60
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3838"
     },
@@ -15874,8 +10953,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "EAST GOSFORD",
-        "zone": "green",
-        "score": 75
+        "zone": "red",
+        "score": 26
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3861"
     },
@@ -16026,8 +11105,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "SPRINGWOOD",
-        "zone": "yellow",
-        "score": 56
+        "zone": "green",
+        "score": 87
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3934"
     },
@@ -16074,98 +11153,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BURWOOD HEIGHTS",
-        "zone": "yellow",
-        "score": 68
+        "zone": "green",
+        "score": 88
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4333"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.14338963,
-              -33.71636752
-            ],
-            [
-              151.14947817,
-              -33.72292888
-            ],
-            [
-              151.1477353,
-              -33.73076289
-            ],
-            [
-              151.13939966,
-              -33.72958816
-            ],
-            [
-              151.11996547,
-              -33.75128434
-            ],
-            [
-              151.11806298,
-              -33.75288444
-            ],
-            [
-              151.11210303,
-              -33.74487361
-            ],
-            [
-              151.10488542,
-              -33.74240135
-            ],
-            [
-              151.11274102,
-              -33.73666177
-            ],
-            [
-              151.11524185,
-              -33.73868399
-            ],
-            [
-              151.1238293,
-              -33.73019261
-            ],
-            [
-              151.12869324,
-              -33.72853913
-            ],
-            [
-              151.12938514,
-              -33.72057563
-            ],
-            [
-              151.13180653,
-              -33.71655371
-            ],
-            [
-              151.14338963,
-              -33.71636752
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "25534",
-        "dt_create": "2015-12-01Z",
-        "dt_retire": null,
-        "loc_pid": "NSW4017",
-        "nsw_locali": "2016-01-27Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "TURRAMURRA",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "TURRAMURRA",
-        "zone": "green",
-        "score": 83
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3939"
     },
     {
       "type": "Feature",
@@ -16247,105 +11238,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "WINDSOR",
         "zone": "red",
-        "score": 22
+        "score": 39
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3992"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.21063404,
-              -33.84361158
-            ],
-            [
-              151.21169139,
-              -33.84373822
-            ],
-            [
-              151.21377483,
-              -33.84964287
-            ],
-            [
-              151.20936833,
-              -33.84624117
-            ],
-            [
-              151.21063404,
-              -33.84361158
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "26130",
-        "dt_create": "2016-06-07Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2651",
-        "nsw_locali": "2016-08-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "MILSONS POINT",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "MILSONS POINT",
-        "zone": "yellow",
-        "score": 65
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3973"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.21063404,
-              -33.84361158
-            ],
-            [
-              151.20936833,
-              -33.84624117
-            ],
-            [
-              151.20626297,
-              -33.84626516
-            ],
-            [
-              151.20566178,
-              -33.84274491
-            ],
-            [
-              151.21063404,
-              -33.84361158
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "26131",
-        "dt_create": "2016-06-07Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2308",
-        "nsw_locali": "2016-08-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "LAVENDER BAY",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "LAVENDER BAY",
-        "zone": "yellow",
-        "score": 61
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3974"
     },
     {
       "type": "Feature",
@@ -16542,8 +11437,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BONDI FOREST",
-        "zone": "red",
-        "score": 32
+        "zone": "green",
+        "score": 83
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3984"
     },
@@ -16602,8 +11497,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "PADDINGTON",
-        "zone": "red",
-        "score": 24
+        "zone": "yellow",
+        "score": 54
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.3999"
     },
@@ -16683,289 +11578,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "NORTH PARRAMATTA",
         "zone": "green",
-        "score": 87
+        "score": 90
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4001"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.17791043,
-              -33.76816538
-            ],
-            [
-              151.18232549,
-              -33.77519424
-            ],
-            [
-              151.17607957,
-              -33.77693825
-            ],
-            [
-              151.17253942,
-              -33.78359337
-            ],
-            [
-              151.16169818,
-              -33.78610037
-            ],
-            [
-              151.16640901,
-              -33.79197213
-            ],
-            [
-              151.15704972,
-              -33.79200017
-            ],
-            [
-              151.15676366,
-              -33.79211127
-            ],
-            [
-              151.14838962,
-              -33.7942774
-            ],
-            [
-              151.14690466,
-              -33.7858141
-            ],
-            [
-              151.14343878,
-              -33.78311663
-            ],
-            [
-              151.14951483,
-              -33.77552708
-            ],
-            [
-              151.1587005,
-              -33.77543882
-            ],
-            [
-              151.16188965,
-              -33.7710672
-            ],
-            [
-              151.17158182,
-              -33.76701663
-            ],
-            [
-              151.17793785,
-              -33.76739739
-            ],
-            [
-              151.17791043,
-              -33.76816538
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "24509",
-        "dt_create": "2015-05-22Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2362",
-        "nsw_locali": "2015-08-06Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "LINDFIELD",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "LINDFIELD",
-        "zone": "red",
-        "score": 24
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4003"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.19657839,
-              -33.78205421
-            ],
-            [
-              151.20066161,
-              -33.7848666
-            ],
-            [
-              151.180622,
-              -33.79094239
-            ],
-            [
-              151.16640901,
-              -33.79197213
-            ],
-            [
-              151.16169818,
-              -33.78610037
-            ],
-            [
-              151.17253942,
-              -33.78359337
-            ],
-            [
-              151.17607957,
-              -33.77693825
-            ],
-            [
-              151.18232549,
-              -33.77519424
-            ],
-            [
-              151.19296341,
-              -33.77331329
-            ],
-            [
-              151.19657839,
-              -33.78205421
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "24510",
-        "dt_create": "2015-05-22Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3443",
-        "nsw_locali": "2015-08-06Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "ROSEVILLE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "ROSEVILLE",
-        "zone": "yellow",
-        "score": 53
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4004"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.21043701,
-              -33.78952958
-            ],
-            [
-              151.20087465,
-              -33.78532842
-            ],
-            [
-              151.20066161,
-              -33.7848666
-            ],
-            [
-              151.19657839,
-              -33.78205421
-            ],
-            [
-              151.20719826,
-              -33.7788312
-            ],
-            [
-              151.2132866,
-              -33.78433232
-            ],
-            [
-              151.22221867,
-              -33.78632049
-            ],
-            [
-              151.23010587,
-              -33.78515362
-            ],
-            [
-              151.23289223,
-              -33.79003847
-            ],
-            [
-              151.22544873,
-              -33.7933439
-            ],
-            [
-              151.21043701,
-              -33.78952958
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "24608",
-        "dt_create": "2015-05-22Z",
-        "dt_retire": null,
-        "loc_pid": "NSW859",
-        "nsw_locali": "2015-08-06Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "CASTLE COVE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "CASTLE COVE",
-        "zone": "green",
-        "score": 93
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4005"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.23002976,
-              -33.87298215
-            ],
-            [
-              151.22517213,
-              -33.87403939
-            ],
-            [
-              151.22753282,
-              -33.86805496
-            ],
-            [
-              151.23002976,
-              -33.87298215
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27295",
-        "dt_create": "2017-03-03Z",
-        "dt_retire": null,
-        "loc_pid": "NSW1412",
-        "nsw_locali": "2017-05-02Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "ELIZABETH BAY",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "ELIZABETH BAY",
-        "zone": "yellow",
-        "score": 69
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4043"
     },
     {
       "type": "Feature",
@@ -18002,254 +12617,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BLUE MOUNTAINS NATIONAL PARK",
-        "zone": "yellow",
-        "score": 70
+        "zone": "red",
+        "score": 10
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4226"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.19361586,
-              -33.81757721
-            ],
-            [
-              151.19905661,
-              -33.82206611
-            ],
-            [
-              151.19786122,
-              -33.82533284
-            ],
-            [
-              151.19272531,
-              -33.82796803
-            ],
-            [
-              151.18673218,
-              -33.82248157
-            ],
-            [
-              151.19361586,
-              -33.81757721
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "24573",
-        "dt_create": "2015-05-22Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3675",
-        "nsw_locali": "2015-08-06Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "ST LEONARDS",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "ST LEONARDS",
-        "zone": "red",
-        "score": 3
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4069"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.19247401,
-              -33.80241571
-            ],
-            [
-              151.19380472,
-              -33.81258714
-            ],
-            [
-              151.19361586,
-              -33.81757721
-            ],
-            [
-              151.18673218,
-              -33.82248157
-            ],
-            [
-              151.17893547,
-              -33.81657529
-            ],
-            [
-              151.17542411,
-              -33.81243935
-            ],
-            [
-              151.17935583,
-              -33.80539354
-            ],
-            [
-              151.1873057,
-              -33.80146268
-            ],
-            [
-              151.19247401,
-              -33.80241571
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "24574",
-        "dt_create": "2015-05-22Z",
-        "dt_retire": null,
-        "loc_pid": "NSW90",
-        "nsw_locali": "2015-08-06Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "ARTARMON",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "ARTARMON",
-        "zone": "green",
-        "score": 77
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4070"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.20288315,
-              -33.80112387
-            ],
-            [
-              151.20370612,
-              -33.80253281
-            ],
-            [
-              151.20494908,
-              -33.80250527
-            ],
-            [
-              151.20590301,
-              -33.80248663
-            ],
-            [
-              151.20600139,
-              -33.80248449
-            ],
-            [
-              151.2063893,
-              -33.80247478
-            ],
-            [
-              151.21157214,
-              -33.80241909
-            ],
-            [
-              151.20912122,
-              -33.8053557
-            ],
-            [
-              151.20557464,
-              -33.81345188
-            ],
-            [
-              151.19380472,
-              -33.81258714
-            ],
-            [
-              151.19247401,
-              -33.80241571
-            ],
-            [
-              151.19384327,
-              -33.7993601
-            ],
-            [
-              151.20288315,
-              -33.80112387
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "24598",
-        "dt_create": "2015-05-22Z",
-        "dt_retire": null,
-        "loc_pid": "NSW4335",
-        "nsw_locali": "2015-08-06Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "WILLOUGHBY",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "WILLOUGHBY",
-        "zone": "yellow",
-        "score": 63
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4071"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.19849092,
-              -33.76806957
-            ],
-            [
-              151.20719826,
-              -33.7788312
-            ],
-            [
-              151.19657839,
-              -33.78205421
-            ],
-            [
-              151.19296341,
-              -33.77331329
-            ],
-            [
-              151.19849092,
-              -33.76806957
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "24545",
-        "dt_create": "2015-05-22Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3444",
-        "nsw_locali": "2015-08-06Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "ROSEVILLE CHASE",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "ROSEVILLE CHASE",
-        "zone": "yellow",
-        "score": 66
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4072"
     },
     {
       "type": "Feature",
@@ -18310,8 +12681,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "VAUCLUSE",
-        "zone": "red",
-        "score": 18
+        "zone": "green",
+        "score": 80
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4073"
     },
@@ -18386,122 +12757,10 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "EPPING",
-        "zone": "red",
-        "score": 41
+        "zone": "yellow",
+        "score": 61
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4099"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              149.4647606,
-              -33.40141288
-            ],
-            [
-              149.45960511,
-              -33.43156444
-            ],
-            [
-              149.45560032,
-              -33.45501079
-            ],
-            [
-              149.42110747,
-              -33.45083305
-            ],
-            [
-              149.41855487,
-              -33.46515084
-            ],
-            [
-              149.41026783,
-              -33.46403738
-            ],
-            [
-              149.40933056,
-              -33.46887523
-            ],
-            [
-              149.40068652,
-              -33.4676381
-            ],
-            [
-              149.40140303,
-              -33.46308511
-            ],
-            [
-              149.38023041,
-              -33.46017681
-            ],
-            [
-              149.38302369,
-              -33.44551715
-            ],
-            [
-              149.38980991,
-              -33.44636162
-            ],
-            [
-              149.39351273,
-              -33.43276634
-            ],
-            [
-              149.39690597,
-              -33.43323832
-            ],
-            [
-              149.40388146,
-              -33.40174617
-            ],
-            [
-              149.41012094,
-              -33.40061524
-            ],
-            [
-              149.4237726,
-              -33.39650763
-            ],
-            [
-              149.43539679,
-              -33.39888475
-            ],
-            [
-              149.44744611,
-              -33.39532684
-            ],
-            [
-              149.45106442,
-              -33.40268941
-            ],
-            [
-              149.4647606,
-              -33.40141288
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "26335",
-        "dt_create": "2016-06-07Z",
-        "dt_retire": null,
-        "loc_pid": "NSW3874",
-        "nsw_locali": "2016-08-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "THE ROCKS",
-        "nsw_loca_3": null,
-        "nsw_loca_4": "2795",
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "THE ROCKS",
-        "zone": "green",
-        "score": 85
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4176"
     },
     {
       "type": "Feature",
@@ -18587,65 +12846,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "TERRIGAL",
         "zone": "yellow",
-        "score": 51
+        "score": 61
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4203"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.22128143,
-              -33.86904249
-            ],
-            [
-              151.22138357,
-              -33.87509394
-            ],
-            [
-              151.21415668,
-              -33.87396432
-            ],
-            [
-              151.21873599,
-              -33.86892802
-            ],
-            [
-              151.21885865,
-              -33.8686412
-            ],
-            [
-              151.21990286,
-              -33.86617337
-            ],
-            [
-              151.22128143,
-              -33.86904249
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "22501",
-        "dt_create": "2014-05-22Z",
-        "dt_retire": null,
-        "loc_pid": "NSW4437",
-        "nsw_locali": "2014-08-02Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "WOOLLOOMOOLOO",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "WOOLLOOMOOLOO",
-        "zone": "yellow",
-        "score": 55
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4256"
     },
     {
       "type": "Feature",
@@ -18715,97 +12918,9 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "SUTHERLAND",
         "zone": "red",
-        "score": 4
+        "score": 36
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4327"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.2026856,
-              -33.85629545
-            ],
-            [
-              151.20295501,
-              -33.86307541
-            ],
-            [
-              151.20114035,
-              -33.86584217
-            ],
-            [
-              151.2026856,
-              -33.85629545
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "26047",
-        "dt_create": "2016-06-07Z",
-        "dt_retire": null,
-        "loc_pid": "NSW5006",
-        "nsw_locali": "2016-08-08Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "BARANGAROO",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "BARANGAROO",
-        "zone": "yellow",
-        "score": 68
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4346"
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              151.21671126,
-              -33.84506275
-            ],
-            [
-              151.21377483,
-              -33.84964287
-            ],
-            [
-              151.21169139,
-              -33.84373822
-            ],
-            [
-              151.21671126,
-              -33.84506275
-            ]
-          ]
-        ]
-      },
-      "properties": {
-        "lc_ply_pid": "27321",
-        "dt_create": "2017-03-03Z",
-        "dt_retire": null,
-        "loc_pid": "NSW2196",
-        "nsw_locali": "2017-05-02Z",
-        "nsw_loca_1": null,
-        "nsw_loca_2": "KIRRIBILLI",
-        "nsw_loca_3": null,
-        "nsw_loca_4": null,
-        "nsw_loca_5": "G",
-        "nsw_loca_6": null,
-        "nsw_loca_7": "1",
-        "name": "KIRRIBILLI",
-        "zone": "green",
-        "score": 95
-      },
-      "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4356"
     },
     {
       "type": "Feature",
@@ -18867,7 +12982,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "MANLY VALE",
         "zone": "green",
-        "score": 86
+        "score": 91
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4358"
     },
@@ -18963,7 +13078,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "PAGEWOOD",
         "zone": "yellow",
-        "score": 67
+        "score": 69
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4378"
     },
@@ -19019,7 +13134,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "BOTANY",
         "zone": "green",
-        "score": 92
+        "score": 88
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4488"
     },
@@ -19165,7 +13280,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "RICHMOND",
         "zone": "green",
-        "score": 95
+        "score": 79
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4497"
     },
@@ -19237,7 +13352,7 @@ const sydneySuburbBoundaries = {
         "nsw_loca_7": "1",
         "name": "RICHMOND LOWLANDS",
         "zone": "yellow",
-        "score": 58
+        "score": 64
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4498"
     },
@@ -19292,8 +13407,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BONDI JUNCTION",
-        "zone": "green",
-        "score": 86
+        "zone": "yellow",
+        "score": 54
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4505"
     },
@@ -19352,8 +13467,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "BONDI",
-        "zone": "red",
-        "score": 30
+        "zone": "green",
+        "score": 75
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4506"
     },
@@ -19428,8 +13543,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "ROSE BAY",
-        "zone": "yellow",
-        "score": 56
+        "zone": "red",
+        "score": 38
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4509"
     },
@@ -19496,8 +13611,8 @@ const sydneySuburbBoundaries = {
         "nsw_loca_6": null,
         "nsw_loca_7": "1",
         "name": "SURRY HILLS",
-        "zone": "green",
-        "score": 82
+        "zone": "yellow",
+        "score": 52
       },
       "id": "ckan_91e70237_d9d1_4719_a82f_e71b811154c6.4511"
     }

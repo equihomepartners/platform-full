@@ -29,6 +29,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   const [selectedTab, setSelectedTab] = useState('all');
   const [selectedLayer, setSelectedLayer] = useState('suburbs'); // 'suburbs', 'postcodes', etc.
   const [isMapLoaded, setIsMapLoaded] = useState(false);
+  const [isProcessingSuburbs, setIsProcessingSuburbs] = useState(false);
 
   // Get ML data for confidence levels
   const { modelInfo, systemStatus } = useMLData();
@@ -301,15 +302,28 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   }
 
   // Filter features based on search, tab, and selected layer
-  const filteredFeatures = selectedLayer === 'suburbs'
-    ? suburbFeatures.filter(f =>
-        (f.properties?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (selectedTab === 'all' || f.properties?.zone === selectedTab)
-      )
-    : postcodeFeatures.filter(f =>
-        (f.properties?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (selectedTab === 'all' || f.properties?.zone === selectedTab)
-      );
+  const [filteredFeatures, setFilteredFeatures] = useState([]);
+
+  // Use useEffect to filter features with processing state
+  useEffect(() => {
+    setIsProcessingSuburbs(true);
+
+    // Use setTimeout to allow the UI to update before heavy processing
+    setTimeout(() => {
+      const filtered = selectedLayer === 'suburbs'
+        ? suburbFeatures.filter(f =>
+            (f.properties?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) &&
+            (selectedTab === 'all' || f.properties?.zone === selectedTab)
+          )
+        : postcodeFeatures.filter(f =>
+            (f.properties?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) &&
+            (selectedTab === 'all' || f.properties?.zone === selectedTab)
+          );
+
+      setFilteredFeatures(filtered);
+      setIsProcessingSuburbs(false);
+    }, 100);
+  }, [searchTerm, selectedTab, selectedLayer, suburbFeatures, postcodeFeatures]);
 
   return (
     <div className="space-y-4">
@@ -474,8 +488,8 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
       </div>
 
       {/* Map Container */}
-      <div className="h-[600px] rounded-lg overflow-hidden relative shadow-lg border border-neutral-200">
-        {/* Loading Indicator */}
+      <div className="h-[700px] rounded-lg overflow-hidden relative shadow-lg border border-neutral-200">
+        {/* Loading Indicators */}
         {!isMapLoaded && (
           <div className="absolute inset-0 flex items-center justify-center bg-neutral-100 bg-opacity-80 z-10">
             <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg border border-neutral-200">
@@ -485,11 +499,19 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             </div>
           </div>
         )}
+
+        {/* Processing Suburbs Indicator */}
+        {isProcessingSuburbs && isMapLoaded && (
+          <div className="absolute top-4 right-4 bg-white p-3 rounded-lg shadow-md z-10 flex items-center space-x-2">
+            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-blue-400"></div>
+            <p className="text-sm text-neutral-700">Processing {suburbFeatures.length} suburbs...</p>
+          </div>
+        )}
         <Map
           initialViewState={{
             latitude: -33.8688,
             longitude: 151.2093,
-            zoom: 10.5
+            zoom: 9.5 // Zoomed out slightly to show more suburbs
           }}
           mapStyle="mapbox://styles/mapbox/light-v11"
           mapboxAccessToken={MAPBOX_TOKEN}

@@ -565,14 +565,21 @@ All notable changes to the Equihome Platform will be documented in this file.
 
 ### Map UI Improvements - 2024-04-10
 - Updated map colors to be lighter and easier on the eyes
-- Replaced GeoJSON boundaries with more accurate data from tonywr71/GeoJson-Data
 - Improved gradient colors with softer, more professional tones
 - Enhanced polygon outlines for better visibility
 - Changed map style to light-v11 for a cleaner look
 - Updated all UI components to match the new color scheme
-- Added more comprehensive Sydney suburb boundaries
 - Improved loading indicator and progress bars
 - Enhanced overall visual consistency and professionalism
+
+### Comprehensive Sydney GeoJSON Boundaries - 2024-04-10
+- Replaced GeoJSON boundaries with comprehensive data from tonywr71/GeoJson-Data
+- Expanded coverage from 20 to 214 Sydney suburbs for complete geographic representation
+- Added processing indicator for handling large number of suburbs
+- Increased map height to accommodate more suburbs
+- Adjusted initial zoom level for better overview of Sydney region
+- Optimized suburb filtering with async processing to prevent UI freezing
+- Added comprehensive list of Sydney regions and major suburbs for better filtering
 
 ### UI Consistency Updates - 2024-04-10
 - Updated Traffic Light System layout to match Portfolio Management System

@@ -171,14 +171,14 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
     source: 'suburb-polygons',
     paint: {
       'fill-color': [
-        'case',
-        ['==', ['get', 'zone'], 'green'],
-        '#4ade80', // Simple green color
-        ['==', ['get', 'zone'], 'yellow'],
-        '#fcd34d', // Simple yellow color
-        '#fca5a5'  // Simple red color (default)
+        'match',
+        ['get', 'zone'],
+        'green', 'rgba(74, 222, 128, 0.4)', // Green with fixed opacity
+        'yellow', 'rgba(252, 211, 77, 0.4)', // Yellow with fixed opacity
+        'red', 'rgba(252, 165, 165, 0.4)', // Red with fixed opacity
+        'rgba(209, 213, 219, 0.4)' // Default gray with fixed opacity
       ],
-      'fill-opacity': 0.6
+      'fill-opacity': 1.0 // Using fixed opacity in colors above
     }
   };
 
@@ -188,9 +188,9 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
     type: 'line',
     source: 'suburb-polygons',
     paint: {
-      'line-color': '#ffffff',
-      'line-width': 0.5,
-      'line-opacity': 0.7
+      'line-color': '#000000',
+      'line-width': 0.8,
+      'line-opacity': 0.3
     }
   };
 
@@ -419,14 +419,17 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
           <div className="text-sm text-neutral-600 font-medium">Zone Distribution</div>
           <div className="flex space-x-1 mt-3 h-3">
-            <div className="rounded-l-full bg-green-400" style={{
-              width: `${(filteredFeatures.filter(f => f.properties.zone === 'green').length / filteredFeatures.length) * 100}%`
+            <div className="rounded-l-full border-l border-t border-b border-gray-300" style={{
+              width: `${(filteredFeatures.filter(f => f.properties.zone === 'green').length / filteredFeatures.length) * 100}%`,
+              backgroundColor: 'rgba(74, 222, 128, 0.4)'
             }} />
-            <div className="bg-yellow-400" style={{
-              width: `${(filteredFeatures.filter(f => f.properties.zone === 'yellow').length / filteredFeatures.length) * 100}%`
+            <div className="border-t border-b border-gray-300" style={{
+              width: `${(filteredFeatures.filter(f => f.properties.zone === 'yellow').length / filteredFeatures.length) * 100}%`,
+              backgroundColor: 'rgba(252, 211, 77, 0.4)'
             }} />
-            <div className="rounded-r-full bg-red-300" style={{
-              width: `${(filteredFeatures.filter(f => f.properties.zone === 'red').length / filteredFeatures.length) * 100}%`
+            <div className="rounded-r-full border-r border-t border-b border-gray-300" style={{
+              width: `${(filteredFeatures.filter(f => f.properties.zone === 'red').length / filteredFeatures.length) * 100}%`,
+              backgroundColor: 'rgba(252, 165, 165, 0.4)'
             }} />
           </div>
           <div className="flex justify-between mt-1 text-xs text-neutral-500">
@@ -439,8 +442,8 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           <div className="text-sm text-neutral-600 font-medium">Average Growth</div>
           <div className="text-2xl font-bold text-green-500 mt-1">+4.2%</div>
           <div className="text-xs text-neutral-500 mt-1">Last 12 months</div>
-          <div className="mt-2 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
-            <div className="h-full bg-green-400" style={{ width: '42%' }}></div>
+          <div className="mt-2 h-1.5 bg-neutral-100 rounded-full overflow-hidden border border-gray-200">
+            <div className="h-full" style={{ width: '42%', backgroundColor: 'rgba(74, 222, 128, 0.6)' }}></div>
           </div>
         </div>
         <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
@@ -451,9 +454,9 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           <div className="text-xs text-neutral-500 mt-1">
             Based on {modelInfo ? `${(modelInfo.metrics.data_points / 1000).toFixed(0)}K` : 'Loading...'} data points
           </div>
-          <div className="mt-2 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
-            <div className="h-full bg-blue-400"
-                 style={{ width: modelInfo ? `${modelInfo.metrics.confidence * 100}%` : '0%' }}></div>
+          <div className="mt-2 h-1.5 bg-neutral-100 rounded-full overflow-hidden border border-gray-200">
+            <div className="h-full"
+                 style={{ width: modelInfo ? `${modelInfo.metrics.confidence * 100}%` : '0%', backgroundColor: 'rgba(96, 165, 250, 0.6)' }}></div>
           </div>
         </div>
       </div>
@@ -484,7 +487,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             longitude: 151.2093,
             zoom: 9.0 // Zoomed out to show all Sydney suburbs
           }}
-          mapStyle="mapbox://styles/mapbox/light-v11"
+          mapStyle="mapbox://styles/mapbox/streets-v12"
           mapboxAccessToken={MAPBOX_TOKEN}
           interactiveLayerIds={selectedLayer === 'suburbs' ? ['suburb-polygons', 'suburb-polygon-outlines'] : []}
           terrain={null}
@@ -532,6 +535,54 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             </Source>
           )}
 
+          {/* Custom Layers for Better Map Visualization */}
+          {/* Water Layer */}
+          <Source
+            id="water-layer"
+            type="vector"
+            url="mapbox://mapbox.mapbox-streets-v8"
+          >
+            <Layer
+              id="water-layer"
+              type="fill"
+              source-layer="water"
+              paint={{
+                'fill-color': '#cae8ff', // Lighter blue for water
+                'fill-opacity': 0.7
+              }}
+              beforeId="suburb-polygons"
+            />
+            <Layer
+              id="water-outline"
+              type="line"
+              source-layer="water"
+              paint={{
+                'line-color': '#a3d2ff',
+                'line-width': 1
+              }}
+              beforeId="suburb-polygons"
+            />
+          </Source>
+
+          {/* Parks Layer */}
+          <Source
+            id="parks-layer"
+            type="vector"
+            url="mapbox://mapbox.mapbox-streets-v8"
+          >
+            <Layer
+              id="parks-layer"
+              type="fill"
+              source-layer="landuse"
+              filter={['==', 'class', 'park']}
+              paint={{
+                'fill-color': '#e6f5e6', // Light green for parks
+                'fill-opacity': 0.5
+              }}
+              beforeId="suburb-polygons"
+            />
+          </Source>
+
           {/* Enhanced Popup */}
           {popupInfo && (
             <Popup
@@ -563,9 +614,15 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
                   {/* Zone Badge */}
                   <div className="mt-2">
                     <Badge
-                      className={`${popupInfo.zone === 'green' ? 'bg-green-500' : popupInfo.zone === 'orange' ? 'bg-orange-500' : 'bg-red-500'}`}
+                      className={`border ${
+                        popupInfo.zone === 'green'
+                          ? 'bg-green-100 text-green-800 border-green-300'
+                          : popupInfo.zone === 'yellow'
+                            ? 'bg-yellow-100 text-yellow-800 border-yellow-300'
+                            : 'bg-red-100 text-red-800 border-red-300'
+                      }`}
                     >
-                      {popupInfo.zone === 'green' ? 'Green Zone' : popupInfo.zone === 'orange' ? 'Orange Zone' : 'Red Zone'}
+                      {popupInfo.zone === 'green' ? 'Green Zone' : popupInfo.zone === 'yellow' ? 'Yellow Zone' : 'Red Zone'}
                     </Badge>
                   </div>
 
@@ -615,20 +672,20 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             <h4 className="text-sm font-semibold mb-3 text-neutral-800">Zone Classification</h4>
             <div className="space-y-3">
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-green-400 mr-3"></div>
-                <span className="text-xs text-neutral-700">Green Zone - Premium investment areas</span>
+                <div className="w-4 h-4 rounded-sm border border-gray-300" style={{ backgroundColor: 'rgba(74, 222, 128, 0.4)' }}></div>
+                <span className="text-xs text-neutral-700 ml-3">Green Zone - Premium investment areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-yellow-400 mr-3"></div>
-                <span className="text-xs text-neutral-700">Yellow Zone - Transitioning areas</span>
+                <div className="w-4 h-4 rounded-sm border border-gray-300" style={{ backgroundColor: 'rgba(252, 211, 77, 0.4)' }}></div>
+                <span className="text-xs text-neutral-700 ml-3">Yellow Zone - Transitioning areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-red-300 mr-3"></div>
-                <span className="text-xs text-neutral-700">Red Zone - Higher risk areas</span>
+                <div className="w-4 h-4 rounded-sm border border-gray-300" style={{ backgroundColor: 'rgba(252, 165, 165, 0.4)' }}></div>
+                <span className="text-xs text-neutral-700 ml-3">Red Zone - Higher risk areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-neutral-300 mr-3"></div>
-                <span className="text-xs text-neutral-700">Unclassified</span>
+                <div className="w-4 h-4 rounded-sm border border-gray-300" style={{ backgroundColor: 'rgba(209, 213, 219, 0.4)' }}></div>
+                <span className="text-xs text-neutral-700 ml-3">Unclassified</span>
               </div>
             </div>
           </div>
@@ -640,15 +697,15 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-green-400" />
+              <div className="w-3 h-3 rounded-full border border-gray-300" style={{ backgroundColor: 'rgba(74, 222, 128, 0.4)' }} />
               <span className="text-sm text-neutral-700 font-medium">Green Zone</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-yellow-400" />
+              <div className="w-3 h-3 rounded-full border border-gray-300" style={{ backgroundColor: 'rgba(252, 211, 77, 0.4)' }} />
               <span className="text-sm text-neutral-700 font-medium">Yellow Zone</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-red-300" />
+              <div className="w-3 h-3 rounded-full border border-gray-300" style={{ backgroundColor: 'rgba(252, 165, 165, 0.4)' }} />
               <span className="text-sm text-neutral-700 font-medium">Red Zone</span>
             </div>
           </div>

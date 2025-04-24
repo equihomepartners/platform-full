@@ -581,7 +581,17 @@ All notable changes to the Equihome Platform will be documented in this file.
 - Adjusted initial zoom level for better overview of Sydney region
 - Optimized suburb filtering with async processing to prevent UI freezing
 - Added comprehensive list of Sydney regions and major suburbs for better filtering
-- Fixed flashing issues by simplifying gradient and color implementation
+
+### Map Visualization Improvements - 2024-04-10
+- Fixed flashing issues by using static colors with fixed opacity
+- Enhanced water features with custom styling for better visibility
+- Added park visualization for improved map context
+- Improved suburb boundary visibility with subtle black outlines
+- Updated to streets-v12 map style for better geographic context
+- Enhanced zone coloring with consistent, non-flashing colors
+- Updated all UI elements to match the new color scheme
+- Improved popup styling with color-coded badges
+- Added borders to legend items for better visibility
 
 ### UI Consistency Updates - 2024-04-10
 - Updated Traffic Light System layout to match Portfolio Management System

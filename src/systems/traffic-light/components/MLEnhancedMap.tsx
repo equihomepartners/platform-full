@@ -97,6 +97,8 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
   });
 
   console.log('All features:', suburbFeatures);
+  console.log('Total suburb features:', suburbFeatures.length);
+  console.log('First 5 suburb features:', suburbFeatures.slice(0, 5));
 
   // Define growth corridors for predictive mode
   const growthCorridors = [
@@ -168,45 +170,15 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
     type: 'fill',
     source: 'suburb-polygons',
     paint: {
-      'fill-color': predictiveMode ? [
-        'interpolate',
-        ['linear'],
-        ['get', 'transitionProbability'],
-        0.3, '#fca5a5', // Low confidence - light red (softer)
-        0.5, '#fdba74', // Medium confidence - light orange (softer)
-        0.7, '#fcd34d', // Higher confidence - light amber (softer)
-        0.9, '#86efac'  // High confidence - light green (softer)
-      ] : [
+      'fill-color': [
         'case',
         ['==', ['get', 'zone'], 'green'],
-        [
-          'interpolate',
-          ['linear'],
-          ['get', 'score'],
-          75, '#86efac', // Light green (softer)
-          85, '#4ade80', // Medium green (softer)
-          95, '#22c55e'  // Dark green (softer)
-        ],
+        '#4ade80', // Simple green color
         ['==', ['get', 'zone'], 'yellow'],
-        [
-          'interpolate',
-          ['linear'],
-          ['get', 'score'],
-          50, '#fef08a', // Light yellow (softer)
-          60, '#fcd34d', // Medium yellow (softer)
-          70, '#fdba74'  // Light orange (softer)
-        ],
-        // Red zone with gradient
-        [
-          'interpolate',
-          ['linear'],
-          ['get', 'score'],
-          0, '#ef4444',  // Medium red (softer)
-          25, '#fca5a5', // Light red (softer)
-          45, '#fee2e2'  // Very light red (softer)
-        ]
+        '#fcd34d', // Simple yellow color
+        '#fca5a5'  // Simple red color (default)
       ],
-      'fill-opacity': 0.7
+      'fill-opacity': 0.6
     }
   };
 
@@ -217,9 +189,8 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
     source: 'suburb-polygons',
     paint: {
       'line-color': '#ffffff',
-      'line-width': 1,
-      'line-opacity': 0.8,
-      'line-blur': 0.5
+      'line-width': 0.5,
+      'line-opacity': 0.7
     }
   };
 
@@ -448,13 +419,13 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
           <div className="text-sm text-neutral-600 font-medium">Zone Distribution</div>
           <div className="flex space-x-1 mt-3 h-3">
-            <div className="rounded-l-full bg-gradient-to-r from-green-500 to-green-300" style={{
+            <div className="rounded-l-full bg-green-400" style={{
               width: `${(filteredFeatures.filter(f => f.properties.zone === 'green').length / filteredFeatures.length) * 100}%`
             }} />
-            <div className="bg-gradient-to-r from-yellow-400 to-yellow-300" style={{
+            <div className="bg-yellow-400" style={{
               width: `${(filteredFeatures.filter(f => f.properties.zone === 'yellow').length / filteredFeatures.length) * 100}%`
             }} />
-            <div className="rounded-r-full bg-gradient-to-r from-red-400 to-red-300" style={{
+            <div className="rounded-r-full bg-red-300" style={{
               width: `${(filteredFeatures.filter(f => f.properties.zone === 'red').length / filteredFeatures.length) * 100}%`
             }} />
           </div>
@@ -469,7 +440,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           <div className="text-2xl font-bold text-green-500 mt-1">+4.2%</div>
           <div className="text-xs text-neutral-500 mt-1">Last 12 months</div>
           <div className="mt-2 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-green-500 to-green-300" style={{ width: '42%' }}></div>
+            <div className="h-full bg-green-400" style={{ width: '42%' }}></div>
           </div>
         </div>
         <div className="bg-white rounded-lg border border-neutral-200 p-4 shadow-sm">
@@ -481,7 +452,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             Based on {modelInfo ? `${(modelInfo.metrics.data_points / 1000).toFixed(0)}K` : 'Loading...'} data points
           </div>
           <div className="mt-2 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-blue-500 to-blue-300"
+            <div className="h-full bg-blue-400"
                  style={{ width: modelInfo ? `${modelInfo.metrics.confidence * 100}%` : '0%' }}></div>
           </div>
         </div>
@@ -516,7 +487,7 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
           mapStyle="mapbox://styles/mapbox/light-v11"
           mapboxAccessToken={MAPBOX_TOKEN}
           interactiveLayerIds={selectedLayer === 'suburbs' ? ['suburb-polygons', 'suburb-polygon-outlines'] : []}
-          terrain={{ source: 'mapbox-dem', exaggeration: 1.2 }}
+          terrain={null}
           onClick={handleClick}
           onError={handleError}
           onLoad={handleLoad}
@@ -644,19 +615,19 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
             <h4 className="text-sm font-semibold mb-3 text-neutral-800">Zone Classification</h4>
             <div className="space-y-3">
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-green-500 to-green-300 mr-3 shadow-sm"></div>
+                <div className="w-4 h-4 rounded-sm bg-green-400 mr-3"></div>
                 <span className="text-xs text-neutral-700">Green Zone - Premium investment areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-yellow-400 to-yellow-300 mr-3 shadow-sm"></div>
+                <div className="w-4 h-4 rounded-sm bg-yellow-400 mr-3"></div>
                 <span className="text-xs text-neutral-700">Yellow Zone - Transitioning areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-gradient-to-r from-red-400 to-red-300 mr-3 shadow-sm"></div>
+                <div className="w-4 h-4 rounded-sm bg-red-300 mr-3"></div>
                 <span className="text-xs text-neutral-700">Red Zone - Higher risk areas</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 rounded-sm bg-neutral-300 mr-3 shadow-sm"></div>
+                <div className="w-4 h-4 rounded-sm bg-neutral-300 mr-3"></div>
                 <span className="text-xs text-neutral-700">Unclassified</span>
               </div>
             </div>
@@ -669,15 +640,15 @@ const MLEnhancedMap: React.FC<Props> = ({ onSuburbSelect, predictiveMode = false
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-green-500 to-green-300 shadow-sm" />
+              <div className="w-3 h-3 rounded-full bg-green-400" />
               <span className="text-sm text-neutral-700 font-medium">Green Zone</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-300 shadow-sm" />
+              <div className="w-3 h-3 rounded-full bg-yellow-400" />
               <span className="text-sm text-neutral-700 font-medium">Yellow Zone</span>
             </div>
             <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-red-400 to-red-300 shadow-sm" />
+              <div className="w-3 h-3 rounded-full bg-red-300" />
               <span className="text-sm text-neutral-700 font-medium">Red Zone</span>
             </div>
           </div>

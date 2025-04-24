@@ -575,12 +575,13 @@ All notable changes to the Equihome Platform will be documented in this file.
 ### Comprehensive Sydney GeoJSON Boundaries - 2024-04-10
 - Implemented direct integration with tonywr71/GeoJson-Data repository for Sydney suburbs
 - Used suburb-2-nsw.geojson file for accurate and comprehensive suburb boundaries
-- Expanded coverage to 143 Sydney suburbs for complete geographic representation
+- Expanded coverage to 787 Sydney suburbs for complete geographic representation
 - Added processing indicator for handling large number of suburbs
 - Increased map height to accommodate more suburbs
 - Adjusted initial zoom level for better overview of Sydney region
 - Optimized suburb filtering with async processing to prevent UI freezing
 - Added comprehensive list of Sydney regions and major suburbs for better filtering
+- Fixed flashing issues by simplifying gradient and color implementation
 
 ### UI Consistency Updates - 2024-04-10
 - Updated Traffic Light System layout to match Portfolio Management System
